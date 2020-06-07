@@ -140,7 +140,7 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
             \vspace{1.0cm}
             \MakeUppercase{\normalfont\slshape\bfseries\@titleeng}\par\nobreak
             \vfill
-            \includegraphics[height=6cm]{logoUH}
+            \includegraphics[height=6cm]{images/logoUH}
             \vfill
             {\normalfont
                 Oleh\\
@@ -183,7 +183,7 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
             \vfill
             \MakeUppercase{\normalfont\bfseries Skripsi}\\
             \vspace{1.5cm}
-            \includegraphics[scale=0.3]{logoUH}
+            \includegraphics[scale=0.3]{images/logoUH}
             \vfill
             {\normalfont
             \@fullname\\
