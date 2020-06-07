@@ -1,0 +1,90 @@
+\documentclass{myclass}
+
+% \usepackage{showframe}
+\usepackage{blindtext}
+
+\usepackage[export]{adjustbox}
+
+
+% to use bibliography
+\usepackage[
+    backend=biber,
+    style=numeric,
+    citestyle=authoryear,
+    sorting=ynt
+    ]{biblatex}
+\addbibresource{bibtex/proposal.bib}
+
+
+\titleind{PERBANDINGAN PERFORMA BERBASIS FPGA UNTUK DETEKSI TEPI PADA VIDEO STREAMING MENGGUNAKAN SOFTWARE ACCELERATION DAN HARDWARE ACCELERATION FPGA}
+
+
+\fullname{SULAEMAN}
+\idnum{H131 16 002}
+
+\examdate{\hspace{0.4cm} Mei 2020}
+
+\degree{Sarjana Sains}
+\yearsubmit{2020}
+\program{Ilmu Komputer}
+\dept{Matematika}
+\faculty{Fakultas Matematika dan Ilmu Pengetahuan Alam}
+
+\firstsupervisor{Dr. Loeky Haryanto, MS, MSc, MAT}
+\secondsupervisor{Armin Lawi, M.Eng.}
+\firstexaminer{Drs. Khaeruddin, MSc}
+\secondexaminer{Drs. Aluysius Sutjijana, M.Sc.}
+
+
+\begin{document}
+    \coverproposal
+    \pagenumbering{roman}
+    %-----------------------------------------------------------------
+    %Setting daftar isi
+    %-----------------------------------------------------------------
+    % \renewcommand*\contentsname{}
+    \tableofcontents
+    \addcontentsline{toc}{chapter}{DAFTAR ISI}
+    \newpage
+
+    \listoffigures
+    \addcontentsline{toc}{chapter}{DAFTAR Gambar}
+    \newpage
+
+    \listoftables
+    \addcontentsline{toc}{chapter}{DAFTAR Table}
+    \newpage
+
+    \pagebreak
+    \pagenumbering{arabic}
+
+    %-----------------------------------------------------------------
+    %Disini awal masukan untuk Bab
+    %-----------------------------------------------------------------
+    \input{bab1.tex}
+    \input{bab2.tex}
+    \input{bab3.tex}
+    %\input{Bab3.tex}
+    %\input{Bab4.tex}
+    %\input{Bab5.tex}
+    %\input{Bab6.tex}
+    %-----------------------------------------------------------------
+    %Disini akhir masukan Bab
+    %-----------------------------------------------------------------
+
+    \newpage
+    fadfalkfjaldjflk ldf aklfjaldf fasdllfjk (\cite{thesis:jin})
+    \newpage
+
+
+    %-----------------------------------------------------------------
+    %Disini awal masukan untuk Daftar Pustaka
+    %-----------------------------------------------------------------
+    \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+    \printbibliography[title={DAFTAR PUSTAKA}]
+    %-----------------------------------------------------------------
+    %Disini akhir masukan Daftar Pustaka
+    %-----------------------------------------------------------------
+
+
+\end{document}
