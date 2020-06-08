@@ -11,4 +11,6 @@ clear: # $(DOCNAME).aux, $(DOCNAME).bbl, $(DOCNAME).out, $(DOCNAME).blg
 	rm $(DOCNAME).bbl;
 	rm $(DOCNAME).out;
 	rm $(DOCNAME).blg;
+	rm $(DOCNAME).log;
+	rm $(DOCNAME).run.xml;
 	echo "Cleared"
