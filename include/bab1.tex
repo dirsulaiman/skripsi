@@ -13,15 +13,18 @@ Deteksi tepi merupakan salah satu metode dalam pemrosesan cira digital untuk det
 
 Berbagai macam metode deteksi dapat digunakan untuk mendeteksi tepi pada citra. Setiap teknik memiliki keunggulan dan karakteristiknya masing-masing. Suatu teknik deteksi tepi mungkin dapat bekerja sangat baik dalam suatu aplikasi tertentu namun sebaliknya belum tentu dapat berjalan secara maksimal pada aplikasi lainnya.
 
+% Stream Video adalah
+Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut (\cite{thesis:jin}). Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (source) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk deteksi tepi. Setiap citra yang ditangkap disebut sebagai frame, setiap frame ini dilakukan deteksi tepi kemudian hasilnya ditampilkan secara berkesinambungan sehingga nampak seperti video yang telah mengalami deteksi tepi. 
+
+Frame per second (FPS) atau Frame rate adalah banyaknya frame yang ditampilkan dalam setiap detik pada video. Semakin tinggi FPS sebuah video maka semakin halus pula gerakan yang dapat ditampilkan karena dibentuk dari frame yang lebih banyak, namun dengan jumlah frame yang lebih besar tentu dibutuhkan juga resource yang lebih besar dalam pengolahan video tersebut. Dalam penelitian ini video stream yang digunakan dibatasi 30 fps saja dengan resolusi 720p.
+
+
 % FPGA sebagai alat untuk implementasi
 Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja (\cite{XILINX}).
 
-% Stream Video adalah
-Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut (\cite{thesis:jin}). Dengan menganggap Video stream adalah kumpulan citra digital maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk deteksi tepi. Setiap citra yang ditangkap disebut sebagai frame, setiap frame ini dilakukan deteksi tepi kemudian hasilnya ditampilkan secara berkesinambungan sehingga nampak seperti video yang telah mengalami deteksi tepi. 
+FPGA Xilinx PYNQ-Z2 yang digunakan pada penelitian ini secara official dapat menerima input video stream dari port HDMI Input dengan resolusi maksimal 720p. Video hasil deteksi tepi yang ditampilakan melalui port HDMI Output akan mengalami penurunan fps, hal ini disebabkan oleh penambahan jeda waktu komputasi untuk deteksi tepi antara setiap frame. Setiap frame yang diterima dari \textit{source} akan dilakukan metode deteksi tepi, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan.
 
-Frame per second (FPS) atau Frame rate adalah banyaknya frame yang ditampilkan dalam setiap detik pada video. Semakin tinggi FPS sebuah video maka semakin halus pula gerakan yang dapat ditampilkan karena dibentuk dari frame yang lebih banyak, namun dengan jumlah frame yang lebih besar tentu dibutuhkan juga resource yang lebih besar dalam pengolahan video tersebut.
 
-FPGA Xilinx PYNQ-Z2 yang digunakan dalam penelitian ini secara official dapat menerima input video stream dari port HDMI Input dengan resolusi maksimal 720p. Video hasil deteksi tepi yang ditampilakan melalui port HDMI Output mengalami penurunan fps, hal ini disebabkan oleh penambahan jeda waktu komputasi untuk deteksi tepi antara setiap frame. Setiap frame yang diterima dari port HDMI Input dilakukan metode deteksi tepi, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan.
 % Masalah Performa dan komputasi
 
 \section{Rumusan Masalah}
