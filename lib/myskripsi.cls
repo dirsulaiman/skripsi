@@ -295,10 +295,10 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 %    {\caption{\tmpcaption} \end{figure}}
 
 \newenvironment{afigure}
-    {\begin{figure}[h]}
+    {\begin{figure}[ht]}
     {\end{figure}}
 
 % usage begin{atable}{caption}
 \newenvironment{atable}[1]
-    {\begin{table}[h]  \begin{center} \caption{#1}}
+    {\begin{table}[ht]  \begin{center} \caption{#1}}
     {\end{center} \vspace{-4mm} \end{table}}
