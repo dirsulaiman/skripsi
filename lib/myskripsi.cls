@@ -1,10 +1,6 @@
-% to do
-%
-%
-%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{myclass}[2020/03/11 Skripsi class]
+\ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi class]
 
 \LoadClass[a4paper, 12pt]{report}
 
@@ -28,6 +24,13 @@
 \RequirePackage{fancyhdr}
 % Hyperlink
 \RequirePackage[pdftex,bookmarks=true,hidelinks]{hyperref}
+% Counter for figure, table and equation
+\RequirePackage{chngcntr}
+% Setup the caption of figure, table and equation
+\RequirePackage[font=small, labelfont={it},textfont={it}, justification=centering]{caption}
+% Setup label of enumerate item
+\RequirePackage{enumitem} 
+\renewcommand{\theenumi}{\Alph{enumi}}
 
 
 % To Setting footer, header and page number
@@ -203,8 +206,17 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 
 
 % Setting figure and table name
-\renewcommand \thefigure {\@arabic\c@chapter.\@arabic\c@section}
-\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+%\@addtoreset {figure}{section}
+%\renewcommand \thefigure {
+%    \ifnum \c@section>\z@ 
+%        .\@arabic\c@figure
+%    \fi 
+%        \@arabic\c@chapter.\@arabic\c@figure}
+%\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
+
 
 
 %------------------------------------------------------------
@@ -278,11 +290,15 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 
 % figure
 % usage begin{afigure}{caption}
-\newenvironment{afigure}[1]
-    {\newcommand{\tmpcaption}{#1} \begin{figure}[h]}
-    {\caption{\tmpcaption} \end{figure}}
+%\newenvironment{afigure}[1]
+%    {\newcommand{\tmpcaption}{#1} \begin{figure}[h]}
+%    {\caption{\tmpcaption} \end{figure}}
+
+\newenvironment{afigure}
+    {\begin{figure}[h]}
+    {\end{figure}}
 
 % usage begin{atable}{caption}
 \newenvironment{atable}[1]
-    {\begin{table}[h] \caption{#1} \begin{center} }
+    {\begin{table}[h]  \begin{center} \caption{#1}}
     {\end{center} \vspace{-4mm} \end{table}}
