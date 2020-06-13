@@ -8,13 +8,21 @@
 \renewcommand{\baselinestretch}{1.42}
 
 % to use bibliography
+% style, citestyle = {authoryear, numeric, apa, mla}
+% sorting {year,name,title} = ynt
 \usepackage[
     backend=biber,
     style=numeric,
     citestyle=authoryear,
-    sorting=ynt
+    sorting=nty,
+    giveninits=false,
+    maxbibnames=3
     ]{biblatex}
 \addbibresource{bibtex/proposal.bib}
+% new citation style
+\let\oldcitate\cite
+\newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
+
 
 
 \titleind{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO STREAM MENGGUNAKAN FPGA HARDWARE ACCELERATOR}
