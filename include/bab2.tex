@@ -26,6 +26,26 @@ Citra digital dapat didefinisikan sebagai fungsi f(x,y) berukuran M baris dan N 
 \subsection{Pengolahan Citra Digital}
 Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \thecite{book:gonzalez}.
 
+\subsection{Filter Spasial}
+Konsep filter bersumber dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter spasial ini dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah mask, kernel, template, dan window merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital \thecite{book:gonzalez}. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut.
+% Rumusnya
+% rumusnya bisa dilihat pada \ref{eq:conv}
+% Perbedaan Filter Linear dan Non Linear
+Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}.
+
+Konvolusi dua buah fungsi f(x) dan g(x) didefenisikan sebagai berikut:
+
+\begin{equation}
+    \label{eq:conv}
+    \begin{split}
+        h(x) &= f(x)*g(x) \\
+        &= \int_{-\infty}^{\infty}f(a)g(x-a) da
+    \end{split}
+\end{equation}
+% The subimage is called a filter, mask, kernel, template, or window, with the first three terms being the most prevalent terminology. 
+
+% As discussed in Chapter 4, the process of linear iltering given in Eq. (3.5-1) is similar to a frequency domain concept called convolution. For this reason, linear spatial filtering often is referred to as  convolving a mask with an image.” Similarly, filter masks are sometimes called  onvolution masks. The term con- volution kernel also is in common use. 
+
 \subsection{Video Streaming}
 Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (source) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. 
 

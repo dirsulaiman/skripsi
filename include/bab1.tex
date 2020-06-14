@@ -3,76 +3,87 @@
 
 \section{Latar Belakang}
 % Tentang Citra digital
-Citra digital merupakan citra yang dihasilkan dari pengolahan secara digital dengan merepresentasikan citra secara numerik dengan nilai-nilai diskret. Suatu citra digital dapat direpresentasikan dalam bentuk matriks dengan fungsi f(x,y) yang terdiri dari M kolom dan N baris. Perpotongan antara baris dan kolom disebut pixel \thecite{book:gonzalez}. Setiap pixel mewakili sebuah warna, pada citra biner sebuah pixel hanya berwarna hitam atau putih saja. Pada citra grayscale warna sebuah pixel mewakili tingkat keabuannya. Sedangkan pada citra warna (RGB) setiap piksel mewakili warna yang merupakan kombinasi dari tiga warna dasar.
+Citra digital merupakan citra yang dihasilkan dari pengolahan secara digital dengan merepresentasikan citra secara numerik dengan nilai-nilai diskret. Suatu citra digital dapat direpresentasikan dalam bentuk matriks dengan fungsi \textit{f(x,y)} yang terdiri dari M kolom dan N baris. Perpotongan antara baris dan kolom disebut sebagai \textit{pixel} \thecite{book:gonzalez}. Setiap \textit{pixel} mewakili sebuah warna, pada citra biner sebuah \textit{pixel} hanya berwarna hitam atau putih saja. Pada citra grayscale warna sebuah \textit{pixel} mewakili tingkat keabuannya. Sedangkan pada citra warna (RGB) setiap \textit{pixel} mewakili warna yang merupakan kombinasi dari tiga warna dasar ,yaitu merah, hijau dan biru. Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna atau tingkat keabuannya, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna atau tingkat keabuannya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar.
 
-Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna dasarnya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar walaupun dengan resolusi yang sama.
+% dari Gonzalez
+% Gray-level resolution similarly refers to the smallest discernible change in
+% gray level, but, as noted in Section 2.1.3, measuring discernible changes in gray
+% level is a highly subjective process. We have considerable discretion regarding
+% the number of samples used to generate a digital image, but this is not true for
+% the number of gray levels. Due to hardware considerations, the number of gray
+% levels is usually an integer power of 2, as mentioned in the previous section.
+% The most common number is 8 bits, with 16 bits being used in some applica-
+% tions where enhancement of specific gray-level ranges is necessary. Sometimes
+% we find systems that can digitize the gray levels of an image with 10 or 12 bits
+% of accuracy, but these are the exception rather than the rule.
 
 % Pengolahan Citra digital
-Pengolahan citra digital adalah
+Pengolahan citra digital merupakan proses mengolah \textit{pixel} di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi atau mempartisi gambar menjadi beberapa bagian atau objek, deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek yang terdapat dalam citra digital. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra seperti \textit{pattern recognition}, \textit{template matching}, \textit{image analysis} dan sebagainya \thecite{book:gonzalez}.
+
+
 
 
 % Deteksi Tepi dan Algoritmanya, sejarahnya juga sedikit
-% Deteksi tepi merupakan salah satu metode dalam pemrosesan cira digital untuk deteksi fitur dan ekstraksi dengan mengidentifikasi titik-titik (pixel) dalam citra yang mengalami perubahan tingkat keabuan secara derastis dan mengalami diskontinu. Salah satu tujuan deteksi tepi yaitu untuk mengurangi jumlah data secara signifikan dalam suatu gambar dan mempertahankan sifat strukturalnya untuk pemrosesan citra lebih lanjut (\cite{rashmi}).
+% Deteksi tepi merupakan salah satu metode dalam pemrosesan cira digital untuk deteksi fitur dan ekstraksi dengan mengidentifikasi titik-titik (\textit{pixel}) dalam citra yang mengalami perubahan tingkat keabuan secara derastis dan mengalami diskontinu. Salah satu tujuan deteksi tepi yaitu untuk mengurangi jumlah data secara signifikan dalam suatu gambar dan mempertahankan sifat strukturalnya untuk pemrosesan citra lebih lanjut (\cite{rashmi}).
 
 % Berbagai macam metode deteksi dapat digunakan untuk mendeteksi tepi pada citra. Setiap teknik memiliki keunggulan dan karakteristiknya masing-masing. Suatu teknik deteksi tepi mungkin dapat bekerja sangat baik dalam suatu aplikasi tertentu namun sebaliknya belum tentu dapat berjalan secara maksimal pada aplikasi lainnya.
 
-% Manfaat pengolahan citra digital
-Manfaat dari pengolahan citra digital antara lain
 
 % Filter Spasial
-Filter Spasial adalah
+Konsep filter bersumber dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
+% Pada penelitian ini beberapa kernel yang digunakan yaitu: laplacian high-pass, gaussian high-pass, mean blur, gaussian blur, sobel, motion blur.
 % Filter Linear dan non linear
 
 % Stream Video adalah
-Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (source) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. Setiap citra yang ditangkap dari source disebut sebagai frame, setiap frame ini dilakukan deteksi tepi kemudian hasilnya ditampilkan secara berkesinambungan sehingga nampak seperti video yang telah difilter. 
+Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan setiap \textit{frame} langsung disalurkan dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA. Dengan menganggap Video stream adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. Setiap citra yang ditangkap dari source disebut sebagai \textit{frame}, setiap \textit{frame} ini dilakukan metode filter spasial kemudian hasilnya ditampilkan secara berkesinambungan sehingga tampak seperti video yang telah difilter.
 
-Frame per second (FPS) atau Frame rate adalah banyaknya frame yang ditampilkan dalam setiap detik pada video. Semakin tinggi FPS sebuah video maka semakin halus pula gerakan yang dapat ditampilkan karena dibentuk dari frame yang lebih banyak, namun dengan jumlah frame yang lebih besar tentu dibutuhkan juga resource yang lebih besar dalam pengolahan video tersebut \thecite{pdf:marcin}. 
-% Dalam penelitian ini video stream yang digunakan dibatasi 30 fps saja dengan resolusi 720p.
+Frame per second (\textit{fps}) atau \textit{frame rate} adalah banyaknya \textit{frame} yang ditampilkan per detik. Semakin tinggi \textit{fps} sebuah video maka semakin halus pula gerakan yang dapat ditampilkan karena dibentuk dari \textit{frame} yang lebih banyak, namun dengan jumlah \textit{frame} yang lebih besar tentu dibutuhkan juga \textit{resource} yang lebih besar dalam pengolahan video tersebut \thecite{pdf:marcin}. 
+% Dalam penelitian ini video stream yang digunakan dibatasi 30 \textit{fps} saja dengan resolusi 720p.
 
 
 % FPGA sebagai alat untuk implementasi
 Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
 
-FPGA Xilinx PYNQ-Z2 yang digunakan pada penelitian ini secara official dapat menerima input video stream dari port HDMI Input dengan resolusi maksimal 720p. Video hasil deteksi tepi yang ditampilakan melalui port HDMI Output akan mengalami penurunan fps, hal ini disebabkan oleh penambahan jeda waktu komputasi untuk deteksi tepi antara setiap frame. Setiap frame yang diterima dari \textit{source} akan dilakukan metode deteksi tepi, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan.
+FPGA Xilinx PYNQ-Z2 yang digunakan pada penelitian ini secara \textit{official} dapat menerima input video stream dengan resolusi 720p. Setiap \textit{frame} yang diterima dari \textit{source} akan dilakukan proses filter spasial, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan. Video hasil filter spasial yang ditampilakan melalui port HDMI Output akan mengalami penurunan \textit{fps}, hal ini disebabkan adanya penambahan jeda waktu komputasi untuk proses filter yang dilakukan di setiap \textit{frame}. 
 
-
-% Masalah Performa dan komputasi
+Pada kesempatan ini penulis ingin melakukan "Implementasi Filter Spasial Linear pada Video Stream menggunakan FPGA Hardware Accelerator"
 
 \section{Rumusan Masalah}
+\begin{enumerate}
+    \item Bagaimana melakukan metode pengolahan citra digital pada video stream?
+    \item Bagaimana melakukan mengimplementasikan fiter spasial linear pada video stream? 
+    \item Bagaimana kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video stream? 
+\end{enumerate}
 
 \section{Batasan Masalah}
+\begin{enumerate}
+    \item Video stream yang digunakan dalam penelitian ini beresolusi 720p 
+    \item FPGA yang digunakan adalah Xilinx PYNQ-Z2 dengan processor 650MHz dual-core ARM Cortex-A9.
+\end{enumerate}
 
 \section{Tujuan Penelitian}
+\begin{enumerate}
+    \item tujuan 1
+\end{enumerate}
 
 \section{Manfaat Penelitian}
+Hasil dari penelitian ini diharapkan dapat menjadi referensi bagi pembaca.
 
 
 
 
-\begin{afigure}
-    \label{fig:figure2}
-    \includegraphics[width=0.5\textwidth, center]{images/input.png}
-    \caption{Sebuah gambar}
-\end{afigure}
 
-\begin{atable}{Ini Caption tabel}
-    \label{table:tabl}
-    \begin{tabular}{|l|l|l|l|l|}
-    \hline
-    fad  & dfaf & fdsfdfads & fdasf & fda  \\
-    \hline
-    fdas & fdas & ss        & ss    & ss   \\
-    \hline
-    ss   & dfa  & dfsa      & fdsa  & fdsa \\
-    \hline
-    ddd  & fdd  & dda       & da    & da \\
-    \hline
-    \end{tabular}
-\end{atable}
-
-
-\begin{afigure}
-    \label{fig:f1}
-    \includegraphics[width=0.5\textwidth, center]{images/input.png}
-    \caption{ini gambar na}
-\end{afigure}
+% \begin{atable}{Ini Caption tabel}
+%     \label{table:tabl}
+%     \begin{tabular}{|l|l|l|l|l|}
+%     \hline
+%     fad  & dfaf & fdsfdfads & fdasf & fda  \\
+%     \hline
+%     fdas & fdas & ss        & ss    & ss   \\
+%     \hline
+%     ss   & dfa  & dfsa      & fdsa  & fdsa \\
+%     \hline
+%     ddd  & fdd  & dda       & da    & da \\
+%     \hline
+%     \end{tabular}
+% \end{atable}
