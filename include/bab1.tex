@@ -30,7 +30,7 @@ Pengolahan citra digital merupakan proses mengolah \textit{pixel} di dalam citra
 
 
 % Filter Spasial
-Konsep filter bersumber dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
+Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 % Pada penelitian ini beberapa kernel yang digunakan yaitu: laplacian high-pass, gaussian high-pass, mean blur, gaussian blur, sobel, motion blur.
 % Filter Linear dan non linear
 
@@ -44,30 +44,36 @@ Frame per second (\textit{fps}) atau \textit{frame rate} adalah banyaknya \texti
 % FPGA sebagai alat untuk implementasi
 Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
 
-FPGA Xilinx PYNQ-Z2 yang digunakan pada penelitian ini secara \textit{official} dapat menerima input video stream dengan resolusi 720p. Setiap \textit{frame} yang diterima dari \textit{source} akan dilakukan proses filter spasial, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan. Video hasil filter spasial yang ditampilakan melalui port HDMI Output akan mengalami penurunan \textit{fps}, hal ini disebabkan adanya penambahan jeda waktu komputasi untuk proses filter yang dilakukan di setiap \textit{frame}. 
-
-Pada kesempatan ini penulis ingin melakukan "Implementasi Filter Spasial Linear pada Video Stream menggunakan FPGA Hardware Accelerator"
+FPGA Xilinx PYNQ-Z2 yang digunakan pada penelitian ini secara \textit{official} dapat menerima input video stream dengan resolusi 720p. Setiap \textit{frame} yang diterima dari \textit{source} akan dilakukan proses filter spasial, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan. Video hasil filter spasial yang ditampilakan melalui port HDMI Output akan mengalami penurunan \textit{fps}, hal ini disebabkan adanya penambahan jeda waktu komputasi untuk proses filter yang dilakukan di setiap \textit{frame}. Pada kesempatan ini penulis ingin melakukan "Implementasi Filter Spasial Linear pada Video Stream menggunakan FPGA Hardware Accelerator".
 
 \section{Rumusan Masalah}
-\begin{enumerate}
-    \item Bagaimana melakukan metode pengolahan citra digital pada video stream?
-    \item Bagaimana melakukan mengimplementasikan fiter spasial linear pada video stream? 
+Adapun rumusan masalah dalam penelitian ini yaitu:
+\begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+    % \item Bagaimana melakukan metode pengolahan citra digital pada video stream?
+    \item Bagaimana cara implementasi fiter spasial linear pada video stream menggunakan FPGA? 
     \item Bagaimana kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video stream? 
 \end{enumerate}
 
 \section{Batasan Masalah}
-\begin{enumerate}
-    \item Video stream yang digunakan dalam penelitian ini beresolusi 720p 
+Berikut ini merupakan beberapa batasan dalam penelitian ini.
+\begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Filter kernel yang digunakan berukuran 3x3.
+    \item Video stream yang digunakan dalam penelitian ini beresolusi 720p.
+    \item Setiap frame dari video stream diubah menjadi citra grayscale sebelum dilakukan penerapan filter spasial.
     \item FPGA yang digunakan adalah Xilinx PYNQ-Z2 dengan processor 650MHz dual-core ARM Cortex-A9.
 \end{enumerate}
 
+\pagebreak
+
 \section{Tujuan Penelitian}
-\begin{enumerate}
-    \item tujuan 1
+Adapun tujuan dari penelitian ini yaitu:
+\begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Mampu melakukan implementasi fiter spasial linear pada video stream menggunakan FPGA.
+    \item Mengetahui kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video stream.
 \end{enumerate}
 
 \section{Manfaat Penelitian}
-Hasil dari penelitian ini diharapkan dapat menjadi referensi bagi pembaca.
+Hasil dari penelitian ini diharapkan dapat memberikan pemahaman tentang penerapan filter spasial pada video stream. Selain itu, penelitian ini juga diharapkan dapat menjadi rujukan untuk melihat kinerja FPGA dalam mengimplementasikan filter spasial linear pada video stream.
 
 
 

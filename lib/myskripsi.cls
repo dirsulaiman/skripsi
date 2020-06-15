@@ -30,7 +30,7 @@
 \RequirePackage[font=small, labelfont={it},textfont={it}, justification=centering]{caption}
 % Setup label of enumerate item
 \RequirePackage{enumitem} 
-\renewcommand{\theenumi}{\Alph{enumi}}
+% \renewcommand{\theenumi}{\Alph{enumi}}
 
 
 % To Setting footer, header and page number
