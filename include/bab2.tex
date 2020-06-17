@@ -33,7 +33,20 @@ Konsep filter spasial pada pengolahan citra digital berasal dari penerapan trans
 % Rumusnya
 % rumusnya bisa dilihat pada \ref{eq:conv}
 % Perbedaan Filter Linear dan Non Linear
- Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
+Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
+
+\subsubsection{Operator Linear dan Nonlinear}
+Didefinisikan H sebuah operator dengan input dan output adalah citra digital. H dikatakan operator linear jika untuk untuk sembarang gambar \textit{f} dan \textit{g}, dan untuk sembarang skalar a dan b berkalu,
+\begin{equation}
+    \label{eq:linearity-operator}
+    H(af + bg) = aH(f) + bH(g)
+\end{equation}
+In other words, the result of applying a linear operator to the sum of two images (that have been multiplied by the constants shown) is identical to applying the operator to the images individually, multiplying the results by the appropriate constants, and then adding those results. For example, an operator whose function is to compute the sum of K images is a linear operator. An operator that computes the absolute value of the difference of two images is not. An operator that fails the test of Eq. (2.6-1) is by definition  onlinear. 
+
+Linear operations are exceptionally important in image processing because they are based on a significant body of well-understood theoretical and practical results.Although nonlinear operations sometimes offer better performance, they are not always predictable, and for the most part are not well understood theoretically.
+
+\subsection{Konvolusi}
+Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. 
 
 Rumus konvolusi pada citra digital dapat dilihat pada persamaan (\ref{eq:conv}). K merupakan kernel yang digunakan dalam konvolusi, kemudian I merupakan citra yang akan dikonvolusi. 
 \begin{equation}
@@ -47,12 +60,23 @@ Keterangan: \\
     \hspace{1cm} x,y = pixel citra \\
     \hspace{1cm} m,n = pixel kernel \\
 
-% \begin{equation}
-%     \label{eq:conv}
-%     \begin{split}
-%         S(x,y) = (I * K)(x,y) =  I(i,j)K(x-i, y-j)
-%     \end{split}
-% \end{equation}
+
+Konvolusi pada fungsi f(x) dan g(x) didefinisikan sebagi berikut:
+\begin{equation}
+    \label{eq:conv1}
+    \begin{split}
+        h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a)g(x-a) da
+    \end{split}
+\end{equation}
+dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan sebagai:
+\begin{equation}
+    \label{eq:conv2}
+    \begin{split}
+         h(x) = f(x) * g(x) = \sum_{a=-\infty}^{\infty} f(a)g(x-a)
+    \end{split}
+\end{equation}
+
+Pada operasi konvolusi diatas, g(x) disebut kernel konvolusi atau filter kernel. Kernel g(x) dioperasikan secara bergeser pada sinyal masukan f(x). Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran h(x).
 
 
 \subsection{Video Streaming}
