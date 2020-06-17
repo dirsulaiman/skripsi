@@ -11,6 +11,9 @@
 \RequirePackage{indentfirst}
 % to justify
 \RequirePackage{ragged2e}
+% Prevent hyphenating the words
+\usepackage[none]{hyphenat}
+\sloppy
 % Times New Roman Font like
 \RequirePackage{newtxtext, newtxmath}
 % to use or import image
