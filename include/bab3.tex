@@ -16,12 +16,14 @@ Tahapan dalam penelitian ini dapat dilihat pada gambar \ref{fig:penelitian-flowc
 Penelitian ini dilaksanakan dari bulan Juni 2020 sampai dengan bulan Agustus 2020. Lokasi penelitian dilakukan di Laboratorium Rekayasa Perangkat Lunak Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Hasanuddin Makassar.
 
 \section{Rancangan Sistem}
+Pada penelitian ini akan dibangun suatu sistem untuk mengimplementasikan filter spasial linear pada FPGA, dapat dilihat pada gambar \ref{fig:rancangan-sistem}.
 \begin{afigure}
     \includegraphics[width=0.85\textwidth, center]{images/rancangan-sistem.jpg}
     \caption{Rancangan sistem.}
     \label{fig:rancangan-sistem}
 \end{afigure}
-% mau ditambah lagi penjelasan
+
+Video stream dari \textit{source} akan disalurkan melalui port HDMI Input pada FPGA Board, kemudian video stream tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah dilakukan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Kemudian dilakukan analisis kinerja pada FPGA. FPGA board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 dan dengan Jupyter Notebook melalui browser.
 
 \section{Instrumen Penelitian}
 Instrumen penelitian ini yaitu:

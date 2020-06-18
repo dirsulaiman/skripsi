@@ -25,14 +25,12 @@ Citra digital dapat didefinisikan sebagai fungsi f(x,y) berukuran M baris dan N 
 
 \subsection{Pengolahan Citra Digital}
 Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \thecite{book:gonzalez}.
+% Tambahkan lagi sedikit
+
 
 \subsection{Filter Spasial}
 Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital \thecite{book:gonzalez}. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut.
 
-
-% Rumusnya
-% rumusnya bisa dilihat pada \ref{eq:conv}
-% Perbedaan Filter Linear dan Non Linear
 Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 
 \subsubsection{Operator Linear dan Non-linear}
@@ -43,6 +41,7 @@ Didefinisikan H sebuah operator dengan input dan output adalah citra digital. H 
 \end{equation}
 
 Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang telah dikali dengan konstanta a dan b) identik dengan hasil operator linear pada masing-masing gambar, dikali dengan konstanta yang sama, kemudian hasilnya dijumlahkan. Sebagai contoh, sebuah operator dengan fungsi yang menjumlahkan K citra adalah operator linear. Operator yang menghitung nilai absolut dari perbedaan dua gambar adalah tidak linear. Operator yang tidak memenuhi persamaan (\ref{eq:linearity-operator}) dikatakan non-linear \thecite{book:gonzalez}.
+
 
 \subsection{Konvolusi}
 Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. 
@@ -76,10 +75,12 @@ dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. 
 \end{equation}
 
 Pada operasi konvolusi diatas, g(x) disebut kernel konvolusi atau filter kernel. Kernel g(x) dioperasikan secara bergeser pada sinyal masukan f(x). Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran h(x).
-
+% masalah padding
+ 
 
 \subsection{Video Streaming}
 Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (source) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. 
+
 
 \subsection{Frame Per Second (FPS)}
 
@@ -103,35 +104,6 @@ Pada FPGA terdahulu tidak terdapat processor (CPU) untuk menjalankan software ap
     \label{fig:pynq-z2}
 \end{afigure}
 
-% perlu atau tidak?
-% Jupyter juga?
-
-% \subsection{Tepi Citra}
-% Suatu titik (x, y) pada citra digital dikatakan sebagai tepi apabila perubahan nilai intensitas derajat keabuan yang mendadak (besar) dalam jarang yang berdekatan. Tepi biasanya terdapat pada batas andara dua daereah yang berbeda pada suatu citra. Tepi pada citra dapat merepresentasikan objek-objek yang terkandung dalam citra tersebut, bentuk dan ukurannya atau terkadang juga informasi tentang teksturnya.
-
-% Tepi citra dapat dilihat melalui perubahan intensitas pixel pada suatu area. Berdasarkan perbedaan perubahan intensitas tersebut, tepi dapat dibagi menjadi 4 jenis yaitu tepi steep, ramp, line dan step-line \thecite{book:darma}.
-
-% \begin{enumerate} [label=\textbf{\alph*.}]
-%     \item \textbf{Steep}, tepi jenis \textit{step} merupakan tepi citra yang berbentuk dari perubahan intensitas nilai pixel secara signifikan dari tinggi ke rendah ataupun sebaliknya.
-%     \item \textbf{Ramp}, tepi jenis ini terbentuk dari perubahan intensitas nilai pixel secara perlahan. Perubahan secara perlahan dapat dilihat pada bentuk kurva yang semakin tinggi dengan perubahan kontinu.
-%     \item \textbf{Line}, tepi jenis ini ditandai dengan perubahan intensitas nilai pixel secara drastis dari rendah-tinggi-rendah atau sebaliknya.
-%     \item \textbf{Step-Line}, tepi \textit{step-line} merupakan gabungan dari tepi jenis step dan line. Tepi jenis ini ditandai dengan peningkatan intensitas yang tajam dalam interval tertentu dan kemudian ditandai dengan penurunan yang tidak signifikan, sehingga perubahan intensitas nilai pixel selanjutnya berlangsung stabil.
-% \end{enumerate}
-
-% Tambahkan gambar 
-
-% halaman 201
-% https://books.google.co.id/books?hl=en&lr=&id=NectMutqXJAC&oi=fnd&pg=PR4&dq=buku+pengolahan+citra+digital&ots=C2oB2TDTo4&sig=UnkxuezGlrECiOZBepXOMa__gEY&redir_esc=y#v=onepage&q=buku%20pengolahan%20citra%20digital&f=false
-
-
-% \subsection{Deteksi Tepi}
-% Deteksi tepi merupakan salah satu metode dalam pemrosesan cira digital untuk deteksi fitur dan ekstraksi dengan mengidentifikasi titik-titik (pixel) dalam citra yang mengalami perubahan tingkat keabuan secara derastis dan mengalami diskontinu. Salah satu tujuan deteksi tepi yaitu untuk mengurangi jumlah data secara signifikan dalam suatu gambar dan mempertahankan sifat strukturalnya untuk pemrosesan citra lebih lanjut. \thecite{desi_herawati}.
-
-% Berbagai macam metode deteksi dapat digunakan untuk mendeteksi tepi pada citra. Setiap teknik memiliki keunggulan dan karakteristiknya masing-masing. Suatu teknik deteksi tepi mungkin dapat bekerja sangat baik dalam suatu aplikasi tertentu namun sebaliknya belum tentu dapat berjalan secara maksimal pada aplikasi lainnya.
-
-% Terdapat berbagai operator deteksi tepi yang telah dikembangkan berdasarkan turunan pertama (first order derrivate), di antaranya operator Robert, operator Sobel, operator Prewitt, operator Krisch, dan operator Canny. Konsep dasar dari deteksi tepi dengan turunan pertama adalah dengan memanfaatkan perbedaan nilai suatu pixel dengan pixel tetangganya. 
-% operator turunan kedua, dan seterusnya
-
 
 \section{Penelitian Terkait}
 \subsection{Spatial Filtering Based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation}
@@ -145,8 +117,7 @@ Berbagai teknik filter telah menjadi inti dari pemrosesan citra sejak awal tekni
 Penelitian ini menyajikan fitur-fitur implementasi filter spasial pada citra dengan Programmable Logic Integrated Circuits (FPGA). Solusi yang disajikan memungkinkan untuk membuat arsitektur kristal dengan performa tinggi untuk algoritma filter spasial. Hasilnya menunjukan kelebihan menggunakan \textit{programmable logic} dalam tugas pemrosesan gambar \thecite{soa:dmitry}.
 
 \subsection{An FPGA-Oriented Algorithm for Real-Time Filtering of Poisson Noise in Video Streams, with Application to X-Ray Fluoroscopy}
-Pada penelitian ini dibahas tentang algoritma baru untuk \textit{real-time filtering} pada video yang rusak karena \textit{poison noise}. Algorima yang disajikan efektif dalam penanganan derau, dan ini secara ideal cocok dengan implementasi hardware, dan dapat diimplementasikan pada FPGA kecil yang memiliki hardware resource yang terbatas. Pada penelitian ini penerapan algoritma menggukanan hasil X-ray fluoroscopy sebagai studi kasus. Hasil implementasi menggunakan yang StratixIV FPGA menunjukkan bahwa sistem hanya menggunakan, paling banyak, 22\% dari sumber daya perangkat, dalam im 
-\thecite{soa:castellano}
+Pada penelitian ini dibahas tentang algoritma baru untuk \textit{real-time filtering} pada video yang rusak karena \textit{poison noise}. Algorima yang disajikan efektif dalam penanganan derau, dan ini secara ideal cocok dengan implementasi hardware, dan dapat diimplementasikan pada FPGA kecil yang memiliki hardware resource yang terbatas. Pada penelitian ini penerapan algoritma menggukanan hasil X-ray fluoroscopy sebagai studi kasus. Hasil implementasi menggunakan yang StratixIV FPGA menunjukkan bahwa sistem hanya menggunakan, paling banyak, 22\% dari sumber daya perangkat, dalam implementasi real-time filtering pada video stream 1024x1024 @49fps. Sebagai perbandingan, implementasi filter berbasis FIR pada FPGA yang sama dan dengan video stream yang serupa, dibutuhkan 80\% resource logic pada FPGA \thecite{soa:castellano}.
 
 \subsection{A real-time video denoising algorithm with FPGA implementation for Poisson-Gaussian noise}
-\thecite{soa:xin}
+Fungsi denoising dalam perangkat citra digital harus memperhatikan penggunaan sumber daya dan kemampuan real-time pengurangan derau. Pada penggunaan umum metode denoising yaitu \textit{Pixel Similarity Weighted Frame Average} (PSWFA). Pada penelitian ini, dilakukan peningkatan kemampuan denoising dari PSWFA menggunakan pre-filter yang mengandung operator \textit{downsampling} dan small Gaussian filter. Bahkan, derau pada perangkat citra digital adalah \textit{signal dependent} dan biasanya dimodelkan sebagai distribusi Poisson-Gaussian, dikenalkan generalisasi transformasi Asncombe untuk menghilangkan {signal dependency} dengan merender \textit{noise variance constant}. Transformasi citra dapat mengalami gangguan oleh derau Gaussian. Untuk memasang algoritma ini pada perangkat keras, sebelumnya diimplementasikan algoritma ini pada Spartan-6 FPGA untuk evaluasi. Dilakukan juga perbandingan dengan beberapa metode denoising yang sudah ada. Evaluasi selanjutnya untuk kemampuan denoising, algoritma ini dibandingkan dengan beberapa algoritma state-of-art yang tidak diimplementasikan pada FPGA tetapi memiliki performa yang baik pada personal komputer. Hasil eksperimen pada kedua simulasi video berderau dan video yang ditangkap pada pencahayaan yang kurang menunjukan tingkat efektifan pada algoritma ini, terkhusus pada pemrosesan derau berskala besar \thecite{soa:xin}.
