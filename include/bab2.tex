@@ -35,30 +35,29 @@ Konsep filter spasial pada pengolahan citra digital berasal dari penerapan trans
 % Perbedaan Filter Linear dan Non Linear
 Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 
-\subsubsection{Operator Linear dan Nonlinear}
+\subsubsection{Operator Linear dan Non-linear}
 Didefinisikan H sebuah operator dengan input dan output adalah citra digital. H dikatakan operator linear jika untuk untuk sembarang gambar \textit{f} dan \textit{g}, dan untuk sembarang skalar a dan b berkalu,
 \begin{equation}
     \label{eq:linearity-operator}
     H(af + bg) = aH(f) + bH(g)
 \end{equation}
-In other words, the result of applying a linear operator to the sum of two images (that have been multiplied by the constants shown) is identical to applying the operator to the images individually, multiplying the results by the appropriate constants, and then adding those results. For example, an operator whose function is to compute the sum of K images is a linear operator. An operator that computes the absolute value of the difference of two images is not. An operator that fails the test of Eq. (2.6-1) is by definition  onlinear. 
 
-Linear operations are exceptionally important in image processing because they are based on a significant body of well-understood theoretical and practical results.Although nonlinear operations sometimes offer better performance, they are not always predictable, and for the most part are not well understood theoretically.
+Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang telah dikali dengan konstanta a dan b) identik dengan hasil operator linear pada masing-masing gambar, dikali dengan konstanta yang sama, kemudian hasilnya dijumlahkan. Sebagai contoh, sebuah operator dengan fungsi yang menjumlahkan K citra adalah operator linear. Operator yang menghitung nilai absolut dari perbedaan dua gambar adalah tidak linear. Operator yang tidak memenuhi persamaan (\ref{eq:linearity-operator}) dikatakan non-linear \thecite{book:gonzalez}.
 
 \subsection{Konvolusi}
 Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. 
 
-Rumus konvolusi pada citra digital dapat dilihat pada persamaan (\ref{eq:conv}). K merupakan kernel yang digunakan dalam konvolusi, kemudian I merupakan citra yang akan dikonvolusi. 
-\begin{equation}
-    \label{eq:conv}
-    S(x,y) = (I * K)(x,y) = \sum_{i}^{} \sum_{j}^{} I(i,j)K(x-i, y-j)
-\end{equation}
-Keterangan: \\
-    \hspace{1cm} S(x,y) = fungsi \\
-    \hspace{1cm}  I = Citra yang dikonvolusi \\
-    \hspace{1cm} K = kernel \\
-    \hspace{1cm} x,y = pixel citra \\
-    \hspace{1cm} m,n = pixel kernel \\
+% Rumus konvolusi pada citra digital dapat dilihat pada persamaan (\ref{eq:conv}). K merupakan kernel yang digunakan dalam konvolusi, kemudian I merupakan citra yang akan dikonvolusi. 
+% \begin{equation}
+%     \label{eq:conv}
+%     S(x,y) = (I * K)(x,y) = \sum_{i}^{} \sum_{j}^{} I(i,j)K(x-i, y-j)
+% \end{equation}
+% Keterangan: \\
+%     \hspace{1cm} S(x,y) = fungsi \\
+%     \hspace{1cm}  I = Citra yang dikonvolusi \\
+%     \hspace{1cm} K = kernel \\
+%     \hspace{1cm} x,y = pixel citra \\
+%     \hspace{1cm} m,n = pixel kernel \\
 
 
 Konvolusi pada fungsi f(x) dan g(x) didefinisikan sebagi berikut:
@@ -82,13 +81,13 @@ Pada operasi konvolusi diatas, g(x) disebut kernel konvolusi atau filter kernel.
 \subsection{Video Streaming}
 Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (source) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. 
 
+\subsection{Frame Per Second (FPS)}
+
 
 \subsection{FPGA}
-Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram.
+Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang ke aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
 
-FPGA dapat diprogram ulang ke aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
-
-Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kode ini selanjutnya diinterpretasikan oleh komputer untuk menjalankan perintah yang diberikan. \textit{Microprocessor} ini membutuhkan intruksi berupa kode secara terus menerus untuk menjalankan fungsinya. Sedangkan pada FPGA hanya dibutuhkan sekali konfigurasi \textit{chip} setiap kali dinyalakan. Membuat atau mengunduh \textit{bitstream} yang menentukan fungsi logika dilakukan oleh \textit{logic elements} (LEs), sebuah sirkuit dapat dibuat dengan mengabungkan beberapa LEs menjadi satu kesatuan. Setelah \textit{bitstream} dipasang, FPGA tidak perlu lagi membaca instruksi berupa 1 dan 0, berbeda dengan \textit{microprocessor} yang selalu membutuhkan instruksi \thecite{pdf:cheung}. Secara tradisional, untuk membuat sebuah desain FPGA, aplikasi dideskripsikan menggunakan Hardware Description Language (HDL) seperti Verilog atau VHDL sehingga menghasilkan sebuah bitstream FPGA.
+Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kode ini selanjutnya diinterpretasikan oleh komputer untuk menjalankan perintah yang diberikan. \textit{Microprocessor} ini membutuhkan intruksi berupa kode secara terus menerus untuk menjalankan fungsinya. Sedangkan pada FPGA hanya dibutuhkan sekali konfigurasi \textit{chip} setiap kali dinyalakan. Membuat atau mengunduh \textit{bitstream} yang menentukan fungsi logika dilakukan oleh \textit{logic elements} (LEs), sebuah sirkuit dapat dibuat dengan mengabungkan beberapa LEs menjadi satu kesatuan. Setelah \textit{bitstream} dipasang, FPGA tidak perlu lagi membaca instruksi berupa 1 dan 0, berbeda dengan \textit{microprocessor} yang selalu membutuhkan instruksi \thecite{pdf:cheung}. Secara tradisional, untuk membuat sebuah desain FPGA, aplikasi dideskripsikan menggunakan Hardware Description Language (HDL) seperti Verilog atau VHDL sehingga menghasilkan sebuah bitstream FPGA. 
 
 \begin{afigure}
     \includegraphics[width=12cm, center]{images/fpga-structure.jpeg}
@@ -96,12 +95,14 @@ Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kod
     \label{fig:fpga-structure}
 \end{afigure}
 
-Pada FPGA terdahulu tidak terdapat processor (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit multi-core processor (Biswas, 2019). 
-% Saat ini telah dikembangkan FPGA Board untuk memudahkan ...
-% FPGA Board yang digunakan dalam penelitian ini yaitu PYNQ-Z2 dari Xilinx dengan ... dan kasi gambar juga
+Pada FPGA terdahulu tidak terdapat processor (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit multi-core processor \thecite{site:biswas}. Dewasa ini telah dikembangkan \textit{FPGA Develepment Board} atau biasa disebut juga \textit{FPGA Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa interface \textit{IO} untuk menjankan tugas tertenu. Umumnya FPGA Board telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA Board yang terkenal. FPGA Board yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai interface untuk mengakses dan menjalankan program pada penelitian ini.
 
+\begin{afigure}
+    \includegraphics[width=6cm, center]{images/pynq-z2.jpeg}
+    \caption{FPGA Board Xilinx PYNQ-Z2.}
+    \label{fig:pynq-z2}
+\end{afigure}
 
-\subsection{Python}
 % perlu atau tidak?
 % Jupyter juga?
 
@@ -134,15 +135,17 @@ Pada FPGA terdahulu tidak terdapat processor (CPU) untuk menjalankan software ap
 
 \section{Penelitian Terkait}
 \subsection{Spatial Filtering Based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation}
-\thecite{soa:alex-raj}
+Pipa bawah air diletakkan di dasar laut untuk tujuan pengangkutan minyak bumi dan gas menyebrangi lautan. Pipa perlu terus dipantau untuk menghindari gangguan dalam proses transportasi. Gambar dasar laut dapat diperoleh dengan menggunakan kamera dan dengan memproses gambar yang diperoleh dapat membantu dalam mendeteksi pipa. Penelitian ini membahas tentang metode pemrosesan citra untuk deteksi pipa bawah laut dari gambar bawah laut yang diambil oleh kendaraan bawah laut yang dapat digunakan sebagai langkah awal untuk melacak saluran pipa. Implementasinya berhasil dilakukan pada Field Programmable Gate Array (FPGA) berbasis development board
+\thecite{soa:alex-raj}.
 
 \subsection{FPGA Implementation of Spatial Filtering techniques for 2D Images}
-\thecite{soa:sushant}
+Berbagai teknik filter telah menjadi inti dari pemrosesan citra sejak awal teknik peningkatan citra (\textit{image enhancement}). Filter spasial domain pada pemrosesan citra digital digunakan dalam banyak kepentingan seperti mempertajam citra, menghaluskan citra, menghilangkan derau dan sebagainya. Fleksibilitas dari metode filter spasial sering dibandingkan dengan domain transformasi karena dapat digunakan untuk filter linear dan filter non-linear. Penghalusan citra dilakukan dengan langsung memanipulasi nilai intensitas dari citra asli dengan sebuah kernel filter. Hasilnya yaitu berkurangnya detail kecil dan derau pada citra. Penelitian ini tentang penerapan berbagai macam operator filter spasial. Hasilnya didasarkan pada konsumsi perangkat keras, kecepatan desain masing-masing arsitektur. Ukuran kualitas citra didapat dengan membandingkan output dari Matlab dan output dari Xilinx FPGA dan dengan menghitung MSE \thecite{soa:sushant}.
 
 \subsection{Features of Image Spatial Filters Implementation on FPGA}
-\thecite{soa:dmitry}
+Penelitian ini menyajikan fitur-fitur implementasi filter spasial pada citra dengan Programmable Logic Integrated Circuits (FPGA). Solusi yang disajikan memungkinkan untuk membuat arsitektur kristal dengan performa tinggi untuk algoritma filter spasial. Hasilnya menunjukan kelebihan menggunakan \textit{programmable logic} dalam tugas pemrosesan gambar \thecite{soa:dmitry}.
 
 \subsection{An FPGA-Oriented Algorithm for Real-Time Filtering of Poisson Noise in Video Streams, with Application to X-Ray Fluoroscopy}
+Pada penelitian ini dibahas tentang algoritma baru untuk \textit{real-time filtering} pada video yang rusak karena \textit{poison noise}. Algorima yang disajikan efektif dalam penanganan derau, dan ini secara ideal cocok dengan implementasi hardware, dan dapat diimplementasikan pada FPGA kecil yang memiliki hardware resource yang terbatas. Pada penelitian ini penerapan algoritma menggukanan hasil X-ray fluoroscopy sebagai studi kasus. Hasil implementasi menggunakan yang StratixIV FPGA menunjukkan bahwa sistem hanya menggunakan, paling banyak, 22\% dari sumber daya perangkat, dalam im 
 \thecite{soa:castellano}
 
 \subsection{A real-time video denoising algorithm with FPGA implementation for Poisson-Gaussian noise}

@@ -59,10 +59,10 @@
 %------------------------------------------------------------
 \setlength{\topmargin}{0cm}
 \setlength{\headheight}{1cm}
-\setlength{\headsep}{0.5cm}
+\setlength{\headsep}{0.2cm}
 \setlength{\topskip}{1ex}
-\setlength{\oddsidemargin}{1.46cm}
-\setlength{\evensidemargin}{1.46cm}
+\setlength{\oddsidemargin}{1.2cm}
+\setlength{\evensidemargin}{1.2cm}
 \setlength{\textwidth}{14.3cm}
 \setlength{\textheight}{22.7cm}
 \setlength{\footskip}{1cm}
