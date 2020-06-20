@@ -23,20 +23,20 @@ Pada penelitian ini akan dibangun suatu sistem untuk mengimplementasikan filter 
     \label{fig:rancangan-sistem}
 \end{afigure}
 
-Video stream dari \textit{source} akan disalurkan melalui port HDMI Input pada FPGA Board, kemudian video stream tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah dilakukan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Kemudian dilakukan analisis kinerja pada FPGA. FPGA board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 dan dengan Jupyter Notebook melalui browser.
+Video stream dari \textit{source} akan disalurkan melalui port HDMI Input pada FPGA Board, kemudian video stream tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah dilakukan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan Jupyter Notebook melalui browser.
 
 \section{Instrumen Penelitian}
 Instrumen penelitian ini yaitu:
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
     \item Kebutuhan perangkat lunak:
-    \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label=\textbf{\alph*.}]
+    \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label={\alph*.}]
         \item Ubuntu 16, sebagai OS pada FPGA Board
         \item Python 3.6 (dengan modul OpenCV dan Numpy)
         \item Jupyter Notebook, sebagai interface untuk mengakses FPGA Board 
         % \item Chrome Browser 
     \end{enumerate}
     \item Kebutuhan perangkat keras:
-    \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label=\textbf{\alph*.}]
+    \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label={\alph*.}]
         \item FPGA Board Xilinx PYNQ-Z2
         \item Micro SD Card 8Gb (sebagai media penyimpanan OS pada FPGA Board)
         \item Monitor Eksternal (untuk menampilkan hasil filter dari FPGA)

@@ -33,6 +33,7 @@ Konsep filter spasial pada pengolahan citra digital berasal dari penerapan trans
 
 Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 
+
 \subsubsection{Operator Linear dan Non-linear}
 Didefinisikan H sebuah operator dengan input dan output adalah citra digital. H dikatakan operator linear jika untuk untuk sembarang gambar \textit{f} dan \textit{g}, dan untuk sembarang skalar a dan b berkalu,
 \begin{equation}
@@ -43,30 +44,64 @@ Didefinisikan H sebuah operator dengan input dan output adalah citra digital. H 
 Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang telah dikali dengan konstanta a dan b) identik dengan hasil operator linear pada masing-masing gambar, dikali dengan konstanta yang sama, kemudian hasilnya dijumlahkan. Sebagai contoh, sebuah operator dengan fungsi yang menjumlahkan K citra adalah operator linear. Operator yang menghitung nilai absolut dari perbedaan dua gambar adalah tidak linear. Operator yang tidak memenuhi persamaan (\ref{eq:linearity-operator}) dikatakan non-linear \thecite{book:gonzalez}.
 
 
+\subsection{Kernel}
+Kernel yang digunakan dalam penelitian ini antara lain sebagai berikut.
+
+\subsubsection{Mean}
+\begin{equation*}
+    \label{kernel:mean}
+    \frac{1}{9} \left[
+    \begin{matrix}
+        1 & 1 & 1 \\
+        1 & 1 & 1 \\
+        1 & 1 & 1
+    \end{matrix}
+    \right]
+\end{equation*}
+Banyaknya dua warna, yaitu h
+
+\subsubsection{Sobel}
+\begin{equation*}
+    \label{kernel:mean1}
+    \left[
+    \begin{matrix}
+        1 & 1 & 1 \\
+        1 & 1 & 1 \\
+        1 & 1 & 1
+    \end{matrix}
+    \right]
+\end{equation*}
+Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra 2 bit me
+
+\subsubsection{Gaussian Blur}
+\begin{equation*}
+    \label{kernel:mean2}
+    \left[
+    \begin{matrix}
+        1 & 1 & 1 \\
+        1 & 1 & 1 \\
+        1 & 1 & 1
+    \end{matrix}
+    \right]
+\end{equation*}
+Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra 2 bit mewakil
+
+\subsubsection{Laplacian High-pass}
+Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. C
+
+\subsubsection{Gaussian High-pass}
+Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra 2 bi
+
+
 \subsection{Konvolusi}
-Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. 
-
-% Rumus konvolusi pada citra digital dapat dilihat pada persamaan (\ref{eq:conv}). K merupakan kernel yang digunakan dalam konvolusi, kemudian I merupakan citra yang akan dikonvolusi. 
-% \begin{equation}
-%     \label{eq:conv}
-%     S(x,y) = (I * K)(x,y) = \sum_{i}^{} \sum_{j}^{} I(i,j)K(x-i, y-j)
-% \end{equation}
-% Keterangan: \\
-%     \hspace{1cm} S(x,y) = fungsi \\
-%     \hspace{1cm}  I = Citra yang dikonvolusi \\
-%     \hspace{1cm} K = kernel \\
-%     \hspace{1cm} x,y = pixel citra \\
-%     \hspace{1cm} m,n = pixel kernel \\
-
-
-Konvolusi pada fungsi f(x) dan g(x) didefinisikan sebagi berikut:
+Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Konvolusi pada fungsi \textit{f(x)} dan \textit{g(x)} didefinisikan sebagi berikut:
 \begin{equation}
     \label{eq:conv1}
     \begin{split}
-        h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a)g(x-a) da
+        h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da
     \end{split}
 \end{equation}
-dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan sebagai:
+dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan sebagai berikut:
 \begin{equation}
     \label{eq:conv2}
     \begin{split}
@@ -74,7 +109,16 @@ dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. 
     \end{split}
 \end{equation}
 
-Pada operasi konvolusi diatas, g(x) disebut kernel konvolusi atau filter kernel. Kernel g(x) dioperasikan secara bergeser pada sinyal masukan f(x). Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran h(x).
+Pada operasi konvolusi diatas, \textit{g(x)} disebut kernel konvolusi atau filter kernel. Kernel \textit{g(x)} dioperasikan secara bergeser pada sinyal masukan \textit{f(x)}. Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran \textit{h(x)} \thecite{book:munir}. 
+
+Pada gambar (\ref{fig:conv3}) diilustrasikan bagaimana proses konvolusi pada citra digital yang direpresentasikan dalam bentuk matriks. Operasi konvolusi dilakukan pada matriks input berukuran 6x6 dengan filter berukuran 3x3. Hasil konvolusinya ditampilkan pada matriks result.
+\begin{afigure}
+    \includegraphics[width=0.85\textwidth, center]{images/convolution-operation.png}
+    \caption{Ilustrasi konvolusi pada citra. Sumber: https://indoml.com}
+    \label{fig:conv3}
+\end{afigure}
+
+Jika hasil konvolusi menghasilkan nilai pixel negatif, maka nilai tersebut dijadikan 0, sebaliknya jika hasil konvolusi menghasilkan nilai pixel yang melebihi nilai keabuan keabuan maksimum, maka nilai tersebut dijadikan ke nilai keabuan maksimum \thecite{book:sutoyo}.
 % masalah padding
  
 
@@ -82,8 +126,14 @@ Pada operasi konvolusi diatas, g(x) disebut kernel konvolusi atau filter kernel.
 Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (source) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. 
 
 
-\subsection{Frame Per Second (FPS)}
-
+\subsubsection{Frame Per Second (FPS)}
+Frame per sercond merupakan bla bla ...
+\begin{equation}
+    \label{eq:fps}
+    \begin{split}
+         fps = \frac{frames}{seconds} = \frac{1}{\frac{seconds}{frames}}
+    \end{split}
+\end{equation}
 
 \subsection{FPGA}
 Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang ke aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
