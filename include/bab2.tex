@@ -45,11 +45,11 @@ Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang
 
 
 \subsection{Kernel}
-Kernel yang digunakan dalam penelitian ini antara lain sebagai berikut.
 
-\subsubsection{Mean}
+\subsubsection{Averaging Filter}
+Averaging filter atau biasa juga disebut \textit{box filter} adalah salah satu filter yang digunakan untuk menghaluskan citra dan mengurangi derau. Secara sederhana nilai sebuah piksel yang baru adalah nilai rata-rata dari nilai piksel tersebut dengan nilai piksel tetangganya \thecite{pdf:marcin}. Berikut ini kernel \textit{averaging} filter yang digunakan dalam penelitian ini:
 \begin{equation*}
-    \label{kernel:mean}
+    \label{kernel:average}
     \frac{1}{9} \left[
     \begin{matrix}
         1 & 1 & 1 \\
@@ -58,39 +58,77 @@ Kernel yang digunakan dalam penelitian ini antara lain sebagai berikut.
     \end{matrix}
     \right]
 \end{equation*}
-Banyaknya dua warna, yaitu h
-
-\subsubsection{Sobel}
-\begin{equation*}
-    \label{kernel:mean1}
-    \left[
-    \begin{matrix}
-        1 & 1 & 1 \\
-        1 & 1 & 1 \\
-        1 & 1 & 1
-    \end{matrix}
-    \right]
-\end{equation*}
-Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra 2 bit me
 
 \subsubsection{Gaussian Blur}
+Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya mirip seperti averaging filter, nilai piksel yang baru dibentuk dari nilai pixel tetangganya, tepai dengan memberikan bobot yang lebih kuat pada nilai pikselnya sendiri diikuti dengan bobot yang lebih rendah pada piksel atas, bawah dan sampingnya \thecite{soa:dmitry}. Berikut kernel gaussian blur filter yang digunakan dalam penelitian ini:
 \begin{equation*}
     \label{kernel:mean2}
+    \frac{1}{16}
     \left[
     \begin{matrix}
-        1 & 1 & 1 \\
-        1 & 1 & 1 \\
-        1 & 1 & 1
+        1 & 2 & 1 \\
+        2 & 4 & 2 \\
+        1 & 2 & 1
     \end{matrix}
     \right]
 \end{equation*}
-Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra 2 bit mewakil
+
+\subsubsection{Filter Sobel}
+Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteksi tepi pada citra. Sobel memiliki dua kernel untuk deteksi tepi yaitu kernel sobel vertikal untuk mendeteksi tepi secara vertikal dan kernel sobel horizontal yang mendeteksi tepi secara horizontal \thecite{pdf:marcin}. Berikut ini kernel sobel vertikal dan horizontal yang digunakan dalam penelitian ini:
+\begin{equation*}
+    \label{kernel:sobel-h}
+    \left[
+    \begin{matrix}
+        1 & 0 & -1 \\
+        2 & 0 & -2 \\
+        1 & 0 & -1
+    \end{matrix}
+    \right]
+    \hspace{2cm}
+    \left[
+        \begin{matrix}
+        1 & 2 & 1 \\
+        0 & 0 & 0 \\
+        -1 & -2 & -1
+    \end{matrix}
+    \right]
+\end{equation*}
 
 \subsubsection{Laplacian High-pass}
-Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. C
+\begin{equation*}
+    \label{kernel:laplasHP}
+    \left[
+    \begin{matrix}
+        0 & 1 & 0 \\
+        1 & -4 & 1 \\
+        0 & 1 & 0
+    \end{matrix}
+    \right]
+\end{equation*}
 
 \subsubsection{Gaussian High-pass}
-Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra 2 bi
+\begin{equation*}
+    \label{kernel:laplasHP}
+    \frac{1}{16} 
+    \left[
+    \begin{matrix}
+        -1 & -2 & -1 \\
+        -2 & 12 & -2 \\
+        -1 & -2 & -1
+    \end{matrix}
+    \right]
+\end{equation*}
+% \begin{equation*}
+%     \label{kernel:laplasHP}
+%     % \frac{1}{9} 
+%     \left[
+%     \begin{matrix}
+%         -0.0625 & -0.125 & -0.0625 \\
+%         -0.125 & 0.75 & -0.125 \\
+%         -0.0625 & -0.125 & -0.0625
+%     \end{matrix}
+%     \right]
+% \end{equation*}
 
 
 \subsection{Konvolusi}
