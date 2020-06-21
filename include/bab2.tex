@@ -26,7 +26,18 @@ Citra digital dapat didefinisikan sebagai fungsi f(x,y) berukuran M baris dan N 
 \subsection{Pengolahan Citra Digital}
 Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \thecite{book:gonzalez}.
 % Tambahkan lagi sedikit
+Berdasarkan tujuannya pengolahan citra juga dapat dibagi menjadi beberapa bagian yaitu: \textit{image enhancement}, \textit{image restoration}, \textit{image analysis} dan \textit{image compression} \thecite{book:dasilva}.
 
+\begin{enumerate} [label=\textbf{\alph*.}]
+    \item \textbf{Image Enhancement} \\ 
+    \textit{Image Enhancement} adalah metode pengolahan citra digital untuk membuat citra tampak lebih baik atau dilakukan peningkatan untuk analisis tertentu. Namun hal ini dapat menyebabkan pengorbanan aspek lain dari citra tersebut. Penerapan filter, penghalusan citra, memperbaiki kontras dan morfologi citra adalah contoh \textit{image enhancement}. 
+    \item \textbf{Image Restoration} \\ 
+    \textit{Image restoration} adalah metode pengolahan citra untuk memulihkan citra dari penurunan kualitas atau citra yang rusak karena derau (\textit{noise}). Pada dasarnya metode ini berbeda dengan \textit{image enhancement} yang berkaitan dengan ekstraksi fitur pada citra. 
+    \item \textbf{Image Analysis} \\ 
+    \textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek
+    \item \textbf{Image Compression} \\ 
+    Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih kompak sehingga memerlukan memori yang lebih sedikit. Metode ini dapat dilakukan dengan mengurangi redundansi dari data-data yang terdapat dalam citra sehingga dapat disimpan atau ditransmisikan secara efisien.
+\end{enumerate}
 
 \subsection{Filter Spasial}
 Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital \thecite{book:gonzalez}. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut.
@@ -94,7 +105,8 @@ Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteks
     \right]
 \end{equation*}
 
-\subsubsection{Laplacian High-pass}
+\subsubsection{Laplacian Filter}
+Filter ini dapat digunakan untuk deteksi tepi pada citra karena sifatnya yang sensitif dengan perubahan intensitas yang cepat \thecite{pdf:jingbo}. Tidak seperti Sobel yang menggunakan dua kernel untuk mendeteksi tepi secara vertikal dan horizontal, disini hanya digunakan sebuah kernel yang dapat digunakan untuk deteksi tepi secara vertikal dan horizontal sekaligus. Berikut kernel laplacian yang digunakan dalam penelitian ini:
 \begin{equation*}
     \label{kernel:laplasHP}
     \left[
@@ -106,29 +118,18 @@ Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteks
     \right]
 \end{equation*}
 
-\subsubsection{Gaussian High-pass}
+\subsubsection{Sharpening Filter}
+Sharpening filter digunakan untuk memperjelas detail halus dalam gambar atau untuk untuk meningkatkan detail pada citra yang \textit{blur}, baik karena kesalahan ataupun karena efek dari metode akuisisi citra tertentu \thecite{pdf:ching}. Berikut kernel untuk filter \textit{sharpening} yang digunakan dalam penelitian ini:
 \begin{equation*}
-    \label{kernel:laplasHP}
-    \frac{1}{16} 
+    \label{kernel:sharpening}
     \left[
     \begin{matrix}
-        -1 & -2 & -1 \\
-        -2 & 12 & -2 \\
-        -1 & -2 & -1
+        -1 & -1 & -1 \\
+        -1 & 9 & -1 \\
+        -1 & -1 & -1
     \end{matrix}
     \right]
 \end{equation*}
-% \begin{equation*}
-%     \label{kernel:laplasHP}
-%     % \frac{1}{9} 
-%     \left[
-%     \begin{matrix}
-%         -0.0625 & -0.125 & -0.0625 \\
-%         -0.125 & 0.75 & -0.125 \\
-%         -0.0625 & -0.125 & -0.0625
-%     \end{matrix}
-%     \right]
-% \end{equation*}
 
 
 \subsection{Konvolusi}
