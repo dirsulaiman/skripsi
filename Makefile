@@ -1,4 +1,7 @@
-DOCNAME=proposal
+# make run file=proposal
+# make clear file=proposal
+
+DOCNAME=$(file)
 
 run: 
 	pdflatex $(DOCNAME).tex ;
@@ -6,7 +9,7 @@ run:
 	pdflatex $(DOCNAME).tex ;
 	pdflatex $(DOCNAME).tex
 
-clear: # $(DOCNAME).aux, $(DOCNAME).bbl, $(DOCNAME).out, $(DOCNAME).blg
+clear:
 	rm $(DOCNAME).aux;
 	rm $(DOCNAME).bbl;
 	rm $(DOCNAME).out;
