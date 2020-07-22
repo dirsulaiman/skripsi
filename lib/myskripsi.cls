@@ -136,7 +136,6 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 %Define cover Seminar Proposal
 %------------------------------------------------------------
 \def\coverproposal{
-    \textit{Seminar 1}
     \thispagestyle{empty}
     \pagenumbering{roman}
     \setcounter{page}{1}
