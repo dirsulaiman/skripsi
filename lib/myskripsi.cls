@@ -1,11 +1,10 @@
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi Class]
 \LoadClass[a4paper, 12pt]{report}
 
-%------------------------------------------------------------
+%==========================================================================================
 % Require Package
-%------------------------------------------------------------
+%------------------------------------------------------------------------------------------
 % to add indent for first paragraph
 \RequirePackage{indentfirst}
 
@@ -50,9 +49,14 @@
 % Setup label of enumerate item
 \RequirePackage{enumitem} 
 % \renewcommand{\theenumi}{\Alph{enumi}}
+%------------------------------------------------------------------------------------------
+% End Require Package
+%==========================================================================================
 
 
-% To Setting footer, header and page number
+%==========================================================================================
+% Setting footer, header and page number
+%------------------------------------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot[R]{\thepage}
@@ -69,11 +73,14 @@
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
 }
+%------------------------------------------------------------------------------------------
+% End Setting footer, header and page number
+%==========================================================================================
 
 
-%------------------------------------------------------------
-%Layout
-%------------------------------------------------------------
+%==========================================================================================
+% Page Layout, Margin
+%------------------------------------------------------------------------------------------
 \setlength{\topmargin}{0cm}
 \setlength{\headheight}{1cm}
 \setlength{\headsep}{0.2cm}
@@ -85,30 +92,40 @@
 \setlength{\footskip}{1cm}
 \setlength{\marginparsep}{0pt}
 \setlength{\marginparwidth}{0pt}
-\setlength{\parindent}{3em} %Indent approx 6 character
+%to set indent approx 6 character
+\setlength{\parindent}{3em} 
+%------------------------------------------------------------------------------------------
+% End Page Layout, Margin
+%==========================================================================================
 
 
-\def\prefacename{PRAKATA}%
-\def\contentsname{DAFTAR ISI}%
-\def\listfigurename{DAFTAR GAMBAR}%
-\def\listtablename{DAFTAR TABEL}%
-\def\listappendixname{DAFTAR LAMPIRAN}%
-\def\nomenclaturename{DAFTAR LAMBANG DAN SINGKATAN}%
-\def\abstractname{INTISARI}%
-\def\partname{BAGIAN}%
-\def\chaptername{BAB}%
-\def\appendixname{LAMPIRAN}%
-\def\refname{DAFTAR PUSTAKA}%
-\def\bibname{DAFTAR PUSTAKA}%
-\def\indexname{Indek}%
-\def\figurename{Gambar}%
-\def\tablename{Tabel}%
-\def\pagename{Halaman}%
+%==========================================================================================
+% Redefition Terms
+%------------------------------------------------------------------------------------------
+\def\prefacename{PRAKATA}
+\def\contentsname{DAFTAR ISI}
+\def\listfigurename{DAFTAR GAMBAR}
+\def\listtablename{DAFTAR TABEL}
+\def\listappendixname{DAFTAR LAMPIRAN}
+\def\nomenclaturename{DAFTAR LAMBANG DAN SINGKATAN}
+\def\abstractname{INTISARI}
+\def\partname{BAGIAN}
+\def\chaptername{BAB}
+\def\appendixname{LAMPIRAN}
+\def\refname{DAFTAR PUSTAKA}
+\def\bibname{DAFTAR PUSTAKA}
+\def\indexname{Indek}
+\def\figurename{Gambar}
+\def\tablename{Tabel}
+\def\pagename{Halaman}
+%------------------------------------------------------------------------------------------
+% End Redefinition Terms
+%==========================================================================================
 
 
-%------------------------------------------------------------]
-%Define thesis's inputs
-%------------------------------------------------------------
+%==========================================================================================
+% Define thesis's inputs
+%------------------------------------------------------------------------------------------
 \gdef\@university{Universitas Hasanuddin}
 \gdef\@city{Makassar}
 \newcommand{\titleind}[1]{\gdef\@titleind{#1}}
@@ -144,11 +161,14 @@
 \newcommand{\@secondexaminer}{}
 \newcommand{\thirdexaminer}[1]{\gdef\@thirdexaminer{#1}}
 \newcommand{\@thirdexaminer}{}
+%------------------------------------------------------------------------------------------
+% End Define thesis's inputs
+%==========================================================================================
 
 
-%------------------------------------------------------------
-%Define cover Seminar Proposal/Hasil
-%------------------------------------------------------------
+%==========================================================================================
+% Define Cover Seminar Proposal/Hasil
+%------------------------------------------------------------------------------------------
 \def\coverproposal{
     \thispagestyle{empty}
     \pagenumbering{roman}
@@ -185,11 +205,14 @@
     \end{center}
     \newpage
 }
+%------------------------------------------------------------------------------------------
+% End Define Cover Seminar Proposal/Hasil
+%==========================================================================================
 
 
-%------------------------------------------------------------
-%Define cover Skripsi
-%------------------------------------------------------------
+%==========================================================================================
+% Define Cover Skripsi
+%------------------------------------------------------------------------------------------
 \def\cover{%
     \thispagestyle{empty}%
     \pagenumbering{roman}
@@ -219,24 +242,14 @@
         \end{singlespace}
     \end{center}
 }
+%------------------------------------------------------------------------------------------
+% End Define Cover Skripsi
+%==========================================================================================
 
 
-% Setting figure and table name
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\counterwithin{equation}{section}
-%\@addtoreset {figure}{section}
-%\renewcommand \thefigure {
-%    \ifnum \c@section>\z@ 
-%        .\@arabic\c@figure
-%    \fi 
-%        \@arabic\c@chapter.\@arabic\c@figure}
-%\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
-
-
-%------------------------------------------------------------
-%Redefine chapter and sections
-%------------------------------------------------------------
+%==========================================================================================
+% Redefine chapter and sections
+%------------------------------------------------------------------------------------------
 % \setcounter{secnumdepth}{2}
 % \renewcommand \thepart {\@Roman \c@part}
 \renewcommand \thechapter {\@Roman\c@chapter}
@@ -279,8 +292,14 @@
     \par\nobreak
     \vskip 20\p@}
 }
+%------------------------------------------------------------------------------------------
+% End Redefine chapter and sections
+%==========================================================================================
 
 
+%==========================================================================================
+% Setting Tabble of Content, list of figure, list of table
+%------------------------------------------------------------------------------------------
 % costumize Table of contents
 \renewcommand{\cftchappresnum}{BAB }
 \renewcommand{\cftchapnumwidth}{3.7em}
@@ -300,7 +319,24 @@
 \renewcommand{\cftafterlottitleskip}{0.75cm}
 \renewcommand\cftlottitlefont{\hfill\Large\bfseries\MakeUppercase}
 \renewcommand\cftafterlottitle{\hfill\mbox{}}
+%------------------------------------------------------------------------------------------
+% End Setting Tabble of Content, list of figure, list of table
+%==========================================================================================
 
+
+%==========================================================================================
+% Set Table, Figure Environment
+%------------------------------------------------------------------------------------------
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\counterwithin{equation}{section}
+%\@addtoreset {figure}{section}
+%\renewcommand \thefigure {
+%    \ifnum \c@section>\z@ 
+%        .\@arabic\c@figure
+%    \fi 
+%        \@arabic\c@chapter.\@arabic\c@figure}
+%\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
 
 % new environment for Figure
 \newenvironment{afigure}
@@ -311,3 +347,6 @@
 \newenvironment{atable}
     {\begin{table}[ht] \renewcommand{\arraystretch}{1.5} \centering \small}
     {\end{table}}
+%------------------------------------------------------------------------------------------
+% End Set Table, Figure Environment
+%==========================================================================================
