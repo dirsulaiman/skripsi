@@ -21,17 +21,6 @@
 
 \blindtext
 
-
-\begin{tabular}{| c | c | c |}\hline
-    \footnotesize
-    Filter & Tanpa FPGA & Dengan FPGA \\ \hline\hline
-    \csvreader[
-        late after line=\\ \hline
-    ]{tables/hasil-fps.csv}
-    {filter=\filter, tanpafpga=\tanpafpga, denganfpga=\denganfpga}
-    {\filter & \tanpafpga & \denganfpga }
-\end{tabular}
-
 \blindtext
 
 \begin{atable}
@@ -51,15 +40,3 @@
 \end{atable}
 
 \blindtext
-
-
-% \csvreader[
-%     tabular=|l|l|c|,
-%     table head= Filter & Tanpa FPGA & Dengan FPGA\\\hline,
-%     late after line=\\\hline]%
-%     {tables/hasil-fps.csv}{filter=\filter, tanpafpga=\tanpafpga, denganfpga=\denganfpga}%
-%     {\filter & \tanpafpga & \denganfpga}%
-
-
-
-
