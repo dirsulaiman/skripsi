@@ -1,4 +1,4 @@
-Filter,Tanpa FPGA,Dengan FPGA
+filter,tanpafpga,denganfpga
 Average Blur,6.24958353344702,60.4268459267488
 Gaussian Blur,6.25253493030523,60.2887439620844
 Sobel Vertical,7.45901961777084,60.4404744910869
