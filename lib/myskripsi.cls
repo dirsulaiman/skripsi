@@ -1,7 +1,6 @@
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi class]
-
+\ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi Class]
 \LoadClass[a4paper, 12pt]{report}
 
 %------------------------------------------------------------
@@ -9,28 +8,45 @@
 %------------------------------------------------------------
 % to add indent for first paragraph
 \RequirePackage{indentfirst}
+
 % to justify
 \RequirePackage{ragged2e}
+
 % Prevent hyphenating the words
 \usepackage[none]{hyphenat}
 \sloppy
+
 % Times New Roman Font like
 \RequirePackage{newtxtext, newtxmath}
+
 % to use or import image
 \RequirePackage{graphicx}
+
+% to use color in table
+\RequirePackage[table]{xcolor}
+
+% use CSV to generate table
+\usepackage{csvsimple}
+
 % to set space of paragraph line
 \RequirePackage{setspace}
 \onehalfspacing
+
 % to costumize Table of contents
 \RequirePackage{tocloft}
+
 % to costumize footer and header
 \RequirePackage{fancyhdr}
-% Hyperlink
+
+% to hide Hyperlink color
 \RequirePackage[pdftex,bookmarks=true,hidelinks]{hyperref}
+
 % Counter for figure, table and equation
 \RequirePackage{chngcntr}
+
 % Setup the caption of figure, table and equation
 \RequirePackage[font=small, labelfont={it},textfont={it}, justification=centering]{caption}
+
 % Setup label of enumerate item
 \RequirePackage{enumitem} 
 % \renewcommand{\theenumi}{\Alph{enumi}}
@@ -54,6 +70,7 @@
     \renewcommand{\footrulewidth}{0pt}
 }
 
+
 %------------------------------------------------------------
 %Layout
 %------------------------------------------------------------
@@ -69,7 +86,6 @@
 \setlength{\marginparsep}{0pt}
 \setlength{\marginparwidth}{0pt}
 \setlength{\parindent}{3em} %Indent approx 6 character
-
 
 
 \def\prefacename{PRAKATA}%
@@ -104,9 +120,7 @@
 \newcommand{\idnum}[1]{\gdef\@idnum{#1}}
 \newcommand{\@idnum}{}
 \newcommand{\examdate}[1]{\gdef\@examdate{#1}}
-\newcommand{\@examdate}{\number\day~\ifcase\month\or
-Januari\or Februari\or Maret\or April\or Mei\or Juni\or
-Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
+\newcommand{\@examdate}{\number\day~\ifcase\month\or Januari\or Februari\or Maret\or April\or Mei\or Juni\or Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 \space \number\year}
 \newcommand{\degree}[1]{\gdef\@degree{#1}}
 \newcommand{\@degree}{}
@@ -133,7 +147,7 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 
 
 %------------------------------------------------------------
-%Define cover Seminar Proposal
+%Define cover Seminar Proposal/Hasil
 %------------------------------------------------------------
 \def\coverproposal{
     \thispagestyle{empty}
@@ -220,7 +234,6 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 %\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
 
 
-
 %------------------------------------------------------------
 %Redefine chapter and sections
 %------------------------------------------------------------
@@ -268,7 +281,6 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 }
 
 
-
 % costumize Table of contents
 \renewcommand{\cftchappresnum}{BAB }
 \renewcommand{\cftchapnumwidth}{3.7em}
@@ -290,17 +302,12 @@ Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
 \renewcommand\cftafterlottitle{\hfill\mbox{}}
 
 
-% figure
-% usage begin{afigure}{caption}
-%\newenvironment{afigure}[1]
-%    {\newcommand{\tmpcaption}{#1} \begin{figure}[h]}
-%    {\caption{\tmpcaption} \end{figure}}
-
+% new environment for Figure
 \newenvironment{afigure}
     {\begin{figure}[ht]}
     {\end{figure}}
 
-% usage begin{atable}{caption}
-\newenvironment{atable}[1]
-    {\begin{table}[ht]  \begin{center} \caption{#1}}
-    {\end{center} \vspace{-4mm} \end{table}}
+% new environment for Table
+\newenvironment{atable}
+    {\begin{table}[ht] \renewcommand{\arraystretch}{1.5} \centering \small}
+    {\end{table}}
