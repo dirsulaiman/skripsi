@@ -8,8 +8,15 @@ Program Studi Ilmu Komputer, Fakultas MIPA, Universitas Hasanuddin Makassar
 </p>
 
 
+
+
 ### Quick Start
 manual cara pakai
+#### Windows
+#### Linux
+
+#### Overleaf
+https://www.overleaf.com/read/xvdzphmvntrb
 
 
 ### Contents
@@ -39,9 +46,11 @@ Skripsi/
 #### Tabel
 #### Gambar
 #### Persamaan Matematika
-```math
-h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da
-```
+
+![formula](https://render.githubusercontent.com/render/math?math=h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da)
+
+![formula](https://render.githubusercontent.com/render/math?math=h(x) = f(x) * g(x) = \sum_{a=-\infty}^{\infty} f(a)g(x-a))
+
 
 #### Daftar Pustaka
 #### Makefile
