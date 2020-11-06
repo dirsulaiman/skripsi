@@ -1,4 +1,5 @@
 # Skripsi
+Template Skripsi LaTex
 Program Studi Ilmu Komputer, Fakultas MIPA, Universitas Hasanuddin Makassar
 
 
