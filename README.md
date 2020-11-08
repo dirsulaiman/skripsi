@@ -14,7 +14,7 @@ Template Skripsi LaTex, Program Studi Ilmu Komputer, Fakultas MIPA, Universitas 
 #### Linux
 #### Overleaf
 Overleaf adalah sebuah layanan LaTex text editor berbasis web. Anda hanya perlu membuat registrasi untuk memulai menulis project LaTex. [Overleaf Project](https://www.overleaf.com/read/xvdzphmvntrb)
-- Registrasi kemudian login di ![Overleaf.com](https://www.overleaf.com/login)
+- Registrasi kemudian login di [Overleaf.com](https://www.overleaf.com/login)
 - Download [Skripsi.zip](https://github.com/dirsulaiman/Skripsi/files/5500599/Skripsi_v0.1.zip) atau clone project ini kemudian compress dalam bentuk zip
 - Buat project baru pada Overleaf.com dengan klik "New Project" kemudian pilih "Upload Project"
 - Upload [Skripsi.zip](https://github.com/dirsulaiman/Skripsi/files/5500599/Skripsi_v0.1.zip) pada halaman yang disediakan
@@ -45,7 +45,7 @@ Skripsi/
 ```
 
 
-### Fitur
+### Features
 #### Tabel
 Menampilkan [tables/hasil-fps.csv](https://github.com/dirsulaiman/Skripsi/blob/master/tables/hasil-fps.csv) sebagai tabel dalam dokumen
 ```
