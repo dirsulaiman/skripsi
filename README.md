@@ -186,6 +186,10 @@ make clear file=proposal
 > We're living the future so
 > the present is our past.
 
+### Issues, Feedback and Suggestions
+> Penulis sadar template skripsi ini masih perlu banyak perbaikan, untuk itu kami menerima masukan, saran dan laporan apabila terdapat error atau masalah dalam template ini
+- Klik [New issue](https://github.com/dirsulaiman/Skripsi/issues/new) untuk melaporkan masalah yang harus kami perbaiki dalam template ini
+- Terima kasih kepada semua pihak dan kami berharap template skripsi ini dapat membantu dalam penulisan skripsi teman-teman
 
 ### License
 Source file: [BSD License](https://github.com/dirsulaiman/Skripsi/blob/master/LICENSE)
