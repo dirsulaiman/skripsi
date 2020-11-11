@@ -30,7 +30,6 @@ Jika anda mengalami banyak masalah dalam proses install LaTex dan konfigurasi pa
 > Jika anda menggunakan [Papeeria](https://www.papeeria.com), ingat untuk mengganti engine menjadi PdfLaTex dan TexLive 2019 sebelum men-compile project ini
 
 
-
 ### Contents
 
 ```
