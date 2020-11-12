@@ -107,13 +107,14 @@ Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman
 
 
 #### Daftar Pustaka
+[bibtex/daftar-pustaka.bib](https://github.com/dirsulaiman/Skripsi/blob/master/bibtex/daftar-pustaka.bib)
 ```
 @MISC{site:biswas,
     HOWPUBLISHED = "\url{https://towardsdatascience.com/introduction-to-fpga-and-its-architecture-20a62c14421c}",
     AUTHOR = "Priyabrata Biswas",
     TITLE = "Introduction to FPGA and its Architecture",
-	YEAR = "2019",
-	NOTE = "Accessed on 2020-06-18"
+    YEAR = "2019",
+    NOTE = "Accessed on 2020-06-18"
 }
 @ARTICLE{soa:castellano,
     AUTHOR = "G. Castellano and D. De Caro and D. Esposito and P. Bifulco and E. Napoli and N. Petra and E. Andreozzi and M. Cesarelli and A. G. M. Strollo",
@@ -124,6 +125,7 @@ Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman
     DOI = "10.1007/s00034-018-01020-x"
 }
 ```
+Tambahkan pada preamble dokumen latex
 ```
 \usepackage[
     backend=biber,
@@ -190,11 +192,11 @@ make clear file=proposal
 
 
 ### Notes
-- Apabila setelah terjadi bla-blabla
-- Setelah file.tex dicompile maka .....
+- ...
+- ...
 
-> We're living the future so
-> the present is our past.
+> Mawar bukan setangkai, kumbang bukan seekor. 
+> Patah tumbuh, hilang berganti.
 
 
 ### Issues, Feedback and Suggestions
