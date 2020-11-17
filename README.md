@@ -8,14 +8,26 @@ Template Skripsi LaTex, Program Studi Ilmu Komputer, Fakultas MIPA, Universitas 
 </p>
 
 
-
 ### Quick Start
-manual cara pakai
-#### Windows
-#### Linux
+#### Windows, Linux, Mac OS
+- Install TexLive, dan package yang dibutuhkan jika perlu
+- Download atau clone Template Skripsi ini, atau fork repository ini ke akun github anda jika perlu
+- Kemudian lakukan modifikasi sesuai keinginan dan kebutuhan
+- Jalankan `$ pdflatex proposal.tex` untuk men-compile file `proposal.tex` menjadi `proposal.pdf`
+> TexLive hanya tersedia untuk [Linux](http://www.tug.org/texlive/quickinstall.html) dan [Windows](http://www.tug.org/texlive/windows.html), untuk Mac OS gunakan [MacTex](http://www.tug.org/mactex/)
+> [MikTex](https://miktex.org/) juga dapat digunakan sebagai alternatif TexLive di Windows
+> Template Skripsi ini menggunakan PdfLatex sebagai engine, bagi pengguna LuaLatex atau XeLatex mungkin memerlukan sedikit penyesuaikan dan perbaikan 
 
-#### Overleaf
-https://www.overleaf.com/read/xvdzphmvntrb
+
+#### Overleaf (Online LaTex Editor)
+Jika anda mengalami banyak masalah dalam proses install LaTex dan konfigurasi packagenya mungkin Online LaTex Editor bisa menjadi solusinya.Overleaf adalah salah satu layanan LaTex editor berbasis web. Anda hanya perlu membuat registrasi untuk memulai menulis project LaTex. [Overleaf Project](https://www.overleaf.com/read/xvdzphmvntrb)
+- Registrasi di [Overleaf.com](https://www.overleaf.com/login) kemudian login 
+- Download [Skripsi.zip](https://github.com/dirsulaiman/Skripsi/files/5500599/Skripsi_v0.1.zip) atau clone project ini kemudian compress dalam bentuk zip
+- Buat project baru pada Overleaf.com dengan klik "New Project" kemudian pilih "Upload Project"
+- Upload [Skripsi.zip](https://github.com/dirsulaiman/Skripsi/files/5500599/Skripsi_v0.1.zip) pada halaman yang disediakan
+- Mulai menulis
+> Selain Overleaf masih banyak juga LaTex editor online yang bagus seperti [Papeeria](https://www.papeeria.com), [ShareLaTex](https://www.sharelatex.com/). Kunjungi [The Latex Project](https://www.latex-project.org/get/) untuk info lebih lanjut
+> Jika anda menggunakan [Papeeria](https://www.papeeria.com), ingat untuk mengganti engine menjadi PdfLaTex dan TexLive 2019 sebelum men-compile project ini
 
 
 ### Contents
@@ -41,7 +53,7 @@ Skripsi/
 ```
 
 
-### Fitur
+### Features
 #### Tabel
 Menampilkan [tables/hasil-fps.csv](https://github.com/dirsulaiman/Skripsi/blob/master/tables/hasil-fps.csv) sebagai tabel dalam dokumen
 ```
@@ -65,6 +77,7 @@ Menampilkan [tables/hasil-fps.csv](https://github.com/dirsulaiman/Skripsi/blob/m
     <img alt="Contoh tabel" src="https://raw.githubusercontent.com/dirsulaiman/Skripsi/master/images/contoh-tabel.png">
 </p>
 
+
 #### Gambar
 Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman/Skripsi/blob/master/tables/hasil-fps.csv) pada dokumen
 ```
@@ -77,6 +90,7 @@ Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman
 <p align="center">
     <img alt="Jenis-jenis citra" src="https://raw.githubusercontent.com/dirsulaiman/Skripsi/master/images/contoh-gambar.png">
 </p>
+
 
 #### Persamaan Matematika
 ```
@@ -93,15 +107,15 @@ Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman
 
 
 #### Daftar Pustaka
+[bibtex/daftar-pustaka.bib](https://github.com/dirsulaiman/Skripsi/blob/master/bibtex/daftar-pustaka.bib)
 ```
 @MISC{site:biswas,
     HOWPUBLISHED = "\url{https://towardsdatascience.com/introduction-to-fpga-and-its-architecture-20a62c14421c}",
     AUTHOR = "Priyabrata Biswas",
     TITLE = "Introduction to FPGA and its Architecture",
-	YEAR = "2019",
-	NOTE = "Accessed on 2020-06-18"
+    YEAR = "2019",
+    NOTE = "Accessed on 2020-06-18"
 }
-
 @ARTICLE{soa:castellano,
     AUTHOR = "G. Castellano and D. De Caro and D. Esposito and P. Bifulco and E. Napoli and N. Petra and E. Andreozzi and M. Cesarelli and A. G. M. Strollo",
     TITLE = "An FPGA-Oriented Algorithm for Real-Time Filtering of Poisson Noise in Video Streams, with Application to X-Ray Fluoroscopy",
@@ -111,6 +125,7 @@ Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman
     DOI = "10.1007/s00034-018-01020-x"
 }
 ```
+Tambahkan pada preamble dokumen latex
 ```
 \usepackage[
     backend=biber,
@@ -128,10 +143,10 @@ Menampilkan gambar [images/jenis-jenis-citra.png](https://github.com/dirsulaiman
 ...
 \thecite{site:biswas}
 ```
-
 <p align="center">
     <img alt="Jenis-jenis citra" src="https://raw.githubusercontent.com/dirsulaiman/Skripsi/master/images/contoh-daftar-pustaka.png">
 </p>
+
 
 #### Makefile
 Compile file proposal.tex dan update referensi pada citasi
@@ -142,6 +157,7 @@ Menghapus file hasil compile yang tidak diperlukan
 ```
 make clear file=proposal
 ```
+
 
 ### Required Package
 - indentfirst
@@ -176,11 +192,17 @@ make clear file=proposal
 
 
 ### Notes
-- Apabila setelah terjadi bla-blabla
-- Setelah file.tex dicompile maka .....
+- ...
+- ...
 
-> We're living the future so
-> the present is our past.
+> Mawar bukan setangkai, kumbang bukan seekor. 
+> Patah tumbuh, hilang berganti.
+
+
+### Issues, Feedback and Suggestions
+> Penulis sadar template skripsi ini masih perlu banyak perbaikan, untuk itu kami menerima masukan, saran dan laporan apabila terdapat error atau masalah dalam template ini
+- Klik [New issue](https://github.com/dirsulaiman/Skripsi/issues/new) untuk melaporkan masalah yang harus kami perbaiki dalam template ini
+- Terima kasih kepada semua pihak dan kami berharap template skripsi ini dapat membantu dalam penulisan skripsi teman-teman
 
 
 ### License

@@ -7,9 +7,12 @@
 
 \renewcommand{\baselinestretch}{1.42}
 
-% to use bibliography
-% style, citestyle = {authoryear, numeric, apa, mla}
-% sorting {year,name,title} = ynt
+%==========================================================================================
+% Package Daftar Pustaka, bentuk citasi
+% Config
+% - style, citestyle = {authoryear, numeric, apa, mla}
+% - sorting {year,name,title} = ynt
+%------------------------------------------------------------------------------------------
 \usepackage[
     backend=biber,
     style=authoryear,
@@ -22,11 +25,14 @@
 % new citation style
 \let\oldcitate\cite
 \newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
+%------------------------------------------------------------------------------------------
+% End Definisi Data Peneliti, Judul, Pembimbing dan Penguji
+%==========================================================================================
 
-
-
+%==========================================================================================
+% Definisi Data Peneliti, Judul, Pembimbing dan Penguji
+%------------------------------------------------------------------------------------------
 \titleind{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}
-
 
 \fullname{SULAEMAN}
 \idnum{H131 16 002}
@@ -43,15 +49,17 @@
 \secondsupervisor{Dr. Diaraya, M.Ak.}
 \firstexaminer{ Dr. Hendra, S.Si., M.Kom.}
 \secondexaminer{ Nur Hilal A Syahrir, S.Si., M.Si.}
-
+%------------------------------------------------------------------------------------------
+% End Definisi Data Peneliti, Judul, Pembimbing dan Penguji
+%==========================================================================================
 
 \begin{document}
     \coverproposal
     \pagenumbering{roman}
-    %-----------------------------------------------------------------
-    %Setting daftar isi
-    %-----------------------------------------------------------------
-    % \renewcommand*\contentsname{}
+    
+    %==========================================================================================
+    % Daftar isi, daftar gambar, daftar tabel
+    %------------------------------------------------------------------------------------------
     \tableofcontents
     \addcontentsline{toc}{chapter}{DAFTAR ISI}
     \newpage
@@ -59,37 +67,30 @@
     \listoffigures
     \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
     \newpage
-
-    % \listoftables
-    % \addcontentsline{toc}{chapter}{DAFTAR TABEL}
-    % \newpage
+    %------------------------------------------------------------------------------------------
+    % End Daftar isi, daftar gambar, daftar tabel
+    %==========================================================================================
 
     \pagebreak
     \pagenumbering{arabic}
 
-    %-----------------------------------------------------------------
-    %Disini awal masukan untuk Bab
-    %-----------------------------------------------------------------
+    %==========================================================================================
+    % Daftar masukan untuk Bab
+    %------------------------------------------------------------------------------------------
     \input{include/bab1.tex}
     \input{include/bab2.tex}
     \input{include/bab3.tex}
-    %\input{Bab3.tex}
-    %\input{Bab4.tex}
-    %\input{Bab5.tex}
-    %\input{Bab6.tex}
-    %-----------------------------------------------------------------
-    %Disini akhir masukan Bab
-    %-----------------------------------------------------------------
+    %------------------------------------------------------------------------------------------
+    % End Daftar masukan untuk Bab
+    %==========================================================================================
 
-
-    %-----------------------------------------------------------------
-    %Disini awal masukan untuk Daftar Pustaka
-    %-----------------------------------------------------------------
+    %==========================================================================================
+    % Daftar Pustaka
+    %------------------------------------------------------------------------------------------
     \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
     \printbibliography[title={DAFTAR PUSTAKA}]
-    %-----------------------------------------------------------------
-    %Disini akhir masukan Daftar Pustaka
-    %-----------------------------------------------------------------
-
+    %------------------------------------------------------------------------------------------
+    % End Daftar Pustaka
+    %==========================================================================================
 
 \end{document}
