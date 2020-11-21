@@ -304,6 +304,41 @@
 
 
 %=============================================================================
+% Define Supervisor Approval Page
+%-----------------------------------------------------------------------------
+\def\supervisorapprovalpage{%
+    \BgThispage
+    \addcontentsline{toc}{chapter}{LEMBAR PERSETUJUAN PEMBIMBING}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
+            \vspace{2.0cm}
+
+            {\normalfont\large\bfseries\expandafter{Disetujui Oleh:}}\\        
+            \vspace{5cm}
+
+            \begin{tabular}{p{7cm}p{7cm}}
+                Pembimbing Utama & Pembimbing Pertama
+            \end{tabular}
+
+            \vspace{2.0cm}
+            \begin{tabular}{p{7cm}p{7cm}}
+                \@firstsupervisor & \@secondsupervisor \\
+                NIP. 413411342141412 & NIP. 413411342141412
+            \end{tabular}
+
+            \vspace{2cm}
+            Pada Tanggal : \expandafter{\@examdate}\\
+        \end{singlespace}
+    \end{center}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Supervisor Approval Page
+%=============================================================================
+
+
+%=============================================================================
 % Define Approval Page
 %-----------------------------------------------------------------------------
 \def\approvalpage{%
@@ -313,39 +348,35 @@
         \begin{singlespace}
             \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
             \vspace{1.0cm}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{Skripsi}}\\
-            \vspace{0.5cm}
-            \MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
-            \vspace{1.0cm}
-            Disusun oleh\\
-            \vspace{0.5cm}
-            \@fullname\\
-            \@idnum\\
-            \vspace{1.0cm}
-            Telah dipertahankan di depan Tim Penguji\\
-            pada tanggal \expandafter{\@examdate}\\
-            \vspace{0.5cm}
-            Susunan Tim Penguji\\
-            \vspace{2.5cm}
-            \begin{tabular}{p{7cm}p{7cm}}
-                \@firstsupervisor&\@firstexaminer\\
-                Pembimbing1&Penguji
-            \end{tabular}
-
-            \vspace{2.0cm}
-            \begin{tabular}{p{7cm}p{7cm}}
-                \@secondsupervisor&\@secondexaminer\\
-                Pembimbing2&Penguji
-            \end{tabular}
-
-            \bigskip
-            \vspace{2.0cm}
-            \begin{tabular}{p{7cm}p{7cm}}
-                &\@thirdexaminer\\
-                &Penguji
+            
+            \begin{tabular}{p{4.5cm} p{.1cm} p{7cm}}
+                Skripsi ini diajukan oleh: & & \\
+                \vspace{.1cm} & & \\
+                Nama &:& \@fullname\\
+                NIM &:& \@idnum\\
+                Program Studi &:& \@program\\
+                Judul Skripsi &:& \@titleind\\
             \end{tabular}
         \end{singlespace}
     \end{center}
+
+    \vspace{1cm}
+    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Fakultas Matematika dan Ilmu Pengatahuan Alam Universitas Hasanuddin.\\
+    \vspace{0.5cm}
+
+    \begin{center}
+        \begin{doublespace} 
+            DEWAN PENGUJI\\
+            \begin{tabular}{l l l l}
+                & & & Tanda Tangan \\
+                1. & Ketua &: \@firstsupervisor & (........................)\\
+                2. & Sekretaris &: \@secondsupervisor & (........................)\\
+                3. & Anggota &: \@firstexaminer & (........................)\\
+                4. & Anggota &: \@secondexaminer & (........................)\\
+            \end{tabular}
+        \end{doublespace}
+    \end{center}
+    pada tanggal \expandafter{\@examdate}\\
     \newpage
 }
 %-----------------------------------------------------------------------------
