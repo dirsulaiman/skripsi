@@ -49,6 +49,9 @@
 % Setup label of enumerate item
 \RequirePackage{enumitem} 
 % \renewcommand{\theenumi}{\Alph{enumi}}
+
+% use Watermark
+\RequirePackage[pages=some]{background}
 %------------------------------------------------------------------------------------------
 % End Require Package
 %==========================================================================================
@@ -96,6 +99,21 @@
 \setlength{\parindent}{3em} 
 %------------------------------------------------------------------------------------------
 % End Page Layout, Margin
+%==========================================================================================
+
+
+%==========================================================================================
+% Set Watermark
+%------------------------------------------------------------------------------------------
+\backgroundsetup{
+  scale=1,       %% change accordingly
+  angle=0,       %% change accordingly
+  opacity=.2,    %% change accordingly
+  contents={\includegraphics[width=10cm]{images/logoUH.png}}
+}
+\newcommand\addwatermark{\BgThispage}
+%------------------------------------------------------------------------------------------
+% End Set Watermark
 %==========================================================================================
 
 
