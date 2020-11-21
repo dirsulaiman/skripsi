@@ -109,7 +109,7 @@
   scale=1,       %% change accordingly
   angle=0,       %% change accordingly
   opacity=.2,    %% change accordingly
-  contents={\includegraphics[width=10cm]{images/logoUH.png}}
+  contents={\includegraphics[width=14cm]{images/logoUH.png}}
 }
 \newcommand\addwatermark{\BgThispage}
 %-----------------------------------------------------------------------------
@@ -225,6 +225,131 @@
 }
 %-----------------------------------------------------------------------------
 % End Define Cover Seminar Proposal/Hasil
+%=============================================================================
+
+
+%=============================================================================
+% Define Title Page
+%-----------------------------------------------------------------------------
+\def\titlepage{
+    \begin{center}
+        \BgThispage
+        \addcontentsline{toc}{chapter}{HALAMAN SAMPUL}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\bfseries\@titleind}\\
+            \vspace{2cm}
+            \bfseries{SKRIPSI}
+            \vspace{3cm}
+
+            \normalfont{Diajukan sebagai salah satu syarat untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin Makassar}\\
+            \vspace{3cm}
+
+            {\normalfont
+                \@fullname\\
+                \@idnum}\\
+                \vspace{1.5cm}
+
+            {\normalfont
+                \vspace{2.0cm}
+                \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
+                \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
+                \MakeUppercase{\normalfont\bfseries\@faculty}\\
+                \MakeUppercase{\normalfont\bfseries\@university}\\
+                \MakeUppercase{\normalfont\bfseries\@city}\\
+                \vspace{0.5cm}
+                {\normalfont\bfseries\@yearsubmit}
+            }\\
+        \end{singlespace}
+    \end{center}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Title Page
+%=============================================================================
+
+
+%=============================================================================
+% Define Authentication Page
+%-----------------------------------------------------------------------------
+\def\authenticationpage{
+    \BgThispage
+    \addcontentsline{toc}{chapter}{LEMBAR PERNYATAAN KEOTENTIKAN}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{LEMBAR PERNYATAAN KEOTENTIKAN}}\\
+            \BgThispage
+            \vspace{2cm}
+
+            \normalfont{Saya yang bertanda tangan di bawah ini menyatakan dengan sungguh-sungguh bahwa skripsi yang saya buat dengan judul:}\\
+            \vspace{3cm}
+
+            \bfseries{\@titleind}\\
+            \vspace{3cm}
+
+            \normalfont{adalah benar hasi karya saya sendiri bukan hasil plagiat dan belum pernah dipublikasikan dalam bentuk apapun}\\
+            \vspace{2.0cm}
+        \end{singlespace}
+    \end{center}
+    \begin{flushright}
+        Makassar, 14 September\\
+        \vspace{3cm}
+        {\@fullname}\\
+        NIM. {\@idnum}
+    \end{flushright}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Authentication Page
+%=============================================================================
+
+
+%=============================================================================
+% Define Approval Page
+%-----------------------------------------------------------------------------
+\def\approvalpage{%
+    \BgThispage
+    \addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
+            \vspace{1.0cm}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{Skripsi}}\\
+            \vspace{0.5cm}
+            \MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
+            \vspace{1.0cm}
+            Disusun oleh\\
+            \vspace{0.5cm}
+            \@fullname\\
+            \@idnum\\
+            \vspace{1.0cm}
+            Telah dipertahankan di depan Tim Penguji\\
+            pada tanggal \expandafter{\@examdate}\\
+            \vspace{0.5cm}
+            Susunan Tim Penguji\\
+            \vspace{2.5cm}
+            \begin{tabular}{p{7cm}p{7cm}}
+                \@firstsupervisor&\@firstexaminer\\
+                Pembimbing1&Penguji
+            \end{tabular}
+
+            \vspace{2.0cm}
+            \begin{tabular}{p{7cm}p{7cm}}
+                \@secondsupervisor&\@secondexaminer\\
+                Pembimbing2&Penguji
+            \end{tabular}
+
+            \bigskip
+            \vspace{2.0cm}
+            \begin{tabular}{p{7cm}p{7cm}}
+                &\@thirdexaminer\\
+                &Penguji
+            \end{tabular}
+        \end{singlespace}
+    \end{center}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Approval Page
 %=============================================================================
 
 
