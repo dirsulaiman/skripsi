@@ -28,8 +28,11 @@
 \let\oldcitate\cite
 \newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
 %------------------------------------------------------------------------------------------
-% End Definisi Data Peneliti, Judul, Pembimbing dan Penguji
+% End Biblatex config
 %==========================================================================================
+
+\usepackage[printwatermark=true]{xwatermark}
+% \newwatermark[allpages,fontfamily=put,color=white,fontsize=3cm,scale=1, picbb=112 619 242 751,  picscale=3,picfile=images/logoUH, picfileext=png, width=\paperheight,align=center,angle=0,xpos=0,ypos=0]{}
 
 %==========================================================================================
 % Definisi Data Peneliti, Judul, Pembimbing dan Penguji
@@ -67,12 +70,12 @@
     \addcontentsline{toc}{chapter}{DAFTAR ISI}
     \newpage
 
-    \listoffigures
-    \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
-    \newpage
-
     \listoftables
     \addcontentsline{toc}{chapter}{DAFTAR TABEL}
+    \newpage
+
+    \listoffigures
+    \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
     \newpage
     %------------------------------------------------------------------------------------------
     % End Daftar isi, daftar gambar, daftar tabel

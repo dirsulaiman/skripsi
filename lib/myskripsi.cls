@@ -179,7 +179,7 @@
             \vspace{1.0cm}
             \MakeUppercase{\normalfont\slshape\bfseries\@titleeng}\par\nobreak
             \vfill
-            \includegraphics[height=6cm]{images/logoUH}
+            \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
             {\normalfont
                 Oleh\\
@@ -225,7 +225,7 @@
             \vfill
             \MakeUppercase{\normalfont\bfseries Skripsi}\\
             \vspace{1.5cm}
-            \includegraphics[scale=0.3]{images/logoUH}
+            \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
             {\normalfont
             \@fullname\\
