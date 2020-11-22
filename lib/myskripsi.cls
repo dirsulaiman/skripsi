@@ -20,6 +20,7 @@
 
 % to use or import image
 \RequirePackage{graphicx}
+\RequirePackage[export]{adjustbox}
 
 % to use color in table
 \RequirePackage[table]{xcolor}
@@ -126,7 +127,7 @@
 \def\listtablename{DAFTAR TABEL}
 \def\listappendixname{DAFTAR LAMPIRAN}
 \def\nomenclaturename{DAFTAR LAMBANG DAN SINGKATAN}
-\def\abstractname{INTISARI}
+% \def\abstractname{INTISARI}
 \def\partname{BAGIAN}
 \def\chaptername{BAB}
 \def\appendixname{LAMPIRAN}
@@ -177,8 +178,10 @@
 \newcommand{\@firstexaminer}{}
 \newcommand{\secondexaminer}[1]{\gdef\@secondexaminer{#1}}
 \newcommand{\@secondexaminer}{}
-\newcommand{\thirdexaminer}[1]{\gdef\@thirdexaminer{#1}}
-\newcommand{\@thirdexaminer}{}
+\newcommand{\firstsupervisorNIP}[1]{\gdef\@firstsupervisorNIP{#1}}
+\newcommand{\@firstsupervisorNIP}{}
+\newcommand{\secondsupervisorNIP}[1]{\gdef\@secondsupervisorNIP{#1}}
+\newcommand{\@secondsupervisorNIP}{}
 %-----------------------------------------------------------------------------
 % End Define thesis's inputs
 %=============================================================================
@@ -367,16 +370,19 @@
     \begin{center}
         \begin{doublespace} 
             DEWAN PENGUJI\\
-            \begin{tabular}{l l l l}
-                & & & Tanda Tangan \\
-                1. & Ketua &: \@firstsupervisor & (........................)\\
-                2. & Sekretaris &: \@secondsupervisor & (........................)\\
-                3. & Anggota &: \@firstexaminer & (........................)\\
-                4. & Anggota &: \@secondexaminer & (........................)\\
+            \begin{tabular}{l l l c}
+                & & & Tanda Tangan \\ 
+                1. & Ketua &: \@firstsupervisor & (........................)\\ \\
+                2. & Sekretaris &: \@secondsupervisor & (........................)\\ \\
+                3. & Anggota &: \@firstexaminer & (........................)\\ \\
+                4. & Anggota &: \@secondexaminer & (........................)\\ \\
             \end{tabular}
         \end{doublespace}
     \end{center}
-    pada tanggal \expandafter{\@examdate}\\
+    \begin{tabular}{l l}
+        Ditetapkan di &: Makassar \\ 
+        Tanggal &: \@examdate
+    \end{tabular}
     \newpage
 }
 %-----------------------------------------------------------------------------
