@@ -505,19 +505,27 @@
 
 
 %=============================================================================
-% Set Table, Figure Environment
+% Set Counter for figure, table, and equation
 %-----------------------------------------------------------------------------
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\counterwithin{equation}{section}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\counterwithin{equation}{chapter}
 %\@addtoreset {figure}{section}
 %\renewcommand \thefigure {
 %    \ifnum \c@section>\z@ 
 %        .\@arabic\c@figure
 %    \fi 
 %        \@arabic\c@chapter.\@arabic\c@figure}
-%\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
+\renewcommand \thefigure {\@arabic\c@chapter.\@arabic\c@figure}
+\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@table}
+\renewcommand \theequation {\@arabic\c@chapter.\@arabic\c@equation}
+%-----------------------------------------------------------------------------
+% End Set Counter for figure, table, and equation
+%=============================================================================
 
+%=============================================================================
+% Set Table, Figure Environment
+%-----------------------------------------------------------------------------
 % new environment for Figure
 \newenvironment{afigure}
     {\begin{figure}[ht]}
