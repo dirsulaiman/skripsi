@@ -11,12 +11,12 @@ Template Skripsi LaTex, Program Studi Ilmu Komputer, Fakultas MIPA, Universitas 
 ### Quick Start
 #### Windows, Linux, Mac OS
 - Install TexLive, dan package yang dibutuhkan jika perlu
-- Download atau clone Template Skripsi ini, atau fork repository ini ke akun github anda jika perlu
+- Download atau clone Template Skripsi ini. Anda juga dapat [Fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) repository ini ke akun Github anda
 - Kemudian lakukan modifikasi sesuai keinginan dan kebutuhan
-- Jalankan `$ pdflatex proposal.tex` untuk men-compile file `proposal.tex` menjadi `proposal.pdf`
-> TexLive hanya tersedia untuk [Linux](http://www.tug.org/texlive/quickinstall.html) dan [Windows](http://www.tug.org/texlive/windows.html), untuk Mac OS gunakan [MacTex](http://www.tug.org/mactex/)
-> [MikTex](https://miktex.org/) juga dapat digunakan sebagai alternatif TexLive di Windows
-> Template Skripsi ini menggunakan PdfLatex sebagai engine, bagi pengguna LuaLatex atau XeLatex mungkin memerlukan sedikit penyesuaikan dan perbaikan 
+- Jalankan `$ pdflatex seminar-proposal.tex` untuk men-compile file `seminar-proposal.tex` menjadi `proposal.pdf`
+> TexLive hanya tersedia untuk [Linux](http://www.tug.org/texlive/quickinstall.html) dan [Windows](http://www.tug.org/texlive/windows.html), untuk Mac OS gunakan [MacTex](http://www.tug.org/mactex/). 
+> [MikTex](https://miktex.org/) juga dapat digunakan sebagai alternatif TexLive di Windows. 
+> Template Skripsi ini menggunakan PdfLatex sebagai engine, bagi pengguna LuaLatex atau XeLatex mungkin memerlukan sedikit penyesuaikan dan perbaikan. 
 
 
 #### Overleaf (Online LaTex Editor)
@@ -26,7 +26,7 @@ Jika anda mengalami banyak masalah dalam proses install LaTex dan konfigurasi pa
 - Buat project baru pada Overleaf.com dengan klik "New Project" kemudian pilih "Upload Project"
 - Upload [Skripsi.zip](https://github.com/dirsulaiman/Skripsi/files/5500599/Skripsi_v0.1.zip) pada halaman yang disediakan
 - Mulai menulis
-> Selain Overleaf masih banyak juga LaTex editor online yang bagus seperti [Papeeria](https://www.papeeria.com), [ShareLaTex](https://www.sharelatex.com/). Kunjungi [The Latex Project](https://www.latex-project.org/get/) untuk info lebih lanjut
+> Selain Overleaf masih banyak juga LaTex editor online yang bagus seperti [Papeeria](https://www.papeeria.com), [ShareLaTex](https://www.sharelatex.com/). Kunjungi [The Latex Project](https://www.latex-project.org/get/) untuk info lebih lanjut. 
 > Jika anda menggunakan [Papeeria](https://www.papeeria.com), ingat untuk mengganti engine menjadi PdfLaTex dan TexLive 2019 sebelum men-compile project ini
 
 
@@ -37,18 +37,22 @@ Skripsi/
     ├── bibtex/
     │   └── daftar-pustaka.bib
     ├── images/
+    │   └── logoUH.png
     ├── include/
     │   ├── bab1.tex
     │   ├── bab2.tex
     │   ├── bab3.tex
     │   ├── bab4.tex
     │   ├── bab5.tex
+    │   ├── halaman-abstrak.tex
+    │   ├── halaman-pernyataan-persetujuan-publikasi-karya-ilmiah.tex
+    │   ├── kata-pengantar.tex
     │   └── lampiran.tex
     ├── lib/
     │   └── myskripsi.cls
     ├── tables/
-    ├── hasil.tex
-    ├── proposal.tex
+    ├── seminar-hasil.tex
+    ├── seminar-proposal.tex
     └── skripsi.tex
 ```
 
@@ -149,13 +153,13 @@ Tambahkan pada preamble dokumen latex
 
 
 #### Makefile
-Compile file proposal.tex dan update referensi pada citasi
+Compile file seminar-proposal.tex dan update referensi pada citasi
 ```
-make run file=proposal
+make run file=seminar-proposal
 ```
 Menghapus file hasil compile yang tidak diperlukan 
 ```
-make clear file=proposal
+make clear file=seminar-proposal
 ```
 
 
@@ -165,6 +169,7 @@ make clear file=proposal
 - hyphenat
 - newtxtext, newtxmath
 - graphicx
+- adjustbox
 - xcolor
 - csvsimple
 - setspace
@@ -174,6 +179,7 @@ make clear file=proposal
 - chngcntr
 - caption
 - enumitem
+- background
 
 
 ### Latex Version
@@ -200,9 +206,9 @@ make clear file=proposal
 
 
 ### Issues, Feedback and Suggestions
-> Penulis sadar template skripsi ini masih perlu banyak perbaikan, untuk itu kami menerima masukan, saran dan laporan apabila terdapat error atau masalah dalam template ini
-- Klik [New issue](https://github.com/dirsulaiman/Skripsi/issues/new) untuk melaporkan masalah yang harus kami perbaiki dalam template ini
-- Terima kasih kepada semua pihak dan kami berharap template skripsi ini dapat membantu dalam penulisan skripsi teman-teman
+> Penulis sadar template skripsi ini masih perlu banyak perbaikan, untuk itu kami menerima masukan, saran dan laporan apabila terdapat error atau masalah dalam template ini.
+- Klik [New issue](https://github.com/dirsulaiman/Skripsi/issues/new) untuk melaporkan masalah yang harus kami perbaiki dalam template ini.
+- Terima kasih kepada semua pihak dan kami berharap template skripsi ini dapat membantu dalam penulisan skripsi teman-teman.
 
 
 ### License
