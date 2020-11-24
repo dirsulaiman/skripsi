@@ -2,9 +2,9 @@
 \ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi Class]
 \LoadClass[a4paper, 12pt]{report}
 
-%==========================================================================================
+%=============================================================================
 % Require Package
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % to add indent for first paragraph
 \RequirePackage{indentfirst}
 
@@ -20,6 +20,7 @@
 
 % to use or import image
 \RequirePackage{graphicx}
+\RequirePackage[export]{adjustbox}
 
 % to use color in table
 \RequirePackage[table]{xcolor}
@@ -49,14 +50,17 @@
 % Setup label of enumerate item
 \RequirePackage{enumitem} 
 % \renewcommand{\theenumi}{\Alph{enumi}}
-%------------------------------------------------------------------------------------------
+
+% use Watermark
+\RequirePackage[pages=some]{background}
+%-----------------------------------------------------------------------------
 % End Require Package
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
 % Setting footer, header and page number
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot[R]{\thepage}
@@ -73,14 +77,14 @@
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
 }
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Setting footer, header and page number
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
 % Page Layout, Margin
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 \setlength{\topmargin}{0cm}
 \setlength{\headheight}{1cm}
 \setlength{\headsep}{0.2cm}
@@ -94,21 +98,36 @@
 \setlength{\marginparwidth}{0pt}
 %to set indent approx 6 character
 \setlength{\parindent}{3em} 
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Page Layout, Margin
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
+% Set Watermark
+%-----------------------------------------------------------------------------
+\backgroundsetup{
+  scale=1,       %% change accordingly
+  angle=0,       %% change accordingly
+  opacity=.2,    %% change accordingly
+  contents={\includegraphics[width=14cm]{images/logoUH.png}}
+}
+\newcommand\addwatermark{\BgThispage}
+%-----------------------------------------------------------------------------
+% End Set Watermark
+%=============================================================================
+
+
+%=============================================================================
 % Redefition Terms
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 \def\prefacename{PRAKATA}
 \def\contentsname{DAFTAR ISI}
 \def\listfigurename{DAFTAR GAMBAR}
 \def\listtablename{DAFTAR TABEL}
 \def\listappendixname{DAFTAR LAMPIRAN}
 \def\nomenclaturename{DAFTAR LAMBANG DAN SINGKATAN}
-\def\abstractname{INTISARI}
+% \def\abstractname{INTISARI}
 \def\partname{BAGIAN}
 \def\chaptername{BAB}
 \def\appendixname{LAMPIRAN}
@@ -118,14 +137,14 @@
 \def\figurename{Gambar}
 \def\tablename{Tabel}
 \def\pagename{Halaman}
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Redefinition Terms
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
 % Define thesis's inputs
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 \gdef\@university{Universitas Hasanuddin}
 \gdef\@city{Makassar}
 \newcommand{\titleind}[1]{\gdef\@titleind{#1}}
@@ -159,16 +178,18 @@
 \newcommand{\@firstexaminer}{}
 \newcommand{\secondexaminer}[1]{\gdef\@secondexaminer{#1}}
 \newcommand{\@secondexaminer}{}
-\newcommand{\thirdexaminer}[1]{\gdef\@thirdexaminer{#1}}
-\newcommand{\@thirdexaminer}{}
-%------------------------------------------------------------------------------------------
+\newcommand{\firstsupervisorNIP}[1]{\gdef\@firstsupervisorNIP{#1}}
+\newcommand{\@firstsupervisorNIP}{}
+\newcommand{\secondsupervisorNIP}[1]{\gdef\@secondsupervisorNIP{#1}}
+\newcommand{\@secondsupervisorNIP}{}
+%-----------------------------------------------------------------------------
 % End Define thesis's inputs
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
 % Define Cover Seminar Proposal/Hasil
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 \def\coverproposal{
     \thispagestyle{empty}
     \pagenumbering{roman}
@@ -179,7 +200,7 @@
             \vspace{1.0cm}
             \MakeUppercase{\normalfont\slshape\bfseries\@titleeng}\par\nobreak
             \vfill
-            \includegraphics[height=6cm]{images/logoUH}
+            \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
             {\normalfont
                 Oleh\\
@@ -205,14 +226,173 @@
     \end{center}
     \newpage
 }
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Define Cover Seminar Proposal/Hasil
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
+% Define Title Page
+%-----------------------------------------------------------------------------
+\def\titlepage{
+    \begin{center}
+        \BgThispage
+        \addcontentsline{toc}{chapter}{HALAMAN SAMPUL}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\bfseries\@titleind}\\
+            \vspace{2cm}
+            \bfseries{SKRIPSI}
+            \vspace{3cm}
+
+            \normalfont{Diajukan sebagai salah satu syarat untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin Makassar}\\
+            \vspace{3cm}
+
+            {\normalfont
+                \@fullname\\
+                \@idnum}\\
+                \vspace{1.5cm}
+
+            {\normalfont
+                \vspace{2.0cm}
+                \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
+                \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
+                \MakeUppercase{\normalfont\bfseries\@faculty}\\
+                \MakeUppercase{\normalfont\bfseries\@university}\\
+                \MakeUppercase{\normalfont\bfseries\@city}\\
+                \vspace{0.5cm}
+                {\normalfont\bfseries\@yearsubmit}
+            }\\
+        \end{singlespace}
+    \end{center}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Title Page
+%=============================================================================
+
+
+%=============================================================================
+% Define Authentication Page
+%-----------------------------------------------------------------------------
+\def\authenticationpage{
+    \BgThispage
+    \addcontentsline{toc}{chapter}{LEMBAR PERNYATAAN KEOTENTIKAN}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{LEMBAR PERNYATAAN KEOTENTIKAN}}\\
+            \BgThispage
+            \vspace{2cm}
+
+            \normalfont{Saya yang bertanda tangan di bawah ini menyatakan dengan sungguh-sungguh bahwa skripsi yang saya buat dengan judul:}\\
+            \vspace{3cm}
+
+            \bfseries{\@titleind}\\
+            \vspace{3cm}
+
+            \normalfont{adalah benar hasi karya saya sendiri bukan hasil plagiat dan belum pernah dipublikasikan dalam bentuk apapun}\\
+            \vspace{2.0cm}
+        \end{singlespace}
+    \end{center}
+    \begin{flushright}
+        Makassar, 14 September\\
+        \vspace{3cm}
+        {\@fullname}\\
+        NIM. {\@idnum}
+    \end{flushright}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Authentication Page
+%=============================================================================
+
+
+%=============================================================================
+% Define Supervisor Approval Page
+%-----------------------------------------------------------------------------
+\def\supervisorapprovalpage{%
+    \BgThispage
+    \addcontentsline{toc}{chapter}{LEMBAR PERSETUJUAN PEMBIMBING}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
+            \vspace{2.0cm}
+
+            {\normalfont\large\bfseries\expandafter{Disetujui Oleh:}}\\        
+            \vspace{5cm}
+
+            \begin{tabular}{p{7cm}p{7cm}}
+                Pembimbing Utama & Pembimbing Pertama
+            \end{tabular}
+
+            \vspace{2.0cm}
+            \begin{tabular}{p{7cm}p{7cm}}
+                \@firstsupervisor & \@secondsupervisor \\
+                NIP. 413411342141412 & NIP. 413411342141412
+            \end{tabular}
+
+            \vspace{2cm}
+            Pada Tanggal : \expandafter{\@examdate}\\
+        \end{singlespace}
+    \end{center}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Supervisor Approval Page
+%=============================================================================
+
+
+%=============================================================================
+% Define Approval Page
+%-----------------------------------------------------------------------------
+\def\approvalpage{%
+    \BgThispage
+    \addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
+            \vspace{1.0cm}
+            
+            \begin{tabular}{p{4.5cm} p{.1cm} p{7cm}}
+                Skripsi ini diajukan oleh: & & \\
+                \vspace{.1cm} & & \\
+                Nama &:& \@fullname\\
+                NIM &:& \@idnum\\
+                Program Studi &:& \@program\\
+                Judul Skripsi &:& \@titleind\\
+            \end{tabular}
+        \end{singlespace}
+    \end{center}
+
+    \vspace{1cm}
+    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Fakultas Matematika dan Ilmu Pengatahuan Alam Universitas Hasanuddin.\\
+    \vspace{0.5cm}
+
+    \begin{center}
+        \begin{doublespace} 
+            DEWAN PENGUJI\\
+            \begin{tabular}{l l l c}
+                & & & Tanda Tangan \\ 
+                1. & Ketua &: \@firstsupervisor & (........................)\\ \\
+                2. & Sekretaris &: \@secondsupervisor & (........................)\\ \\
+                3. & Anggota &: \@firstexaminer & (........................)\\ \\
+                4. & Anggota &: \@secondexaminer & (........................)\\ \\
+            \end{tabular}
+        \end{doublespace}
+    \end{center}
+    \begin{tabular}{l l}
+        Ditetapkan di &: Makassar \\ 
+        Tanggal &: \@examdate
+    \end{tabular}
+    \newpage
+}
+%-----------------------------------------------------------------------------
+% End Define Approval Page
+%=============================================================================
+
+
+%=============================================================================
 % Define Cover Skripsi
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 \def\cover{%
     \thispagestyle{empty}%
     \pagenumbering{roman}
@@ -225,7 +405,7 @@
             \vfill
             \MakeUppercase{\normalfont\bfseries Skripsi}\\
             \vspace{1.5cm}
-            \includegraphics[scale=0.3]{images/logoUH}
+            \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
             {\normalfont
             \@fullname\\
@@ -242,14 +422,14 @@
         \end{singlespace}
     \end{center}
 }
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Define Cover Skripsi
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
 % Redefine chapter and sections
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % \setcounter{secnumdepth}{2}
 % \renewcommand \thepart {\@Roman \c@part}
 \renewcommand \thechapter {\@Roman\c@chapter}
@@ -292,14 +472,14 @@
     \par\nobreak
     \vskip 20\p@}
 }
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Redefine chapter and sections
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
+%=============================================================================
 % Setting Tabble of Content, list of figure, list of table
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % costumize Table of contents
 \renewcommand{\cftchappresnum}{BAB }
 \renewcommand{\cftchapnumwidth}{3.7em}
@@ -319,25 +499,33 @@
 \renewcommand{\cftafterlottitleskip}{0.75cm}
 \renewcommand\cftlottitlefont{\hfill\Large\bfseries\MakeUppercase}
 \renewcommand\cftafterlottitle{\hfill\mbox{}}
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Setting Tabble of Content, list of figure, list of table
-%==========================================================================================
+%=============================================================================
 
 
-%==========================================================================================
-% Set Table, Figure Environment
-%------------------------------------------------------------------------------------------
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\counterwithin{equation}{section}
+%=============================================================================
+% Set Counter for figure, table, and equation
+%-----------------------------------------------------------------------------
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\counterwithin{equation}{chapter}
 %\@addtoreset {figure}{section}
 %\renewcommand \thefigure {
 %    \ifnum \c@section>\z@ 
 %        .\@arabic\c@figure
 %    \fi 
 %        \@arabic\c@chapter.\@arabic\c@figure}
-%\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@section}
+\renewcommand \thefigure {\@arabic\c@chapter.\@arabic\c@figure}
+\renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@table}
+\renewcommand \theequation {\@arabic\c@chapter.\@arabic\c@equation}
+%-----------------------------------------------------------------------------
+% End Set Counter for figure, table, and equation
+%=============================================================================
 
+%=============================================================================
+% Set Table, Figure Environment
+%-----------------------------------------------------------------------------
 % new environment for Figure
 \newenvironment{afigure}
     {\begin{figure}[ht]}
@@ -347,6 +535,6 @@
 \newenvironment{atable}
     {\begin{table}[ht] \renewcommand{\arraystretch}{1.5} \centering \small}
     {\end{table}}
-%------------------------------------------------------------------------------------------
+%-----------------------------------------------------------------------------
 % End Set Table, Figure Environment
-%==========================================================================================
+%=============================================================================
