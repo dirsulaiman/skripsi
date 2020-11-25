@@ -60,7 +60,7 @@ Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang
 
 \subsubsection{Averaging Filter}
 \textit{Averaging} filter atau biasa juga disebut \textit{box filter} adalah salah satu filter yang digunakan untuk menghaluskan citra dan mengurangi derau. Secara sederhana nilai sebuah piksel yang baru adalah nilai rata-rata dari nilai piksel tersebut dengan nilai piksel tetangganya \thecite{pdf:marcin}. Berikut kernel \textit{averaging} filter yang digunakan dalam penelitian ini:
-\begin{equation*}
+\begin{equation}
     \label{kernel:average}
     \frac{1}{9} \left[
     \begin{matrix}
@@ -69,11 +69,11 @@ Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang
         1 & 1 & 1
     \end{matrix}
     \right]
-\end{equation*}
+\end{equation}
 
 \subsubsection{Gaussian Blur}
 Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya mirip seperti \textit{averaging} filter, nilai piksel yang baru dibentuk dari nilai piksel tetangganya, tepai dengan memberikan bobot yang lebih kuat pada nilai pikselnya sendiri diikuti dengan bobot yang lebih rendah pada piksel atas, bawah dan sampingnya \thecite{soa:dmitry}. Berikut kernel gaussian blur filter yang digunakan dalam penelitian ini:
-\begin{equation*}
+\begin{equation}
     \label{kernel:mean2}
     \frac{1}{16}
     \left[
@@ -83,11 +83,11 @@ Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya 
         1 & 2 & 1
     \end{matrix}
     \right]
-\end{equation*}
+\end{equation}
 
 \subsubsection{Sobel}
 Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteksi tepi pada citra. Sobel memiliki dua kernel untuk deteksi tepi yaitu kernel sobel vertikal untuk mendeteksi tepi secara vertikal dan kernel sobel horizontal yang mendeteksi tepi secara horizontal \thecite{pdf:marcin}. Berikut kernel Sobel vertikal dan horizontal yang digunakan dalam penelitian ini:
-\begin{equation*}
+\begin{equation}
     \label{kernel:sobel-h}
     \left[
     \begin{matrix}
@@ -104,11 +104,11 @@ Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteks
         -1 & -2 & -1
     \end{matrix}
     \right]
-\end{equation*}
+\end{equation}
 
 \subsubsection{Laplacian}
 Filter ini dapat digunakan untuk deteksi tepi pada citra karena sifatnya yang sensitif dengan perubahan intensitas yang cepat \thecite{pdf:jingbo}. Tidak seperti Sobel yang menggunakan dua kernel untuk mendeteksi tepi secara vertikal dan horizontal, disini hanya digunakan sebuah kernel yang dapat digunakan untuk deteksi tepi secara vertikal dan horizontal sekaligus. Berikut kernel Laplacian yang digunakan dalam penelitian ini:
-\begin{equation*}
+\begin{equation}
     \label{kernel:laplasHP}
     \left[
     \begin{matrix}
@@ -117,11 +117,11 @@ Filter ini dapat digunakan untuk deteksi tepi pada citra karena sifatnya yang se
         0 & 1 & 0
     \end{matrix}
     \right]
-\end{equation*}
+\end{equation}
 
 \subsubsection{Sharpening}
 Sharpening filter digunakan untuk memperjelas detail halus dalam citra atau untuk meningkatkan detail pada citra yang \textit{blur}, baik karena kesalahan ataupun karena efek dari metode akuisisi citra tertentu \thecite{pdf:ching}. Berikut kernel untuk filter \textit{sharpening} yang digunakan dalam penelitian ini:
-\begin{equation*}
+\begin{equation}
     \label{kernel:sharpening}
     \left[
     \begin{matrix}
@@ -130,7 +130,7 @@ Sharpening filter digunakan untuk memperjelas detail halus dalam citra atau untu
         -1 & -1 & -1
     \end{matrix}
     \right]
-\end{equation*}
+\end{equation}
 
 
 \subsection{Konvolusi}
