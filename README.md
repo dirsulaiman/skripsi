@@ -13,14 +13,14 @@ Template Skripsi LaTex, Program Studi Ilmu Komputer, Fakultas MIPA, Universitas 
 - Install TexLive, dan package yang dibutuhkan jika perlu
 - Download atau clone Template Skripsi ini. Anda juga dapat [Fork](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/fork-a-repo) repository ini ke akun Github anda
 - Kemudian lakukan modifikasi sesuai keinginan dan kebutuhan
-- Jalankan `$ pdflatex seminar-proposal.tex` untuk men-compile file `seminar-proposal.tex` menjadi `proposal.pdf`
+- Jalankan `$ pdflatex seminar-proposal.tex` untuk men-compile file `seminar-proposal.tex` menjadi `seminar-proposal.pdf`
 > TexLive hanya tersedia untuk [Linux](http://www.tug.org/texlive/quickinstall.html) dan [Windows](http://www.tug.org/texlive/windows.html), untuk Mac OS gunakan [MacTex](http://www.tug.org/mactex/). 
 > [MikTex](https://miktex.org/) juga dapat digunakan sebagai alternatif TexLive di Windows. 
 > Template Skripsi ini menggunakan PdfLatex sebagai engine, bagi pengguna LuaLatex atau XeLatex mungkin memerlukan sedikit penyesuaikan dan perbaikan. 
 
 
 #### Overleaf (Online LaTex Editor)
-Jika anda mengalami banyak masalah dalam proses install LaTex dan konfigurasi packagenya mungkin Online LaTex Editor bisa menjadi solusinya.Overleaf adalah salah satu layanan LaTex editor berbasis web. Anda hanya perlu membuat registrasi untuk memulai menulis project LaTex. [Overleaf Project](https://www.overleaf.com/read/xvdzphmvntrb)
+Jika anda mengalami banyak masalah dalam proses install LaTex dan konfigurasi packagenya mungkin Online LaTex Editor bisa menjadi solusinya. Overleaf adalah salah satu layanan LaTex editor berbasis web. Anda hanya perlu melakukan registrasi untuk memulai menulis project LaTex. [Overleaf Project](https://www.overleaf.com/read/xvdzphmvntrb)
 - Registrasi di [Overleaf.com](https://www.overleaf.com/login) kemudian login 
 - Download [Skripsi.zip](https://github.com/dirsulaiman/Skripsi/files/5500599/Skripsi_v0.1.zip) atau clone project ini kemudian compress dalam bentuk zip
 - Buat project baru pada Overleaf.com dengan klik "New Project" kemudian pilih "Upload Project"
