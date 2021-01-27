@@ -166,15 +166,6 @@ Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dija
 Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
 
 
-% \subsubsection{Frame Per Second (FPS)}
-% Frame per sercond merupakan bla bla ...
-% \begin{equation}
-%     \label{eq:fps}
-%     \begin{split}
-%          fps = \frac{frames}{seconds} = \frac{1}{\frac{seconds}{frames}}
-%     \end{split}
-% \end{equation}
-
 \subsection{FPGA}
 \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang ke aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
 
@@ -186,13 +177,37 @@ Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kod
     \label{fig:fpga-structure}
 \end{afigure}
 
-Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \thecite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Develepment Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini.
+\subsubsection{FPGA Development Board}
+Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \thecite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Develepment Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
 
 \begin{afigure}
     \includegraphics[width=6cm, center]{images/pynq-z2.jpeg}
     \caption{FPGA Board Xilinx PYNQ-Z2.}
     \label{fig:pynq-z2}
 \end{afigure}
+
+
+\subsection{Evaluasi Performa}
+
+\subsubsection{Frame Rate (FPS)}
+Frame per sercond merupakan bla bla ...
+\blindtext
+\begin{equation}
+    \label{eq:fps}
+    \begin{split}
+         fps = \frac{frames}{seconds} = \frac{1}{\frac{seconds}{frames}}
+    \end{split}
+\end{equation}
+
+\subsubsection{Penggunaan CPU}
+
+\subsubsection{Penggunaan Memory}
+
+\subsubsection{Resident Memory (RES)}
+
+\subsubsection{Shared Memory (SHR)}
+
+\subsubsection{Virtual Memory (VIRT)}
 
 
 \section{Penelitian Terkait}
