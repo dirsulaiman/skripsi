@@ -4,42 +4,44 @@
 
 % \subsection*{Percobaan 1}
 
-\begin{small}
-    % \caption{Perbandingan FPS}
-    \label{table:arm-aveblur1}
-    \csvreader[
-        % column count = 11,
-        head to column names,
-        longtable=cccccccc,
-        separator=semicolon,
-        before table=\rowcolors{2}{gray!15}{gray!30},
-        table head= \rowcolor{gray!50!black} 
-            \color{white} PID & 
-            \color{white} VIRT & 
-            \color{white} RES &
-            \color{white} SHR & 
-            \color{white} Status &  
-            \color{white} CPU(\%) &
-            \color{white} MEM(\%) & 
-            \color{white} Time(s) 
-            \\]
-        {tables/performance-test/arm-aveblur5.csv}
-        {
-            PID=\PID, 
-            VIRT=\VIRT, 
-            RES=\RES,
-            SHR=\SHR, 
-            S=\S,
-            CPU=\CPU,
-            MEM=\MEM, 
-            TIME=\TIME}
-        {
-            \PID & 
-            \VIRT & 
-            \RES &
-            \SHR & 
-            \S &
-            \CPU &
-            \MEM & 
-            \TIME}
-\end{small}
+\begin{table}
+    \begin{small}
+        \caption{ARM Average Blur Percobaan 1}
+        \label{table:arm-aveblur1}
+        \csvreader[
+            % column count = 11,
+            head to column names,
+            longtable=cccccccc,
+            separator=semicolon,
+            before table=\rowcolors{2}{gray!15}{gray!30},
+            table head= \rowcolor{gray!50!black} 
+                \color{white} PID & 
+                \color{white} VIRT & 
+                \color{white} RES &
+                \color{white} SHR & 
+                \color{white} Status &  
+                \color{white} CPU(\%) &
+                \color{white} MEM(\%) & 
+                \color{white} Time(s) 
+                \\]
+            {tables/performance-test/arm-aveblur5.csv}
+            {
+                PID=\PID, 
+                VIRT=\VIRT, 
+                RES=\RES,
+                SHR=\SHR, 
+                S=\S,
+                CPU=\CPU,
+                MEM=\MEM, 
+                TIME=\TIME}
+            {
+                \PID & 
+                \VIRT & 
+                \RES &
+                \SHR & 
+                \S &
+                \CPU &
+                \MEM & 
+                \TIME}
+    \end{small}
+\end{table}
