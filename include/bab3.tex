@@ -23,25 +23,37 @@ Pada penelitian ini akan dibangun suatu sistem untuk mengimplementasikan filter 
     \label{fig:rancangan-sistem}
 \end{afigure}
 
-Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pada FPGA Board, kemudian video \textit{stream} tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah diterapkan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan Jupyter Notebook melalui browser.
+Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pada FPGA Development Board, kemudian video \textit{stream} tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah diterapkan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA Development Board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan Jupyter Notebook melalui browser.
 
 \pagebreak
 
 \section{Instrumen Penelitian}
-Instrumen penelitian ini yaitu:
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
     \item Kebutuhan perangkat lunak:
     \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label={\alph*.}]
-        \item Ubuntu 18, sebagai OS pada FPGA Board.
-        \item Python 3.6, dengan modul OpenCV, Numpy, Pynq 5.2, Xilinx xfOpenCV dan beberapa modul pendukung lainnya.
-        \item Jupyter Notebook pada FPGA Board. 
-        \item Web Browser untuk mengakses Jupyter Notebook pada FPGA Board.
+        \item Linux Ubuntu 18, sebagai OS pada FPGA Development Board.
+        \item Python 3.6, dengan library OpenCV, Numpy, Pynq 5.2, dan Xilinx xfOpenCV.
+        \item Jupyter Notebook pada FPGA Development Board. 
+        \item Web Browser untuk mengakses Jupyter Notebook pada FPGA Development Board.
     \end{enumerate}
     \item Kebutuhan perangkat keras:
     \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label={\alph*.}]
-        \item FPGA Board Xilinx PYNQ-Z2.
-        \item Micro SD Card 16Gb, sebagai media penyimpanan OS pada FPGA Board.
-        \item Monitor Eksternal, untuk menampilkan hasil penerapan filter spasial pada FPGA Board.
+        \item FPGA Development Board Xilinx PYNQ-Z2.
+        \item Micro SD Card 16 GB, sebagai media penyimpanan OS pada FPGA Development Board.
+        \item Monitor Eksternal, untuk menampilkan hasil penerapan filter spasial pada FPGA Development Board.
         \item Laptop Lenovo Ideapad 320 (sebagai \textit{source} video \textit{stream}).
     \end{enumerate}
+
+    Spesifikasi FPGA Development Board yang digunakan:
+    \begin{itemize}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+        \item Processor : Dual-Core ARM Cortex A9, 650 MHz
+        \item FPGA : 1,3M reconfigurable gates
+        \item Memory : 512 MB DDR3 / Flash
+        \item Storage : Micro SD card slot
+        \item Power : DC 7V-15V
+        \item Dimension : 3,44" x 5,39" (87mm x 137mm)
+    \end{itemize}
 \end{enumerate}
+
+
+

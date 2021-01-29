@@ -1,3 +1,8 @@
+% To Do
+% perbaiki jarak setelah figure dengan subsubsection
+% perbaiki jarak setelah table dengan subsubsection
+% buat header table center tapi isinya rata kiri
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi Class]
 \LoadClass[a4paper, 12pt]{report}
