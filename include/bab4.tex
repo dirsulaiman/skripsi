@@ -110,8 +110,14 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
             \color{white} Prosesor ARM (s) & 
             \color{white} FPGA (s)\\]
         {tables/hasil-time50.csv}
-        {filter=\filter, arm=\arm, fpga=\fpga}
-        {\filter & \arm & \fpga }
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
 \end{atable}
 \blindtext
 \begin{afigure}
@@ -122,6 +128,7 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
 
 
 \subsection{Frame Rate (FPS)}
+\blindtext
 \begin{atable}
     \caption{Tabel perbandingan FPS dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-fps}
@@ -134,8 +141,14 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
             \color{white} Tanpa FPGA & 
             \color{white} Dengan FPGA \\]
         {tables/hasil-fps.csv}
-        {filter=\filter, tanpafpga=\tanpafpga, denganfpga=\denganfpga}
-        {\filter & \tanpafpga & \denganfpga }
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
 \end{atable}
 \begin{afigure}
     \includegraphics[width=0.9\linewidth, center]{images/chart/chart-time50.png}
