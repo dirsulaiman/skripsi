@@ -1,0 +1,146 @@
+\documentclass{lib/myskripsi}
+
+% \usepackage{showframe}
+\usepackage{blindtext}
+\usepackage{longtable}
+
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\renewcommand{\baselinestretch}{1.42}
+\renewcommand{\UrlFont}{\small\rm}
+
+%=============================================================================
+% Package Daftar Pustaka, bentuk citasi
+% Config
+% - style, citestyle = {authoryear, numeric, apa, mla}
+% - sorting {year,name,title} = ynt
+%-----------------------------------------------------------------------------
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    citestyle=authoryear,
+    sorting=nty,
+    giveninits=false,
+    maxbibnames=3
+    ]{biblatex}
+\addbibresource{bibtex/daftar-pustaka.bib}
+% new citation style
+\let\oldcitate\cite
+\newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
+%-----------------------------------------------------------------------------
+% End Biblatex Config
+%=============================================================================
+
+%=============================================================================
+% Definisi Data Peneliti, Judul, Pembimbing dan Penguji
+%-----------------------------------------------------------------------------
+\titleind{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}
+
+\fullname{SULAEMAN}
+\idnum{H131 16 002}
+
+\examdate{\hspace{0.4cm} Mei 2020}
+
+\degree{Sarjana Sains}
+\yearsubmit{2020}
+\program{Ilmu Komputer}
+\dept{Matematika}
+\faculty{Fakultas Matematika dan Ilmu Pengetahuan Alam}
+
+\firstsupervisor{Dr. Eng. Armin Lawi, S.Si., M.Eng.}
+\firstsupervisorNIP{94199834743819}
+\secondsupervisor{Supri Bin Hj Amir, S.Si., M.Eng.}
+\secondsupervisorNIP{196402171991031004}
+\firstexaminer{ Dr. Hendra, S.Si., M.Kom.}
+\secondexaminer{ Nur Hilal A Syahrir, S.Si., M.Si.}
+%-----------------------------------------------------------------------------
+% End Definisi Data Peneliti, Judul, Pembimbing dan Penguji
+%=============================================================================
+
+\begin{document}
+    \noindent
+    \textit{Seminar II}
+    \coverproposal
+    \pagenumbering{roman}
+
+    %=============================================================================
+    % Daftar isi, daftar gambar, daftar tabel
+    %-----------------------------------------------------------------------------
+    \tableofcontents
+    \addcontentsline{toc}{chapter}{DAFTAR ISI}
+    \newpage
+
+    \listoftables
+    \addcontentsline{toc}{chapter}{DAFTAR TABEL}
+    \newpage
+
+    \listoffigures
+    \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+    \newpage
+    %-----------------------------------------------------------------------------
+    % End Daftar isi, daftar gambar, daftar tabel
+    %=============================================================================
+
+    \pagebreak
+    \pagenumbering{arabic}
+
+    %=============================================================================
+    % Daftar masukan untuk Bab
+    %-----------------------------------------------------------------------------
+    % \input{include/bab1.tex}
+    % \input{include/bab2.tex}
+    % \input{include/bab3.tex}
+    % \input{include/bab4.tex}
+    % \input{include/bab5.tex}
+    \blindtext
+    \lstset{frameround=fttt}
+    \begin{lstlisting}[frame=trBL]
+        // Hello.java
+        import javax.swing.JApplet;
+        import java.awt.Graphics;
+        
+        public class Hello extends JApplet {
+            public void paintComponent(Graphics g) {
+                g.drawString("Hello, world!", 65, 95);
+            }    
+        }
+        \end{lstlisting}
+    \blindtext
+        
+    % \input{include/lampiran.tex}
+    %-----------------------------------------------------------------------------
+    % End Daftar masukan untuk Bab
+    %=============================================================================
+
+    %=============================================================================
+    % Daftar Pustaka
+    %-----------------------------------------------------------------------------
+    \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+    \printbibliography[title={DAFTAR PUSTAKA}]
+    %-----------------------------------------------------------------------------
+    % End Daftar Pustaka
+    %=============================================================================
+
+\end{document}
