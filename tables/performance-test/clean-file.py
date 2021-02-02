@@ -30,6 +30,7 @@ def clean_file(file_name):
         s = s+i
     # remove % and + 
     s = re.sub(r'[%+]', "", s)
+    s = re.sub(r';\n', "\n", s)
     # replace ; to ,
     # s = re.sub(r'[;]', ",", s)
     file_input.seek(0)
