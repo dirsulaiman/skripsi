@@ -5,7 +5,7 @@
 % Jelaskan Proses Implementasi 
 \section{Implementasi pada FPGA Development Board}
 
-Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan tersebut dilakukan pada FPGA Development Board yang mengguankan prosesor ARM dan pada FPGA Development Board yang sama menggugnakan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukan masing-masing waktu komputasi, FPS, penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT).
+Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan tersebut dilakukan pada FPGA Development Board yang menggunakan prosesor ARM dan pada FPGA Development Board yang sama menggunakan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukan masing-masing waktu komputasi, FPS, penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT).
 
 FPGA Development Board dirangkai seperti yang telah disebutkan di Bab sebelumnya, dapat dilihat pada gambar \ref{fig:rancangan-sistem}. HDMI Output pada FPGA dihubungkan ke monitor dan HDMI Input dihubungkan ke \textit{source} dalam hal ini Laptop Lenovo Ideapad 320. FPGA Development Board juga dihubungkan ke \textit{router} menggunakan kabel UART agar dapat diakses menggunakan protokol \textit{ssh}. Selanjutnya memasang semua \textit{library} yang dibutuhkan di FPGA Development Board.
 % \subsection{Representasi Video Stream sebagai Citra Digital}
@@ -81,18 +81,56 @@ Pada penelitian ini peneliti melakukan dua proses dalam evaluasi kinerja. Proses
 \subsubsection{Menghitung Waktu Komutasi dan FPS}
 Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada lampiran (?).
 
-Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua frame selesai difilter pada setiap percobaan, waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai. Dilakukan dengan 50 frame dan 200 frame pada masing-masing kernel menggunakan prosesor ARM dan FPGA. Hasil waktu komputasi ini kemudian digunakan untuk menghitung FPS dari masing-masing percobaan.
+Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua frame selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai. Dilakukan dengan 50 frame dan 200 frame pada masing-masing kernel menggunakan prosesor ARM dan FPGA. Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
+\begin{afigure}
+    \lstinputlisting[frame=single, style=python]{images/programs/calculate-time.py}
+    \caption{Menghitung waktu komputasi dengan library time di Python.}
+    \label{code:calculate-time}
+\end{afigure}
 
-\subsubsection{Mencatat Penggunaan Memory dan CPU}
-Pada proses ini peneliti menggunakan program bawaan dari Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan memory dan CPU pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, berapa persen memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar (?).
+Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. FPS masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
+
+\subsubsection{Mencatat Penggunaan Memory dan CPU (Resource)}
+Pada proses ini peneliti menggunakan program bawaan dari Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan memory dan CPU (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, berapa persen memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
+\begin{afigure}
+    \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
+    \caption{Tampilan program \textbf{top}.}
+    \label{fig:top-linux}
+\end{afigure}
 
 Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan memory dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan implementasi ini menggunakan Jupyter Notebook yang berjalan di FPGA Development Board yang dapat diakses menggunakan Web Browser dari perangkat lain. Serta digunakan protokol SSH untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
 
-Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untuk percobaan mencatat penggunaan memory dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan pada saat tersebut.
+\begin{afigure}
+    \lstinputlisting[frame=single, style=python]{images/programs/pid.py}
+    \caption{Menampilkan PID sebuah proses dengan bahasa pemrograman Python.}
+    \label{code:pid}
+\end{afigure}
 
-Program top dijalankan sesaat sebelum proses penerapan filter dijalankan pada Jupyter Notebook. Output dari program top setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program top juga dihentikan.
+Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untuk percobaan mencatat penggunaan memory dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. Cara menampilkan ID proses (PID) menggunakan bahasa pemrograman Python dapat dilihat pada gambar \ref{code:pid}. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan pada saat tersebut. 
 
-Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperlukan pada penelitian ini, sehingga harus dilakukan proses ekstrak informasi yang diperlukan saja. Kemudian file yang telah diekstrak tersebut dibuat menjadi file CSV agar lebih mudah dalam proses pengolahannya. Proses tesebut dilakukan pada masing-masing kernel menggunakan prosesor ARM dan FPGA.
+\begin{afigure}
+    \begin{lstlisting}[frame=single, style=shell] 
+    $ top -d 0.1 -p 4382 -b >> arm-laplacian1.txt    
+    \end{lstlisting}
+    \caption{Menjalankan program \textbf{top} kemudian menyimpan hasilnya pada file arm-laplacian1.txt.}
+    \label{code:top}
+\end{afigure}
+
+Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan di file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada Jupyter Notebook. Output dari program top setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
+
+\begin{afigure}
+    \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.txt}
+    \caption{Potongan isi file arm-laplacian1.txt.}
+    \label{code:arm-laplacian1.txt}
+\end{afigure}
+
+Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat dilihat pada gambar \ref{code:arm-laplacian1.txt}. Isi dari file hasil ini masih banyak mengandung informasi yang tidak dibutuhkan pada penelitian ini, sehingga perlu dilakukan proses ekstraksi informasi yang dibutuhkan saja. Kemudian file yang telah diekstraksi tersebut dibuat menjadi file CSV agar lebih mudah dalam proses pengolahan selanjutnya, seperti pada gambar \ref{code:arm-laplacian1.csv}. Proses tesebut dilakukan sebanyak 5 kali percobaan pada masing-masing kernel menggunakan prosesor ARM dan FPGA.
+
+\begin{afigure}
+    \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.csv}
+    \caption{Isi file arm-laplacian1.csv.}
+    \label{code:arm-laplacian1.csv}
+\end{afigure}
 
 % Jelaskan Hasil
 \section{Analisis Kinerja}
@@ -135,6 +173,7 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
     \csvreader[
         head to column names,
         tabular=lcc,
+        separator=semicolon,
         before table=\rowcolors{2}{gray!15}{gray!30},
         table head= \rowcolor{gray!50!black} 
             \color{white} Filter & 
@@ -157,6 +196,28 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
 \end{afigure}
 
 \subsection{Penggunaan CPU}
+\begin{atable}
+    \caption{Tabel perbandingan penggunaan CPU dengan menggunakan prosesor ARM dan FPGA.}
+    \label{table:hasil-cpu}
+    \csvreader[
+        head to column names,
+        tabular=lcc,
+        separator=semicolon,
+        before table=\rowcolors{2}{gray!15}{gray!30},
+        table head= \rowcolor{gray!50!black} 
+            \color{white} Filter & 
+            \color{white} Prosesor ARM (\%) & 
+            \color{white} FPGA (\%)\\]
+        {tables/hasil-cpu.csv}
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
+\end{atable}
 \blindtext
 \begin{afigure}
     \includegraphics[width=0.9\linewidth, center]{images/chart/chart-cpu.png}
@@ -165,8 +226,29 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
 \end{afigure}
 
 \subsection{Penggunaan Memory}
+\begin{atable}
+    \caption{Tabel perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
+    \label{table:hasil-mem}
+    \csvreader[
+        head to column names,
+        tabular=lcc,
+        separator=semicolon,
+        before table=\rowcolors{2}{gray!15}{gray!30},
+        table head= \rowcolor{gray!50!black} 
+            \color{white} Filter & 
+            \color{white} Prosesor ARM (\%) & 
+            \color{white} FPGA (\%)\\]
+        {tables/hasil-mem.csv}
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
+\end{atable}
 \blindtext
-
 \begin{afigure}
     \includegraphics[width=0.9\linewidth, center]{images/chart/chart-mem.png}
     \caption{Grafik perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
@@ -174,8 +256,29 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
 \end{afigure}
 
 \subsection{Resident Memory (RES)}
+\begin{atable}
+    \caption{Tabel perbandingan penggunaan resident memory dengan menggunakan prosesor ARM dan FPGA.}
+    \label{table:hasil-res}
+    \csvreader[
+        head to column names,
+        tabular=lcc,
+        separator=semicolon,
+        before table=\rowcolors{2}{gray!15}{gray!30},
+        table head= \rowcolor{gray!50!black} 
+            \color{white} Filter & 
+            \color{white} Prosesor ARM (KiB) & 
+            \color{white} FPGA (KiB)\\]
+        {tables/hasil-res.csv}
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
+\end{atable}
 \blindtext
-
 \begin{afigure}
     \includegraphics[width=0.9\linewidth, center]{images/chart/chart-res.png}
     \caption{Grafik perbandingan penggunaan resident memory dengan menggunakan prosesor ARM dan FPGA.}
@@ -183,6 +286,28 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
 \end{afigure}
 
 \subsection{Shared Memory (SHR)}
+\begin{atable}
+    \caption{Tabel perbandingan penggunaan shared memory dengan menggunakan prosesor ARM dan FPGA.}
+    \label{table:hasil-shr}
+    \csvreader[
+        head to column names,
+        tabular=lcc,
+        separator=semicolon,
+        before table=\rowcolors{2}{gray!15}{gray!30},
+        table head= \rowcolor{gray!50!black} 
+            \color{white} Filter & 
+            \color{white} Prosesor ARM (KiB) & 
+            \color{white} FPGA (KiB)\\]
+        {tables/hasil-shr.csv}
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
+\end{atable}
 \blindtext
 
 \begin{afigure}
@@ -192,6 +317,28 @@ Isi dari file text hasil ini masih banyak mengandung informasi yang tidak diperl
 \end{afigure}
 
 \subsection{Virtual Memory (VIRT)}
+\begin{atable}
+    \caption{Tabel perbandingan penggunaan virtual memory dengan menggunakan prosesor ARM dan FPGA.}
+    \label{table:hasil-virt}
+    \csvreader[
+        head to column names,
+        tabular=lcc,
+        separator=semicolon,
+        before table=\rowcolors{2}{gray!15}{gray!30},
+        table head= \rowcolor{gray!50!black} 
+            \color{white} Filter & 
+            \color{white} Prosesor ARM (KiB) & 
+            \color{white} FPGA (KiB)\\]
+        {tables/hasil-virt.csv}
+        {
+            filter=\filter, 
+            arm=\arm, 
+            fpga=\fpga}
+        {
+            \filter & 
+            \arm & 
+            \fpga }
+\end{atable}
 \blindtext
 
 \begin{afigure}

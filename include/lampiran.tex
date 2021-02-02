@@ -1,56 +1,66 @@
 \chapter*{LAMPIRAN}
+\setcounter{chapter}{7}
 
-\blindtext
+\section{Data Hasil Percobaan ARM Average Blur}
 
-% \subsection*{Percobaan 1}
+\subsection{Percobaan 1}
+% ARM Average Blur Percobaan 1    
+\csvautolongtable[separator=semicolon]{tables/performance-test/arm-aveblur1.csv}
 
-\begin{table}
-    \begin{small}
-        \caption{ARM Average Blur Percobaan 1}
-        \label{table:arm-aveblur1}
-        \csvreader[
-            % column count = 11,
-            head to column names,
-            longtable=cccccccc,
-            separator=semicolon,
-            before table=\rowcolors{2}{gray!15}{gray!30},
-            table head= \rowcolor{gray!50!black} 
-                \color{white} PID & 
-                \color{white} VIRT & 
-                \color{white} RES &
-                \color{white} SHR & 
-                \color{white} Status &  
-                \color{white} CPU(\%) &
-                \color{white} MEM(\%) & 
-                \color{white} Time(s) 
-                \\]
-            {tables/performance-test/arm-aveblur5.csv}
-            {
-                PID=\PID, 
-                VIRT=\VIRT, 
-                RES=\RES,
-                SHR=\SHR, 
-                S=\S,
-                CPU=\CPU,
-                MEM=\MEM, 
-                TIME=\TIME}
-            {
-                \PID & 
-                \VIRT & 
-                \RES &
-                \SHR & 
-                \S &
-                \CPU &
-                \MEM & 
-                \TIME}
-    \end{small}
-\end{table}
+\subsection{Percobaan 2}
+% ARM Average Blur Percobaan 2    
+\csvautolongtable[separator=semicolon]{tables/performance-test/arm-aveblur2.csv}
 
-\begin{lstlisting}[frame=single, style=shell]
-    $ top -d 0.5 -p 1234 -b >> hasil-.txt    
-\end{lstlisting}
+\subsection{Percobaan 3}
+% ARM Average Blur Percobaan 3    
+\csvautolongtable[separator=semicolon]{tables/performance-test/arm-aveblur3.csv}
 
-\blindtext
+\subsection{Percobaan 4}
+% ARM Average Blur Percobaan 4    
+\csvautolongtable[separator=semicolon]{tables/performance-test/arm-aveblur4.csv}
 
-\lstinputlisting[frame=single, style=python]{tables/performance-test/clean-file.py}
+\subsection{Percobaan 5}
+% ARM Average Blur Percobaan 5    
+\csvautolongtable[separator=semicolon]{tables/performance-test/arm-aveblur5.csv}
 
+% \begin{table}
+%     \renewcommand{\arraystretch}{1.5} 
+%     \caption{ARM Average Blur Percobaan 1}
+%     \label{table:arm-aveblur1}
+%     \csvreader[
+%         % column count = 11,
+%         head to column names,
+%         longtable=cccccccc,
+%         separator=semicolon,
+%         late after line=\\,
+%         before table=\rowcolors{2}{gray!15}{gray!30},
+%         table head= \rowcolor{gray!50!black} 
+%             \color{white} PID & 
+%             \color{white} VIRT & 
+%             \color{white} RES &
+%             \color{white} SHR & 
+%             \color{white} Status &  
+%             \color{white} CPU(\%) &
+%             \color{white} MEM(\%) & 
+%             \color{white} Time(s) 
+%             \\]
+%         {tables/performance-test/arm-aveblur2.csv}
+%         {
+%             PID=\PID, 
+%             VIRT=\VIRT, 
+%             RES=\RES,
+%             SHR=\SHR, 
+%             S=\S,
+%             CPU=\CPU,
+%             MEM=\MEM, 
+%             TIME=\TIME}
+%         {
+%             \PID & 
+%             \VIRT & 
+%             \RES &
+%             \SHR & 
+%             \S &
+%             \CPU &
+%             \MEM & 
+%             \TIME}
+% \end{table}
