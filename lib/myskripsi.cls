@@ -118,7 +118,7 @@
     language=bash,
     emptylines=1,
     backgroundcolor=\color{black},
-    rulecolor=\color{light-gray},
+    rulecolor=\color{black},
     columns=flexible,
     basicstyle={\small\ttfamily\color{white}},
     breaklines=true,
@@ -128,6 +128,17 @@
     keywordstyle=\color{blue},
     commentstyle=\color{dkgreen},
     stringstyle=\color{mauve},
+}
+
+\lstdefinestyle{plain}{
+    emptylines=1,
+    backgroundcolor=\color{light-gray},
+    rulecolor=\color{light-gray},
+    columns=flexible,
+    basicstyle={\footnotesize\ttfamily\color{black}},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=2
 }
 %-----------------------------------------------------------------------------
 % End Code Script, Listing
@@ -587,6 +598,11 @@
 \newenvironment{atable}
     {\begin{table}[ht] \renewcommand{\arraystretch}{1.5} \centering \small}
     {\end{table}}
+
+% new environment for longtable
+\newenvironment{alongtable}
+    {\begin{longtable}{| c | c | c | c | c | c | c | c |} \renewcommand{\arraystretch}{1.5} }
+    {\end{longtable}}
 %-----------------------------------------------------------------------------
 % End Set Table, Figure Environment
 %=============================================================================
