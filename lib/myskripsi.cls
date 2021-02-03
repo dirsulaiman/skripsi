@@ -103,6 +103,8 @@
     emptylines=1,
     backgroundcolor=\color{light-gray},
     rulecolor=\color{light-gray},
+    xleftmargin=1cm,
+    framexleftmargin=1cm,
     columns=flexible,
     basicstyle={\small\ttfamily},
     breaklines=true,
