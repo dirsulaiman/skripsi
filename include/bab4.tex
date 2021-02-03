@@ -79,7 +79,7 @@ Penerapan filter spasial menggunakan prosesor ARM dilakukan dengan menggunakan \
 Pada penelitian ini peneliti melakukan dua proses dalam evaluasi kinerja. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat penggunaan CPU dan penggunaan memory termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
 
 \subsubsection{Menghitung Waktu Komutasi dan FPS}
-Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada lampiran (?).
+Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada lampiran.
 
 Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua frame selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai. Dilakukan dengan 50 frame dan 200 frame pada masing-masing kernel menggunakan prosesor ARM dan FPGA. Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
 \begin{afigure}
@@ -91,7 +91,7 @@ Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu 
 Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. FPS masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
 
 \subsubsection{Mencatat Penggunaan Memory dan CPU (Resource)}
-Pada proses ini peneliti menggunakan program bawaan dari Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan memory dan CPU (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, berapa persen memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
+Pada proses ini peneliti menggunakan program bawaan dari Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan memory (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
 \begin{afigure}
     \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
     \caption{Tampilan program \textbf{top}.}
