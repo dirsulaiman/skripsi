@@ -515,8 +515,8 @@
 }
 \renewcommand{\section}{
     \@startsection {section}{1}{\z@}
-        {-3.5ex \@plus -1ex \@minus -.2ex}
-        {2.3ex \@plus.2ex}
+        {-3.3ex \@plus -1ex \@minus -.2ex}
+        {2.1ex \@plus.2ex}
         {\normalfont\normalsize\bfseries}
 }
 \renewcommand{\subsection}{
@@ -598,13 +598,13 @@
 
 % new environment for Table
 \newenvironment{atable}
-    {\begin{table}[ht] \renewcommand{\arraystretch}{1.5} \centering \small}
+    {\begin{table}[ht] \renewcommand{\arraystretch}{1.3} \centering \small}
     {\end{table}}
 
 % new environment for longtable
-\newenvironment{alongtable}
-    {\begin{longtable}{| c | c | c | c | c | c | c | c |} \renewcommand{\arraystretch}{1.5} }
-    {\end{longtable}}
+% \newenvironment{alongtable}
+%     {\begin{longtable}{| c | c | c | c | c | c | c | c |} \renewcommand{\arraystretch}{1.5} }
+%     {\end{longtable}}
 %-----------------------------------------------------------------------------
 % End Set Table, Figure Environment
 %=============================================================================
