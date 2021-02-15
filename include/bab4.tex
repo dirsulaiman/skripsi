@@ -5,7 +5,7 @@
 % Jelaskan Proses Implementasi 
 \section{Implementasi pada FPGA Development Board}
 
-Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan tersebut dilakukan pada FPGA Development Board yang menggunakan prosesor ARM dan pada FPGA Development Board yang sama menggunakan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukan masing-masing waktu komputasi, FPS, penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT).
+Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan tersebut dilakukan pada FPGA Development Board yang menggunakan prosesor ARM dan pada FPGA Development Board yang sama menggunakan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukkan masing-masing waktu komputasi, FPS, penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT).
 
 FPGA Development Board dirangkai seperti yang telah disebutkan di Bab sebelumnya, dapat dilihat pada gambar \ref{fig:rancangan-sistem}. HDMI Output pada FPGA dihubungkan ke monitor dan HDMI Input dihubungkan ke \textit{source} dalam hal ini Laptop Lenovo Ideapad 320. FPGA Development Board juga dihubungkan ke \textit{router} menggunakan kabel UART agar dapat diakses menggunakan protokol \textit{ssh}. Selanjutnya memasang semua \textit{library} yang dibutuhkan di FPGA Development Board.
 
@@ -258,7 +258,7 @@ Pada tabel \ref{table:hasil-fps} terlihat dengan menggunakan prosesor ARM dipero
 
 
 \subsection{Penggunaan CPU}
-Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{fig:table-hasil-cpu}. 
+Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-cpu} dan grafik pada gambar \ref{fig:chart-cpu}. Rata-rata penggunaan CPU dengan prosesor ARM adalah 99.58\% sedangkan dengan FPGA diperoleh 84.75\%. Data ini menunjukkan bahwa penggunaan CPU dengan prosesor ARM sedikit lebih besar daripada dengan FPGA.
 \begin{atable}
     \caption{Tabel perbandingan penggunaan CPU dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-cpu}
@@ -281,14 +281,16 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
             \arm & 
             \fpga }
 \end{atable}
-\blindtext
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-cpu.png}
     \caption{Grafik perbandingan penggunaan CPU dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-cpu}
 \end{figure}
+Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel average blur (99,83\%) dan dengan FPGA pada kernel sobel horizontal (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel sharpening dan sobel horizontal (99,47\%) dan dengan FPGA pada kernel gaussian blur (83,70\%).
+
 
 \subsection{Penggunaan Memory}
+Data penggunaan memory dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-mem} dan grafik pada gambar \ref{fig:chart-mem}. Data ini menunjukkan persentase memory yang digunakan pada masing-masing kernel. Rata-rata penggunaan memory dengan prosesor ARM adalah 25,37\% dan 24,86\% dengan FPGA. 
 \begin{atable}
     \caption{Tabel perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-mem}
@@ -311,14 +313,17 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
             \arm & 
             \fpga }
 \end{atable}
-\blindtext
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-mem.png}
     \caption{Grafik perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-mem}
 \end{figure}
+Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan memory pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan memory FPGA ini 0,51\% lebih rendah dari penggunaan memory dengan prosesor ARM.
+
 
 \subsection{Resident Memory (RES)}
+Data penggunaan resident memory atau RES dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-res} dan grafik pada gambar \ref{fig:chart-res}. Data ini menunjukkan banyaknya RES (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video stream dengan masing-masing kernel.
+
 \begin{atable}
     \caption{Tabel perbandingan penggunaan resident memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-res}
@@ -341,12 +346,13 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
             \arm & 
             \fpga }
 \end{atable}
-\blindtext
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-res.png}
     \caption{Grafik perbandingan penggunaan resident memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-res}
 \end{figure}
+Rata-rata RES yang digunakan pada prosesor ARM adalah 129108,60 KiB dan 126437,20 KiB pada FPGA. Terlihat bahwa penggunaan RES pada prosesor ARM dan FPGA juga tidak jauh berbeda. Penggunaan RES terbesar dengan prosesor ARM yaitu pada kernel gaussian blur 131804,40 KiB, sedangkan dengan FPGA yaitu pada kernel sharpening 127931,20 KiB.
+
 
 \subsection{Shared Memory (SHR)}
 \begin{atable}
@@ -371,8 +377,6 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
             \arm & 
             \fpga }
 \end{atable}
-\blindtext
-
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-shr.png}
     \caption{Grafik perbandingan penggunaan shared memory dengan menggunakan prosesor ARM dan FPGA.}
