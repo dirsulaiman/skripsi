@@ -6,5 +6,13 @@ KiB Swap:  1048572 total,  1047804 free,      768 used.   261604 avail Mem
 
   PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  4382 root      20   0  388124 125980  54808 S   0.0 24.8   0:24.96 python3
- ...
+
+ top - 18:03:00 up  1:24,  2 users,  load average: 0.35, 0.54, 0.47
+Tasks:   1 total,   0 running,   1 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  9.9 us,  1.7 sy,  0.0 ni, 88.4 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+KiB Mem :   508556 total,    23816 free,   239548 used,   245192 buff/cache
+KiB Swap:  1048572 total,  1047804 free,      768 used.   261604 avail Mem 
+
+  PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
+ 4382 root      20   0  388124 125980  54808 S   0.0 24.8   0:24.96 python3
  ...
