@@ -1,10 +1,19 @@
 
 \chapter{KESIMPULAN DAN SARAN}
 
-
 \section{Kesimpulan}
-% \subsection{Citra Digital}
-\blindtext
+Berdasarkan hasil penerapan filter spasial linear pada FPGA Development Board dengan menggunakan 6 kernel, peneliti dapat menarik beberapa kesimpulan sebagai berikut:
+\begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Waktu komputasi dan FPS dengan menggunakan FPGA secara umum lebih baik dibandingkan dengan menggunaan prosesor ARM. 
+    \item Penggunaan CPU pada FPGA sedikit lebih rendah dibandingkan penggunaan CPU pada prosesor ARM.
+    \item Secara umum penggunaan memory, shared memory, virtual memory, dan resident memory pada FPGA tidak jauh berbeda dengan yang digunakan pada prosesor ARM.
+\end{enumerate}
+
 
 \section{Saran}
-\blindtext
+Setelah melakukan penelitian ini, peneliti dapat memberikan beberapa saran sebagai berikut:
+\begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Pada penelitian ini peneliti hanya menggunakan 6 kernel dengan ukuran 3x3 yaitu average blur, gaussian blur, laplacian, sharpening, sobel horizontal dan sobel vertical. Untuk kedepannya, disarankan untuk menggunakan kernel lain dengan ukuran yang lebih beragam.
+    \item Pada penelitian ini peneliti hanya menggunakan metode pemrosesan citra low-level yaitu filter spasial linear, kedepannya disarankan menggunakan metode pemrosesan citra mid-level atau pemrosesan high-level.
+    \item Melakukan pengolahan citra digital pada jenis citra warna, tidak terbatas hanya pada citra grayscale saja.
+\end{enumerate}
