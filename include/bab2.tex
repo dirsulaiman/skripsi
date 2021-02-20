@@ -230,12 +230,11 @@ Status sebuah proses pada program ini dinyatakan dengan beberapa singkatan, dian
 Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CPUnya berdasarkan core yang digunakan oleh proses tersebut. Jika mode Irix pada program \textit{top} dimatikan, maka program akan berjalan pada mode Solaris di mana penggunaan CPU sebuah proses yang ditampilkan akan dibagi dengan jumlah total core yang ada pada CPU \thecite{manual:linux}.
 
 \subsubsection{Penggunaan Memory}
+
+\thecite{book:os}
+
 Linux Memory Types
-For  our  purposes there are three types of memory, and one is optional.  First is physical mem‐
-ory, a limited resource where code and data must reside when executed or  referenced.   Next  is
-the  optional  swap  file, where modified (dirty) memory can be saved and later retrieved if too
-many demands are made on physical memory.  Lastly we have virtual memory, a nearly unlimited re‐
-source serving the following goals:
+For  our  purposes there are three types of memory, and one is optional.  First is physical memory, a limited resource where code and data must reside when executed or  referenced.   Next  is the  optional  swap  file, where modified (dirty) memory can be saved and later retrieved if too many demands are made on physical memory.  Lastly we have virtual memory, a nearly unlimited resource serving the following goals:
 
    1. abstraction, free from physical memory addresses/limits
    2. isolation, every process in a separate address space
@@ -253,13 +252,88 @@ low.  Both physical memory and virtual memory can include any of the four, while
 only  includes  1  through 3.  The memory in quadrant 4, when modified, acts as its own dedi‐
 cated swap file.
 
+Private     | Shared
+1           |          2
+Anonymous  . stack               |
+. malloc()            |
+. brk()/sbrk()        | . POSIX shm*
+. mmap(PRIVATE, ANON) | . mmap(SHARED, ANON)
+-----------------------+----------------------
+. mmap(PRIVATE, fd)   | . mmap(SHARED, fd)
+File-backed  . pgms/shared libs    |
+3           |          4
+
+
+MEMORY Usage
+This  portion  consists  of  two  lines  which may express values in kibibytes (KiB)
+through exbibytes (EiB) depending on the scaling factor enforced with the `E' inter‐
+active command.
+
+As a default, Line 1 reflects physical memory, classified as:
+    total, free, used and buff/cache
+
+Line 2 reflects mostly virtual memory, classified as:
+    total, free, used and avail (which is physical memory)
+
+The  avail number on line 2 is an estimation of physical memory available for start‐
+ing new applications, without swapping.  Unlike the free field, it attempts  to  ac‐
+count  for readily reclaimable page cache and memory slabs.  It is available on ker‐
+nels 3.14, emulated on kernels 2.6.27+, otherwise the same as free.
+
+In the alternate memory display modes, two abbreviated summary lines are shown  con‐
+sisting of these elements:
+                a    b          c
+    GiB Mem : 18.7/15.738   [ ...
+    GiB Swap:  0.0/7.999    [ ...
+
+Where:  a)  is  the percentage used; b) is the total available; and c) is one of two
+visual graphs of those representations.
+
+In the case of physical memory, the percentage represents the total minus the  esti‐
+mated avail noted above.  The `Mem' graph itself is divided between used and any re‐
+maining memory not otherwise accounted for by avail.  See  topic  4b.  SUMMARY  AREA
+Commands  and  the `m' command for additional information on that special 4-way tog‐
+gle.
+
+This table may help in interpreting the scaled values displayed:
+    KiB = kibibyte = 1024 bytes
+    MiB = mebibyte = 1024 KiB = 1,048,576 bytes
+    GiB = gibibyte = 1024 MiB = 1,073,741,824 bytes
+    TiB = tebibyte = 1024 GiB = 1,099,511,627,776 bytes
+    PiB = pebibyte = 1024 TiB = 1,125,899,906,842,624 bytes
+    EiB = exbibyte = 1024 PiB = 1,152,921,504,606,846,976 bytes
+
 
 \subsubsection{Resident Memory (RES)}
+Resident Memory Size (KiB)
+A subset of the virtual address space (VIRT) representing the non-swapped physi‐
+cal memory a task is currently using.  It is also the sum of the RSan, RSfd  and
+RSsh fields.
+
+It can include private anonymous pages, private pages mapped to files (including
+program images and shared libraries) plus shared anonymous pages.  All such mem‐
+ory is backed by the swap file represented separately under SWAP.
+
+Lastly,  this  field may also include shared file-backed pages which, when modi‐
+fied, act as a dedicated swap file and thus will never impact SWAP.
+
+See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Shared Memory (SHR)}
+Shared Memory Size (KiB)
+A  subset of resident memory (RES) that may be used by other processes.  It will
+include shared anonymous pages and shared file-backed pages.  It  also  includes
+private pages mapped to files representing program images and shared libraries.
+
+See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Virtual Memory (VIRT)}
+Virtual Memory Size (KiB)
+The total amount of virtual memory used by the task.  It includes all code, data
+and  shared  libraries plus pages that have been swapped out and pages that have
+been mapped but not used.
 
+See `OVERVIEW, Linux Memory Types' for additional details.
 
 \section{Penelitian Terkait}
 \subsection{Spatial Filtering Based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation}
