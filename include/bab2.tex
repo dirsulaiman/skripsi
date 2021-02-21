@@ -233,23 +233,18 @@ Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CP
 
 \thecite{book:os}
 
-Linux Memory Types
-For  our  purposes there are three types of memory, and one is optional.  First is physical memory, a limited resource where code and data must reside when executed or  referenced.   Next  is the  optional  swap  file, where modified (dirty) memory can be saved and later retrieved if too many demands are made on physical memory.  Lastly we have virtual memory, a nearly unlimited resource serving the following goals:
+Pada sistem operasi linux memory dibagi menjadi tiga jenis \thecite{manual:linux}. Pertama yaitu memory fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah memory swap, yaitu  memory yang berguna untuk membantu kerja memory fisk, data dari memory fisik akan disimpan pada swap dan kemudian diambil kembali jika terlalu banyak permintaan pada memori fisik. Ketiga yaitu virtual memory, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut:
 
-   1. abstraction, free from physical memory addresses/limits
-   2. isolation, every process in a separate address space
-   3. sharing, a single mapping can serve multiple needs
-   4. flexibility, assign a virtual address to a file
-
-Regardless  of  which  of  these forms memory may take, all are managed as pages (typically 4096
-bytes) but expressed by default in top as KiB (kibibyte).  The memory discussed under topic 2c.
-MEMORY  Usage' deals with physical memory and the swap file for the system as a whole.  The mem‐
-ory reviewed in topic '3. FIELDS / Columns Display' embraces all three memory types, but for in‐
-dividual processes.
+\begin{enumerate} [label=\textbf{\alph*.}]
+    \item abstraction, bebas dari alamat / batas memori fisik 
+    \item isolation, setiap proses dalam ruang alamat terpisah 
+    \item sharing, pemetaan tunggal dapat memenuhi banyak kebutuhan 
+    \item flexibility, menetapkan alamat virtual ke data 
+\end{enumerate}
 
 For  each  such process, every memory page is restricted to a single quadrant from the table be‐
 low.  Both physical memory and virtual memory can include any of the four, while the  swap  file
-only  includes  1  through 3.  The memory in quadrant 4, when modified, acts as its own dedi‐
+only  includes  1  through  3.  The memory in quadrant 4, when modified, acts as its own dedi‐
 cated swap file.
 
 Private     | Shared
