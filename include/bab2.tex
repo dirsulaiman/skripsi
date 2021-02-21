@@ -7,14 +7,14 @@
 \subsection{Citra Digital}
 Citra digital dapat didefinisikan sebagai fungsi \textit{f(x,y)} berukuran M baris dan N kolom, dengan \textit{x} dan \textit{y} adalah kordinat spasial, dan amplitudo \textit{f} di titik kordinat (x,y) dinamakan intensitas atau tingkat keabuan dari citra pada citra tersebut \thecite{book:darma}. Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna dasarnya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar walaupun dengan ukuran yang sama. Berdasarkan jenis warnanya citra digital dibagi menjadi 3 jenis:
 
-\begin{enumerate} [label=\textbf{\alph*.}]
-    \item \textbf{Citra Biner (monokrom)} \\ 
-    Citra biner hanya memiliki dua warna saja, yaitu hitam dan putih. Warna hitam direpresentasikan dengan 1 dan warna putih direpresentasikan dengan 0. Dibutuhkan 1 bit di memori untuk menyimpan warna ini. Contoh citra biner dapat dilihat pada gambar ~\ref{fig:jenis-citra}(a).
-    \item \textbf{Citra Grayscale} \\ 
-    Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra \textit{grayscale} 2 bit memiliki 4 gradasi warna, citra \textit{grayscale} 3 bit memiliki 8 gradasi warna, dan seterusnya. Semakin besar jumlah bit warna yang disediakan di memori, semakin banyak dan semakin halus gradasi warna yang terbentuk. Pada umumnya citra digital \textit{grayscale} menggunakan 8 bit memori dengan derajat keabuan dari 0 sampai 255. Contoh citra \textit{grayscale} dapat dilihat pada gambar ~\ref{fig:jenis-citra}(b).
-    \item \textbf{Citra Warna} \\ 
-    Setiap piksel pada citra warna mewakili warna yang merupakan kombinasi dari tiga warna dasar (RGB = Red Green Blue). Setiap warna dasar menggunakan penyimpanan 8 bit, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna. Berarti setiap piksel mempunyai kombinasi warna sebanyak 255 x 255 x 255 =16 juta warna lebih. Contoh citra warna dapat dilihat pada gambar ~\ref{fig:jenis-citra}(c).
-\end{enumerate}
+\subsubsection{Citra Biner (monokrom)} 
+Citra biner hanya memiliki dua warna saja, yaitu hitam dan putih. Warna hitam direpresentasikan dengan 1 dan warna putih direpresentasikan dengan 0. Dibutuhkan 1 bit di memori untuk menyimpan warna ini. Contoh citra biner dapat dilihat pada gambar ~\ref{fig:jenis-citra}(a).
+
+\subsubsection{Citra Grayscale}
+Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra \textit{grayscale} 2 bit memiliki 4 gradasi warna, citra \textit{grayscale} 3 bit memiliki 8 gradasi warna, dan seterusnya. Semakin besar jumlah bit warna yang disediakan di memori, semakin banyak dan semakin halus gradasi warna yang terbentuk. Pada umumnya citra digital \textit{grayscale} menggunakan 8 bit memori dengan derajat keabuan dari 0 sampai 255. Contoh citra \textit{grayscale} dapat dilihat pada gambar ~\ref{fig:jenis-citra}(b).
+
+\subsubsection{Citra Warna} 
+Setiap piksel pada citra warna mewakili warna yang merupakan kombinasi dari tiga warna dasar (RGB = Red Green Blue). Setiap warna dasar menggunakan penyimpanan 8 bit, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna. Berarti setiap piksel mempunyai kombinasi warna sebanyak 255 x 255 x 255 =16 juta warna lebih. Contoh citra warna dapat dilihat pada gambar ~\ref{fig:jenis-citra}(c).
 
 \begin{afigure}
     \includegraphics[width=0.85\textwidth, center]{images/jenis-jenis-citra.png}
@@ -26,19 +26,30 @@ Citra digital dapat didefinisikan sebagai fungsi \textit{f(x,y)} berukuran M bar
 \subsection{Pengolahan Citra Digital}
 Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \thecite{book:gonzalez}.
 
-
 Berdasarkan tujuannya pengolahan citra juga dapat dibagi menjadi beberapa bagian yaitu: \textit{image enhancement}, \textit{image restoration}, \textit{image analysis} dan \textit{image compression} \thecite{book:dasilva}.
 
-\begin{enumerate} [label=\textbf{\alph*.}]
-    \item \textbf{Image Enhancement} \\ 
-    \textit{Image Enhancement} adalah metode pengolahan citra digital untuk membuat citra tampak lebih baik atau dilakukan peningkatan untuk analisis tertentu. Namun hal ini dapat menyebabkan pengorbanan aspek lain dari citra tersebut. Penerapan filter, penghalusan citra, memperbaiki kontras dan morfologi citra adalah contoh \textit{image enhancement}. 
-    \item \textbf{Image Restoration} \\ 
-    \textit{Image restoration} adalah metode pengolahan citra untuk memulihkan citra dari penurunan kualitas atau citra yang rusak karena derau (\textit{noise}). Pada dasarnya metode ini berbeda dengan \textit{image enhancement} yang berkaitan dengan ekstraksi fitur pada citra. 
-    \item \textbf{Image Analysis} \\ 
-    \textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek.
-    \item \textbf{Image Compression} \\ 
-    Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih kompak sehingga memerlukan memori yang lebih sedikit. Metode ini dapat dilakukan dengan mengurangi redundansi dari data-data yang terdapat dalam citra sehingga dapat disimpan atau ditransmisikan secara efisien.
-\end{enumerate}
+\subsubsection{Image Enhancement}
+\textit{Image Enhancement} adalah metode pengolahan citra digital untuk membuat citra tampak lebih baik atau dilakukan peningkatan untuk analisis tertentu. Namun hal ini dapat menyebabkan pengorbanan aspek lain dari citra tersebut. Penerapan filter, penghalusan citra, memperbaiki kontras dan morfologi citra adalah contoh \textit{image enhancement}.
+
+\subsubsection{Image Restoration}
+\textit{Image restoration} adalah metode pengolahan citra untuk memulihkan citra dari penurunan kualitas atau citra yang rusak karena derau (\textit{noise}). Pada dasarnya metode ini berbeda dengan \textit{image enhancement} yang berkaitan dengan ekstraksi fitur pada citra. 
+
+\subsubsection{Image Analysis}
+\textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek.
+
+\subsubsection{Image Compression}
+Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih kompak sehingga memerlukan memori yang lebih sedikit. Metode ini dapat dilakukan dengan mengurangi redundansi dari data-data yang terdapat dalam citra sehingga dapat disimpan atau ditransmisikan secara efisien.
+
+% \begin{enumerate} [label=\textbf{\alph*.}]
+%     \item \textbf{Image Enhancement} \\ 
+%     \textit{Image Enhancement} adalah metode pengolahan citra digital untuk membuat citra tampak lebih baik atau dilakukan peningkatan untuk analisis tertentu. Namun hal ini dapat menyebabkan pengorbanan aspek lain dari citra tersebut. Penerapan filter, penghalusan citra, memperbaiki kontras dan morfologi citra adalah contoh \textit{image enhancement}. 
+%     \item \textbf{Image Restoration} \\ 
+%     \textit{Image restoration} adalah metode pengolahan citra untuk memulihkan citra dari penurunan kualitas atau citra yang rusak karena derau (\textit{noise}). Pada dasarnya metode ini berbeda dengan \textit{image enhancement} yang berkaitan dengan ekstraksi fitur pada citra. 
+%     \item \textbf{Image Analysis} \\ 
+%     \textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek.
+%     \item \textbf{Image Compression} \\ 
+%     Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih kompak sehingga memerlukan memori yang lebih sedikit. Metode ini dapat dilakukan dengan mengurangi redundansi dari data-data yang terdapat dalam citra sehingga dapat disimpan atau ditransmisikan secara efisien.
+% \end{enumerate}
 
 \subsection{Filter Spasial}
 Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital \thecite{book:gonzalez}. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut.
@@ -138,14 +149,14 @@ Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuens
 \begin{equation}
     \label{eq:conv1}
     \begin{split}
- h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da
+h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da
     \end{split}
 \end{equation}
 dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan sebagai berikut:
 \begin{equation}
     \label{eq:conv2}
     \begin{split}
-  h(x) = f(x) * g(x) = \sum_{a=-\infty}^{\infty} f(a)g(x-a)
+h(x) = f(x) * g(x) = \sum_{a=-\infty}^{\infty} f(a)g(x-a)
     \end{split}
 \end{equation}
 
@@ -196,7 +207,7 @@ Waktu kumputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah
 \begin{equation}
     \label{eq:time}
     \begin{split}
-  waktu kompuatsi = waktu selesai - waktu mulai
+waktu kompuatsi = waktu selesai - waktu mulai
     \end{split}
 \end{equation}
 
@@ -205,7 +216,7 @@ Frame rate atau frame per second (fps) adalah banyaknya frame yang ditampilkan p
 \begin{equation}
     \label{eq:fps}
     \begin{split}
-  fps = \frac{jumlah frame}{waktu komputasi}
+fps = \frac{jumlah frame}{waktu komputasi}
     \end{split}
 \end{equation}
 
@@ -235,17 +246,18 @@ Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CP
 
 Pada sistem operasi linux memory dibagi menjadi tiga jenis \thecite{manual:linux}. Pertama yaitu memory fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah memory swap, yaitu  memory yang berguna untuk membantu kerja memory fisk, data dari memory fisik akan disimpan pada swap dan kemudian diambil kembali jika terlalu banyak permintaan pada memori fisik. Ketiga yaitu virtual memory, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut:
 
-\begin{enumerate} [label=\textbf{\alph*.}]
+\begin{itemize} [noitemsep, topsep=0pt]
     \item abstraction, bebas dari alamat / batas memori fisik 
     \item isolation, setiap proses dalam ruang alamat terpisah 
     \item sharing, pemetaan tunggal dapat memenuhi banyak kebutuhan 
     \item flexibility, menetapkan alamat virtual ke data 
-\end{enumerate}
+\end{itemize}
 
-For  each  such process, every memory page is restricted to a single quadrant from the table be‐
-low.  Both physical memory and virtual memory can include any of the four, while the  swap  file
-only  includes  1  through  3.  The memory in quadrant 4, when modified, acts as its own dedi‐
-cated swap file.
+Terlepas dari bentuk memori mana yang mungkin digunakan, semua dikelola sebagai pages (biasanya 4096
+byte). Penggunaan memory berhubungan dengan memory fisik dan swap untuk sistem secara keseluruhan. 
+Untuk setiap proses yang berjalan, setiap memori page dibatasi ke satu kuadran seperti pada gambar berikut. Baik memori fisik dan memori virtual dapat menyertakan salah satu dari empat kuadran, sementara file swap
+hanya mencakup kuadran 1 sampai 3. Memori di kuadran 4, bertindak sebagai
+file swap khusus ketika dimodifikasi. 
 
 Private     | Shared
 1           |          2
@@ -259,76 +271,53 @@ File-backed  . pgms/shared libs    |
 3           |          4
 
 
-MEMORY Usage
-This  portion  consists  of  two  lines  which may express values in kibibytes (KiB)
-through exbibytes (EiB) depending on the scaling factor enforced with the `E' inter‐
-active command.
-
-As a default, Line 1 reflects physical memory, classified as:
-    total, free, used and buff/cache
-
-Line 2 reflects mostly virtual memory, classified as:
-    total, free, used and avail (which is physical memory)
-
-The  avail number on line 2 is an estimation of physical memory available for start‐
-ing new applications, without swapping.  Unlike the free field, it attempts  to  ac‐
-count  for readily reclaimable page cache and memory slabs.  It is available on ker‐
-nels 3.14, emulated on kernels 2.6.27+, otherwise the same as free.
-
-In the alternate memory display modes, two abbreviated summary lines are shown  con‐
-sisting of these elements:
-                a    b          c
-    GiB Mem : 18.7/15.738   [ ...
-    GiB Swap:  0.0/7.999    [ ...
-
-Where:  a)  is  the percentage used; b) is the total available; and c) is one of two
-visual graphs of those representations.
-
-In the case of physical memory, the percentage represents the total minus the  esti‐
-mated avail noted above.  The `Mem' graph itself is divided between used and any re‐
-maining memory not otherwise accounted for by avail.  See  topic  4b.  SUMMARY  AREA
-Commands  and  the `m' command for additional information on that special 4-way tog‐
-gle.
-
-This table may help in interpreting the scaled values displayed:
-    KiB = kibibyte = 1024 bytes
-    MiB = mebibyte = 1024 KiB = 1,048,576 bytes
-    GiB = gibibyte = 1024 MiB = 1,073,741,824 bytes
-    TiB = tebibyte = 1024 GiB = 1,099,511,627,776 bytes
-    PiB = pebibyte = 1024 TiB = 1,125,899,906,842,624 bytes
-    EiB = exbibyte = 1024 PiB = 1,152,921,504,606,846,976 bytes
-
-
 \subsubsection{Resident Memory (RES)}
-Resident Memory Size (KiB)
-A subset of the virtual address space (VIRT) representing the non-swapped physi‐
-cal memory a task is currently using.  It is also the sum of the RSan, RSfd  and
-RSsh fields.
 
-It can include private anonymous pages, private pages mapped to files (including
-program images and shared libraries) plus shared anonymous pages.  All such mem‐
-ory is backed by the swap file represented separately under SWAP.
+Bagian dari ruang alamat virtual (VIRT) yang mewakili memori fisik yang tidak ditukar yang sedang digunakan tugas. Ini juga merupakan penjumlahan dari RSan, RSfd dan
+Bidang RSsh.
 
-Lastly,  this  field may also include shared file-backed pages which, when modi‐
-fied, act as a dedicated swap file and thus will never impact SWAP.
+Ini dapat mencakup private anonymous pages, halaman pribadi yang dipetakan ke file (termasuk
+gambar program dan perpustakaan bersama) ditambah halaman anonim bersama. Semua memori tersebut didukung oleh file swap yang direpresentasikan secara terpisah di bawah SWAP.
 
-See `OVERVIEW, Linux Memory Types' for additional details.
+Terakhir, resident memory ini juga dapat menyertakan halaman yang didukung file bersama yang bila diubah, bertindak sebagai file swap khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
+
+% Resident Memory Size (KiB)
+% A subset of the virtual address space (VIRT) representing the non-swapped physi‐
+% cal memory a task is currently using.  It is also the sum of the RSan, RSfd  and
+% RSsh fields.
+
+% It can include private anonymous pages, private pages mapped to files (including
+% program images and shared libraries) plus shared anonymous pages.  All such mem‐
+% ory is backed by the swap file represented separately under SWAP.
+
+% Lastly,  this  field may also include shared file-backed pages which, when modi‐
+% fied, act as a dedicated swap file and thus will never impact SWAP.
+
+% See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Shared Memory (SHR)}
-Shared Memory Size (KiB)
-A  subset of resident memory (RES) that may be used by other processes.  It will
-include shared anonymous pages and shared file-backed pages.  It  also  includes
-private pages mapped to files representing program images and shared libraries.
 
-See `OVERVIEW, Linux Memory Types' for additional details.
+Bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasuk anonymous pages dan shared file-backed pages. Ini juga termasuk private pages dipetakan ke file yang mewakili gambar program dan shared libraries \thecite{manual:linux}. 
+
+% Shared Memory Size (KiB)
+% A  subset of resident memory (RES) that may be used by other processes.  It will
+% include shared anonymous pages and shared file-backed pages.  It  also  includes
+% private pages mapped to files representing program images and shared libraries.
+
+% See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Virtual Memory (VIRT)}
-Virtual Memory Size (KiB)
-The total amount of virtual memory used by the task.  It includes all code, data
-and  shared  libraries plus pages that have been swapped out and pages that have
-been mapped but not used.
 
-See `OVERVIEW, Linux Memory Types' for additional details.
+Jumlah total memori virtual yang digunakan oleh proses. Ini mencakup semua kode, data
+dan shared  libraries ditambah pages yang telah ditukar dan pages yang memiliki
+telah dipetakan tetapi tidak digunakan \thecite{manual:linux}. 
+
+% Virtual Memory Size (KiB)
+% The total amount of virtual memory used by the task.  It includes all code, data
+% and  shared  libraries plus pages that have been swapped out and pages that have
+% been mapped but not used.
+
+% See `OVERVIEW, Linux Memory Types' for additional details.
 
 \section{Penelitian Terkait}
 \subsection{Spatial Filtering Based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation}
