@@ -5,16 +5,16 @@
 \section{Landasan Teori}
 
 \subsection{Citra Digital}
-Citra digital dapat didefinisikan sebagai fungsi \textit{f(x,y)} berukuran M baris dan N kolom, dengan \textit{x} dan \textit{y} adalah kordinat spasial, dan amplitudo \textit{f} di titik kordinat (x,y) dinamakan intensitas atau tingkat keabuan dari citra pada citra tersebut \thecite{book:darma}. Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna dasarnya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar walaupun dengan ukuran yang sama. Berdasarkan jenis warnanya citra digital dibagi menjadi 3 jenis:
+Citra digital dapat didefinisikan sebagai fungsi \textit{f(x,y)} berukuran M baris dan N kolom, dengan \textit{x} dan \textit{y} adalah kordinat spasial, dan amplitudo \textit{f} di titik kordinat (x,y) dinamakan intensitas atau tingkat keabuan dari citra pada citra tersebut \thecite{book:darma}. Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna dasarnya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar walaupun dengan ukuran yang sama. Berdasarkan jenis warnanya citra digital dibagi menjadi 3 jenis yaitu citra biner, citra grayscale dan citra warna.
 
 \subsubsection{Citra Biner (monokrom)} 
-Citra biner hanya memiliki dua warna saja, yaitu hitam dan putih. Warna hitam direpresentasikan dengan 1 dan warna putih direpresentasikan dengan 0. Dibutuhkan 1 bit di memori untuk menyimpan warna ini. Contoh citra biner dapat dilihat pada gambar ~\ref{fig:jenis-citra}(a).
+Citra biner adalah citra yang hanya memiliki dua warna saja yaitu hitam dan putih. Warna hitam direpresentasikan dengan 1 dan warna putih direpresentasikan dengan 0. Dibutuhkan 1 bit di memori untuk menyimpan nilai warna pada setiap piksel citra biner. Contoh citra biner dapat dilihat pada gambar ~\ref{fig:jenis-citra}(a).
 
 \subsubsection{Citra Grayscale}
-Banyaknya warna tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna ini. Citra \textit{grayscale} 2 bit memiliki 4 gradasi warna, citra \textit{grayscale} 3 bit memiliki 8 gradasi warna, dan seterusnya. Semakin besar jumlah bit warna yang disediakan di memori, semakin banyak dan semakin halus gradasi warna yang terbentuk. Pada umumnya citra digital \textit{grayscale} menggunakan 8 bit memori dengan derajat keabuan dari 0 sampai 255. Contoh citra \textit{grayscale} dapat dilihat pada gambar ~\ref{fig:jenis-citra}(b).
+Banyaknya warna pada citra \textit{grayscale} tergantung pada jumlah bit yang disediakan di memori untuk menampung kebutuhan warna pada citra ini. Citra \textit{grayscale} yang 2 bit memiliki 4 gradasi warna, citra \textit{grayscale} 3 bit memiliki 8 gradasi warna, citra \textit{grayscale} dengan 8 bit memiliki 256 gradasi warna dan seterusnya. Semakin besar jumlah bit warna yang disediakan di memori, semakin banyak dan semakin halus gradasi warna yang terbentuk. Pada umumnya citra digital \textit{grayscale} menggunakan 8 bit memori dengan derajat keabuan dari 0 sampai 255. Contoh citra \textit{grayscale} dapat dilihat pada gambar ~\ref{fig:jenis-citra}(b).
 
 \subsubsection{Citra Warna} 
-Setiap piksel pada citra warna mewakili warna yang merupakan kombinasi dari tiga warna dasar (RGB = Red Green Blue). Setiap warna dasar menggunakan penyimpanan 8 bit, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna. Berarti setiap piksel mempunyai kombinasi warna sebanyak 255 x 255 x 255 =16 juta warna lebih. Contoh citra warna dapat dilihat pada gambar ~\ref{fig:jenis-citra}(c).
+Setiap piksel pada citra warna mewakili warna yang merupakan kombinasi dari tiga warna dasar (RGB = red, green, blue). Pada umumnya setiap warna dasar menggunakan penyimpanan 8 bit, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna. Berarti setiap piksel mempunyai kombinasi warna sebanyak 255 x 255 x 255 =16 juta warna lebih. Contoh citra warna dapat dilihat pada gambar ~\ref{fig:jenis-citra}(c).
 
 \begin{afigure}
     \includegraphics[width=0.85\textwidth, center]{images/jenis-jenis-citra.png}
@@ -35,21 +35,11 @@ Berdasarkan tujuannya pengolahan citra juga dapat dibagi menjadi beberapa bagian
 \textit{Image restoration} adalah metode pengolahan citra untuk memulihkan citra dari penurunan kualitas atau citra yang rusak karena derau (\textit{noise}). Pada dasarnya metode ini berbeda dengan \textit{image enhancement} yang berkaitan dengan ekstraksi fitur pada citra. 
 
 \subsubsection{Image Analysis}
-\textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek.
+\textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek \thecite{book:dasilva}.
 
 \subsubsection{Image Compression}
 Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih kompak sehingga memerlukan memori yang lebih sedikit. Metode ini dapat dilakukan dengan mengurangi redundansi dari data-data yang terdapat dalam citra sehingga dapat disimpan atau ditransmisikan secara efisien.
 
-% \begin{enumerate} [label=\textbf{\alph*.}]
-%     \item \textbf{Image Enhancement} \\ 
-%     \textit{Image Enhancement} adalah metode pengolahan citra digital untuk membuat citra tampak lebih baik atau dilakukan peningkatan untuk analisis tertentu. Namun hal ini dapat menyebabkan pengorbanan aspek lain dari citra tersebut. Penerapan filter, penghalusan citra, memperbaiki kontras dan morfologi citra adalah contoh \textit{image enhancement}. 
-%     \item \textbf{Image Restoration} \\ 
-%     \textit{Image restoration} adalah metode pengolahan citra untuk memulihkan citra dari penurunan kualitas atau citra yang rusak karena derau (\textit{noise}). Pada dasarnya metode ini berbeda dengan \textit{image enhancement} yang berkaitan dengan ekstraksi fitur pada citra. 
-%     \item \textbf{Image Analysis} \\ 
-%     \textit{Image analysis} adalah metode pengolahan citra untuk menghitung besaran kuantitatif dari citra untuk menghasilkan deskripsinya. Metode ini dilakukan dengan mengekstraksi ciri-ciri tertentu yang membantu dalam identifikasi objek.
-%     \item \textbf{Image Compression} \\ 
-%     Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih kompak sehingga memerlukan memori yang lebih sedikit. Metode ini dapat dilakukan dengan mengurangi redundansi dari data-data yang terdapat dalam citra sehingga dapat disimpan atau ditransmisikan secara efisien.
-% \end{enumerate}
 
 \subsection{Filter Spasial}
 Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital \thecite{book:gonzalez}. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut.
@@ -169,12 +159,12 @@ Pada gambar (\ref{fig:conv3}) diilustrasikan bagaimana proses konvolusi pada cit
     \label{fig:conv3}
 \end{afigure}
 
-Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dijadikan 0, sebaliknya jika hasil konvolusi menghasilkan nilai piksel yang melebihi nilai keabuan maksimum, maka nilai tersebut dijadikan ke nilai keabuan maksimum \thecite{book:sutoyo}.
+Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dijadikan 0, sebaliknya jika hasil konvolusi menghasilkan nilai piksel yang melebihi nilai keabuan maksimum, maka nilai tersebut dijadikan ke nilai keabuan maksimum pada citra tersebut \thecite{book:sutoyo}.
 % masalah padding
  
 
 \subsection{Video Streaming}
-Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
+Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file dengan format video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
 
 
 \subsection{FPGA}
@@ -192,14 +182,14 @@ Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kod
 Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \thecite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
 
 \begin{afigure}
-    \includegraphics[width=7cm, center]{images/pynq-z2.jpeg}
+    \includegraphics[width=9cm, center]{images/pynq-z2.jpeg}
     \caption{FPGA Board Xilinx PYNQ-Z2.}
     \label{fig:pynq-z2}
 \end{afigure}
 
 
 \subsection{Evaluasi Performa}
-Pada penelitian ini peneliti menggunakan waktu komputasi, frame rate (FPS), penggunaan CPU, penggunaan memory, penggunaan resident memory (RES), shared memory (SHR), dan virtual memory (VIRT) untuk mengukur performa dari penerapan filter spasial linear dengan prosesor ARM dan FPGA.
+Pada penelitian ini peneliti menggunakan waktu komputasi, frame rate (FPS), penggunaan CPU, penggunaan memory, penggunaan resident memory (RES), shared memory (SHR), dan virtual memory (VIRT) untuk mengukur performa pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
 
 \subsubsection{Waktu Komputasi}
 Waktu kumputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa frame input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada frame input.
@@ -212,7 +202,7 @@ waktu kompuatsi = waktu selesai - waktu mulai
 \end{equation}
 
 \subsubsection{Frame Rate (FPS)}
-Frame rate atau frame per second (fps) adalah banyaknya frame yang ditampilkan per detik pada video ataupun video straem. Semakin tinggi fps sebuah video maka semakin halus pula gerakan yang dihasilkan. Sebaliknya video dengan fps rendah akan menghasilkan gerakan yang kurang baik. Frame rate dapat dihitung dengan cara membagi jumlah frame dengan waktu komputasinya seperti pada persamaan \ref{eq:fps} \thecite{pdf:pavan}.
+Frame rate atau frame per second (fps) adalah banyaknya frame yang ditampilkan per detik pada video ataupun video straem. Semakin tinggi fps sebuah video maka semakin halus pula gerakan yang dihasilkan. Sebaliknya video dengan fps rendah akan menghasilkan gerakan yang kurang baik. Frame rate atau fps dapat dihitung dengan cara membagi jumlah frame dengan waktu komputasinya seperti pada persamaan \ref{eq:fps} \thecite{pdf:pavan}.
 \begin{equation}
     \label{eq:fps}
     \begin{split}
@@ -221,7 +211,7 @@ fps = \frac{jumlah frame}{waktu komputasi}
 \end{equation}
 
 \subsubsection{Penggunaan CPU}
-Pada penelitian ini peneliti menggunakan fitur yang tersedia pada Linux yang berjalan di FPGA Development Board untuk melihat penggunaan CPU pada proses penerapan filter spasial linear. Tampilan dari program ini dapat dilihat pada gambar \ref{fig:top}. Program ini menampilkan informasi tentang suatu proses pada sistem operasi yang berjalan seperti ID sebuah proses, user yang menjalankan proses tersebut, memory yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
+Pada penelitian ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk melihat persentase penggunaan CPU pada proses penerapan filter spasial linear. Tampilan dari program ini dapat dilihat pada gambar \ref{fig:top}. Program ini menampilkan informasi tentang proses-proses yang berjalan pada sistem operasi seperti ID sebuah proses, user yang menjalankan proses tersebut, memory yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
 \begin{figure}[H]
     \includegraphics[width=0.9\textwidth, center]{images/programs/top.png}
     \caption{Tampilan program top pada Linux.}
@@ -229,46 +219,37 @@ Pada penelitian ini peneliti menggunakan fitur yang tersedia pada Linux yang ber
 \end{figure}
 Status sebuah proses pada program ini dinyatakan dengan beberapa singkatan, diantaranya yaitu:
 \begin{itemize}[noitemsep, topsep=0pt]
-    \item[]{\makebox[0.5cm]{I\hfill} = idle}
-    \item[]{\makebox[0.5cm]{R\hfill} = running}
-    \item[]{\makebox[0.5cm]{S\hfill} = sleeping}
-    \item[]{\makebox[0.5cm]{Z\hfill} = zombie}
-    \item[]{\makebox[0.5cm]{D\hfill} = uninterruptible sleep}
-    \item[]{\makebox[0.5cm]{T\hfill} = stopped by job control signal}
-    \item[]{\makebox[0.5cm]{t\hfill} = stopped by debugger during trace}
+    \item[]{\makebox[0.5cm]{I\hfill} = \textit{idle}}
+    \item[]{\makebox[0.5cm]{R\hfill} = \textit{running}}
+    \item[]{\makebox[0.5cm]{S\hfill} = \textit{sleeping}}
+    \item[]{\makebox[0.5cm]{Z\hfill} = \textit{zombie}}
+    \item[]{\makebox[0.5cm]{D\hfill} = \textit{uninterruptible sleep}}
+    \item[]{\makebox[0.5cm]{T\hfill} = \textit{stopped by job control signal}}
+    \item[]{\makebox[0.5cm]{t\hfill} = \textit{stopped by debugger during trace}}
   \end{itemize}
 
 Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CPUnya berdasarkan core yang digunakan oleh proses tersebut. Jika mode Irix pada program \textit{top} dimatikan, maka program akan berjalan pada mode Solaris di mana penggunaan CPU sebuah proses yang ditampilkan akan dibagi dengan jumlah total core yang ada pada CPU \thecite{manual:linux}.
 
 \subsubsection{Penggunaan Memory}
 
-\thecite{book:os}
-
-Pada sistem operasi linux memory dibagi menjadi tiga jenis \thecite{manual:linux}. Pertama yaitu memory fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah memory swap, yaitu  memory yang berguna untuk membantu kerja memory fisk, data dari memory fisik akan disimpan pada swap dan kemudian diambil kembali jika terlalu banyak permintaan pada memori fisik. Ketiga yaitu virtual memory, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut:
+Pada sistem operasi linux \textit{memory} dibagi menjadi tiga jenis \thecite{manual:linux}. Pertama yaitu \textit{memory} fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah \textit{memory} \textit{swap}, yaitu  \textit{memory} yang berguna untuk membantu kerja \textit{memory} fisk, data dari \textit{memory} fisik akan disimpan pada \textit{swap} dan kemudian diambil kembali jika terlalu banyak permintaan pada \textit{memory} fisik. Ketiga yaitu virtual \textit{memory}, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut \thecite{book:os}:
 
 \begin{itemize} [noitemsep, topsep=0pt]
-    \item abstraction, bebas dari alamat / batas memori fisik 
-    \item isolation, setiap proses dalam ruang alamat terpisah 
-    \item sharing, pemetaan tunggal dapat memenuhi banyak kebutuhan 
-    \item flexibility, menetapkan alamat virtual ke data 
+    \item \textit{abstraction}, bebas dari alamat / batas \textit{memory} fisik 
+    \item \textit{isolation}, setiap proses dalam ruang alamat terpisah 
+    \item \textit{sharing}, pemetaan tunggal dapat memenuhi banyak kebutuhan 
+    \item \textit{flexibility}, menetapkan alamat virtual ke data 
 \end{itemize}
 
-Terlepas dari bentuk memori mana yang mungkin digunakan, semua dikelola sebagai pages (biasanya 4096
-byte). Penggunaan memory berhubungan dengan memory fisik dan swap untuk sistem secara keseluruhan. 
-Untuk setiap proses yang berjalan, setiap memori page dibatasi ke satu kuadran seperti pada gambar berikut. Baik memori fisik dan memori virtual dapat menyertakan salah satu dari empat kuadran, sementara file swap
-hanya mencakup kuadran 1 sampai 3. Memori di kuadran 4, bertindak sebagai
-file swap khusus ketika dimodifikasi. 
+Terlepas dari bentuk \textit{memory} mana yang mungkin digunakan, semua dikelola sebagai \textit{pages} (biasanya 4096
+byte). Penggunaan \textit{memory} berhubungan dengan \textit{memory} fisik dan \textit{swap} untuk sistem secara keseluruhan. 
+Untuk setiap proses yang berjalan, setiap \textit{memory} page dibatasi ke satu kuadran seperti pada gambar \ref{fig:mem-quad}. Baik \textit{memory} fisik dan \textit{memory} virtual dapat menyertakan salah satu dari empat kuadran, sementara file \textit{swap} hanya mencakup kuadran 1 sampai 3. Memori di kuadran 4, bertindak sebagai file \textit{swap} khusus ketika dimodifikasi \thecite{manual:linux}. 
 
-Private     | Shared
-1           |          2
-Anonymous  . stack               |
-. malloc()            |
-. brk()/sbrk()        | . POSIX shm*
-. mmap(PRIVATE, ANON) | . mmap(SHARED, ANON)
------------------------+----------------------
-. mmap(PRIVATE, fd)   | . mmap(SHARED, fd)
-File-backed  . pgms/shared libs    |
-3           |          4
+\begin{figure}[H]
+    \includegraphics[width=0.8\textwidth, center]{images/programs/memory-quadrant.png}
+    \caption{Kuadran pembagian memory pada Linux.}
+    \label{fig:mem-quad}
+\end{figure}
 
 
 \subsubsection{Resident Memory (RES)}
@@ -276,45 +257,45 @@ File-backed  . pgms/shared libs    |
 Bagian dari ruang alamat virtual (VIRT) yang mewakili memori fisik yang tidak ditukar yang sedang digunakan tugas. Ini juga merupakan penjumlahan dari RSan, RSfd dan
 Bidang RSsh.
 
-Ini dapat mencakup private anonymous pages, halaman pribadi yang dipetakan ke file (termasuk
-gambar program dan perpustakaan bersama) ditambah halaman anonim bersama. Semua memori tersebut didukung oleh file swap yang direpresentasikan secara terpisah di bawah SWAP.
+Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk
+gambar program dan perpustakaan bersama) ditambah halaman anonim bersama. Semua memori tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah di bawah SWAP.
 
-Terakhir, resident memory ini juga dapat menyertakan halaman yang didukung file bersama yang bila diubah, bertindak sebagai file swap khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
+Terakhir, resident memory ini juga dapat menyertakan halaman yang didukung file bersama yang bila diubah, bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
 
 % Resident Memory Size (KiB)
-% A subset of the virtual address space (VIRT) representing the non-swapped physi‐
+% A subset of the virtual address space (VIRT) representing the non-\textit{swap}ped physi‐
 % cal memory a task is currently using.  It is also the sum of the RSan, RSfd  and
 % RSsh fields.
 
-% It can include private anonymous pages, private pages mapped to files (including
-% program images and shared libraries) plus shared anonymous pages.  All such mem‐
-% ory is backed by the swap file represented separately under SWAP.
+% It can include private anonymous \textit{pages}, private \textit{pages} mapped to files (including
+% program images and shared libraries) plus shared anonymous \textit{pages}.  All such mem‐
+% ory is backed by the \textit{swap} file represented separately under SWAP.
 
-% Lastly,  this  field may also include shared file-backed pages which, when modi‐
-% fied, act as a dedicated swap file and thus will never impact SWAP.
+% Lastly,  this  field may also include shared file-backed \textit{pages} which, when modi‐
+% fied, act as a dedicated \textit{swap} file and thus will never impact SWAP.
 
 % See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Shared Memory (SHR)}
 
-Bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasuk anonymous pages dan shared file-backed pages. Ini juga termasuk private pages dipetakan ke file yang mewakili gambar program dan shared libraries \thecite{manual:linux}. 
+Bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasuk anonymous \textit{pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili gambar program dan shared libraries \thecite{manual:linux}. 
 
 % Shared Memory Size (KiB)
 % A  subset of resident memory (RES) that may be used by other processes.  It will
-% include shared anonymous pages and shared file-backed pages.  It  also  includes
-% private pages mapped to files representing program images and shared libraries.
+% include shared anonymous \textit{pages} and shared file-backed \textit{pages}.  It  also  includes
+% private \textit{pages} mapped to files representing program images and shared libraries.
 
 % See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Virtual Memory (VIRT)}
 
 Jumlah total memori virtual yang digunakan oleh proses. Ini mencakup semua kode, data
-dan shared  libraries ditambah pages yang telah ditukar dan pages yang memiliki
+dan shared  libraries ditambah \textit{pages} yang telah ditukar dan \textit{pages} yang memiliki
 telah dipetakan tetapi tidak digunakan \thecite{manual:linux}. 
 
 % Virtual Memory Size (KiB)
 % The total amount of virtual memory used by the task.  It includes all code, data
-% and  shared  libraries plus pages that have been swapped out and pages that have
+% and  shared  libraries plus \textit{pages} that have been \textit{swap}ped out and \textit{pages} that have
 % been mapped but not used.
 
 % See `OVERVIEW, Linux Memory Types' for additional details.
