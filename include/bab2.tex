@@ -254,13 +254,8 @@ Untuk setiap proses yang berjalan, setiap \textit{memory} page dibatasi ke satu 
 
 \subsubsection{Resident Memory (RES)}
 
-Bagian dari ruang alamat virtual (VIRT) yang mewakili memori fisik yang tidak ditukar yang sedang digunakan tugas. Ini juga merupakan penjumlahan dari RSan, RSfd dan
-Bidang RSsh.
-
-Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk
-gambar program dan perpustakaan bersama) ditambah halaman anonim bersama. Semua memori tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah di bawah SWAP.
-
-Terakhir, resident memory ini juga dapat menyertakan halaman yang didukung file bersama yang bila diubah, bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
+Resident memory adalah bagian dari ruang alamat virtual (VIRT) yang mewakili memori fisik yang tidak ditukar yang sedang digunakan tugas. Resident memory ini juga merupakan penjumlahan dari RSan, RSfd dan Bidang RSsh. Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk
+\textit{program images} dan \textit{shared libraries}) ditambah shared anonymous \textit{pages}. Semua memori tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah pada SWAP. Resident memory ini juga dapat menyertakan \textit{pages} yang didukung \textit{shared file-backed} yang apabila dimodifikasi, maka akan bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
 
 % Resident Memory Size (KiB)
 % A subset of the virtual address space (VIRT) representing the non-\textit{swap}ped physi‐
@@ -278,7 +273,7 @@ Terakhir, resident memory ini juga dapat menyertakan halaman yang didukung file 
 
 \subsubsection{Shared Memory (SHR)}
 
-Bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasuk anonymous \textit{pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili gambar program dan shared libraries \thecite{manual:linux}. 
+Shared memory adalah bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasuk \textit{anonymous pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili \textit{program images} dan \textit{shared libraries} \thecite{manual:linux}. 
 
 % Shared Memory Size (KiB)
 % A  subset of resident memory (RES) that may be used by other processes.  It will
@@ -288,10 +283,11 @@ Bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasu
 % See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Virtual Memory (VIRT)}
+Virtual memory menggunakan disk sebagai perpanjangan dari RAM sehingga ukuran efektif memori yang dapat digunakan bertambah secara bersamaan. Kernel akan menulis konten dari blok memori yang saat ini tidak digunakan ke hard disk sehingga memori dapat digunakan untuk tujuan lain. Ketika konten asli dibutuhkan lagi, mereka dibaca kembali ke dalam memori. Ini semua dibuat transparan sepenuhnya bagi pengguna. Program yang berjalan di Linux hanya melihat jumlah memori yang tersedia lebih besar dan tidak memperhatikan bahwa sebagian dari program tersebut berada di disk dari waktu ke waktu. Tentu saja, membaca dan menulis hard disk lebih lambat daripada menggunakan memori fisik, sehingga program tidak berjalan secepat itu. Bagian dari hard disk yang digunakan sebagai memori virtual disebut ruang swap \thecite{site:ltdp}.
 
-Jumlah total memori virtual yang digunakan oleh proses. Ini mencakup semua kode, data
-dan shared  libraries ditambah \textit{pages} yang telah ditukar dan \textit{pages} yang memiliki
-telah dipetakan tetapi tidak digunakan \thecite{manual:linux}. 
+% Linux supports virtual memory, that is, using a disk as an extension of RAM so that the effective size of usable memory grows correspondingly. The kernel will write the contents of a currently unused block of memory to the hard disk so that the memory can be used for another purpose. When the original contents are needed again, they are read back into memory. This is all made completely transparent to the user; programs running under Linux only see the larger amount of memory available and don't notice that parts of them reside on the disk from time to time. Of course, reading and writing the hard disk is slower (on the order of a thousand times slower) than using real memory, so the programs don't run as fast. The part of the hard disk that is used as virtual memory is called the swap space.
+
+Kolom VIRT pada program \textbf{top} menunjukkan jumlah total memori virtual yang digunakan oleh proses. Ini mencakup semua kode, data dan \textit{shared  libraries} ditambah dengan \textit{pages} yang telah ditukar dan \textit{pages} yang telah dipetakan tetapi tidak digunakan \thecite{manual:linux}. 
 
 % Virtual Memory Size (KiB)
 % The total amount of virtual memory used by the task.  It includes all code, data
