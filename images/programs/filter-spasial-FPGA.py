@@ -17,6 +17,16 @@ mem_manager = Xlnk()
 hdmi_in = bareHDMI.video.hdmi_in
 hdmi_out = bareHDMI.video.hdmi_out
 
+from pynq.lib.video import *
+hdmi_in.configure(PIXEL_GRAY)
+hdmi_out.configure(hdmi_in.mode)
+
+hdmi_in.cacheable_frames = False
+hdmi_out.cacheable_frames = False
+
+hdmi_in.start()
+hdmi_out.start()
+
 mymode = hdmi_in.mode
 print("My mode: "+str(mymode))
 
@@ -27,8 +37,10 @@ bpp = hdmi_in.mode.bits_per_pixel
 hdmi_in.tie(hdmi_out)
 
 import numpy as np
-import cv2
 import time
+
+dstSW = np.ones((height,width),np.uint8);
+xFdst  = mem_manager.cma_array((height,width),np.uint8)
 
 kernel = {
         'average blur': np.array([
@@ -57,20 +69,20 @@ kernel = {
             [-1, -1, -1]],np.float32),
 }
 
-kernel_name = 'sobel hor'
-numberOfIterations=85
+kernel_name = 'sharpen'
+numberOfIterations=300
 
-startSW=time.time()
+startPL=time.time()
 for i in range(numberOfIterations):
     inframe = hdmi_in.readframe()
     outframe = hdmi_out.newframe()
-    cv2.filter2D(inframe, -1, kernel.get(kernel_name),dst=outframe,
-        borderType=cv2.BORDER_CONSTANT) #filter2D on ARM
+    xv2.filter2D(inframe, -1, kernel.get(kernel_name), 
+        dst=outframe,borderType=cv2.BORDER_CONSTANT) 
     hdmi_out.writeframe(outframe)
-stopSW=time.time()
-print("Start SW loop = ", (stopSW - startSW))
-print("SW frames per second: ", 
-    ((numberOfIterations) / (stopSW - startSW)))
+stopPL=time.time()
+print("Start HW loop = ", (stopPL - startPL))
+print("PL frames per second: ", 
+    ((numberOfIterations) / (stopPL - startPL)))
 
 hdmi_out.close()
 hdmi_in.close()
