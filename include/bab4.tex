@@ -272,11 +272,11 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
     \label{fig:chart-cpu}
 \end{figure}
 
-Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel average blur (99,83\%) dan dengan FPGA pada kernel sobel horizontal (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel sharpening dan sobel horizontal (99,47\%) dan dengan FPGA pada kernel gaussian blur (83,70\%).
+Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel \textit{average blur} (99,83\%) dan dengan FPGA pada kernel \textit{sobel horizontal} (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel \textit{sharpening} dan \textit{sobel horizontal} (99,47\%) dan dengan FPGA pada kernel \textit{gaussian blur} (83,70\%).
 
 
 \subsection{Penggunaan Memory}
-Data penggunaan memory dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-mem} dan grafik pada gambar \ref{fig:chart-mem}. Data ini menunjukkan persentase memory yang digunakan pada masing-masing kernel. Rata-rata penggunaan memory dengan prosesor ARM adalah 25,37\% dan 24,86\% dengan FPGA. 
+Data penggunaan \textit{memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-mem} dan grafik pada gambar \ref{fig:chart-mem}. Data ini menunjukkan persentase \textit{memory} yang digunakan pada masing-masing kernel. Rata-rata penggunaan \textit{memory} dengan prosesor ARM adalah 25,37\% dan 24,86\% dengan FPGA. 
 \begin{atable}
     \caption{Tabel perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-mem}
@@ -304,14 +304,14 @@ Data penggunaan memory dengan prosesor ARM dan FPGA dapat dilihat pada tabel \re
     \caption{Grafik perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-mem}
 \end{figure}
-Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan memory pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan memory FPGA ini hanya 0,51\% lebih rendah dari penggunaan memory dengan prosesor ARM.
+Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan \textit{memory} pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan \textit{memory} FPGA ini hanya 0,51\% lebih rendah dari penggunaan \textit{memory} dengan prosesor ARM.
 
 
 \subsection{Resident Memory (RES)}
-Data penggunaan resident memory atau RES dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-res} dan grafik pada gambar \ref{fig:chart-res}. Data ini menunjukkan banyaknya RES (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video stream dengan masing-masing kernel.
+Data penggunaan \textit{resident memory} atau RES dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-res} dan grafik pada gambar \ref{fig:chart-res}. Data ini menunjukkan banyaknya RES (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video \textit{stream} dengan masing-masing kernel.
 
 \begin{atable}
-    \caption{Tabel perbandingan penggunaan resident memory dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Tabel perbandingan penggunaan resident memory (RES) dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-res}
     \csvreader[
         head to column names,
@@ -334,16 +334,16 @@ Data penggunaan resident memory atau RES dengan prosesor ARM dan FPGA dapat dili
 \end{atable}
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-res.png}
-    \caption{Grafik perbandingan penggunaan resident memory dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Grafik perbandingan penggunaan resident memory (RES) dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-res}
 \end{figure}
-Rata-rata RES yang digunakan pada prosesor ARM adalah 129108,60 KiB dan 126437,20 KiB pada FPGA. Terlihat bahwa penggunaan RES pada prosesor ARM dan FPGA juga tidak jauh berbeda. Penggunaan RES terbesar dengan prosesor ARM yaitu pada kernel gaussian blur 131804,40 KiB, sedangkan dengan FPGA yaitu pada kernel sharpening 127931,20 KiB.
+Rata-rata RES yang digunakan pada prosesor ARM adalah 129108,60 KiB dan 126437,20 KiB pada FPGA. Terlihat bahwa penggunaan RES pada prosesor ARM dan FPGA juga tidak jauh berbeda. Penggunaan RES terbesar dengan prosesor ARM yaitu pada kernel \textit{gaussian blur} 131804,40 KiB, sedangkan dengan FPGA yaitu pada kernel \textit{sharpening} 127931,20 KiB.
 
 
 \subsection{Shared Memory (SHR)}
-Data penggunaan shared memory dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-shr} dan grafik pada gambar \ref{fig:chart-shr}. Data ini menunjukkan banyaknya shared memory (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video stream dengan masing-masing kernel.
+Data penggunaan \textit{shared memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-shr} dan grafik pada gambar \ref{fig:chart-shr}. Data ini menunjukkan banyaknya \textit{shared memory} (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video stream dengan masing-masing kernel.
 \begin{atable}
-    \caption{Tabel perbandingan penggunaan shared memory dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Tabel perbandingan penggunaan shared memory (SHR) dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-shr}
     \csvreader[
         head to column names,
@@ -366,15 +366,15 @@ Data penggunaan shared memory dengan prosesor ARM dan FPGA dapat dilihat pada ta
 \end{atable}
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-shr.png}
-    \caption{Grafik perbandingan penggunaan shared memory dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Grafik perbandingan penggunaan shared memory (SHR) dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-shr}
 \end{figure}
-Rata-rata penggunaan shared memory pada prosesor ARM adalah 56325,57 KiB dan 54030,80 KiB pada FPGA. Terlihat bahwa penggunaan shared memory pada prosesor ARM sedikit lebih besar daripada FPGA. Penggunaan shared memory terbesar pada prosesor ARM yaitu pada kernel gaussian blur 56503,60 KiB dan kernel laplacian 55528,80 KiB pada FPGA. Penggunaan shared memory terkecil pada prosesor ARM yaitu pada kernel average blur 56157,40 KiB dan kernel laplacian 42568 KiB pada FPGA.
+Rata-rata penggunaan \textit{shared memory} pada prosesor ARM adalah 56325,57 KiB dan 54030,80 KiB pada FPGA. Terlihat bahwa penggunaan \textit{shared memory} pada prosesor ARM sedikit lebih besar daripada FPGA. Penggunaan \textit{shared memory} terbesar pada prosesor ARM yaitu pada kernel \textit{gaussian blur} 56503,60 KiB dan kernel \textit{laplacian} 55528,80 KiB pada FPGA. Penggunaan \textit{shared memory} terkecil pada prosesor ARM yaitu pada kernel \textit{average blur} 56157,40 KiB dan kernel \textit{laplacian} 42568 KiB pada FPGA.
 
 \subsection{Virtual Memory (VIRT)}
-Data penggunaan virtual memory atau VIRT dapat dilihat pada tabel \ref{table:hasil-virt} dan grafik pada gambar \ref{fig:chart-virt}. Data ini menunjukkan banyaknya virtual memory (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video stream dengan masing-masing kernel.
+Data penggunaan \textit{virtual memory} atau VIRT dapat dilihat pada tabel \ref{table:hasil-virt} dan grafik pada gambar \ref{fig:chart-virt}. Data ini menunjukkan banyaknya \textit{virtual memory} (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video \textit{stream} dengan masing-masing kernel.
 \begin{atable}
-    \caption{Tabel perbandingan penggunaan virtual memory dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Tabel perbandingan penggunaan virtual memory (VIRT) dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-virt}
     \csvreader[
         head to column names,
@@ -397,7 +397,7 @@ Data penggunaan virtual memory atau VIRT dapat dilihat pada tabel \ref{table:has
 \end{atable}
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-virt.png}
-    \caption{Grafik perbandingan penggunaan virtual memory dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Grafik perbandingan penggunaan virtual memory (VIRT) dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-virt}
 \end{figure}
-Rata-rata penggunaan VIRT pada prosesor ARM adalah 395407,64 KiB dan 395501,33 KiB pada FPGA. Rata-rata penggunaan VIRT pada FPGA sedikit lebih tinggi dari pada prosesor ARM. Penggunaan VIRT terbesar pada prosesor ARM yaitu pada kernel gaussian blur 398862,80 KiB dan kernel laplacian 395638,40 KiB. Penggunaan VIRT terkecil pada prosesor ARM yaitu pada kernel 393544,80 KiB dan kernel sobel vertical 395385,60 KiB pada FPGA.
+Rata-rata penggunaan VIRT pada prosesor ARM adalah 395407,64 KiB dan 395501,33 KiB pada FPGA. Rata-rata penggunaan VIRT pada FPGA sedikit lebih tinggi dari pada prosesor ARM. Penggunaan VIRT terbesar dengan prosesor ARM yaitu pada kernel \textit{gaussian blur} 398862,80 KiB dan kernel \textit{laplacian} 395638,40 KiB pada FPGA. Penggunaan VIRT terkecil dengan prosesor ARM yaitu pada kernel \textit{laplacian}393388,00 KiB dan kernel \textit{sobel vertical} 395385,60 KiB pada FPGA.
