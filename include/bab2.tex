@@ -182,7 +182,7 @@ Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kod
 Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \thecite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
 
 \begin{afigure}
-    \includegraphics[width=9cm, center]{images/pynq-z2.jpeg}
+    \includegraphics[width=10cm, center]{images/pynq-z2.jpeg}
     \caption{FPGA Board Xilinx PYNQ-Z2.}
     \label{fig:pynq-z2}
 \end{afigure}
@@ -251,11 +251,24 @@ Untuk setiap proses yang berjalan, setiap \textit{memory} page dibatasi ke satu 
     \label{fig:mem-quad}
 \end{figure}
 
+\subsubsection{Virtual Memory (VIRT)}
+Virtual \textit{memory} menggunakan disk sebagai perpanjangan dari RAM sehingga ukuran efektif \textit{memory} yang dapat digunakan bertambah secara bersamaan. Kernel akan menulis konten dari blok \textit{memory} yang saat ini tidak digunakan ke hard disk sehingga \textit{memory} dapat digunakan untuk tujuan lain. Ketika konten asli dibutuhkan lagi, mereka dibaca kembali ke dalam \textit{memory}. Ini semua dibuat transparan sepenuhnya bagi pengguna. Program yang berjalan di Linux hanya melihat jumlah \textit{memory} yang tersedia lebih besar dan tidak memperhatikan bahwa sebagian dari program tersebut berada di disk dari waktu ke waktu. Tentu saja, membaca dan menulis hard disk lebih lambat daripada menggunakan \textit{memory} fisik, sehingga program tidak berjalan secepat itu. Bagian dari hard disk yang digunakan sebagai \textit{memory} virtual disebut ruang swap \thecite{site:ltdp}.
+
+% Linux supports virtual \textit{memory}, that is, using a disk as an extension of RAM so that the effective size of usable \textit{memory} grows correspondingly. The kernel will write the contents of a currently unused block of \textit{memory} to the hard disk so that the \textit{memory} can be used for another purpose. When the original contents are needed again, they are read back into \textit{memory}. This is all made completely transparent to the user; programs running under Linux only see the larger amount of \textit{memory} available and don't notice that parts of them reside on the disk from time to time. Of course, reading and writing the hard disk is slower (on the order of a thousand times slower) than using real \textit{memory}, so the programs don't run as fast. The part of the hard disk that is used as virtual \textit{memory} is called the swap space.
+
+Kolom VIRT pada program \textbf{top} menunjukkan jumlah total \textit{memory} virtual yang digunakan oleh proses. Ini mencakup semua kode, data dan \textit{shared  libraries} ditambah dengan \textit{pages} yang telah ditukar dan \textit{pages} yang telah dipetakan tetapi tidak digunakan \thecite{manual:linux}. 
+
+% Virtual Memory Size (KiB)
+% The total amount of virtual memory used by the task.  It includes all code, data
+% and  shared  libraries plus \textit{pages} that have been \textit{swap}ped out and \textit{pages} that have
+% been mapped but not used.
+
+% See `OVERVIEW, Linux Memory Types' for additional details.
 
 \subsubsection{Resident Memory (RES)}
 
-Resident memory adalah bagian dari ruang alamat virtual (VIRT) yang mewakili memori fisik yang tidak ditukar yang sedang digunakan tugas. Resident memory ini juga merupakan penjumlahan dari RSan, RSfd dan Bidang RSsh. Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk
-\textit{program images} dan \textit{shared libraries}) ditambah shared anonymous \textit{pages}. Semua memori tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah pada SWAP. Resident memory ini juga dapat menyertakan \textit{pages} yang didukung \textit{shared file-backed} yang apabila dimodifikasi, maka akan bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
+\textit{Resident} \textit{memory} adalah bagian dari ruang alamat virtual (VIRT) yang mewakili \textit{memory} fisik yang tidak ditukar yang sedang digunakan tugas. Resident \textit{memory} ini juga merupakan penjumlahan dari RSan, RSfd dan Bidang RSsh. Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk
+\textit{program images} dan \textit{shared libraries}) ditambah shared anonymous \textit{pages}. Semua \textit{memory} tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah pada SWAP. Resident \textit{memory} ini juga dapat menyertakan \textit{pages} yang didukung \textit{shared file-backed} yang apabila dimodifikasi, maka akan bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \thecite{manual:linux}.
 
 % Resident Memory Size (KiB)
 % A subset of the virtual address space (VIRT) representing the non-\textit{swap}ped physi‐
@@ -273,28 +286,15 @@ Resident memory adalah bagian dari ruang alamat virtual (VIRT) yang mewakili mem
 
 \subsubsection{Shared Memory (SHR)}
 
-Shared memory adalah bagian dari resident memori (RES) yang dapat digunakan oleh proses lain. Termasuk \textit{anonymous pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili \textit{program images} dan \textit{shared libraries} \thecite{manual:linux}. 
+\textit{Shared} \textit{memory} adalah bagian dari resident \textit{memory} (RES) yang dapat digunakan oleh proses lain. Termasuk \textit{anonymous pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili \textit{program images} dan \textit{shared libraries} \thecite{manual:linux}. 
 
 % Shared Memory Size (KiB)
-% A  subset of resident memory (RES) that may be used by other processes.  It will
+% A  subset of resident \textit{memory} (RES) that may be used by other processes.  It will
 % include shared anonymous \textit{pages} and shared file-backed \textit{pages}.  It  also  includes
 % private \textit{pages} mapped to files representing program images and shared libraries.
 
 % See `OVERVIEW, Linux Memory Types' for additional details.
 
-\subsubsection{Virtual Memory (VIRT)}
-Virtual memory menggunakan disk sebagai perpanjangan dari RAM sehingga ukuran efektif memori yang dapat digunakan bertambah secara bersamaan. Kernel akan menulis konten dari blok memori yang saat ini tidak digunakan ke hard disk sehingga memori dapat digunakan untuk tujuan lain. Ketika konten asli dibutuhkan lagi, mereka dibaca kembali ke dalam memori. Ini semua dibuat transparan sepenuhnya bagi pengguna. Program yang berjalan di Linux hanya melihat jumlah memori yang tersedia lebih besar dan tidak memperhatikan bahwa sebagian dari program tersebut berada di disk dari waktu ke waktu. Tentu saja, membaca dan menulis hard disk lebih lambat daripada menggunakan memori fisik, sehingga program tidak berjalan secepat itu. Bagian dari hard disk yang digunakan sebagai memori virtual disebut ruang swap \thecite{site:ltdp}.
-
-% Linux supports virtual memory, that is, using a disk as an extension of RAM so that the effective size of usable memory grows correspondingly. The kernel will write the contents of a currently unused block of memory to the hard disk so that the memory can be used for another purpose. When the original contents are needed again, they are read back into memory. This is all made completely transparent to the user; programs running under Linux only see the larger amount of memory available and don't notice that parts of them reside on the disk from time to time. Of course, reading and writing the hard disk is slower (on the order of a thousand times slower) than using real memory, so the programs don't run as fast. The part of the hard disk that is used as virtual memory is called the swap space.
-
-Kolom VIRT pada program \textbf{top} menunjukkan jumlah total memori virtual yang digunakan oleh proses. Ini mencakup semua kode, data dan \textit{shared  libraries} ditambah dengan \textit{pages} yang telah ditukar dan \textit{pages} yang telah dipetakan tetapi tidak digunakan \thecite{manual:linux}. 
-
-% Virtual Memory Size (KiB)
-% The total amount of virtual memory used by the task.  It includes all code, data
-% and  shared  libraries plus \textit{pages} that have been \textit{swap}ped out and \textit{pages} that have
-% been mapped but not used.
-
-% See `OVERVIEW, Linux Memory Types' for additional details.
 
 \section{Penelitian Terkait}
 \subsection{Spatial Filtering Based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation}
@@ -302,6 +302,8 @@ Pipa bawah air diletakkan di dasar laut untuk tujuan pengangkutan minyak bumi da
 
 \subsection{FPGA Implementation of Spatial Filtering techniques for 2D Images}
 Berbagai teknik filter telah menjadi inti dari pemrosesan citra sejak awal teknik peningkatan citra (\textit{image enhancement}). Filter spasial pada pemrosesan citra digital digunakan dalam banyak kepentingan seperti mempertajam citra, menghaluskan citra, menghilangkan derau dan sebagainya. Fleksibilitas dari metode filter spasial sering dibandingkan dengan domain transformasi karena dapat digunakan untuk filter linear dan filter non-linear. Penghalusan citra dilakukan dengan langsung memanipulasi nilai intensitas dari citra asli dengan sebuah kernel filter. Hasilnya yaitu berkurangnya detail kecil dan derau pada citra. Penelitian ini tentang penerapan berbagai macam operator filter spasial. Hasilnya didasarkan pada konsumsi perangkat keras, kecepatan desain masing-masing arsitektur. Ukuran kualitas citra didapat dengan membandingkan output dari Matlab dan output dari Xilinx FPGA dan dengan menghitung MSE \thecite{soa:sushant}.
+
+\newpage
 
 \subsection{Features of Image Spatial Filters Implementation on FPGA}
 Penelitian ini menyajikan fitur-fitur implementasi filter spasial pada citra dengan \textit{Programmable Logic Integrated Circuits} (FPGA). Solusi yang disajikan memungkinkan untuk membuat arsitektur kristal dengan performa tinggi untuk algoritma filter spasial. Hasilnya menunjukan kelebihan menggunakan \textit{programmable logic} dalam tugas pemrosesan citra digital \thecite{soa:dmitry}.

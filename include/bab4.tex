@@ -5,14 +5,14 @@
 % Jelaskan Proses Implementasi 
 \section{Implementasi pada FPGA Development Board}
 
-Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan tersebut dilakukan pada FPGA Development Board yang menggunakan prosesor ARM dan pada FPGA Development Board yang sama menggunakan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukkan masing-masing waktu komputasi, FPS, penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT).
+Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan ini dilakukan pada FPGA Development Board dengan menggunakan prosesor ARM dan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukkan masing-masing waktu komputasi, FPS, persentase penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT) pada masing-masing kernel.
 
-FPGA Development Board dirangkai seperti yang telah disebutkan di Bab sebelumnya, dapat dilihat pada gambar \ref{fig:rancangan-sistem}. HDMI Output pada FPGA dihubungkan ke monitor dan HDMI Input dihubungkan ke \textit{source} dalam hal ini Laptop Lenovo Ideapad 320. FPGA Development Board juga dihubungkan ke \textit{router} menggunakan kabel UART agar dapat diakses menggunakan protokol \textit{ssh}. Selanjutnya memasang semua \textit{library} yang dibutuhkan di FPGA Development Board.
+FPGA Development Board dirangkai seperti yang telah disebutkan pada Bab sebelumnya, pada gambar \ref{fig:rancangan-sistem}. HDMI Output pada FPGA dihubungkan ke monitor dan HDMI Input dihubungkan ke \textit{source} dalam hal ini laptop Lenovo Ideapad 320. FPGA Development Board juga dihubungkan ke \textit{router} menggunakan kabel UART agar dapat diakses menggunakan protokol \textit{ssh}. Selanjutnya memasang semua \textit{library} yang dibutuhkan untuk melakukan penerapan filter spasial linear pada video \textit{stream} menggunakan FPGA Development Board.
 
 % \subsection{Representasi Video Stream sebagai Citra Digital}
 % \subsection{Konversi Frame menjadi Grayscale}
 \subsection{Penerapan Filter Spasial}
-Setiap frame dari \textit{source} video \textit{stream} dibaca sebagai matriks berukuran 1280x720 dengan rentang nilai keabuan pada masing-masing piksel yaitu dari 0 sampai 255. Setiap piksel pada matriks tersebut hanya memiliki satu lapis warna karena citra yang diterima dari source adalah citra \textit{grayscale}, tidak seperti citra warna yang memiliki tiga lapis warna pada setiap pikselnya. 
+Setiap frame dari \textit{source} video \textit{stream} dibaca sebagai citra digital yang direpresentasikan sebagai matriks berukuran 1280x720 dengan rentang nilai keabuan pada masing-masing piksel yaitu dari 0 sampai 255. Setiap piksel pada matriks tersebut hanya memiliki satu lapis warna sebab citra yang diterima dari source adalah citra \textit{grayscale}, tidak seperti citra warna yang memiliki tiga lapis warna pada setiap pikselnya. 
 % padding?
 
 Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks dengan kernel yang telah ditentukan sebelumnya. Operasi konvolusi ini menghasilkan matrix baru dengan ukuran 1280x720. Matriks hasil tersebut selanjutnya direpresentasikan kembali sebagai citra digital yang selanjutnya disebut sebagai hasil filter. Hasil filter dari setiap frame ini ditampilkan ke monitor melalui HDMI Output pada FPGA Development Board secara berkesinambungan sehingga tampak seperti video.
@@ -34,7 +34,7 @@ Penerapan filter spasial pada frame \textit{grayscale} yang berukuran 1280x720 p
 \end{afigure}
 
 \subsubsection{Gaussian Blur}
-Penerapan filter spasial dengan kernel \textit{gaussian blur} (\ref{kernel:gaussianblur}) yang berukuran 3x3 menghasilkan cita blur yang secara kasat mata mirip dengan filter \textit{average blur}. Namun apabila diperhatikan nilai masing-masing pixel pada gambar \ref{fig:output-gaussianblur} akan terlihat perbedaan dengan nilai masing-masing pixel pada gambar \ref{fig:output-averageblur}. Hal ini disebabkan oleh nilai bobot pada kernel \textit{gaussian blur} (\ref{kernel:gaussianblur}) yang berbeda dengan kernel \textit{average blur} sehingga hasil konvolusinya juga berbeda. 
+Penerapan filter spasial dengan kernel \textit{gaussian blur} (\ref{kernel:gaussianblur}) yang berukuran 3x3 menghasilkan cita blur yang secara kasat mata mirip dengan filter \textit{average blur}. Namun apabila diperhatikan nilai masing-masing pixel pada gambar \ref{fig:output-gaussianblur} akan terlihat perbedaan dengan nilai masing-masing pixel pada gambar \ref{fig:output-averageblur}. Hal ini disebabkan oleh nilai bobot pada kernel \textit{gaussian blur} yang berbeda dengan kernel \textit{average blur} sehingga hasil konvolusinya juga berbeda. 
 \begin{afigure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-gaussianblur.png}
     \caption{Hasil filter Gaussian Blur.}
@@ -50,7 +50,7 @@ Penerapan filter spasial dengan kernel \textit{laplacian} (\ref{kernel:laplacian
 \end{afigure}
 
 \subsubsection{Sharpening}
-Penerapan filter spasial dengan kernel \textit{sharpening} (\ref{kernel:sharpen}) dapat meningkatkan detail (seperti garis) pada citra, namun dapat juga dapat menimbulkan derau pada citra apabila nilai kernelnya tidak sesuai. Filter seperti ini lebih tepat digunakan untuk memperbaiki kualitas citra (dengan nilai kernel yang sesuai). Hasil filter \textit{sharpening} ini dapat dilihat pada gambar \ref{fig:output-sharpen}.
+Penerapan filter spasial dengan kernel \textit{sharpening} (\ref{kernel:sharpen}) dapat meningkatkan detail (seperti garis) pada citra, namun dapat juga dapat menimbulkan derau pada citra apabila bobot kernelnya tidak sesuai. Filter seperti ini lebih tepat digunakan untuk memperbaiki kualitas citra (dengan nilai kernel yang sesuai). Hasil filter \textit{sharpening} ini dapat dilihat pada gambar \ref{fig:output-sharpen}.
 \begin{afigure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-sharpen.png}
     \caption{Hasil filter Sharpening.}
@@ -74,32 +74,32 @@ Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobe
 \end{afigure}
 
 \subsection{Penerapan Filter Spasial menggunakan Prosesor ARM dan FPGA}
-Penerapan filter spasial menggunakan prosesor ARM dilakukan dengan menggunakan \textit{library} OpenCV dengan bahasa pemrograman Python yang dijalankan pada FPGA Development Board. Sedangkan untuk penerapan filter spasial menggunakan FPGA dilakukan dengan menggunakan \textit{library} xfOpenCV dari Xilinx. \textit{Library} xfOpenCV ini adalah library khusus yang dimodifikasi dari OpenCV sehingga proses komputasinya dapat dilakukan dengan FPGA, bukan dengan prosesor ARM yang pada FPGA Development Board ini. Lebih lanjut mengenai program yang digunakan dapat dilihat pada lampiran \textit{pynq-filter-spasial-arm} dan \textit{pynq-filter-spasial-fpga}.
+Penerapan filter spasial menggunakan prosesor ARM dilakukan dengan menggunakan \textit{library} OpenCV dengan bahasa pemrograman Python yang dijalankan pada FPGA Development Board. Sedangkan untuk penerapan filter spasial menggunakan FPGA dilakukan dengan menggunakan \textit{library} xfOpenCV dari Xilinx. \textit{Library} xfOpenCV ini adalah library khusus yang dimodifikasi dari OpenCV sehingga proses komputasinya dapat dilakukan dengan FPGA, bukan dengan prosesor ARM yang pada FPGA Development Board ini. Lebih lanjut mengenai program yang digunakan dapat dilihat pada lampiran \textit{pynq-filter-spasial-arm} (\ref{code:filter-spasial-FPGA}) dan \textit{pynq-filter-spasial-fpga} (\ref{code:filter-spasial-ARM}).
 
 \subsection{Proses Evaluasi Kinerja}
-Pada penelitian proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat penggunaan CPU dan penggunaan memory termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
+Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat persentase penggunaan CPU dan penggunaan memory termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
 
 \subsubsection{Menghitung Waktu Komutasi dan FPS}
-Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada lampiran.
+Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada daftar lampiran (\ref{lampiran:waktu-komputasi}).
 
-Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua frame selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai. Dilakukan dengan 50 frame dan 200 frame pada masing-masing kernel menggunakan prosesor ARM dan FPGA. Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
+Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua frame selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai, seperti pada persamaan \ref{eq:time}. Dilakukan dengan 50 frame dan 200 frame pada masing-masing kernel dengan menggunakan prosesor ARM dan FPGA. Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
 \begin{afigure}
     \lstinputlisting[frame=single, style=python]{images/programs/calculate-time.py}
     \caption{Menghitung waktu komputasi dengan library time di Python.}
     \label{code:calculate-time}
 \end{afigure}
 
-Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. FPS masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
+Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. Selanjutnya FPS masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
 
 \subsubsection{Mencatat Penggunaan Memory dan CPU (Resource)}
-Pada proses ini peneliti menggunakan program bawaan dari Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan memory (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
+Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan memory (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
 \begin{afigure}
     \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
     \caption{Tampilan program \textbf{top}.}
     \label{fig:top-linux}
 \end{afigure}
 
-Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan memory dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan implementasi ini menggunakan Jupyter Notebook yang berjalan di FPGA Development Board yang dapat diakses menggunakan Web Browser dari perangkat lain. Serta digunakan protokol SSH untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
+Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan memory dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan Jupyter Notebook yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol SSH untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
 
 \begin{afigure}
     \lstinputlisting[frame=single, style=python]{images/programs/pid.py}
@@ -107,7 +107,7 @@ Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan memory dan CPU dar
     \label{code:pid}
 \end{afigure}
 
-Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untuk percobaan mencatat penggunaan memory dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. Cara menampilkan ID proses (PID) menggunakan bahasa pemrograman Python dapat dilihat pada gambar \ref{code:pid}. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan pada saat tersebut. 
+Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untuk mencatat penggunaan memory dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. Cara menampilkan ID proses (PID) menggunakan bahasa pemrograman Python dapat dilihat pada gambar \ref{code:pid}. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan oleh preses tersebut. 
 
 \begin{afigure}
     \begin{lstlisting}[frame=single, style=shell] 
@@ -117,7 +117,7 @@ Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untu
     \label{code:top}
 \end{afigure}
 
-Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan di file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada Jupyter Notebook. Output dari program top setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
+Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan pada file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada Jupyter Notebook. Output dari program top setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
 
 \begin{afigure}
     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.txt}
@@ -205,22 +205,6 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
 \end{figure}
 
-% \begin{afigure}
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=0.9\linewidth]{images/chart/chart-time50.png}
-%         \caption{50 frame.}
-%         \label{fig:chart-time50}
-%     \end{subfigure}
-%     \begin{subfigure}{0.5\textwidth}
-%         \centering
-%         \includegraphics[width=0.9\linewidth]{images/chart/chart-time200.png}
-%         \caption{200 frame.}
-%         \label{fig:chart-time200}
-%     \end{subfigure}
-%     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
-% \end{afigure}
-
 Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter Laplacian yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter Sharpening yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
 
 
@@ -259,6 +243,7 @@ Pada tabel \ref{table:hasil-fps} terlihat dengan menggunakan prosesor ARM dipero
 
 \subsection{Penggunaan CPU}
 Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-cpu} dan grafik pada gambar \ref{fig:chart-cpu}. Rata-rata penggunaan CPU dengan prosesor ARM adalah 99.58\% sedangkan dengan FPGA diperoleh 84.75\%. Data ini menunjukkan bahwa penggunaan CPU dengan prosesor ARM sedikit lebih besar daripada dengan FPGA.
+
 \begin{atable}
     \caption{Tabel perbandingan penggunaan CPU dengan menggunakan prosesor ARM dan FPGA.}
     \label{table:hasil-cpu}
@@ -286,6 +271,7 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
     \caption{Grafik perbandingan penggunaan CPU dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-cpu}
 \end{figure}
+
 Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel average blur (99,83\%) dan dengan FPGA pada kernel sobel horizontal (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel sharpening dan sobel horizontal (99,47\%) dan dengan FPGA pada kernel gaussian blur (83,70\%).
 
 
@@ -318,7 +304,7 @@ Data penggunaan memory dengan prosesor ARM dan FPGA dapat dilihat pada tabel \re
     \caption{Grafik perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-mem}
 \end{figure}
-Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan memory pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan memory FPGA ini 0,51\% lebih rendah dari penggunaan memory dengan prosesor ARM.
+Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan memory pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan memory FPGA ini hanya 0,51\% lebih rendah dari penggunaan memory dengan prosesor ARM.
 
 
 \subsection{Resident Memory (RES)}
@@ -383,7 +369,7 @@ Data penggunaan shared memory dengan prosesor ARM dan FPGA dapat dilihat pada ta
     \caption{Grafik perbandingan penggunaan shared memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-shr}
 \end{figure}
-Rata-rata penggunaan shared memory pada prosesor ARM adalah 56325,57 KiB dan 54030,80 KiB pada FPGA. Terlihat bahwa penggunaan shared memory pada prosesor ARM sedikit lebih banyak daripada FPGA. Penggunaan shared memory terbesar pada prosesor ARM yaitu pada kernel gaussian blur 56503,60 KiB dan kernel laplacian 55528,80 KiB pada FPGA. Penggunaan shared memory terkecil pada prosesor ARM yaitu pada kernel average blur 56157,40 KiB dan kernel laplacian 42568 KiB pada FPGA.
+Rata-rata penggunaan shared memory pada prosesor ARM adalah 56325,57 KiB dan 54030,80 KiB pada FPGA. Terlihat bahwa penggunaan shared memory pada prosesor ARM sedikit lebih besar daripada FPGA. Penggunaan shared memory terbesar pada prosesor ARM yaitu pada kernel gaussian blur 56503,60 KiB dan kernel laplacian 55528,80 KiB pada FPGA. Penggunaan shared memory terkecil pada prosesor ARM yaitu pada kernel average blur 56157,40 KiB dan kernel laplacian 42568 KiB pada FPGA.
 
 \subsection{Virtual Memory (VIRT)}
 Data penggunaan virtual memory atau VIRT dapat dilihat pada tabel \ref{table:hasil-virt} dan grafik pada gambar \ref{fig:chart-virt}. Data ini menunjukkan banyaknya virtual memory (dalam satuan kilobyte) yang digunakan pada saat penerapan filter spasial pada video stream dengan masing-masing kernel.
@@ -414,4 +400,4 @@ Data penggunaan virtual memory atau VIRT dapat dilihat pada tabel \ref{table:has
     \caption{Grafik perbandingan penggunaan virtual memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-virt}
 \end{figure}
-Rata-rata penggunaan VIRT pada prosesor ARM adalah 395407,64 KiB dan 395501,33 pada FPGA. Rata-rata penggunaan VIRT pada FPGA sedikit lebih tinggi dari pada prosesor ARM. Penggunaan VIRT terbesar pada prosesor ARM yaitu pada kernel gaussian blur 398862,80 KiB dan kernel laplacian 395638,40 KiB. Penggunaan VIRT terkecil pada prosesor ARM yaitu pada kernel 393544,80 KiB dan kernel sobel vertical 395385,60 KiB pada FPGA.
+Rata-rata penggunaan VIRT pada prosesor ARM adalah 395407,64 KiB dan 395501,33 KiB pada FPGA. Rata-rata penggunaan VIRT pada FPGA sedikit lebih tinggi dari pada prosesor ARM. Penggunaan VIRT terbesar pada prosesor ARM yaitu pada kernel gaussian blur 398862,80 KiB dan kernel laplacian 395638,40 KiB. Penggunaan VIRT terkecil pada prosesor ARM yaitu pada kernel 393544,80 KiB dan kernel sobel vertical 395385,60 KiB pada FPGA.
