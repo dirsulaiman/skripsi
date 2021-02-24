@@ -77,7 +77,7 @@ Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobe
 Penerapan filter spasial menggunakan prosesor ARM dilakukan dengan menggunakan \textit{library} OpenCV dengan bahasa pemrograman Python yang dijalankan pada FPGA Development Board. Sedangkan untuk penerapan filter spasial menggunakan FPGA dilakukan dengan menggunakan \textit{library} xfOpenCV dari Xilinx. \textit{Library} xfOpenCV ini adalah library khusus yang dimodifikasi dari OpenCV sehingga proses komputasinya dapat dilakukan dengan FPGA, bukan dengan prosesor ARM yang pada FPGA Development Board ini. Lebih lanjut mengenai program yang digunakan dapat dilihat pada lampiran \textit{pynq-filter-spasial-arm} (\ref{code:filter-spasial-FPGA}) dan \textit{pynq-filter-spasial-fpga} (\ref{code:filter-spasial-ARM}).
 
 \subsection{Proses Evaluasi Kinerja}
-Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat persentase penggunaan CPU dan penggunaan memory termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
+Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat persentase penggunaan CPU dan penggunaan \textit{memory} termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
 
 \subsubsection{Menghitung Waktu Komputasi dan FPS}
 Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada daftar lampiran (\ref{lampiran:waktu-komputasi}).
@@ -92,14 +92,14 @@ Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu 
 Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. Selanjutnya FPS masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
 
 \subsubsection{Mencatat Penggunaan Memory dan CPU (Resource)}
-Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan memory (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase memory yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
+Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan \textit{memory} (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase \textit{memory} yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
 \begin{afigure}
     \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
     \caption{Tampilan program \textbf{top}.}
     \label{fig:top-linux}
 \end{afigure}
 
-Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan memory dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan Jupyter Notebook yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol SSH untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
+Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan \textit{memory} dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan \textit{Jupyter Notebook} yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol SSH untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
 
 \begin{afigure}
     \lstinputlisting[frame=single, style=python]{images/programs/pid.py}
@@ -107,7 +107,7 @@ Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan memory dan CPU dar
     \label{code:pid}
 \end{afigure}
 
-Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untuk mencatat penggunaan memory dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. Cara menampilkan ID proses (PID) menggunakan bahasa pemrograman Python dapat dilihat pada gambar \ref{code:pid}. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan oleh preses tersebut. 
+Pertama peneliti menampilkan ID proses dari \textit{Jupyter Notebook} yang digunakan untuk mencatat penggunaan \textit{memory} dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. Cara menampilkan ID proses (PID) menggunakan bahasa pemrograman Python dapat dilihat pada gambar \ref{code:pid}. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan oleh preses tersebut. 
 
 \begin{afigure}
     \begin{lstlisting}[frame=single, style=shell] 
@@ -117,7 +117,7 @@ Pertama peneliti menampilkan ID proses dari Jupyter Notebook yang digunakan untu
     \label{code:top}
 \end{afigure}
 
-Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan pada file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada Jupyter Notebook. Output dari program top setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
+Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan pada file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada \textit{Jupyter Notebook}. Output dari program top setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
 
 \begin{afigure}
     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.txt}
