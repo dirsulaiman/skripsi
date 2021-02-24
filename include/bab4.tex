@@ -79,7 +79,7 @@ Penerapan filter spasial menggunakan prosesor ARM dilakukan dengan menggunakan \
 \subsection{Proses Evaluasi Kinerja}
 Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat persentase penggunaan CPU dan penggunaan memory termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
 
-\subsubsection{Menghitung Waktu Komutasi dan FPS}
+\subsubsection{Menghitung Waktu Komputasi dan FPS}
 Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 frame dan 200 frame dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 frame untuk masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 frame untuk masing-masing kernel. Hasil masing-masing percobaan ini dapat dilihat pada daftar lampiran (\ref{lampiran:waktu-komputasi}).
 
 Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua frame selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai, seperti pada persamaan \ref{eq:time}. Dilakukan dengan 50 frame dan 200 frame pada masing-masing kernel dengan menggunakan prosesor ARM dan FPGA. Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
@@ -136,7 +136,7 @@ Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat di
 
 % Jelaskan Hasil
 \section{Analisis Kinerja}
-\subsection{Waktu Komuptasi}
+\subsection{Waktu Komputasi}
 % pengantar
 % Dilakukan 5 kali percobaan dengan 50 frame dan 5 kali percobaan dengan 200 frame pada masing-masing kernel menggunakan ARM prosesor dan FPGA. 
 
@@ -167,9 +167,8 @@ Data waktu komputasi dengan menggunakan 50 frame pada maasing-masing kernel dapa
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-time50.png}
-    \caption{50 frame.}
-    \label{fig:chart-time50}
     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
+    \label{fig:chart-time50}
 \end{figure}
 
 % 200 frame
@@ -200,9 +199,8 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-time200.png}
-    \caption{200 frame.}
-    \label{fig:chart-time200}
     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
+    \label{fig:chart-time200}
 \end{figure}
 
 Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter Laplacian yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter Sharpening yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
