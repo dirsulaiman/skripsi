@@ -135,14 +135,14 @@ Sharpening filter digunakan untuk memperjelas detail halus dalam citra atau untu
 
 
 \subsection{Konvolusi}
-Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Konvolusi pada fungsi \textit{f(x)} dan \textit{g(x)} didefinisikan sebagi berikut:
+Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Konvolusi pada fungsi \textit{f(x)} dan \textit{g(x)} didefinisikan pada persamaan \ref{eq:conv1}.
 \begin{equation}
     \label{eq:conv1}
     \begin{split}
 h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da
     \end{split}
 \end{equation}
-dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan sebagai berikut:
+dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan pada persamaan \ref{eq:conv2}.
 \begin{equation}
     \label{eq:conv2}
     \begin{split}
