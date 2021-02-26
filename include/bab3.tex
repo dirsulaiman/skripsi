@@ -18,12 +18,12 @@ Penelitian ini dilaksanakan dari bulan Juni 2020 sampai dengan bulan Agustus 202
 \section{Rancangan Sistem}
 Pada penelitian ini akan dibangun suatu sistem untuk mengimplementasikan filter spasial linear pada FPGA, dapat dilihat pada gambar \ref{fig:rancangan-sistem}.
 \begin{afigure}
-    \includegraphics[width=0.85\textwidth, center]{images/rancangan-sistem.jpg}
+    \includegraphics[width=1\textwidth, center]{images/rancangan-sistem2.png}
     \caption{Rancangan sistem.}
     \label{fig:rancangan-sistem}
 \end{afigure}
 
-Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pada FPGA Development Board, kemudian video \textit{stream} tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah diterapkan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA Development Board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan Jupyter Notebook melalui browser.
+Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pada FPGA Development Board, kemudian video \textit{stream} tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap frame yang telah diterapkan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA Development Board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan \textit{Jupyter Notebook} melalui \textit{web browser}.
 
 \pagebreak
 
@@ -55,6 +55,3 @@ Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pa
         \item Dimension : 3,44" x 5,39" (87mm x 137mm)
     \end{itemize}
 \end{enumerate}
-
-
-
