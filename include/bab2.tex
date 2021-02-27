@@ -163,8 +163,8 @@ Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dija
 % masalah padding
  
 
-\subsection{Video Streaming}
-Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file dengan format video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video stream adalah kumpulan citra digital (frame) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
+\subsection{Video Stream}
+Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video \textit{stream} ini tidak disimpan pada media penyimpanan sebagai file dengan format video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video \textit{stream} adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
 
 
 \subsection{FPGA}
@@ -189,10 +189,10 @@ Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan so
 
 
 \subsection{Evaluasi Performa}
-Pada penelitian ini peneliti menggunakan waktu komputasi, frame rate (FPS), penggunaan CPU, penggunaan memory, penggunaan resident memory (RES), shared memory (SHR), dan virtual memory (VIRT) untuk mengukur performa pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
+Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan {memory}, penggunaan {resident memory} (RES), {shared memory} (SHR), dan {virtual memory} (VIRT) untuk mengukur performa pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
 
 \subsubsection{Waktu Komputasi}
-Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa frame input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada frame input.
+Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa \textit{frame} input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada \textit{frame} input.
 % \thecite{pdf:chang}
 \begin{equation}
     \label{eq:time}
@@ -202,7 +202,7 @@ waktu kompuatsi = waktu selesai - waktu mulai
 \end{equation}
 
 \subsubsection{Frame Rate (FPS)}
-Frame rate atau frame per second (fps) adalah banyaknya frame yang ditampilkan per detik pada video ataupun video straem. Semakin tinggi fps sebuah video maka semakin halus pula gerakan yang dihasilkan. Sebaliknya video dengan fps rendah akan menghasilkan gerakan yang kurang baik. Frame rate atau fps dapat dihitung dengan cara membagi jumlah frame dengan waktu komputasinya seperti pada persamaan \ref{eq:fps} \thecite{pdf:pavan}.
+\textit{Frame rate} atau \textit{frame per second} (fps) adalah banyaknya \textit{frame} yang ditampilkan per detik pada video ataupun video \textit{straem}. Semakin tinggi fps sebuah video maka semakin halus pula gerakan yang dihasilkan. Sebaliknya video dengan fps rendah akan menghasilkan gerakan yang kurang baik. \textit{Frame rate} atau fps dapat dihitung dengan cara membagi jumlah \textit{frame} dengan waktu komputasinya seperti pada persamaan \ref{eq:fps} \thecite{pdf:pavan}.
 \begin{equation}
     \label{eq:fps}
     \begin{split}
