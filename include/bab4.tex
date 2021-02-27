@@ -99,7 +99,7 @@ Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Lin
     \label{fig:top-linux}
 \end{afigure}
 
-Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan \textit{memory} dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan \textit{Jupyter Notebook} yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol SSH untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
+Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan \textit{memory} dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan \textit{Jupyter Notebook} yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol \textit{ssh} untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
 
 \begin{afigure}
     \lstinputlisting[frame=single, style=python]{images/programs/pid.py}
@@ -127,11 +127,11 @@ Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untu
 
 Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat dilihat pada gambar \ref{code:arm-laplacian1.txt}. Isi dari file hasil ini masih banyak mengandung informasi yang tidak dibutuhkan pada penelitian ini, sehingga perlu dilakukan proses ekstraksi informasi yang dibutuhkan saja. Kemudian file yang telah diekstraksi tersebut dibuat menjadi file CSV agar lebih mudah dalam proses pengolahan selanjutnya, seperti pada gambar \ref{code:arm-laplacian1.csv}. Proses tesebut dilakukan sebanyak 5 kali percobaan pada masing-masing kernel menggunakan prosesor ARM dan FPGA.
 
-\begin{afigure}
+\begin{figure}[H]
     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.csv}
     \caption{Isi file arm-laplacian1.csv.}
     \label{code:arm-laplacian1.csv}
-\end{afigure}
+\end{figure}
 
 
 % Jelaskan Hasil
