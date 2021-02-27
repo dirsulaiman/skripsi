@@ -1,6 +1,9 @@
 import time
-...
-startSW=time.time()
+
+waktu_start = time.time()
+
 # implementasi
-stopSW=time.time()
-result = stopSW - startSW
+...
+
+waktu_stop = time.time()
+duration = waktu_stop - waktu_start
