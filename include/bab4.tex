@@ -73,8 +73,8 @@ Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobe
     \label{fig:output-sobelver}
 \end{afigure}
 
-\subsection{Penerapan Filter Spasial menggunakan Prosesor ARM dan FPGA}
-Penerapan filter spasial menggunakan prosesor ARM dilakukan dengan menggunakan \textit{library} OpenCV dengan bahasa pemrograman Python yang dijalankan pada FPGA Development Board. Sedangkan untuk penerapan filter spasial menggunakan FPGA dilakukan dengan menggunakan \textit{library} xfOpenCV dari Xilinx. \textit{Library} xfOpenCV ini adalah library khusus yang dimodifikasi dari OpenCV sehingga proses komputasinya dapat dilakukan dengan FPGA, bukan dengan prosesor ARM yang pada FPGA Development Board ini. Lebih lanjut mengenai program yang digunakan dapat dilihat pada lampiran \textit{pynq-filter-spasial-arm} (\ref{code:filter-spasial-FPGA}) dan \textit{pynq-filter-spasial-fpga} (\ref{code:filter-spasial-ARM}).
+\subsection{Penerapan Filter Spasial dengan Prosesor ARM dan FPGA}
+Penerapan filter spasial pada prosesor ARM dilakukan dengan menggunakan \textit{library} OpenCV dengan bahasa pemrograman Python yang dijalankan pada FPGA Development Board. Sedangkan untuk penerapan filter spasial pada FPGA dilakukan dengan menggunakan \textit{library} xfOpenCV dari Xilinx. \textit{Library} xfOpenCV ini adalah library khusus yang dimodifikasi dari OpenCV sehingga proses komputasinya dapat dilakukan dengan FPGA, bukan dengan prosesor ARM yang pada FPGA Development Board ini. Lebih lanjut mengenai program yang digunakan dapat dilihat pada lampiran \textit{pynq-filter-spasial-arm} (\ref{code:filter-spasial-FPGA}) dan \textit{pynq-filter-spasial-fpga} (\ref{code:filter-spasial-ARM}).
 
 \subsection{Proses Evaluasi Kinerja}
 Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat persentase penggunaan CPU dan penggunaan \textit{memory} termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
