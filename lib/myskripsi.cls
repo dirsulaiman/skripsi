@@ -37,10 +37,10 @@
 \RequirePackage{setspace}
 \onehalfspacing
 
-% to costumize Table of contents
+% to customize Table of contents
 \RequirePackage{tocloft}
 
-% to costumize footer and header
+% to customize footer and header
 \RequirePackage{fancyhdr}
 
 % to hide Hyperlink color
@@ -580,7 +580,7 @@
 %===========================================================
 % Setting Tabble of Content, list of figure, list of table
 %-----------------------------------------------------------
-% costumize Table of contents
+% customize Table of contents
 \renewcommand{\cftchappresnum}{BAB }
 \renewcommand{\cftchapnumwidth}{3.7em}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
