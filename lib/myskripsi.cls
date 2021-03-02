@@ -62,9 +62,42 @@
 % use listings for code script
 \RequirePackage{listings}
 \RequirePackage{color}
+
+% float [H]
+\RequirePackage{float}
 %-----------------------------------------------------------------------------
 % End Require Package
 %=============================================================================
+
+\renewcommand{\baselinestretch}{1.42}
+\renewcommand{\UrlFont}{\small\rm}
+
+
+%=============================================================================
+% Package Daftar Pustaka, bentuk citasi
+% Config
+% - style, citestyle = {authoryear, numeric, apa, mla}
+% - sorting {year,name,title} = ynt
+%-----------------------------------------------------------------------------
+\usepackage[
+    backend=biber,
+    style=authoryear,
+    citestyle=authoryear,
+    sorting=nty,
+    giveninits=false,
+    maxbibnames=3
+    ]{biblatex}
+\addbibresource{bibtex/daftar-pustaka.bib}
+% redefine "et al" in bib to "dkk"
+\DefineBibliographyStrings{english}{andothers={dkk\adddot}}
+
+% new citation style
+\let\oldcitate\cite
+\newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
+%-----------------------------------------------------------------------------
+% End Biblatex Config
+%=============================================================================
+
 
 %=============================================================================
 % Setting footer, header and page number
