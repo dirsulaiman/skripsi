@@ -85,7 +85,7 @@
     citestyle=authoryear,
     sorting=nty,
     giveninits=false,
-    maxbibnames=3
+    maxbibnames=2
     ]{biblatex}
 \addbibresource{bibtex/daftar-pustaka.bib}
 % redefine "et al" in bib to "dkk"
