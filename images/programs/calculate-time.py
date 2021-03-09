@@ -6,4 +6,4 @@ waktu_start = time.time()
 ...
 
 waktu_stop = time.time()
-duration = waktu_stop - waktu_start
+waktu_komputasi = waktu_stop - waktu_start
