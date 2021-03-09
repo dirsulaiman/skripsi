@@ -85,7 +85,7 @@
     citestyle=authoryear,
     sorting=nty,
     giveninits=false,
-    maxbibnames=2
+    maxbibnames=3
     ]{biblatex}
 \addbibresource{bibtex/daftar-pustaka.bib}
 % redefine "et al" in bib to "dkk"
@@ -94,6 +94,7 @@
 % new citation style
 \let\oldcitate\cite
 \newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
+% \newcommand*\thecite[1]{(\cite{#1})}
 %-----------------------------------------------------------
 % End Biblatex Config
 %===========================================================
