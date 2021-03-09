@@ -1,42 +1,60 @@
 \chapter{PENDAHULUAN}
 
 \section{Latar Belakang}
+
+% perlu diperbaiki 
+
 % Tentang Citra digital
-Citra digital merupakan citra yang dihasilkan dari pengolahan secara digital dengan merepresentasikan citra secara numerik dengan nilai-nilai diskrit. Suatu citra digital dapat direpresentasikan dalam bentuk matriks dengan fungsi \textit{f(x,y)} yang terdiri dari M kolom dan N baris. Perpotongan antara baris dan kolom disebut sebagai piksel (\textit{pixel}) \thecite{book:gonzalez}. 
+Citra digital merupakan citra yang dihasilkan dari pengolahan secara digital dengan merepresentasikan citra secara numerik dengan nilai-nilai diskrit. Suatu citra digital dapat direpresentasikan dalam bentuk matriks dengan fungsi \textit{f(x,y)} yang terdiri dari M kolom dan N baris. Perpotongan antara baris dan kolom disebut sebagai piksel \thecite{book:gonzalez}. 
 
 % Pengolahan Citra digital
 Pengolahan citra digital merupakan proses mengolah piksel di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi atau mempartisi gambar menjadi beberapa bagian atau objek, deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek yang terdapat dalam citra digital. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra seperti \textit{pattern recognition}, \textit{template matching}, \textit{image analysis} dan sebagainya \thecite{book:gonzalez}.
 
 
 % Filter Spasial
-Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini penulis menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
+Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \thecite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 
 
 % Stream Video adalah
-Video stream dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video stream ini tidak disimpan pada media penyimpanan sebagai file video melainkan setiap \textit{frame} langsung disalurkan dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA. Dengan menganggap Video stream adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. Setiap citra yang ditangkap dari source disebut sebagai \textit{frame}, setiap \textit{frame} ini dilakukan metode filter spasial kemudian hasilnya ditampilkan secara berkesinambungan sehingga tampak seperti video yang telah difilter.
+Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut-turut \thecite{thesis:jin}. Berbeda dengan format video lainya, video \textit{stream} ini tidak disimpan pada media penyimpanan sebagai file video melainkan setiap \textit{frame} langsung disalurkan dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA. Dengan menganggap video \textit{stream} adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. 
 
-Frame per second (\textit{fps}) atau \textit{frame rate} adalah banyaknya \textit{frame} yang ditampilkan per detik. Semakin tinggi \textit{fps} sebuah video maka semakin halus pula gerakan yang dapat ditampilkan karena dibentuk dari \textit{frame} yang lebih banyak, namun dengan jumlah \textit{frame} yang lebih besar tentu dibutuhkan juga \textit{resource} yang lebih besar dalam pengolahan video tersebut \thecite{pdf:marcin}. 
+Frame per second (\textit{fps}) atau \textit{frame rate} adalah banyaknya \textit{frame} yang ditampilkan per detik. Semakin tinggi \textit{fps} sebuah video maka semakin baik pula gerakan yang dapat ditampilkan karena dibentuk dari \textit{frame} yang lebih banyak. Namun dengan jumlah \textit{frame} yang lebih besar tentu dibutuhkan juga \textit{resource} yang lebih besar dalam pengolahan video tersebut \thecite{pdf:marcin}. 
 % Dalam penelitian ini video stream yang digunakan dibatasi 30 \textit{fps} saja dengan resolusi 720p.
 
 
-% FPGA sebagai alat untuk implementasi
-Field Programmable Gate Arrays atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
 
-FPGA Xilinx PYNQ-Z2 adalah FPGA \textit{Board} yang digunakan pada penelitian ini secara \textit{official} dapat menerima input video stream dengan resolusi 720p. Setiap \textit{frame} yang diterima dari \textit{source} akan dilakukan proses filter spasial, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan. Video hasil filter spasial yang ditampilkan akan mengalami penurunan \textit{fps}, hal ini disebabkan adanya penambahan jeda waktu komputasi untuk proses filter yang dilakukan pada setiap \textit{frame}. Pada kesempatan ini penulis ingin melakukan "Implementasi Filter Spasial Linear pada Video \textit{Stream} menggunakan FPGA \textit{Hardware Accelerator}".
 
+% FPGA Xilinx PYNQ-Z2 adalah FPGA \textit{Board} yang digunakan pada penelitian ini secara \textit{official} dapat menerima input video \textit{stream} dengan resolusi 720p. Setiap \textit{frame} yang diterima dari \textit{source} akan dilakukan proses filter spasial, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan. Video hasil filter spasial yang ditampilkan akan mengalami penurunan \textit{fps}, hal ini disebabkan adanya penambahan jeda waktu komputasi untuk proses filter yang dilakukan pada setiap \textit{frame}. Pada kesempatan ini peneliti ingin melakukan "Implementasi Filter Spasial Linear pada Video \textit{Stream} menggunakan FPGA \textit{Hardware Accelerator}".
+
+
+Untuk meningkatkan kinerja dan efisiensi energi dari sebuah program, berbagai jenis akselerator telah dikembangkan, salah satu diantaranya yaitu FPGA \thecite{lb:cong}. \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \thecite{XILINX}.
+
+FPGA telah menunjukkan kinerja yang sangat tinggi di dalam banyak aplikasi dalam pemrosesan citra. Namun CPU dan CPU terbaru memiliki potensi kinerja tinggi untuk masalah-masalah tersebut. CPU terbaru mendukung \textit{multi-core}, dimana masing-masing \textit{core} mendukung SIMD (\textit{Single Instruction, Multiple Data}) yang telah dikembangkan dan dijalankan hingga 16 operasi pada 128 bit data dalam satu \textit{clock cycle}. GPU terbaru mendukung sejumlah besar \textit{core} yang berjalan secara paralel, dan kinerja puncaknya mengungguli CPU \thecite{lb:asano}.
+
+\pagebreak
+
+Paralelisme dalam SIMD pada CPU terbatas, tetapi frekuensi operasional CPU sangatlah tinggi, dan CPU diharapkan dapat menunjukkan kinerja yang tinggi dalam aplikasi yang dimana \textit{cache memory} berjalan dengan baik. Ukuran \textit{cache memory} cukup besar untuk menyimpan seluruh citra di banyak aplikasi pemrosesan citra, dan CPU dapat menjalankan algoritma yang sama dengan FPGA meskipun \textit{bandwith memory} yang dibutuhkan tinggi \thecite{lb:asano}.
+
+Frekuensi operasional GPU lebih cepat dibandingkan dengan FPGA, namun sedikit lebih lambat dibandingkan dengan CPU. Akan tetapi, GPU mendukung banyak \textit{core} yang berjalan secara paralel sehingga kinerja puncaknya mengungguli CPU. Namun \textit{core}-nya dikelompokkan, dan transfer data antara kelompok sangatlah lambat. Selain itu, ukuran \textit{local memory} yang disediakan masing-masing kelompok sangat kecil. Karena keterbatasan ini, GPU tidak dapat menjalankan algoritma yang sama seperti FPGA dalam beberapa masalah aplikasi \thecite{lb:asano}.
+
+Pada FPGA terdahulu tidak terdapat prosesor untuk menjalankan \textit{software} apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal. Sebagian besar FPGA sekarang telah dirangkai dengan prosesor dalam satu \textit{board}, sering disebut sebagai FPGA Development Board. Xilinx PYNQ-Z2 dibangun dari prosesor ARM Cortex-A9, sehingga dapat menjalankan beberapa \textit{software} seperti \textit{python} tanpa harus merancang sirkuitnya dari awal. Akan tetapi, kinerja yang dimiliki oleh prosesor ARM pada FPGA Development Board tentu berbeda dengan kinerja fungsi arsitektur FPGA itu sendiri sehingga dapat dikaji lebih dalam mengenai perbandingan kinerja dari keduanya.
+
+Berdasarkan uraian permasalahan di atas, peneliti ingin melakukan penelitian dengan judul "Implementasi Filter Spasial Linear pada Video \textit{Stream} menggunakan FPGA \textit{Hardware Accelerator}" untuk menunjukkan kinerja dari prosesor ARM dan FPGA pada Xilinx PYNQ-Z2 FPGA Development Board.
+
+\pagebreak
 
 \section{Rumusan Masalah}
 Adapun rumusan masalah dalam penelitian ini yaitu:
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
-    \item Bagaimana cara implementasi fiter spasial linear pada video stream menggunakan FPGA? 
-    \item Bagaimana kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video stream? 
+    \item Bagaimana cara implementasi fiter spasial linear pada video \textit{stream} menggunakan FPGA? 
+    \item Bagaimana kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video \textit{stream}? 
 \end{enumerate}
 
 \section{Tujuan Penelitian}
 Adapun tujuan dari penelitian ini yaitu:
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
-    \item Mampu melakukan implementasi fiter spasial linear pada video stream menggunakan FPGA.
-    \item Mengetahui kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video stream.
+    \item Mampu melakukan implementasi fiter spasial linear pada video \textit{stream} menggunakan FPGA.
+    \item Mengetahui kinerja FPGA dalam mengimplementasikan fiter spasial linear pada video \textit{stream}.
 \end{enumerate}
 
 
@@ -44,10 +62,10 @@ Adapun tujuan dari penelitian ini yaitu:
 Berikut ini merupakan beberapa batasan dalam penelitian ini.
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
     \item Filter kernel yang digunakan berukuran 3x3.
-    \item Video stream yang digunakan dalam penelitian ini beresolusi 720p.
-    \item Setiap frame dari video stream diubah menjadi citra grayscale sebelum dilakukan penerapan filter spasial.
+    \item Video \textit{stream} yang digunakan dalam penelitian ini beresolusi 720p.
+    \item Setiap frame dari video \textit{stream} diubah menjadi citra grayscale sebelum dilakukan penerapan filter spasial.
     \item FPGA \textit{Board} yang digunakan adalah Xilinx PYNQ-Z2 dengan processor 650MHz dual-core ARM Cortex-A9.
 \end{enumerate}
 
 \section{Manfaat Penelitian}
-Hasil dari penelitian ini diharapkan dapat memberikan pemahaman tentang penerapan filter spasial pada video stream. Selain itu, penelitian ini juga diharapkan dapat menjadi rujukan untuk melihat kinerja FPGA dalam mengimplementasikan filter spasial linear pada video stream.
+Hasil dari penelitian ini diharapkan dapat memberikan pemahaman tentang penerapan filter spasial pada video \textit{stream} dengan FPGA Development Board. Selain itu, penelitian ini juga diharapkan dapat menjadi rujukan untuk melihat kinerja FPGA PYNQ-Z2 dalam mengimplementasikan filter spasial linear pada video \textit{stream}.
