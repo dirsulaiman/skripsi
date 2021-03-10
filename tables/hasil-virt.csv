@@ -1,8 +1,0 @@
-filter; arm; fpga;
-Average Blur; 396,474.64; 395396;
-Gaussian Blur; 398,862.80; 395488.8;
-Laplacian; 393,388.00; 395638.4;
-Sharpen; 395,126.77; 395575.2;
-Sobel Horizontal; 393,544.80; 395524;
-Sobel Vertical; 395,048.80; 395385.6;
-Rata-rata; 395,407.64; 395501.3333;
