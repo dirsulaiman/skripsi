@@ -82,18 +82,20 @@
 \usepackage[
     backend=biber,
     style=authoryear,
-    citestyle=authoryear,
+    citestyle=authoryear-comp,
     sorting=nty,
     giveninits=false,
     maxbibnames=3
     ]{biblatex}
 \addbibresource{bibtex/daftar-pustaka.bib}
+
 % redefine "et al" in bib to "dkk"
 \DefineBibliographyStrings{english}{andothers={dkk\adddot}}
 
 % new citation style
 \let\oldcitate\cite
-\newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
+\newcommand*\thecite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
+\renewcommand*\cite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
 % \newcommand*\thecite[1]{(\cite{#1})}
 %-----------------------------------------------------------
 % End Biblatex Config
