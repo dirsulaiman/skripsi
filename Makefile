@@ -4,9 +4,9 @@
 DOCNAME=$(file)
 
 run: 
-	pdflatex $(DOCNAME).tex ;
-	biber $(DOCNAME) ;
-	pdflatex $(DOCNAME).tex ;
+	pdflatex $(DOCNAME).tex;
+	biber $(DOCNAME);
+	pdflatex $(DOCNAME).tex;
 	pdflatex $(DOCNAME).tex
 
 clear:
@@ -17,3 +17,7 @@ clear:
 	rm $(DOCNAME).log;
 	rm $(DOCNAME).run.xml;
 	echo "Cleared"
+
+# rm $(DOCNAME).toc
+# rm $(DOCNAME).bcf
+# rm $(DOCNAME).lof
