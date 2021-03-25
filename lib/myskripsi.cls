@@ -265,8 +265,6 @@
 \newcommand{\@yearsubmit}{}
 \newcommand{\program}[1]{\gdef\@program{#1}}
 \newcommand{\@program}{}
-\newcommand{\headprogram}[1]{\gdef\@headprogram{#1}}
-\newcommand{\@headprogram}{}
 \newcommand{\dept}[1]{\gdef\@dept{#1}}
 \newcommand{\@dept}{}
 \newcommand{\faculty}[1]{\gdef\@faculty{#1}}
@@ -277,16 +275,20 @@
 \newcommand{\@city}{}
 \newcommand{\firstsupervisor}[1]{\gdef\@firstsupervisor{#1}}
 \newcommand{\@firstsupervisor}{}
+\newcommand{\firstsupervisorNIP}[1]{\gdef\@firstsupervisorNIP{#1}}
+\newcommand{\@firstsupervisorNIP}{}
 \newcommand{\secondsupervisor}[1]{\gdef\@secondsupervisor{#1}}
 \newcommand{\@secondsupervisor}{}
+\newcommand{\secondsupervisorNIP}[1]{\gdef\@secondsupervisorNIP{#1}}
+\newcommand{\@secondsupervisorNIP}{}
 \newcommand{\firstexaminer}[1]{\gdef\@firstexaminer{#1}}
 \newcommand{\@firstexaminer}{}
 \newcommand{\secondexaminer}[1]{\gdef\@secondexaminer{#1}}
 \newcommand{\@secondexaminer}{}
-\newcommand{\firstsupervisorNIP}[1]{\gdef\@firstsupervisorNIP{#1}}
-\newcommand{\@firstsupervisorNIP}{}
-\newcommand{\secondsupervisorNIP}[1]{\gdef\@secondsupervisorNIP{#1}}
-\newcommand{\@secondsupervisorNIP}{}
+\newcommand{\headprogram}[1]{\gdef\@headprogram{#1}}
+\newcommand{\@headprogram}{}
+\newcommand{\headprogramNIP}[1]{\gdef\@headprogramNIP{#1}}
+\newcommand{\@headprogramNIP}{}
 %-----------------------------------------------------------
 % End Define thesis's inputs
 %===========================================================
@@ -367,6 +369,7 @@
             {\normalfont\bfseries\@yearsubmit}}\\
         \end{singlespace}
     \end{center}
+    \pagebreak
 }
 %-----------------------------------------------------------
 % End Define Cover Skripsi
@@ -419,25 +422,41 @@
 \def\authenticationpage{
     \addwatermark
     \addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN KEOTENTIKAN}
+    
     \begin{center}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PERNYATAAN KEOTENTIKAN}}\\
-            \addwatermark
-            \vspace{2cm}
-
-            \normalfont{Saya yang bertanda tangan di bawah ini menyatakan dengan sungguh-sungguh bahwa skripsi yang saya buat dengan judul:}\\
-            \vspace{3cm}
-
-            \bfseries{\@titleind}\\
-            \vspace{3cm}
-
-            \normalfont{adalah benar hasi karya saya sendiri bukan hasil plagiat dan belum pernah dipublikasikan dalam bentuk apapun}\\
-            \vspace{2.0cm}
-        \end{singlespace}
+        \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PERNYATAAN KEOTENTIKAN}}\\
+        \vspace{1cm}
     \end{center}
+
+    \noindent
+    Yang bertanda tangan dibawah ini: \\
+    \begin{tabular}{ m{0.5cm} l c l } 
+        & Nama          & : & \@fullname \\
+        & NIM           & : & \@idnum \\
+        & Program Studi & : & \@program \\
+        & Jenjang       & : & S1 \\
+    \end{tabular}
+    \vspace{0.2cm}
+
+    \noindent
+    Menyatakan dengan ini bahwa karya tulisan saya berjudul
+    \vspace{0.5cm}
+
+    \begin{center}
+        \bfseries{\@titleind}
+        \vspace{0.5cm}
+    \end{center}
+
+    \noindent
+    Adalah benar hasi. karya saya sendiri bukan merupakan pengambilan alihan tulisan orang lain dan belum pernah dipublikasikan dalam bentuk apapun. \\
+
+    \noindent
+    Apabila dikemudian hari terbukti atau dapat dibuktikan bahwa sebagian atau keseluruhan skripsi ini merupakan hasil karya orang lain, maka saya bersedia menerima sanksi atas perbuatan tersebut.
+    
+    \vspace{1cm}
     \begin{flushright}
-        Makassar, 14 September\\
-        \vspace{3cm}
+        \@city, \@examdate\\
+        \vspace{2.5cm}
         {\@fullname}\\
         NIM. {\@idnum}
     \end{flushright}
@@ -451,31 +470,61 @@
 %===========================================================
 % Define Supervisor Approval Page
 %-----------------------------------------------------------
-\def\supervisorapprovalpage{%
+\def\supervisorapprovalpage{
     \addwatermark
     \addcontentsline{toc}{chapter}{HALAMAN PERSETUJUAN PEMBIMBING}
     \begin{center}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
-            \vspace{2.0cm}
-
-            {\normalfont\large\bfseries\expandafter{Disetujui Oleh:}}\\        
-            \vspace{5cm}
-
-            \begin{tabular}{p{7cm}p{7cm}}
-                Pembimbing Utama & Pembimbing Pertama
-            \end{tabular}
-
-            \vspace{2.0cm}
-            \begin{tabular}{p{7cm}p{7cm}}
-                \@firstsupervisor & \@secondsupervisor \\
-                NIP. 413411342141412 & NIP. 413411342141412
-            \end{tabular}
-
-            \vspace{2cm}
-            Pada Tanggal : \expandafter{\@examdate}\\
-        \end{singlespace}
+        \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
+        \vspace{0.5cm}
     \end{center}
+
+    \begin{center}
+        Disusun dan diajukan oleh\\
+        \begin{singlespace}
+            \large\bfseries{\@fullname}\\
+            \large\bfseries{\@idnum}\\
+            \vspace{1.0cm}
+        \end{singlespace}
+
+            Telah dipertahankan di hadapan Panitia Ujian yang dibentuk dalam rangka Penyelesaian Studi Program Sarjana Program Studi {\@program} Fakultas {\@faculty} {\@university} dan dinyatakan telah memenuhi syarat kelulusan \\
+
+            \vspace{0.2cm}
+            Menyetujui,
+            \vspace{0.2cm}
+    \end{center}
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{ >{\centering\arraybackslash}m{6cm}  m{2cm} >{\centering\arraybackslash}m{6cm} }
+            Pembimbing Utama & & Pembimbing Pertama \\
+            & & \\
+            & & \\
+            & & \\
+            & & \\
+            & & \\
+            \underline{\@firstsupervisor} & & \underline{\@secondsupervisor} \\
+            NIP. 413411342141412 & & NIP. 413411342141412
+        \end{tabular}
+
+        \vspace{1cm}
+        \begin{tabular}{ >{\centering\arraybackslash}m{6cm} }
+            Ketua Program Studi \\
+            \\
+            \\
+            \\
+            \\
+            \\
+            \underline{\@headprogram} \\
+            NIP. \@headprogramNIP
+        \end{tabular}
+    \end{table}
+
+
+
+    % \vspace{2cm}
+    % Pada Tanggal : \expandafter{\@examdate}\\
+        
+    
     \pagebreak
 }
 %-----------------------------------------------------------
@@ -490,24 +539,25 @@
     \addwatermark
     \addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
     \begin{center}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
-            \vspace{1.0cm}
-            
-            \begin{tabular}{p{4.5cm} p{.1cm} p{7cm}}
-                Skripsi ini diajukan oleh: & & \\
-                \vspace{.1cm} & & \\
+        \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
+        \vspace{0.5cm}
+    \end{center}
+
+    \begin{singlespace}
+        \noindent
+        Skripsi ini diajukan oleh:
+        \begin{center}
+            \begin{tabular}{ p{3cm}  p{.1cm} p{10.5cm}}
                 Nama &:& \@fullname\\
                 NIM &:& \@idnum\\
                 Program Studi &:& \@program\\
                 Judul Skripsi &:& \@titleind\\
             \end{tabular}
-        \end{singlespace}
-    \end{center}
-
-    \vspace{1cm}
-    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Fakultas Matematika dan Ilmu Pengatahuan Alam Universitas Hasanuddin.\\
-    \vspace{0.5cm}
+        \end{center}
+    \end{singlespace}
+    
+    \noindent
+    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar sarjana pada Program Studi {\@program} Fakultas {\@faculty} {\@university}.\\
 
     \begin{center}
         \begin{doublespace} 
@@ -517,12 +567,12 @@
                 1. & Ketua &: \@firstsupervisor & (........................)\\ \\
                 2. & Sekretaris &: \@secondsupervisor & (........................)\\ \\
                 3. & Anggota &: \@firstexaminer & (........................)\\ \\
-                4. & Anggota &: \@secondexaminer & (........................)\\ \\
+                4. & Anggota &: \@secondexaminer & (........................)\\
             \end{tabular}
         \end{doublespace}
     \end{center}
     \begin{tabular}{l l}
-        Ditetapkan di &: Makassar \\ 
+        Ditetapkan di &: \@city \\ 
         Tanggal &: \@examdate
     \end{tabular}
     \pagebreak
@@ -535,7 +585,7 @@
 %===========================================================
 % Define Persetujuan Publikasi Karya Ilmiah
 %-----------------------------------------------------------
-\def\approvalpage{%
+\def\publicationapprovalpage{%
     \addwatermark
     \addcontentsline{toc}{chapter}{PERSETUJUAN PUBLIKASI KARYA ILMIAH}
     \begin{center}
