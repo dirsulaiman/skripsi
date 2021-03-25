@@ -210,9 +210,9 @@
 % Set Watermark
 %-----------------------------------------------------------
 \backgroundsetup{
-  scale=1,       %% change accordingly
-  angle=0,       %% change accordingly
-  opacity=.2,    %% change accordingly
+  scale=1,       
+  angle=0,       
+  opacity=.2,    
   contents={\includegraphics[width=14cm]{images/logoUH.png}}
 }
 \newcommand\addwatermark{\BgThispage}
@@ -248,8 +248,6 @@
 %===========================================================
 % Define thesis's inputs
 %-----------------------------------------------------------
-\gdef\@university{Universitas Hasanuddin}
-\gdef\@city{Makassar}
 \newcommand{\titleind}[1]{\gdef\@titleind{#1}}
 \newcommand{\@titleind}{}
 \newcommand{\titleeng}[1]{\gdef\@titleeng{#1}}
@@ -273,6 +271,10 @@
 \newcommand{\@dept}{}
 \newcommand{\faculty}[1]{\gdef\@faculty{#1}}
 \newcommand{\@faculty}{}
+\newcommand{\university}[1]{\gdef\@university{#1}}
+\newcommand{\@university}{}
+\newcommand{\city}[1]{\gdef\@city{#1}}
+\newcommand{\@city}{}
 \newcommand{\firstsupervisor}[1]{\gdef\@firstsupervisor{#1}}
 \newcommand{\@firstsupervisor}{}
 \newcommand{\secondsupervisor}[1]{\gdef\@secondsupervisor{#1}}
@@ -327,169 +329,10 @@
             {\normalfont\bfseries\@yearsubmit}}\\
         \end{singlespace}
     \end{center}
-    \newpage
+    \pagebreak
 }
 %-----------------------------------------------------------
 % End Define Cover Seminar Proposal/Hasil
-%===========================================================
-
-
-%===========================================================
-% Define Title Page
-%-----------------------------------------------------------
-\def\titlepage{
-    \begin{center}
-        \BgThispage
-        \addcontentsline{toc}{chapter}{HALAMAN SAMPUL}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\bfseries\@titleind}\\
-            \vspace{2cm}
-            \bfseries{SKRIPSI}
-            \vspace{3cm}
-
-            \normalfont{Diajukan sebagai salah satu syarat untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin Makassar}\\
-            \vspace{3cm}
-
-            {\normalfont
-                \@fullname\\
-                \@idnum}\\
-                \vspace{1.5cm}
-
-            {\normalfont
-                \vspace{2.0cm}
-                \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
-                \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-                \MakeUppercase{\normalfont\bfseries\@faculty}\\
-                \MakeUppercase{\normalfont\bfseries\@university}\\
-                \MakeUppercase{\normalfont\bfseries\@city}\\
-                \vspace{0.5cm}
-                {\normalfont\bfseries\@yearsubmit}
-            }\\
-        \end{singlespace}
-    \end{center}
-    \newpage
-}
-%-----------------------------------------------------------
-% End Define Title Page
-%===========================================================
-
-
-%===========================================================
-% Define Authentication Page
-%-----------------------------------------------------------
-\def\authenticationpage{
-    \BgThispage
-    \addcontentsline{toc}{chapter}{LEMBAR PERNYATAAN KEOTENTIKAN}
-    \begin{center}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{LEMBAR PERNYATAAN KEOTENTIKAN}}\\
-            \BgThispage
-            \vspace{2cm}
-
-            \normalfont{Saya yang bertanda tangan di bawah ini menyatakan dengan sungguh-sungguh bahwa skripsi yang saya buat dengan judul:}\\
-            \vspace{3cm}
-
-            \bfseries{\@titleind}\\
-            \vspace{3cm}
-
-            \normalfont{adalah benar hasi karya saya sendiri bukan hasil plagiat dan belum pernah dipublikasikan dalam bentuk apapun}\\
-            \vspace{2.0cm}
-        \end{singlespace}
-    \end{center}
-    \begin{flushright}
-        Makassar, 14 September\\
-        \vspace{3cm}
-        {\@fullname}\\
-        NIM. {\@idnum}
-    \end{flushright}
-    \newpage
-}
-%-----------------------------------------------------------
-% End Define Authentication Page
-%===========================================================
-
-
-%===========================================================
-% Define Supervisor Approval Page
-%-----------------------------------------------------------
-\def\supervisorapprovalpage{%
-    \BgThispage
-    \addcontentsline{toc}{chapter}{LEMBAR PERSETUJUAN PEMBIMBING}
-    \begin{center}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
-            \vspace{2.0cm}
-
-            {\normalfont\large\bfseries\expandafter{Disetujui Oleh:}}\\        
-            \vspace{5cm}
-
-            \begin{tabular}{p{7cm}p{7cm}}
-                Pembimbing Utama & Pembimbing Pertama
-            \end{tabular}
-
-            \vspace{2.0cm}
-            \begin{tabular}{p{7cm}p{7cm}}
-                \@firstsupervisor & \@secondsupervisor \\
-                NIP. 413411342141412 & NIP. 413411342141412
-            \end{tabular}
-
-            \vspace{2cm}
-            Pada Tanggal : \expandafter{\@examdate}\\
-        \end{singlespace}
-    \end{center}
-    \newpage
-}
-%-----------------------------------------------------------
-% End Define Supervisor Approval Page
-%===========================================================
-
-
-%===========================================================
-% Define Approval Page
-%-----------------------------------------------------------
-\def\approvalpage{%
-    \BgThispage
-    \addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
-    \begin{center}
-        \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
-            \vspace{1.0cm}
-            
-            \begin{tabular}{p{4.5cm} p{.1cm} p{7cm}}
-                Skripsi ini diajukan oleh: & & \\
-                \vspace{.1cm} & & \\
-                Nama &:& \@fullname\\
-                NIM &:& \@idnum\\
-                Program Studi &:& \@program\\
-                Judul Skripsi &:& \@titleind\\
-            \end{tabular}
-        \end{singlespace}
-    \end{center}
-
-    \vspace{1cm}
-    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Fakultas Matematika dan Ilmu Pengatahuan Alam Universitas Hasanuddin.\\
-    \vspace{0.5cm}
-
-    \begin{center}
-        \begin{doublespace} 
-            DEWAN PENGUJI\\
-            \begin{tabular}{l l l c}
-                & & & Tanda Tangan \\ 
-                1. & Ketua &: \@firstsupervisor & (........................)\\ \\
-                2. & Sekretaris &: \@secondsupervisor & (........................)\\ \\
-                3. & Anggota &: \@firstexaminer & (........................)\\ \\
-                4. & Anggota &: \@secondexaminer & (........................)\\ \\
-            \end{tabular}
-        \end{doublespace}
-    \end{center}
-    \begin{tabular}{l l}
-        Ditetapkan di &: Makassar \\ 
-        Tanggal &: \@examdate
-    \end{tabular}
-    \newpage
-}
-%-----------------------------------------------------------
-% End Define Approval Page
 %===========================================================
 
 
@@ -527,6 +370,185 @@
 }
 %-----------------------------------------------------------
 % End Define Cover Skripsi
+%===========================================================
+
+
+%===========================================================
+% Define Title Page
+%-----------------------------------------------------------
+\def\titlepage{
+    \begin{center}
+        \addwatermark
+        \addcontentsline{toc}{chapter}{HALAMAN JUDUL}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\bfseries\@titleind}\\
+            \vspace{2cm}
+            \bfseries{SKRIPSI}
+            \vspace{3cm}
+
+            \normalfont{Diajukan sebagai salah satu syarat untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin Makassar}\\
+            \vspace{3cm}
+
+            {\normalfont
+                \@fullname\\
+                \@idnum}\\
+                \vspace{1.5cm}
+
+            {\normalfont
+                \vspace{2.0cm}
+                \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
+                \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
+                \MakeUppercase{\normalfont\bfseries\@faculty}\\
+                \MakeUppercase{\normalfont\bfseries\@university}\\
+                \MakeUppercase{\normalfont\bfseries\@city}\\
+                \vspace{0.5cm}
+                {\normalfont\bfseries\@yearsubmit}
+            }\\
+        \end{singlespace}
+    \end{center}
+    \pagebreak
+}
+%-----------------------------------------------------------
+% End Define Title Page
+%===========================================================
+
+
+%===========================================================
+% Define Authentication Page
+%-----------------------------------------------------------
+\def\authenticationpage{
+    \addwatermark
+    \addcontentsline{toc}{chapter}{HALAMAN PERNYATAAN KEOTENTIKAN}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PERNYATAAN KEOTENTIKAN}}\\
+            \addwatermark
+            \vspace{2cm}
+
+            \normalfont{Saya yang bertanda tangan di bawah ini menyatakan dengan sungguh-sungguh bahwa skripsi yang saya buat dengan judul:}\\
+            \vspace{3cm}
+
+            \bfseries{\@titleind}\\
+            \vspace{3cm}
+
+            \normalfont{adalah benar hasi karya saya sendiri bukan hasil plagiat dan belum pernah dipublikasikan dalam bentuk apapun}\\
+            \vspace{2.0cm}
+        \end{singlespace}
+    \end{center}
+    \begin{flushright}
+        Makassar, 14 September\\
+        \vspace{3cm}
+        {\@fullname}\\
+        NIM. {\@idnum}
+    \end{flushright}
+    \pagebreak
+}
+%-----------------------------------------------------------
+% End Define Authentication Page
+%===========================================================
+
+
+%===========================================================
+% Define Supervisor Approval Page
+%-----------------------------------------------------------
+\def\supervisorapprovalpage{%
+    \addwatermark
+    \addcontentsline{toc}{chapter}{HALAMAN PERSETUJUAN PEMBIMBING}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
+            \vspace{2.0cm}
+
+            {\normalfont\large\bfseries\expandafter{Disetujui Oleh:}}\\        
+            \vspace{5cm}
+
+            \begin{tabular}{p{7cm}p{7cm}}
+                Pembimbing Utama & Pembimbing Pertama
+            \end{tabular}
+
+            \vspace{2.0cm}
+            \begin{tabular}{p{7cm}p{7cm}}
+                \@firstsupervisor & \@secondsupervisor \\
+                NIP. 413411342141412 & NIP. 413411342141412
+            \end{tabular}
+
+            \vspace{2cm}
+            Pada Tanggal : \expandafter{\@examdate}\\
+        \end{singlespace}
+    \end{center}
+    \pagebreak
+}
+%-----------------------------------------------------------
+% End Define Supervisor Approval Page
+%===========================================================
+
+
+%===========================================================
+% Define Approval Page
+%-----------------------------------------------------------
+\def\approvalpage{%
+    \addwatermark
+    \addcontentsline{toc}{chapter}{HALAMAN PENGESAHAN}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{HALAMAN PENGESAHAN}}\\
+            \vspace{1.0cm}
+            
+            \begin{tabular}{p{4.5cm} p{.1cm} p{7cm}}
+                Skripsi ini diajukan oleh: & & \\
+                \vspace{.1cm} & & \\
+                Nama &:& \@fullname\\
+                NIM &:& \@idnum\\
+                Program Studi &:& \@program\\
+                Judul Skripsi &:& \@titleind\\
+            \end{tabular}
+        \end{singlespace}
+    \end{center}
+
+    \vspace{1cm}
+    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Fakultas Matematika dan Ilmu Pengatahuan Alam Universitas Hasanuddin.\\
+    \vspace{0.5cm}
+
+    \begin{center}
+        \begin{doublespace} 
+            DEWAN PENGUJI\\
+            \begin{tabular}{l l l c}
+                & & & Tanda Tangan \\ 
+                1. & Ketua &: \@firstsupervisor & (........................)\\ \\
+                2. & Sekretaris &: \@secondsupervisor & (........................)\\ \\
+                3. & Anggota &: \@firstexaminer & (........................)\\ \\
+                4. & Anggota &: \@secondexaminer & (........................)\\ \\
+            \end{tabular}
+        \end{doublespace}
+    \end{center}
+    \begin{tabular}{l l}
+        Ditetapkan di &: Makassar \\ 
+        Tanggal &: \@examdate
+    \end{tabular}
+    \pagebreak
+}
+%-----------------------------------------------------------
+% End Define Approval Page
+%===========================================================
+
+
+%===========================================================
+% Define Persetujuan Publikasi Karya Ilmiah
+%-----------------------------------------------------------
+\def\approvalpage{%
+    \addwatermark
+    \addcontentsline{toc}{chapter}{PERSETUJUAN PUBLIKASI KARYA ILMIAH}
+    \begin{center}
+        \begin{singlespace}
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{PERSETUJUAN PUBLIKASI KARYA ILMIAH}}\\
+            \vspace{1.0cm}
+        \end{singlespace}
+    \end{center}
+
+    \pagebreak
+}
+%-----------------------------------------------------------
+% End Define Persetujuan Publikasi Karya Ilmiah
 %===========================================================
 
 
