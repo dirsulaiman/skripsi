@@ -2,6 +2,7 @@
 % perbaiki jarak setelah figure dengan subsubsection
 % perbaiki jarak setelah table dengan subsubsection
 % buat header table center tapi isinya rata kiri
+% beberapa salah referensi di daftar isi
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi Class]
@@ -429,7 +430,7 @@
     \end{center}
 
     \noindent
-    Yang bertanda tangan dibawah ini: \\
+    Yang bertanda tangan di bawah ini: \\
     \begin{tabular}{ m{0.5cm} l c l } 
         & Nama          & : & \@fullname \\
         & NIM           & : & \@idnum \\
@@ -518,13 +519,6 @@
             NIP. \@headprogramNIP
         \end{tabular}
     \end{table}
-
-
-
-    % \vspace{2cm}
-    % Pada Tanggal : \expandafter{\@examdate}\\
-        
-    
     \pagebreak
 }
 %-----------------------------------------------------------
@@ -590,11 +584,47 @@
     \addcontentsline{toc}{chapter}{PERSETUJUAN PUBLIKASI KARYA ILMIAH}
     \begin{center}
         \begin{singlespace}
-            \MakeUppercase{\normalfont\large\bfseries\expandafter{PERSETUJUAN PUBLIKASI KARYA ILMIAH}}\\
+            \MakeUppercase{\normalfont\large\bfseries\expandafter{PERNYATAAN PERSETUJUAN PUBLIKASI TUGAS AKHIR UNTUK KEPENTINGAN AKADEMIS}}\\
             \vspace{1.0cm}
         \end{singlespace}
     \end{center}
 
+    \begin{singlespace}
+        \noindent
+        Sebagai civitas akademik {\@university}, saya yang bertanda tangan di bawah ini:
+        \begin{center}
+            \begin{tabular}{ p{3cm}  p{.1cm} p{10.5cm}}
+                Nama &:& \@fullname\\
+                NIM &:& \@idnum\\
+                Program Studi &:& \@program\\
+                Departemen &:& \@dept\\
+                Fakultas &:& \@faculty\\
+                Jenis Karya &:& Skripsi
+            \end{tabular}
+        \end{center}
+    \end{singlespace}
+
+    \noindent
+    Demi pengembangan ilmu pengetahuan, menyetujui untuk memberikan kepada {\@university} \textbf{Hak Predikator Royalti Noneksklusif} (\textit{Non-exclusive Royalty-Free Right}) atas tugas akhir saya yang berjudul:
+
+    \begin{center}
+        {\normalfont\bfseries\expandafter{"\@titleind"}}\\
+            % \vspace{1.0cm}
+    \end{center}
+
+    \noindent
+    beserta perangkat yang ada (jika diperlukan). Terkait dengan hal diatas, maka pihak {\@university} berhak menyimpan, mengalih-media/format-kan, mengola dalam bentuk pangkalan data (\textit{database}), merawat dan mempublikasikan tugas akhir saya selama tetap mencantumkan nama saya sebagai penulis/pencipta dan sebagai pemilik Hak Cipta.
+
+    \noindent
+    Demikian surat pernyataan ini saya buat dengan sebenarnya.
+
+    \vspace{.5cm}
+    \begin{flushright}
+        Dibuat di {\@city} pada \@examdate\\
+        Yang menyatakan\\
+        \vspace{2.5cm}
+        {(\@fullname)}\\
+    \end{flushright}
     \pagebreak
 }
 %-----------------------------------------------------------
