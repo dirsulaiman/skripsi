@@ -114,13 +114,16 @@
 \fancypagestyle{plain}{ %style for chapter page
     \fancyhf{} % clear all header and footer fields
     \fancyfoot[R]{\thepage}
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
+    % \renewcommand{\headrulewidth}{0pt}
+    % \renewcommand{\footrulewidth}{0pt}
 }
 \fancypagestyle{empty}{ %style for cover
     \fancyhf{}
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
+    % \renewcommand{\headrulewidth}{0pt}
+    % \renewcommand{\footrulewidth}{0pt}
+}
+\fancypagestyle{theheader}{ %style for header
+    \fancyhead[R]{Universitas Hasanuddin}
 }
 %-----------------------------------------------------------
 % End Setting footer, header and page number
@@ -249,21 +252,21 @@
 %===========================================================
 % Define thesis's inputs
 %-----------------------------------------------------------
-\newcommand{\titleind}[1]{\gdef\@titleind{#1}}
-\newcommand{\@titleind}{}
-\newcommand{\titleeng}[1]{\gdef\@titleeng{#1}}
-\newcommand{\@titleeng}{}
+\newcommand{\titleskripsi}[1]{\gdef\@titleskripsi{#1}}
+\newcommand{\@titleskripsi}{}
 \newcommand{\fullname}[1]{\gdef\@fullname{#1}}
 \newcommand{\@fullname}{}
 \newcommand{\idnum}[1]{\gdef\@idnum{#1}}
 \newcommand{\@idnum}{}
-\newcommand{\examdate}[1]{\gdef\@examdate{#1}}
-\newcommand{\@examdate}{\number\day~\ifcase\month\or Januari\or Februari\or Maret\or April\or Mei\or Juni\or Juli\or Agustus\or September\or Oktober\or November\or Desember\fi
-\space \number\year}
-\newcommand{\degree}[1]{\gdef\@degree{#1}}
-\newcommand{\@degree}{}
+\newcommand{\datesubmit}[1]{\gdef\@datesubmit{#1}}
+\newcommand{\@datesubmit}{}
+\newcommand{\monthsubmit}[1]{\gdef\@monthsubmit{#1}}
+\newcommand{\@monthsubmit}{}
 \newcommand{\yearsubmit}[1]{\gdef\@yearsubmit{#1}}
 \newcommand{\@yearsubmit}{}
+\newcommand{\@examdate}{\@datesubmit \space \@monthsubmit \space \@yearsubmit}
+\newcommand{\degree}[1]{\gdef\@degree{#1}}
+\newcommand{\@degree}{}
 \newcommand{\program}[1]{\gdef\@program{#1}}
 \newcommand{\@program}{}
 \newcommand{\dept}[1]{\gdef\@dept{#1}}
@@ -304,7 +307,7 @@
     \setcounter{page}{1}
     \begin{center}
         \begin{singlespace}
-            \MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
+            \MakeUppercase{\normalfont\bfseries\@titleskripsi}\par\nobreak
             \vspace{1.0cm}
             \MakeUppercase{\normalfont\slshape\bfseries\@titleeng}\par\nobreak
             \vfill
@@ -328,7 +331,7 @@
             \MakeUppercase{\normalfont\bfseries\@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
-            \vspace{0.5cm}
+            \vspace{0.2cm}
             {\normalfont\bfseries\@yearsubmit}}\\
         \end{singlespace}
     \end{center}
@@ -348,26 +351,34 @@
     \setcounter{page}{1}
     \begin{center}
         \begin{singlespace}
-            \MakeUppercase{\normalfont\bfseries\@titleind}\par\nobreak
-            \vspace{1.0cm}
-            \MakeUppercase{\normalfont\slshape\bfseries\@titleeng}\par\nobreak
-            \vfill
-            \MakeUppercase{\normalfont\bfseries Skripsi}\\
+            \MakeUppercase{\normalfont\bfseries Skripsi}
+            \vspace{2.0cm}
+            % \vfill
+
+            \MakeUppercase{\normalfont\bfseries\@titleskripsi}\\
+            \par\nobreak
+            \vspace{2cm}
+
+            {\normalfont\large{Disusun dan diajukan oleh}}\\
             \vspace{1.5cm}
+
+            \normalfont\bfseries{\@fullname}\\
+            \normalfont\bfseries{\@idnum}\\
+            \vfill
+
             \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
-            {\normalfont
-            \@fullname\\
-            \@idnum}\\
-            \vspace{1.5cm}
+            
             {\normalfont
             \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
             \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
             \MakeUppercase{\normalfont\bfseries\@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
-            \vspace{0.5cm}
-            {\normalfont\bfseries\@yearsubmit}}\\
+
+            \vspace{0.2cm}
+            \normalfont\bfseries{\MakeUppercase{\@monthsubmit} {\@yearsubmit}}
+            }\\
         \end{singlespace}
     \end{center}
     \pagebreak
@@ -385,28 +396,31 @@
         \addwatermark
         \addcontentsline{toc}{chapter}{HALAMAN JUDUL}
         \begin{singlespace}
-            \MakeUppercase{\normalfont\bfseries\@titleind}\\
-            \vspace{2cm}
+            \vspace*{2cm}
+            \MakeUppercase{\normalfont\bfseries\@titleskripsi}\\
+            \vfill
+
             \bfseries{SKRIPSI}
-            \vspace{3cm}
+            \vfill
 
-            \normalfont{Diajukan sebagai salah satu syarat untuk memperoleh gelar Sarjana Komputer pada Program Studi Ilmu Komputer Departemen Matematika Fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin Makassar}\\
-            \vspace{3cm}
+            \normalfont{Diajukan sebagai salah satu syarat untuk memperoleh gelar {\@degree} pada Program Studi {\@program} Departemen {\@dept} Fakultas {\@faculty} {\@university} {\@city}}\\
+            \vfill
 
-            {\normalfont
+            {\normalfont\bfseries
                 \@fullname\\
-                \@idnum}\\
-                \vspace{1.5cm}
+                \@idnum
+            }\\
+            \vfill
 
             {\normalfont
-                \vspace{2.0cm}
                 \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
                 \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
                 \MakeUppercase{\normalfont\bfseries\@faculty}\\
                 \MakeUppercase{\normalfont\bfseries\@university}\\
                 \MakeUppercase{\normalfont\bfseries\@city}\\
-                \vspace{0.5cm}
-                {\normalfont\bfseries\@yearsubmit}
+                \vspace{0.2cm}
+                {\normalfont\bfseries{APRIL {\@yearsubmit}}}
+                \vspace{2cm}
             }\\
         \end{singlespace}
     \end{center}
@@ -444,7 +458,7 @@
     \vspace{0.5cm}
 
     \begin{center}
-        \bfseries{\@titleind}
+        \bfseries{\@titleskripsi}
         \vspace{0.5cm}
     \end{center}
 
@@ -475,7 +489,7 @@
     \addwatermark
     \addcontentsline{toc}{chapter}{HALAMAN PERSETUJUAN PEMBIMBING}
     \begin{center}
-        \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleind}}\\
+        \MakeUppercase{\normalfont\large\bfseries\expandafter{\@titleskripsi}}\\
         \vspace{0.5cm}
     \end{center}
 
@@ -504,7 +518,7 @@
             & & \\
             & & \\
             \underline{\@firstsupervisor} & & \underline{\@secondsupervisor} \\
-            NIP. 413411342141412 & & NIP. 413411342141412
+            NIP. \@firstsupervisorNIP & & NIP. \@secondsupervisorNIP
         \end{tabular}
 
         \vspace{1cm}
@@ -545,13 +559,13 @@
                 Nama &:& \@fullname\\
                 NIM &:& \@idnum\\
                 Program Studi &:& \@program\\
-                Judul Skripsi &:& \@titleind\\
+                Judul Skripsi &:& \@titleskripsi\\
             \end{tabular}
         \end{center}
     \end{singlespace}
     
     \noindent
-    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar sarjana pada Program Studi {\@program} Fakultas {\@faculty} {\@university}.\\
+    Telah dipertahankan di depan Tim Penguji dan diterima sebagai bagian persyaratan untuk memperoleh gelar {\@degree} pada Program Studi {\@program} Fakultas {\@faculty} {\@university}.\\
 
     \begin{center}
         \begin{doublespace} 
@@ -580,7 +594,7 @@
 % Define Persetujuan Publikasi Karya Ilmiah
 %-----------------------------------------------------------
 \def\publicationapprovalpage{%
-    \addwatermark
+    % \addwatermark
     \addcontentsline{toc}{chapter}{PERSETUJUAN PUBLIKASI KARYA ILMIAH}
     \begin{center}
         \begin{singlespace}
@@ -608,7 +622,7 @@
     Demi pengembangan ilmu pengetahuan, menyetujui untuk memberikan kepada {\@university} \textbf{Hak Predikator Royalti Noneksklusif} (\textit{Non-exclusive Royalty-Free Right}) atas tugas akhir saya yang berjudul:
 
     \begin{center}
-        {\normalfont\bfseries\expandafter{"\@titleind"}}\\
+        {\normalfont\bfseries\expandafter{"\@titleskripsi"}}\\
             % \vspace{1.0cm}
     \end{center}
 
