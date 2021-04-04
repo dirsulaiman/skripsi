@@ -1,143 +1,122 @@
 \documentclass{lib/myskripsi}
 
 \usepackage{blindtext}
+\usepackage{longtable}
 
-\renewcommand{\baselinestretch}{1.42}
-\renewcommand{\UrlFont}{\small\rm}
-
-
-%=============================================================================
-% Package Daftar Pustaka, bentuk citasi
-% Config
-% - style, citestyle = {authoryear, numeric, apa, mla}
-% - sorting {year,name,title} = ynt
-%-----------------------------------------------------------------------------
-\usepackage[
-    backend=biber,
-    style=authoryear,
-    citestyle=authoryear,
-    sorting=nty,
-    giveninits=false,
-    maxbibnames=3
-    ]{biblatex}
-\addbibresource{bibtex/daftar-pustaka.bib}
-% new citation style
-\let\oldcitate\cite
-\newcommand*\thecite[1]{(\citeauthor{#1}, \citeyear{#1})}
-%-----------------------------------------------------------------------------
-% End Biblatex Config
-%=============================================================================
-
-
-%=============================================================================
+%===========================================================
 % Definisi Data Peneliti, Judul, Pembimbing dan Penguji
-%-----------------------------------------------------------------------------
-\titleind{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}
+%-----------------------------------------------------------
+\titleskripsi{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}
 
 \fullname{SULAEMAN}
 \idnum{H131 16 002}
 
-\examdate{\hspace{0.4cm} Mei 2020}
-\yearsubmit{2020}
-
-\degree{Sarjana Sains}
-\program{Ilmu Komputer}
+\program{Sistem Informasi}
 \dept{Matematika}
-\faculty{Fakultas Matematika dan Ilmu Pengetahuan Alam}
+\faculty{Matematika dan Ilmu Pengetahuan Alam}
+\university{Universitas Hasanuddin}
+\city{Makassar}
+\yearsubmit{2021}
 
 \firstsupervisor{Dr. Eng. Armin Lawi, S.Si., M.Eng.}
-\firstsupervisorNIP{94199834743819}
-\secondsupervisor{Dr. Diaraya, M.Ak.}
-\secondsupervisorNIP{32399834738431}
+\firstsupervisorNIP{197204231995121001}
+\secondsupervisor{Supri Bin Hj Amir, S.Si., M.Eng.}
+\secondsupervisorNIP{198805042019031012}
 \firstexaminer{ Dr. Hendra, S.Si., M.Kom.}
 \secondexaminer{ Nur Hilal A Syahrir, S.Si., M.Si.}
-%-----------------------------------------------------------------------------
+
+\degree{Sarjana Komputer}
+\datesubmit{9}
+\monthsubmit{April}
+\headprogram{Nama Kaprodi}
+\headprogramNIP{197204231995121001}
+%-----------------------------------------------------------
 % End Definisi Data Peneliti, Judul, Pembimbing dan Penguji
-%=============================================================================
+%===========================================================
 
 \begin{document}
-    % Halaman Sampul
-    \coverproposal
+    % HALAMAN SAMPUL
+    \cover
     \pagenumbering{roman}
-
-    % Halaman Judul
+    
+    % HALAMAN JUDUL
     \titlepage
-    % Halaman Pernyataan Keotentikan
+
+    % PERNYATAAN KEOTENTIKAN
     \authenticationpage
-    % Halaman Persetujuan Pembimbing
+
+    % LEMBAR PERSETUJUAN PEMBIMBING
     \supervisorapprovalpage
+
     % Halaman Pengesahan
     \approvalpage
 
-    % Kata Pengantar
+    % KATA PENGANTAR
     \addcontentsline{toc}{chapter}{KATA PENGANTAR}
     \input{include/kata-pengantar.tex}
-    \newpage
+    \pagebreak
 
-    % Pernyataan Persetujuan Publikasi Karya Ilmiah untuk Kepentingan Akademik
-    \addcontentsline{toc}{chapter}{PERSETUJUAN PUBLIKASI ILMIAH}
-    \input{include/halaman-pernyataan-persetujuan-publikasi-karya-ilmiah.tex}
-    \newpage
+    % PERNYATAAN PERSETUJUAN PUBLIKASI
+    \publicationapprovalpage
 
-    % Abstrak
+    % ABSTRAK
     \addcontentsline{toc}{chapter}{ABSTRAK}
     \input{include/halaman-abstrak.tex}
-    \newpage
+    \pagebreak
 
-    % Abstract
-    % \addcontentsline{toc}{chapter}{ABSTRAK}
+    % ABSTRACT
+    \addcontentsline{toc}{chapter}{ABSTRACT}
     \input{include/halaman-abstract.tex}
-    \newpage
+    \pagebreak
 
-
-
-    %=============================================================================
+    %===========================================================
     % Daftar isi, daftar gambar, daftar tabel
-    %-----------------------------------------------------------------------------
+    %-----------------------------------------------------------
     \tableofcontents
     \addcontentsline{toc}{chapter}{DAFTAR ISI}
-    \newpage
+    \pagebreak
 
     \listoftables
     \addcontentsline{toc}{chapter}{DAFTAR TABEL}
-    \newpage
+    \pagebreak
 
     \listoffigures
     \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
-    \newpage
-    %-----------------------------------------------------------------------------
-    % End Daftar isi, daftar gambar, daftar tabel
-    %=============================================================================
-
-
     \pagebreak
+
+    \addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+    \listofappendices
+    \pagebreak
+
     \pagenumbering{arabic}
+    %-----------------------------------------------------------
+    % End Daftar isi, daftar gambar, daftar tabel
+    %===========================================================
 
-
-    %=============================================================================
+    %===========================================================
     % Daftar masukan untuk Bab
-    %-----------------------------------------------------------------------------
+    %-----------------------------------------------------------
     \input{include/bab1.tex}
     \input{include/bab2.tex}
     \input{include/bab3.tex}
     \input{include/bab4.tex}
     \input{include/bab5.tex}
-    %-----------------------------------------------------------------------------
+    %-----------------------------------------------------------
     % End Daftar masukan untuk Bab
-    %=============================================================================
+    %===========================================================
 
-
-    %=============================================================================
+    %===========================================================
     % Daftar Pustaka
-    % %-----------------------------------------------------------------------------
+    %-----------------------------------------------------------
     \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
     \printbibliography[title={DAFTAR PUSTAKA}]
-    %-----------------------------------------------------------------------------
+    %-----------------------------------------------------------
     % End Daftar Pustaka
-    %=============================================================================
-
-    % Lampiran
+    %===========================================================
+    
+    \appendix
     \addcontentsline{toc}{chapter}{LAMPIRAN}
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
     \input{include/lampiran.tex}
 
 \end{document}
