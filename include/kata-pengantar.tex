@@ -1,6 +1,38 @@
 \chapter*{KATA PENGANTAR}
 
+Puji syukur penulis panjatkan kepada Allah SWT, karena atas berkat dan rahmat-Nya penulis dapat menyelesaikan skripsi ini. Shalawat serta salam senantiasa tercurah kepada \textit{Rasulullah} Muhammad \textit{Shallallahu Alaihi Wasallam,} yang merupakan teladan dalam menjalankan kehidupan dunia.
 
+Alhamdulillah, skripsi dengan judul "IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}" yang disusun sebagai salah satu syarat untuk mencapai gelar Sarjana pada program studi Sistem Informasi fakultas Matematika dan Ilmu Pengetahuan Alam Universitas Hasanuddin ini dapat diselesaikan. Walaupun adanya kendala-kendala yang dihadapi khususnya wabah Covid-19 ketika skripsi ini dikerjakan. Tetapi dalam penulisan skripsi ini, penulis mampu menyelesaikan pada waktu yang tepat berkat bantuan dan dukungan dari berbagai pihak. 
+
+Ucapat terima kasih dan apresiasi yang tak terhingga kepada kedua orang tua penulis bapak \textbf{Sudarmin} dan ibu \textbf{Yuli Hadiyanti} yang tak kenal lelah dalam memanjatkan doa serta memberikan nasihat dan motivasi kepada penulis. Tak lupa juga kepada saudara-saudara penulis \textbf{Fitri Handayani}, \textbf{Tri Novianti}, \textbf{Jumadil Yusuf}, \textbf{Muhammad Fitrah}, \textbf{Adam Ramadhan} yang selalu menjadi motivasi bagi penulis untuk terus melangkah maju.
+
+Penulis menyadari bahwa skripsi ini dapat terselesaikan dengan adanya bantuan, bimbingan, dukungan dan motivasi dari berbagai pihak. Oleh karena itu, penulis mengucapkan ucapan terima kasih dengan tulus kepada:
+
+\begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
+    \item Rektor Universitas Hasanuddin, Ibu \textbf{Prof. Dr. Dwia Aries Tina Pulubuhu} beserta jajarannya.
+    \item Dekan Fakultas Matematika dan Ilmu Pengetahuan Alam, \textbf{Dr. Eng. Amiruddin} beserta jajarannya.
+    \item Ketua Departemen Matematika FMIPA, \textbf{Dr. Nurdin, S.Si., M.Si}, dan juga \textbf{Dr. Muhammad Hasbi, M.Sc} sebagai ketua Program Studi Sistem Informasi Universitas Hasanuddin.
+    \item Bapak \textbf{Dr. Eng. Armin Lawi, S.Si., M.Eng.} sebagai pembimbing utama yang telah banyak memberikan arahan, ide, motivavsi serta dukungan kepada penulis dalam banyak hal.
+    \item Almarhum bapak \textbf{Dr. Diaraya, M.Ak} dan bapak \textbf{Supri Bin Hj. Amir, S.Si., M.Eng} sebagi pembimbing pertama yang senantiasa  memberikan masukan kepada penulis.
+    \item Bapak \textbf{Dr. Hendra, S.Si., M.Kom} dan Ibu \textbf{Nur Hilal, S.Si., M.Si} sebagai tim penguji atas saran dan masukan pada penelitian yang telah dilakukan oleh penulis.
+    \item Seluruh Bapak dan Ibu dosen FMIPA Universitas Hasanuddin yang telah mendidik dan memberikan ilmunya sehingga penulis mampu menyelesaikan program sarjana. Serta para staf yang telah membantu dalam pengurusan berkas administrasi.
+
+    \item Saudara-saudara \textbf{Ramsis Squad} \textbf{(Sultan, Muh Rizaldi, Sangereng Dewa Raja, Hajrin, Badaruddin Hidayat, Hamzah Julianto Nugraha, Muh Naim)} sebagai keluarga semasa tinggal di Ramsis sejak menjadi mahasiswa baru, saling berbagi dalam banyak hal, saling membantu dan bahkan saling merepotkan.
+
+    \item Saudara-saudara \textbf{Sunu Squad} dan \textbf{SSC Squad} \textbf{(Akbar, Muh Fikri Satria A, Andi Rezki Muh Nur, Muhammad Akbar Atori, Baharuddin Kasim, Andi Yaumil Falakh, Nur Ikhwan Putra Pratama, Bagas Prasetyo, Zinedine Kahlil Gibran Zidane, Rio Mukhtarom, Marfiandhi Putra, Abdul Aziz Mubarak,  Mutawally Syarawy, Fatur Rahman, Fitriadi Syawal Mustafa)} yang telah menemani penulis selama perkuliahan, saling memberi motivasi dan bantuan, meluangkan waktu dan berbagi suka-duka serta kebersamaan selama menuntut ilmu.
+
+    \item Saudari \textbf{Suci Rahmadana Anwar} dan \textbf{Sri Juliana} yang senantiasa menemani, memberi nasihat, menjadi tempat bertanya, serta dukungan untuk menyelesaikan skripsi ini.
+
+    \item Keluarga besar \textbf{Ilmu Komputer Unhas 2016} yang setia menemani dan membatu penulis selama menjalani pendidikan. Serta kakak-kakak dan adik-adik \textbf{Ilmu Komputer 2014, 2015, 2017, 2018} yang telah banyak membantu, semoga tetap semangat dalam mengejar impian.
+
+    \item Keluarga besar \textbf{HIPERMAWA Koperti Unhas} yang senantiasa memberikan naungan kekeluargaan dan dukungan.
+
+    \item Rekan-rekan \textbf{KKN Internasional Jepang Unhas Gel. 102} yang telah menjadi keluarga baru selama KKN dan menjadikan KKN sebagai momen yang berkesan.
+
+    \item Serta semua pihak yang telah banyak berpartisipasi, baik secara langsung maupun tidak langsung dalam penyusunan skripsi ini yang tidak sempat penulis sebutkan satu per satu.
+\end{enumerate}
+
+Penulis menyadari bahwa skripsi ini masih jauh dari sempurna dikarenakan terbatasnya pengalaman dan pengetahuan yang dimiliki penulis. Oleh karena itu, penulis mengharapkan segala bentuk saran serta masukan bahkan kritik yang membangun dari berbagai pihak. Semoga tulisan ini memberikan manfaat kepada semua pihak yang membutuhkan dan terutama untuk penulis.
 
 \vspace{1cm}
 \begin{flushright}
