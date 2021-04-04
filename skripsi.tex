@@ -11,12 +11,12 @@
 \fullname{SULAEMAN}
 \idnum{H131 16 002}
 
-\yearsubmit{2021}
 \program{Sistem Informasi}
 \dept{Matematika}
 \faculty{Matematika dan Ilmu Pengetahuan Alam}
 \university{Universitas Hasanuddin}
 \city{Makassar}
+\yearsubmit{2021}
 
 \firstsupervisor{Dr. Eng. Armin Lawi, S.Si., M.Eng.}
 \firstsupervisorNIP{197204231995121001}
@@ -36,19 +36,16 @@
 
 \begin{document}
     % HALAMAN SAMPUL
-    \noindent
     \cover
     \pagenumbering{roman}
     
     % HALAMAN JUDUL
-    % perbaiki
     \titlepage
 
     % PERNYATAAN KEOTENTIKAN
     \authenticationpage
 
     % LEMBAR PERSETUJUAN PEMBIMBING
-    % perbaiki
     \supervisorapprovalpage
 
     % Halaman Pengesahan
@@ -86,6 +83,11 @@
     \listoffigures
     \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
     \pagebreak
+
+    \addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+    \listofappendices
+    \pagebreak
+
     \pagenumbering{arabic}
     %-----------------------------------------------------------
     % End Daftar isi, daftar gambar, daftar tabel
@@ -112,6 +114,7 @@
     % End Daftar Pustaka
     %===========================================================
     
+    \appendix
     \addcontentsline{toc}{chapter}{LAMPIRAN}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
     \input{include/lampiran.tex}

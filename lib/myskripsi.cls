@@ -73,6 +73,10 @@
 \renewcommand{\baselinestretch}{1.42}
 \renewcommand{\UrlFont}{\small\rm}
 
+\newcommand{\listappendicesname}{DAFTAR LAMPIRAN}
+\newlistof{appendices}{apc}{\listappendicesname}
+\newcommand{\appendices}[1]{\addcontentsline{apc}{appendices}{#1}}
+\newcommand{\newappendix}[1]{\section{#1}\appendices{#1}}
 
 %===========================================================
 % Package Daftar Pustaka, bentuk citasi
@@ -254,6 +258,8 @@
 %-----------------------------------------------------------
 \newcommand{\titleskripsi}[1]{\gdef\@titleskripsi{#1}}
 \newcommand{\@titleskripsi}{}
+\newcommand{\titleeng}[1]{\gdef\@titleeng{#1}}
+\newcommand{\@titleeng}{}
 \newcommand{\fullname}[1]{\gdef\@fullname{#1}}
 \newcommand{\@fullname}{}
 \newcommand{\idnum}[1]{\gdef\@idnum{#1}}
@@ -308,16 +314,16 @@
     \begin{center}
         \begin{singlespace}
             \MakeUppercase{\normalfont\bfseries\@titleskripsi}\par\nobreak
-            \vspace{1.0cm}
-            \MakeUppercase{\normalfont\slshape\bfseries\@titleeng}\par\nobreak
             \vfill
             \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
+
             {\normalfont
                 Oleh\\
                 \@fullname\\
                 \@idnum}\\
-                \vspace{1.5cm}
+            \vspace{1.5cm}
+
             {\normalfont
             \begin{tabular}{p{2cm}p{4cm}p{7cm}}
                 & Pembimbing Utama &: \@firstsupervisor\\
@@ -325,17 +331,17 @@
                 & Penguji  &: 1.\@firstexaminer\\
                 & & \hspace{1.8mm} 2.\@secondexaminer\\
             \end{tabular}
+
             \vspace{2.0cm}\\
             \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
             \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
             \MakeUppercase{\normalfont\bfseries\@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
-            \vspace{0.2cm}
+            \vspace{0.5cm}
             {\normalfont\bfseries\@yearsubmit}}\\
         \end{singlespace}
     \end{center}
-    \pagebreak
 }
 %-----------------------------------------------------------
 % End Define Cover Seminar Proposal/Hasil
@@ -463,7 +469,7 @@
     \end{center}
 
     \noindent
-    Adalah benar hasi. karya saya sendiri bukan merupakan pengambilan alihan tulisan orang lain dan belum pernah dipublikasikan dalam bentuk apapun. \\
+    Adalah benar hasil karya saya sendiri bukan merupakan pengambilan alihan tulisan orang lain dan belum pernah dipublikasikan dalam bentuk apapun. \\
 
     \noindent
     Apabila dikemudian hari terbukti atau dapat dibuktikan bahwa sebagian atau keseluruhan skripsi ini merupakan hasil karya orang lain, maka saya bersedia menerima sanksi atas perbuatan tersebut.
@@ -718,6 +724,11 @@
 \renewcommand{\cftafterlottitleskip}{0.75cm}
 \renewcommand\cftlottitlefont{\hfill\Large\bfseries\MakeUppercase}
 \renewcommand\cftafterlottitle{\hfill\mbox{}}
+% list of appendix
+\renewcommand{\cftbeforeapctitleskip}{-0.25cm}
+\renewcommand{\cftafterapctitleskip}{0.75cm}
+\renewcommand\cftapctitlefont{\hfill\Large\bfseries\MakeUppercase}
+\renewcommand\cftafterapctitle{\hfill\mbox{}}
 %-----------------------------------------------------------
 % End Setting Tabble of Content, list of figure, list of table
 %===========================================================
