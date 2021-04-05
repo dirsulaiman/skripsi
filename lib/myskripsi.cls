@@ -313,9 +313,9 @@
     \setcounter{page}{1}
     \begin{center}
         \begin{singlespace}
-            \MakeUppercase{\normalfont\bfseries\@titleskripsi}\par\nobreak
+            % \MakeUppercase{\normalfont\bfseries\@titleskripsi}\par\nobreak
             \vfill
-            \includegraphics[height=4.85cm]{images/logoUH}
+            % \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
 
             {\normalfont
@@ -326,20 +326,20 @@
 
             {\normalfont
             \begin{tabular}{p{2cm}p{4cm}p{7cm}}
-                & Pembimbing Utama &: \@firstsupervisor\\
-                & Pembimbing Pertama  &: \@secondsupervisor\\
-                & Penguji  &: 1.\@firstexaminer\\
-                & & \hspace{1.8mm} 2.\@secondexaminer\\
+                % & Pembimbing Utama &: \@firstsupervisor\\
+                % & Pembimbing Pertama  &: \@secondsupervisor\\
+                % & Penguji  &: 1.\@firstexaminer\\
+                % & & \hspace{1.8mm} 2.\@secondexaminer\\
             \end{tabular}
 
             \vspace{2.0cm}\\
-            \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
-            \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-            \MakeUppercase{\normalfont\bfseries\@faculty}\\
-            \MakeUppercase{\normalfont\bfseries\@university}\\
-            \MakeUppercase{\normalfont\bfseries\@city}\\
+            % \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
+            % \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
+            % \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
+            % \MakeUppercase{\normalfont\bfseries\@university}\\
+            % \MakeUppercase{\normalfont\bfseries\@city}\\
             \vspace{0.5cm}
-            {\normalfont\bfseries\@yearsubmit}}\\
+            {\normalfont\bfseries\@yearsubmit}}
         \end{singlespace}
     \end{center}
 }
@@ -378,7 +378,7 @@
             {\normalfont
             \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
             \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-            \MakeUppercase{\normalfont\bfseries\@faculty}\\
+            \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
 
@@ -421,7 +421,7 @@
             {\normalfont
                 \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
                 \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-                \MakeUppercase{\normalfont\bfseries\@faculty}\\
+                \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
                 \MakeUppercase{\normalfont\bfseries\@university}\\
                 \MakeUppercase{\normalfont\bfseries\@city}\\
                 \vspace{0.2cm}
@@ -507,7 +507,7 @@
             \vspace{1.0cm}
         \end{singlespace}
 
-            Telah dipertahankan di hadapan Panitia Ujian yang dibentuk dalam rangka Penyelesaian Studi Program Sarjana Program Studi {\@program} Fakultas {\@faculty} {\@university} dan dinyatakan telah memenuhi syarat kelulusan \\
+            Telah dipertahankan di hadapan Panitia Ujian yang dibentuk dalam rangka Penyelesaian Studi Program Sarjana pada Program Studi {\@program} Fakultas {\@faculty} {\@university} dan dinyatakan telah memenuhi syarat kelulusan \\
 
             \vspace{0.2cm}
             Menyetujui,
