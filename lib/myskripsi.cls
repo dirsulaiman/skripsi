@@ -318,11 +318,10 @@
             \includegraphics[height=4.85cm]{images/logoUH}
             \vfill
 
-            {\normalfont
-                Oleh\\
-                \@fullname\\
-                \@idnum}\\
-            \vspace{1.5cm}
+            Oleh\\
+            \normalfont\bfseries{\@fullname}\\
+            \normalfont\bfseries{\@idnum}\\
+            \vfill
 
             {\normalfont
             \begin{tabular}{p{2cm}p{4cm}p{7cm}}
@@ -331,17 +330,22 @@
                 & Penguji  &: 1.\@firstexaminer\\
                 & & \hspace{1.8mm} 2.\@secondexaminer\\
             \end{tabular}
+            }
 
-            \vspace{2.0cm}\\
+            \vspace{2.0cm}
+            {\normalfont
             \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
             \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
             \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
-            \vspace{0.5cm}
-            {\normalfont\bfseries\@yearsubmit}}\\
+
+            \vspace{0.2cm}
+            \normalfont\bfseries{\MakeUppercase{\@monthsubmit} {\@yearsubmit}}
+            }
         \end{singlespace}
     \end{center}
+    \pagebreak
 }
 %-----------------------------------------------------------
 % End Define Cover Seminar Proposal/Hasil
