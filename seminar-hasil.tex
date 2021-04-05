@@ -1,11 +1,12 @@
 \documentclass{lib/myskripsi}
 
 \usepackage{longtable}
+\usepackage{blindtext}
 
 %===========================================================
 % Definisi Data Peneliti, Judul, Pembimbing dan Penguji
 %-----------------------------------------------------------
-\titleind{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}
+\titleskripsi{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}
 
 \fullname{SULAEMAN}
 \idnum{H131 16 002}
@@ -13,12 +14,14 @@
 \yearsubmit{2021}
 \program{Sistem Informasi}
 \dept{Matematika}
-\faculty{Fakultas Matematika dan Ilmu Pengetahuan Alam}
+\faculty{Matematika dan Ilmu Pengetahuan Alam}
+\university{Universitas Hasanuddin}
+\city{Makassar}
 
 \firstsupervisor{Dr. Eng. Armin Lawi, S.Si., M.Eng.}
-\firstsupervisorNIP{94199834743819}
+\firstsupervisorNIP{197204231995121001}
 \secondsupervisor{Supri Bin Hj Amir, S.Si., M.Eng.}
-\secondsupervisorNIP{196402171991031004}
+\secondsupervisorNIP{198805042019031012}
 \firstexaminer{ Dr. Hendra, S.Si., M.Kom.}
 \secondexaminer{ Nur Hilal A Syahrir, S.Si., M.Si.}
 %-----------------------------------------------------------
@@ -34,23 +37,26 @@
     %===========================================================
     % Daftar isi, daftar gambar, daftar tabel
     %-----------------------------------------------------------
-    \tableofcontents
     \addcontentsline{toc}{chapter}{DAFTAR ISI}
-    \newpage
+    \tableofcontents
+    \pagebreak
 
-    \listoftables
     \addcontentsline{toc}{chapter}{DAFTAR TABEL}
-    \newpage
+    \listoftables
+    \pagebreak
 
-    \listoffigures
     \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
-    \newpage
+    \listoffigures
+    \pagebreak
+
+    \addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+    \listofappendices
+    \pagebreak
+
+    \pagenumbering{arabic}
     %-----------------------------------------------------------
     % End Daftar isi, daftar gambar, daftar tabel
     %===========================================================
-
-    \pagebreak
-    \pagenumbering{arabic}
 
     %===========================================================
     % Daftar masukan untuk Bab
@@ -73,8 +79,14 @@
     % End Daftar Pustaka
     %===========================================================
     
+    %===========================================================
+    % Daftar Lampiran
+    %-----------------------------------------------------------
+    \appendix
     \addcontentsline{toc}{chapter}{LAMPIRAN}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
     \input{include/lampiran.tex}
-
+    %-----------------------------------------------------------
+    % End Daftar Lampiran
+    %===========================================================
 \end{document}
