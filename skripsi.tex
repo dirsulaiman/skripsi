@@ -28,8 +28,8 @@
 \degree{Sarjana Komputer}
 \datesubmit{9}
 \monthsubmit{April}
-\headprogram{Nama Kaprodi}
-\headprogramNIP{197204231995121001}
+\headprogram{Dr. Muhammad Hasbi, M.Sc}
+\headprogramNIP{196307201989031003}
 %-----------------------------------------------------------
 % End Definisi Data Peneliti, Judul, Pembimbing dan Penguji
 %===========================================================
@@ -72,16 +72,16 @@
     %===========================================================
     % Daftar isi, daftar gambar, daftar tabel
     %-----------------------------------------------------------
-    \tableofcontents
     \addcontentsline{toc}{chapter}{DAFTAR ISI}
+    \tableofcontents
     \pagebreak
 
-    \listoftables
     \addcontentsline{toc}{chapter}{DAFTAR TABEL}
+    \listoftables
     \pagebreak
 
-    \listoffigures
     \addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+    \listoffigures
     \pagebreak
 
     \addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
@@ -114,9 +114,15 @@
     % End Daftar Pustaka
     %===========================================================
     
+    %===========================================================
+    % Daftar Lampiran
+    %-----------------------------------------------------------
     \appendix
     \addcontentsline{toc}{chapter}{LAMPIRAN}
     \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
     \input{include/lampiran.tex}
+    %-----------------------------------------------------------
+    % End Daftar Lampiran
+    %===========================================================
 
 \end{document}
