@@ -335,7 +335,7 @@
             \vspace{2.0cm}\\
             \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
             \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-            \MakeUppercase{\normalfont\bfseries\@faculty}\\
+            \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
             \vspace{0.5cm}
@@ -378,7 +378,7 @@
             {\normalfont
             \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
             \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-            \MakeUppercase{\normalfont\bfseries\@faculty}\\
+            \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
             \MakeUppercase{\normalfont\bfseries\@university}\\
             \MakeUppercase{\normalfont\bfseries\@city}\\
 
@@ -421,7 +421,7 @@
             {\normalfont
                 \MakeUppercase{\normalfont\bfseries Program Studi \@program}\\
                 \MakeUppercase{\normalfont\bfseries Departemen \@dept}\\
-                \MakeUppercase{\normalfont\bfseries\@faculty}\\
+                \MakeUppercase{\normalfont\bfseries Fakultas \@faculty}\\
                 \MakeUppercase{\normalfont\bfseries\@university}\\
                 \MakeUppercase{\normalfont\bfseries\@city}\\
                 \vspace{0.2cm}
@@ -507,7 +507,7 @@
             \vspace{1.0cm}
         \end{singlespace}
 
-            Telah dipertahankan di hadapan Panitia Ujian yang dibentuk dalam rangka Penyelesaian Studi Program Sarjana Program Studi {\@program} Fakultas {\@faculty} {\@university} dan dinyatakan telah memenuhi syarat kelulusan \\
+            Telah dipertahankan di hadapan Panitia Ujian yang dibentuk dalam rangka Penyelesaian Studi Program Sarjana pada Program Studi {\@program} Fakultas {\@faculty} {\@university} dan dinyatakan telah memenuhi syarat kelulusan \\
 
             \vspace{0.2cm}
             Menyetujui,
