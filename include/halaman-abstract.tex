@@ -1,0 +1,11 @@
+\chapter*{ABSTRACT}
+
+Various kinds of accelerators have been developed to improve performance and energy efficiency to handle heavy computations, one of which is FPGA. FPGA is capable of handling such a heavy computational load that it can be used for Digital Signal Processing, Image Processing, Neural Networks, etc. In this study, the authors tried to examine the performance of the ARM processor and the FPGA on the Xilin PYNQ Z2 FPGA Development Board in applying a linear spatial filter to the video stream. Kernel filters used in this study are the average blur, Gaussian blur, Laplacian, sharpen, Sobel horizontal, and Sobel vertical. The parameters used to measure the performance of ARM processors and FPGAs are runtime, frame rate (FPS), CPU usage, memory usage, resident memory (RES), shared memory (SHR), and virtual memory (VIRT). The average computation time required to apply linear spatial filters of 200 frames with an ARM processor is 29.06 seconds, while the average FPGA takes only 3.32 seconds. The filtered video with the ARM processor gets an average of 6.95 fps while the FPGA average is 60.37 fps. CPU usage on FPGAs is slightly lower than ARM processors. In general, the use of memory, resident memory, shared memory, and virtual memory on ARM processors and FPGAs is not much different. 
+
+
+\begin{table}[h]
+    \begin{tabular}{ p{0.17\textwidth} p{0.8\textwidth} }
+        \\
+        \textbf{Keywords :} & linear spatial filter, FPGA, ARM processor, video stream, video processing
+    \end{tabular}
+\end{table}
