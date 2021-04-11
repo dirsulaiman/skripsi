@@ -1,15 +1,10 @@
 \chapter*{ABSTRAK}
 
-% latar belakang
-% pengolahan video stream membutuhkan resource banyak
-
 Berbagai macam akselerator telah dikembangkan dalam meningkatkan kinerja dan efisiensi energi untuk menangani komputasi berat, salah satu diantaranya yaitu FPGA. FPGA mampu menangani beban komputasi yang begitu berat sehingga dapat digunakan untuk \textit{Digital Signal Processing}, \textit{Image Processing}, \textit{Neural Network}, dan sebagainya.
 % metode
 Pada penelitian ini penulis mencoba mengkaji kinerja yang dimili ARM prosesor dan FPGA pada FPGA \textit{Development Board} Xilinx PYNQ Z2 dalam penerapan filter spasial linear pada video \textit{stream}. Kernel filter yang digunakan pada penelitian ini yaitu \textit{average blur}, \textit{gaussian blur}, \textit{laplacian}, \textit{sharpen}, \textit{sobel horizontal} dan \textit{sobel vertical}. Parameter yang digunakan untuk mengukur kinerja ARM prosesor dan FPGA yaitu waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR) dan \textit{virtual memory} (VIRT).
 % hasil
 Rata-rata waktu komputasi yang dibutuhkan untuk menerapkan filter spasial linear pada 200 frame dengan ARM prosesor adalah 29.06 detik sedangkan dengan FPGA rata-rata hanya dibutuhkan 3.32 detik. Video hasil filter dengan ARM prosesor memperoleh rata-rata 6.95 fps sedangkan dengan FPGA rata-rata 60.37 fps. Penggunaan CPU pada FPGA sedikit lebih rendah daripada ARM prosesor. Secara umum penggunaan \textit{memory}, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory} pada ARM prosesor dan FPGA tidak jauh berbeda.
-% simpulan
-% Hasil dari penelitian ini menunjukkan
 
 
 \begin{table}[h]
