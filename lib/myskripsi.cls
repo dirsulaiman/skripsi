@@ -96,6 +96,7 @@
 
 % redefine "et al" in bib to "dkk"
 \DefineBibliographyStrings{english}{andothers={dkk\adddot}}
+% force to use quote in title field of bibliographi
 \DeclareFieldFormat
   [article,inbook,incollection,inproceedings,patent,thesis,masterthesis,misc,unpublished, book]
   {title}{\mkbibquote{#1\isdot}}
