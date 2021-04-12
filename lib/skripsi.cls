@@ -2,10 +2,26 @@
 % perbaiki jarak setelah figure dengan subsubsection
 % perbaiki jarak setelah table dengan subsubsection
 % buat header table center tapi isinya rata kiri
-% beberapa salah referensi di daftar isi
+
+%===========================================================
+% Skripsi LaTeX Style
+%
+% Original author:
+% Dir Sulaiman
+% https://github.com/dirsulaiman/skripsi
+% 
+% Thanks and reference to:
+% Andi Kresna Jaya, S.Si.M.Si (unhasskripsi-latex)
+% Guntur D Putra (https://github.com/gtrdp/template-skripsi)
+
+% License:
+% BSD 3-Clause "New" or "Revised" License
+% https://github.com/dirsulaiman/skripsi/blob/master/LICENSE
+%
+%-----------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{lib/myskripsi}[2020/03/11 Skripsi Class]
+\ProvidesClass{lib/skripsi}[2020/03/11 Skripsi Class]
 \LoadClass[a4paper, 12pt]{report}
 
 %===========================================================
@@ -18,7 +34,7 @@
 \RequirePackage{ragged2e}
 
 % Prevent hyphenating the words
-\usepackage[none]{hyphenat}
+\RequirePackage[none]{hyphenat}
 \sloppy
 
 % Times New Roman Font like
@@ -105,7 +121,6 @@
 \let\oldcitate\cite
 \newcommand*\thecite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
 \renewcommand*\cite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
-% \newcommand*\thecite[1]{(\cite{#1})}
 %-----------------------------------------------------------
 % End Biblatex Config
 %===========================================================
@@ -242,7 +257,6 @@
 \def\listtablename{DAFTAR TABEL}
 \def\listappendixname{DAFTAR LAMPIRAN}
 \def\nomenclaturename{DAFTAR LAMBANG DAN SINGKATAN}
-% \def\abstractname{INTISARI}
 \def\partname{BAGIAN}
 \def\chaptername{BAB}
 \def\appendixname{LAMPIRAN}
@@ -663,8 +677,6 @@
 %===========================================================
 % Redefine chapter and sections
 %-----------------------------------------------------------
-% \setcounter{secnumdepth}{2}
-% \renewcommand \thepart {\@Roman \c@part}
 \renewcommand \thechapter {\@Roman\c@chapter}
 \renewcommand \thesection {\@arabic\c@chapter.\@arabic\c@section}
 \renewcommand \thesubsection {\@arabic\c@chapter.\@arabic\c@section.\@arabic\c@subsection}
@@ -748,12 +760,6 @@
 \counterwithin{figure}{chapter}
 \counterwithin{table}{chapter}
 \counterwithin{equation}{chapter}
-%\@addtoreset {figure}{section}
-%\renewcommand \thefigure {
-%    \ifnum \c@section>\z@ 
-%        .\@arabic\c@figure
-%    \fi 
-%        \@arabic\c@chapter.\@arabic\c@figure}
 \renewcommand \thefigure {\@arabic\c@chapter.\@arabic\c@figure}
 \renewcommand \thetable {\@arabic\c@chapter.\@arabic\c@table}
 \renewcommand \theequation {\@arabic\c@chapter.\@arabic\c@equation}
@@ -773,11 +779,6 @@
 \newenvironment{atable}
     {\begin{table}[ht] \renewcommand{\arraystretch}{1.3} \centering \small}
     {\end{table}}
-
-% new environment for longtable
-% \newenvironment{alongtable}
-%     {\begin{longtable}{| c | c | c | c | c | c | c | c |} \renewcommand{\arraystretch}{1.5} }
-%     {\end{longtable}}
 %-----------------------------------------------------------
 % End Set Table, Figure Environment
 %===========================================================
