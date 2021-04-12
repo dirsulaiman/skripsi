@@ -4,7 +4,7 @@
 % buat header table center tapi isinya rata kiri
 
 %===========================================================
-% Skripsi LaTeX Style
+% Skripsi LaTeX Class Style
 %
 % Original author:
 % Dir Sulaiman
@@ -13,11 +13,10 @@
 % Thanks and reference to:
 % Andi Kresna Jaya, S.Si.M.Si (unhasskripsi-latex)
 % Guntur D Putra (https://github.com/gtrdp/template-skripsi)
-
+% 
 % License:
 % BSD 3-Clause "New" or "Revised" License
 % https://github.com/dirsulaiman/skripsi/blob/master/LICENSE
-%
 %-----------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
