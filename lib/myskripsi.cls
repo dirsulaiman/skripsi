@@ -96,6 +96,9 @@
 
 % redefine "et al" in bib to "dkk"
 \DefineBibliographyStrings{english}{andothers={dkk\adddot}}
+\DeclareFieldFormat
+  [article,inbook,incollection,inproceedings,patent,thesis,masterthesis,misc,unpublished, book]
+  {title}{\mkbibquote{#1\isdot}}
 
 % new citation style
 \let\oldcitate\cite
