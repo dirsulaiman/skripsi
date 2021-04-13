@@ -9,15 +9,30 @@ run:
 	pdflatex $(DOCNAME).tex;
 	pdflatex $(DOCNAME).tex
 
+# for Linux
 clear:
 	rm $(DOCNAME).aux;
 	rm $(DOCNAME).bbl;
-	rm $(DOCNAME).out;
+	rm $(DOCNAME).bcf;
 	rm $(DOCNAME).blg;
+	rm $(DOCNAME).lof;
 	rm $(DOCNAME).log;
+	rm $(DOCNAME).lot;
+	rm $(DOCNAME).out;
 	rm $(DOCNAME).run.xml;
-	echo "Cleared"
+	rm $(DOCNAME).toc;
+	rm $(DOCNAME).apc;
 
-# rm $(DOCNAME).toc
-# rm $(DOCNAME).bcf
-# rm $(DOCNAME).lof
+# for Windows
+# clear:
+# 	del $(DOCNAME).aux
+# 	del $(DOCNAME).bbl
+# 	del $(DOCNAME).bcf
+# 	del $(DOCNAME).blg
+# 	del $(DOCNAME).lof
+# 	del $(DOCNAME).log
+# 	del $(DOCNAME).lot
+# 	del $(DOCNAME).out
+# 	del $(DOCNAME).run.xml
+# 	del $(DOCNAME).toc
+# 	del $(DOCNAME).apc
