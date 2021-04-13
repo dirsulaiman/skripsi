@@ -8,15 +8,15 @@
 
 \pretitle{\begin{center}\Huge\bfseries} % Article title formatting
 \posttitle{\end{center}} % Article title closing formatting
-\title{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}} % Article title
+\title{\Large{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}} % Article title
 \author{%
     \textsc{Sulaeman} \\ % Your name
     \normalsize {Universitas Hasanuddin} \\ % Your institution
     \normalsize {john@smith.com} % Your email address
-    %\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
-    %\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
-    %\normalsize University of Utah \\ % Second author's institution
-    %\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
+    \and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+    \textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+    \normalsize University of Utah \\ % Second author's institution
+    \normalsize {jane@smith.com} % Second author's email address
 }
 \date{9 April 2021} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
@@ -32,13 +32,12 @@
 %----------------------------------------------------------------------------------------
 
 \begin{document}
+    % Print the title
+    \maketitle
 
-% Print the title
-\maketitle
+    % Article contents
+    \input{include/article.tex}
 
-% Article contents
-\input{include/article.tex}
-
-\printbibliography[title={DAFTAR PUSTAKA}]
-
+    % Daftar Pustaka
+    \printbibliography[title={DAFTAR PUSTAKA}]
 \end{document}
