@@ -1,0 +1,43 @@
+\documentclass{lib/journal}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{\Large{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}} % Article title
+\author{%
+    \textsc{Sulaeman} \\ % Your name
+    \normalsize {Universitas Hasanuddin} \\ % Your institution
+    \normalsize {john@smith.com} % Your email address
+    \and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+    \textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+    \normalsize University of Utah \\ % Second author's institution
+    \normalsize {jane@smith.com} % Second author's email address
+}
+\date{9 April 2021} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}
+    Berbagai macam akselerator telah dikembangkan dalam meningkatkan kinerja dan efisiensi energi untuk menangani komputasi berat, salah satu diantaranya yaitu FPGA. FPGA mampu menangani beban komputasi yang begitu berat sehingga dapat digunakan untuk \textit{Digital Signal Processing}, \textit{Image Processing}, \textit{Neural Network}, dan sebagainya.
+    % metode
+    Pada penelitian ini penulis mencoba mengkaji kinerja yang dimili ARM prosesor dan FPGA pada FPGA \textit{Development Board} Xilinx PYNQ Z2 dalam penerapan filter spasial linear pada video \textit{stream}. Kernel filter yang digunakan pada penelitian ini yaitu \textit{average blur}, \textit{gaussian blur}, \textit{laplacian}, \textit{sharpen}, \textit{sobel horizontal} dan \textit{sobel vertical}. Parameter yang digunakan untuk mengukur kinerja ARM prosesor dan FPGA yaitu waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR) dan \textit{virtual memory} (VIRT).
+    % hasil
+    Rata-rata waktu komputasi yang dibutuhkan untuk menerapkan filter spasial linear pada 200 frame dengan ARM prosesor adalah 29.06 detik sedangkan dengan FPGA rata-rata hanya dibutuhkan 3.32 detik. Video hasil filter dengan ARM prosesor memperoleh rata-rata 6.95 fps sedangkan dengan FPGA rata-rata 60.37 fps. Penggunaan CPU pada FPGA sedikit lebih rendah daripada ARM prosesor. Secara umum penggunaan \textit{memory}, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory} pada ARM prosesor dan FPGA tidak jauh berbeda.
+\end{abstract}
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+    % Print the title
+    \maketitle
+
+    % Article contents
+    \input{include/article.tex}
+
+    % Daftar Pustaka
+    \printbibliography[title={DAFTAR PUSTAKA}]
+\end{document}
