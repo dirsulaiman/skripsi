@@ -1,13 +1,13 @@
-@book{book:darma,
-    author  = "Darma Putra",
-    title = "Pengolahan Citra Digital",
-    publisher = "Penerbit Andi",
-    year = "2010",
-    address = "Jl. Beo 38-40, Yogyakarta 55281",
-    note = "ISBN-13: 978-979-29-1443-6"
+@BOOK{book:darma,
+    AUTHOR  = "Darma Putra",
+    TITLE = "Pengolahan Citra Digital",
+    PUBLISHER = "Penerbit Andi",
+    YEAR = "2010",
+    ADDRESS = "Jl. Beo 38-40, Yogyakarta 55281",
+    NOTE = "ISBN-13: 978-979-29-1443-6"
 }
 
-@book{book:gonzalez,
+@BOOK{book:gonzalez,
     author = "Rafael C. Gonzalez and Richard E. Woods",
     title = "Digital Image Processing",
     year = "2001",
@@ -17,9 +17,9 @@
     note = "ISBN-13: 978-0201180756"
 }
 
-@book{book:munir,
+@BOOK{book:munir,
     author = "Munir Rinaldi",
-    title = "Pengolahan citra digital dengan pendekatan algoritmik",
+    title = "Pengolahan Citra Digital dengan Pendekatan Algoritmik",
     year = "2004",
     publisher = "Penerbit Informatika",
     address = "Bandung",
@@ -27,7 +27,7 @@
     note = "ISBN: 979-3338296"
 }
 
-@book{book:sutoyo,
+@BOOK{book:sutoyo,
     author  = "T. Sutoyo and Edy Mulyanto and Vincent Suhartono and Oky Dwi Nurhayati and Wijanarto",
     title = "Teori Pengolahan Citra Digital",
     publisher = "Penerbit Andi",
@@ -36,7 +36,15 @@
     note = "ISBN-13: 978-979-29-0974-6"
 }
 
-@incollection{book:dasilva,
+@BOOK{book:os,
+    author  = "Avi Silbershatz and Peter Baer Galvin and Greg Gagne",
+    title = "Operationg System Concepts",
+    publisher = "John Wiley and Sons, Inc",
+    year = "2009",
+    note = "ISBN: 978-0-470-12872-5"
+}
+
+@INCOLLECTION{book:dasilva,
     title = "4 - Digital Image Processing",
     editor = "Wai-Kai Chen",
     booktitle = "The Electrical Engineering Handbook",
@@ -49,13 +57,29 @@
     author = "Eduardo A.B. da Silva and Gelson V. Mendonca"
 }
 
-@mastersthesis{thesis:jin,
+@MASTERSTHESIS{thesis:jin,
     author={Jin Zhao},
     title={Video/Image Processing on FPGA},
     school={Worcester Polytechnic Institute},
     type={Master thesis},
     year={2015},
     month={4}
+}
+
+@MISC{manual:linux,
+    AUTHOR = {Michael Kerrisk},
+    TITLE = {{(Top)} Linux Manual Page},
+    HOWPUBLISHED = {\url{https://www.man7.org/linux/man-pages/man1/top.1.html}},
+    YEAR = {2020},
+    NOTE = "Accessed on 2021-02-2",
+}
+
+@MISC{site:ltdp,
+    HOWPUBLISHED = "\url{https://tldp.org/LDP/sag/html/vm-intro.html}",
+    AUTHOR = "Lars S and Joanna Oja and Stephen Stafford and Alex Weeks",
+    TITLE = "The Linux System Adminstrator's Guide Chapter 6. Memory Management",
+	YEAR = "2020",
+	NOTE = "Accessed on 2021-02-22"
 }
 
 @MISC{XILINX,
@@ -93,7 +117,6 @@
     NOTE = "p-ISSN 1412-9434/e-ISSN 2549-7227",
 }
 
-
 @ARTICLE{rashmi,
     AUTHOR = "Rashmi, Mukesh Kumar, Rohini Saxena",
     TITLE = "Algorithm And Technique On Various Edge Detection \: A Survey",
@@ -104,20 +127,18 @@
     MONTH = "June",
 }
 
-
 @ARTICLE{sofia,
     AUTHOR = "Sofia Nayak, Shashank Pujari, Pramod Dash",
-    TITLE = "Implementation of edge detection using FPGA \& model based approach",
+    TITLE = "Implementation of Edge Detection using FPGA \& Model Based Approach",
     JOURNAL = "ICICES2014 - S.A.Engineering College, Chennai, Tamil Nadu, India",
     YEAR = "2014",
     MONTH = "February",
     DOI = "10.1109/ICICES.2014.7033990"
 }
 
-
 @ARTICLE{soa:alex-raj,
-    AUTHOR = "S.M. Alex Raj. and Rita Maria Abraham and M.H. Supriya",
-    TITLE = "Spatial filtering based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation",
+    AUTHOR = "S.M. Alex Raj and Rita Maria Abraham and M.H. Supriya",
+    TITLE = "Spatial Filtering Based Boundary Extraction in Underwater Images for Pipeline Detection: FPGA Implementation",
     JOURNAL = "International Journal of Computer Science and Information Security (IJCSIS)",
     YEAR = "2016",
     MONTH = "9",
@@ -153,7 +174,7 @@
 
 @ARTICLE{soa:xin,
     AUTHOR = "Xin Tan and Yu Liu and Chenglin Zuo and Maojun Zhang",
-    TITLE = "A real-time video denoising algorithm with FPGA implementation for Poisson-Gaussian noise",
+    TITLE = "A Real-time Video Denoising Algorithm with FPGA Implementation for Poisson-Gaussian Noise",
     JOURNAL = "J Real-Time Image Proc",
     YEAR = "2014",
     MONTH = "2",
@@ -161,7 +182,7 @@
 }
 
 @ARTICLE{pdf:marcin,
-    AUTHOR = "Marcin Kowalczyk and Dominika Przewlocka and Tomasz Krvjak",
+    AUTHOR = {Marcin Kowalczyk and Dominika Przewlocka and Tomasz Krvjak},
     TITLE = "Real-Time Implementation of Contextual Image Processing Operations for 4K Video Stream in Zynq UltraScale+ MPSoC",
     JOURNAL = "2018 Conference on Design and Architectures for Signal and Image Processing (DASIP)",
     YEAR = "2018",
@@ -180,9 +201,55 @@
 
 @ARTICLE{pdf:jingbo,
     AUTHOR = "Xu Jingbo and Liu Bo and Lin Haijun and Li Jianxin",
-    TITLE = "A new method for realizing LOG filter in image edge detection",
+    TITLE = "A New Method for Realizing LOG Filter in Image Edge Detection",
     JOURNAL = "The 6th International Forum on Strategic Technology",
     YEAR = "2011",
     MONTH = "8",
     DOI = "10.1109/IFOST.2011.6021127"
+}
+
+@ARTICLE{pdf:pavan,
+    AUTHOR = {Pavan C. Madhusudana and Neil Birkbeck and Yilin Wang; Balu Adsumilli and Alan C. Bovik},
+    TITLE = "Capturing Video Frame Rate Variations via Entropic Differencing",
+    JOURNAL = "IEEE Signal Processing Letters",
+    VOLUME = {27},
+    YEAR = {2020},
+    PAGES={1809-1813},
+    DOI={10.1109/LSP.2020.3028687}
+}
+
+@INPROCEEDINGS{pdf:chang,
+    author={Andre Xian Ming Chang and Eugenio Culurciello},
+    booktitle={2017 IEEE International Symposium on Circuits and Systems (ISCAS)}, 
+    title={Hardware accelerators for recurrent neural   networks on FPGA}, 
+    year={2017},
+    volume={},
+    number={},
+    pages={1-4},
+    doi={10.1109/ISCAS.2017.8050816}
+}
+
+@INPROCEEDINGS{lb:cong,
+    author = {Cong, Jason and Fang, Zhenman and Lo, Michael and Wang, Hanrui and Xu, Jingxian and Zhang, Shaochong},
+    title = {Understanding Performance Differences of FPGAs and GPUs},
+    year = {2018},
+    isbn = {9781450356145},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3174243.3174970},
+    doi = {10.1145/3174243.3174970},
+    booktitle = {Proceedings of the 2018 ACM/SIGDA International Symposium on Field-Programmable Gate Arrays},
+    pages = {288},
+    numpages = {1},
+    location = {Monterey, CALIFORNIA, USA},
+    series = {FPGA '18}
+}
+
+@INPROCEEDINGS{lb:asano,  
+    author= "Shuichi Asano and Tsutomu Maruyama and Yoshiki Yamaguchi",  
+    booktitle={2009 International Conference on Field Programmable Logic and Applications},   
+    title={Performance comparison of FPGA, GPU and CPU in image processing},   
+    year={2009},  
+    pages={126-131},  
+    doi={10.1109/FPL.2009.5272532}
 }
