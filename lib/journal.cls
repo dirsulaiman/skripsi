@@ -49,7 +49,7 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
+% \fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 \RequirePackage{titling} % Customizing the title section
@@ -85,7 +85,6 @@
 
 % Setup label of enumerate item
 \RequirePackage{enumitem} 
-% \renewcommand{\theenumi}{\Alph{enumi}}
 
 % use listings for code script
 \RequirePackage{listings}
