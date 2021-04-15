@@ -93,6 +93,23 @@
 % float [H]
 \RequirePackage{float}
 
+%===========================================================
+% Redefition Terms
+%-----------------------------------------------------------
+\def\partname{BAGIAN}
+\def\chaptername{BAB}
+\def\appendixname{LAMPIRAN}
+\def\refname{DAFTAR PUSTAKA}
+\def\bibname{DAFTAR PUSTAKA}
+\def\indexname{Indek}
+\def\figurename{Gambar}
+\def\tablename{Tabel}
+\def\pagename{Halaman}
+%-----------------------------------------------------------
+% End Redefinition Terms
+%===========================================================
+
+
 
 %===========================================================
 % Package Daftar Pustaka, bentuk citasi
@@ -102,8 +119,8 @@
 %-----------------------------------------------------------
 \usepackage[
     backend=biber,
-    style=authoryear,
-    citestyle=authoryear-comp,
+    style=numeric,
+    citestyle=numeric,
     sorting=nty,
     giveninits=false,
     maxbibnames=3
@@ -120,7 +137,79 @@
 % new citation style
 \let\oldcitate\cite
 \newcommand*\thecite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
-\renewcommand*\cite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
+% \renewcommand*\cite[1]{\hyperlink{cite.\therefsection @#1}{(\citeauthor*{#1} \citeyear{#1})}}
 %-----------------------------------------------------------
 % End Biblatex Config
+%===========================================================
+
+%===========================================================
+% Set Table, Figure Environment
+%-----------------------------------------------------------
+% new environment for Table
+\newenvironment{atable}
+    {\begin{table}[ht] \renewcommand{\arraystretch}{1.3} \centering \small}
+    {\end{table}}
+%-----------------------------------------------------------
+% End Set Table, Figure Environment
+%===========================================================
+
+% use listings for code script
+\RequirePackage{listings}
+\RequirePackage{color}
+%===========================================================
+% Code Script, Listing
+%-----------------------------------------------------------
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{python}{
+    language=Python,
+    emptylines=1,
+    backgroundcolor=\color{light-gray},
+    rulecolor=\color{light-gray},
+    xleftmargin=1cm,
+    framexleftmargin=1cm,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false,
+    tabsize=2,
+    moredelim=**[is][\color{red}]{@}{@},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+}
+
+\lstdefinestyle{shell}{
+    language=bash,
+    emptylines=1,
+    backgroundcolor=\color{black},
+    rulecolor=\color{black},
+    columns=flexible,
+    basicstyle={\small\ttfamily\color{white}},
+    breaklines=true,
+    breakatwhitespace=true,
+    showstringspaces=false,
+    tabsize=2,
+    moredelim=**[is][\color{red}]{@}{@},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+}
+
+\lstdefinestyle{plain}{
+    emptylines=1,
+    backgroundcolor=\color{light-gray},
+    rulecolor=\color{light-gray},
+    columns=flexible,
+    basicstyle={\footnotesize\ttfamily\color{black}},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=2
+}
+%-----------------------------------------------------------
+% End Code Script, Listing
 %===========================================================
