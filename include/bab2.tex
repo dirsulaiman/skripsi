@@ -5,7 +5,7 @@
 \section{Landasan Teori}
 
 \subsection{Citra Digital}
-Citra digital dapat didefinisikan sebagai fungsi \textit{f(x,y)} berukuran M baris dan N kolom, dengan \textit{x} dan \textit{y} adalah kordinat spasial, dan amplitudo \textit{f} di titik kordinat (x,y) dinamakan intensitas atau tingkat keabuan dari citra pada citra tersebut \cite{book:darma}. Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna dasarnya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar walaupun dengan ukuran yang sama. Berdasarkan jenis warnanya citra digital dibagi menjadi 3 jenis yaitu citra biner, citra grayscale dan citra warna.
+Citra digital dapat didefinisikan sebagai fungsi \textit{f(x,y)} berukuran M baris dan N kolom, dengan \textit{x} dan \textit{y} adalah koordinat spasial, dan amplitudo \textit{f} di titik koordinat (x,y) dinamakan intensitas atau tingkat keabuan dari citra pada citra tersebut \cite{book:darma}. Pada umumnya warna dasar dalam citra RGB menggunakan penyimpanan 8 bit untuk menyimpan data warna, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna . Dewasa ini, citra digital dapat menggunakan 16 bit untuk menyimpan data warna dasarnya, hal ini menyebabkan semakin banyak gradasi warnanya sehingga citra yang dihasilkan memiliki tingkat warna yang jauh lebih banyak. Namun tentu saja hal ini mengakibatkan ukuran file citra digital yang dihasilkan juga menjadi semakin besar walaupun dengan ukuran yang sama. Berdasarkan jenis warnanya citra digital dibagi menjadi 3 jenis yaitu citra biner, citra grayscale dan citra warna.
 
 \subsubsection{Citra Biner (monokrom)} 
 Citra biner adalah citra yang hanya memiliki dua warna saja yaitu hitam dan putih. Warna hitam direpresentasikan dengan 1 dan warna putih direpresentasikan dengan 0. Dibutuhkan 1 bit di memori untuk menyimpan nilai warna pada setiap piksel citra biner. Contoh citra biner dapat dilihat pada gambar ~\ref{fig:jenis-citra}(a).
@@ -42,7 +42,7 @@ Metode ini dilakukan agar citra dapat direpresentasikan dalam bentuk yang lebih 
 
 
 \subsection{Filter Spasial}
-Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frequensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan isitilah yang sama dan sering digunakan dalam pengolahan citra digital \cite{book:gonzalez}. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut.
+Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frekuensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan istilah yang sama dan sering digunakan dalam pengolahan citra digital \cite{book:gonzalez}. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut.
 
 Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 
@@ -73,7 +73,7 @@ Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang
 \end{equation}
 
 \subsubsection{Gaussian Blur}
-Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya mirip seperti \textit{Average blur}, nilai piksel yang baru dibentuk dari nilai piksel tetangganya, tepai dengan memberikan bobot yang lebih kuat pada nilai pikselnya sendiri diikuti dengan bobot yang lebih rendah pada piksel atas, bawah dan sampingnya \cite{soa:dmitry}. Berikut kernel gaussian blur filter yang digunakan dalam penelitian ini:
+Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya mirip seperti \textit{Average blur}, nilai piksel yang baru dibentuk dari nilai piksel tetangganya, tetapi dengan memberikan bobot yang lebih kuat pada nilai pikselnya sendiri diikuti dengan bobot yang lebih rendah pada piksel atas, bawah dan sampingnya \cite{soa:dmitry}. Berikut kernel gaussian blur filter yang digunakan dalam penelitian ini:
 \begin{equation}
     \label{kernel:gaussianblur}
     \frac{1}{16}
@@ -179,7 +179,7 @@ Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kod
 \end{afigure}
 
 \subsubsection{FPGA Development Board}
-Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \cite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
+Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \cite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjalankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
 
 \begin{afigure}
     \includegraphics[width=10cm, center]{images/pynq-z2.jpeg}
@@ -197,7 +197,7 @@ Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah
 \begin{equation}
     \label{eq:time}
     \begin{split}
-waktu kompuatsi = waktu selesai - waktu mulai
+waktu\ kompuatsi = waktu\ selesai - waktu\ mulai
     \end{split}
 \end{equation}
 
@@ -206,12 +206,12 @@ waktu kompuatsi = waktu selesai - waktu mulai
 \begin{equation}
     \label{eq:fps}
     \begin{split}
-fps = \frac{jumlah frame}{waktu komputasi}
+fps = \frac{jumlah\ frame}{waktu\ komputasi}
     \end{split}
 \end{equation}
 
 \subsubsection{Penggunaan CPU}
-Pada penelitian ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk melihat persentase penggunaan CPU pada proses penerapan filter spasial linear. Tampilan dari program ini dapat dilihat pada gambar \ref{fig:top}. Program ini menampilkan informasi tentang proses-proses yang berjalan pada sistem operasi seperti ID sebuah proses, user yang menjalankan proses tersebut, memory yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
+Pada penelitian ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk melihat persentase penggunaan CPU pada proses penerapan filter spasial linear. Tampilan dari program ini dapat dilihat pada gambar \ref{fig:top}. Program ini menampilkan informasi tentang proses-proses yang berjalan pada sistem operasi seperti ID sebuah proses, user yang menjalankan proses tersebut, \textit{memory} yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
 \begin{figure}[H]
     \includegraphics[width=0.9\textwidth, center]{images/programs/top.png}
     \caption{Tampilan program top pada Linux.}
@@ -232,7 +232,7 @@ Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CP
 
 \subsubsection{Penggunaan Memory}
 
-Pada sistem operasi linux \textit{memory} dibagi menjadi tiga jenis \cite{manual:linux}. Pertama yaitu \textit{memory} fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah \textit{memory} \textit{swap}, yaitu  \textit{memory} yang berguna untuk membantu kerja \textit{memory} fisk, data dari \textit{memory} fisik akan disimpan pada \textit{swap} dan kemudian diambil kembali jika terlalu banyak permintaan pada \textit{memory} fisik. Ketiga yaitu virtual \textit{memory}, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut \cite{book:os}:
+Pada sistem operasi linux \textit{memory} dibagi menjadi tiga jenis \cite{manual:linux}. Pertama yaitu \textit{memory} fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah \textit{memory} \textit{swap}, yaitu  \textit{memory} yang berguna untuk membantu kerja \textit{memory} fisik, data dari \textit{memory} fisik akan disimpan pada \textit{swap} dan kemudian diambil kembali jika terlalu banyak permintaan pada \textit{memory} fisik. Ketiga yaitu virtual \textit{memory}, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut \cite{book:os}:
 
 \begin{itemize} [noitemsep, topsep=0pt]
     \item \textit{abstraction}, bebas dari alamat / batas \textit{memory} fisik 
@@ -309,7 +309,7 @@ Berbagai teknik filter telah menjadi inti dari pemrosesan citra sejak awal tekni
 Penelitian ini menyajikan fitur-fitur implementasi filter spasial pada citra dengan \textit{Programmable Logic Integrated Circuits} (FPGA). Solusi yang disajikan memungkinkan untuk membuat arsitektur kristal dengan performa tinggi untuk algoritma filter spasial. Hasilnya menunjukan kelebihan menggunakan \textit{programmable logic} dalam tugas pemrosesan citra digital \cite{soa:dmitry}.
 
 \subsection{An FPGA-Oriented Algorithm for Real-Time Filtering of Poisson Noise in Video Streams, with Application to X-Ray Fluoroscopy}
-Pada penelitian ini dibahas tentang algoritma baru untuk \textit{real-time filtering} pada video yang rusak karena \textit{poison noise}. Algorima yang disajikan efektif dalam penanganan derau, dan ini secara ideal cocok dengan implementasi \textit{hardware}, dan dapat diimplementasikan pada FPGA kecil yang memiliki sumber daya \textit{hardware} yang terbatas. Pada penelitian ini penerapan algoritma menggukanan hasil \textit{X-ray fluoroscopy} sebagai studi kasus. Hasil implementasi menggunakan yang StratixIV FPGA menunjukkan bahwa sistem hanya menggunakan, paling banyak, 22\% dari sumber daya perangkat, dalam implementasi \textit{real-time filtering} pada video \textit{stream} 1024x1024 @49fps. Sebagai perbandingan, implementasi filter berbasis FIR pada FPGA yang sama dan dengan video \textit{stream} yang serupa, dibutuhkan 80\% \textit{resource logic} pada FPGA \cite{soa:castellano}.
+Pada penelitian ini dibahas tentang algoritma baru untuk \textit{real-time filtering} pada video yang rusak karena \textit{poison noise}. Algoritma yang disajikan efektif dalam penanganan derau, dan ini secara ideal cocok dengan implementasi \textit{hardware}, dan dapat diimplementasikan pada FPGA kecil yang memiliki sumber daya \textit{hardware} yang terbatas. Pada penelitian ini penerapan algoritma menggukanan hasil \textit{X-ray fluoroscopy} sebagai studi kasus. Hasil implementasi menggunakan yang StratixIV FPGA menunjukkan bahwa sistem hanya menggunakan, paling banyak, 22\% dari sumber daya perangkat, dalam implementasi \textit{real-time filtering} pada video \textit{stream} 1024x1024 @49fps. Sebagai perbandingan, implementasi filter berbasis FIR pada FPGA yang sama dan dengan video \textit{stream} yang serupa, dibutuhkan 80\% \textit{resource logic} pada FPGA \cite{soa:castellano}.
 
 \subsection{A real-time video denoising algorithm with FPGA implementation for Poisson-Gaussian noise}
 Pada penggunaan umum metode denoising yaitu \textit{Pixel Similarity Weighted Frame Average} (PSWFA). Pada penelitian ini, dilakukan peningkatan kemampuan denoising dari PSWFA menggunakan pre-filter yang mengandung operator \textit{downsampling} dan small Gaussian filter. Transformasi citra dapat mengalami gangguan oleh derau Gaussian. Untuk memasang algoritma ini pada perangkat keras, sebelumnya diimplementasikan algoritma ini pada Spartan-6 FPGA untuk evaluasi. Dilakukan juga perbandingan dengan beberapa metode denoising yang sudah ada. Evaluasi selanjutnya untuk kemampuan denoising, algoritma ini dibandingkan dengan beberapa algoritma \textit{state-of-art} yang tidak diimplementasikan pada FPGA tetapi memiliki performa yang baik pada personal komputer. Hasil eksperimen pada kedua simulasi video berderau dan video yang ditangkap pada pencahayaan yang kurang menunjukan tingkat keefektifan pada algoritma ini, terkhusus pada pemrosesan derau berskala besar \cite{soa:xin}.
