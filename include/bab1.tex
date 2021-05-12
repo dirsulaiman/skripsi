@@ -12,7 +12,7 @@ Pengolahan citra digital merupakan proses mengolah piksel di dalam citra secara 
 
 
 % Filter Spasial
-Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frekuensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan istilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \cite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
+Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi.  Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
 
 
 % Stream Video adalah
@@ -21,17 +21,11 @@ Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut
 Frame per second (\textit{fps}) atau \textit{frame rate} adalah banyaknya \textit{frame} yang ditampilkan per detik. Semakin tinggi \textit{fps} sebuah video maka semakin baik pula gerakan yang dapat ditampilkan karena dibentuk dari \textit{frame} yang lebih banyak. Namun dengan jumlah \textit{frame} yang lebih besar tentu dibutuhkan juga \textit{resource} yang lebih besar dalam pengolahan video tersebut \cite{pdf:marcin}. 
 % Dalam penelitian ini video stream yang digunakan dibatasi 30 \textit{fps} saja dengan resolusi 720p.
 
-
-
-
-% FPGA Xilinx PYNQ-Z2 adalah FPGA \textit{Board} yang digunakan pada penelitian ini secara \textit{official} dapat menerima input video \textit{stream} dengan resolusi 720p. Setiap \textit{frame} yang diterima dari \textit{source} akan dilakukan proses filter spasial, kemudian hasilnya disalurkan melalui HDMI output untuk kemudian ditampilkan. Video hasil filter spasial yang ditampilkan akan mengalami penurunan \textit{fps}, hal ini disebabkan adanya penambahan jeda waktu komputasi untuk proses filter yang dilakukan pada setiap \textit{frame}. Pada kesempatan ini peneliti ingin melakukan "Implementasi Filter Spasial Linear pada Video \textit{Stream} menggunakan FPGA \textit{Hardware Accelerator}".
-
-
 Untuk meningkatkan kinerja dan efisiensi energi dari sebuah program, berbagai jenis akselerator telah dikembangkan, salah satu diantaranya yaitu FPGA \cite{lb:cong}. \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \cite{XILINX}.
 
 FPGA telah menunjukkan kinerja yang sangat tinggi di dalam banyak aplikasi dalam pemrosesan citra. Namun CPU dan CPU terbaru memiliki potensi kinerja tinggi untuk masalah-masalah tersebut. CPU terbaru mendukung \textit{multi-core}, dimana masing-masing \textit{core} mendukung SIMD (\textit{Single Instruction, Multiple Data}) yang telah dikembangkan dan dijalankan hingga 16 operasi pada 128 bit data dalam satu \textit{clock cycle}. GPU terbaru mendukung sejumlah besar \textit{core} yang berjalan secara paralel, dan kinerja puncaknya mengungguli CPU \cite{lb:asano}.
 
-\pagebreak
+% \pagebreak
 
 Paralelisme dalam SIMD pada CPU terbatas, tetapi frekuensi operasional CPU sangatlah tinggi, dan CPU diharapkan dapat menunjukkan kinerja yang tinggi dalam aplikasi yang dimana \textit{cache memory} berjalan dengan baik. Ukuran \textit{cache memory} cukup besar untuk menyimpan seluruh citra di banyak aplikasi pemrosesan citra, dan CPU dapat menjalankan algoritma yang sama dengan FPGA meskipun \textit{bandwith memory} yang dibutuhkan tinggi \cite{lb:asano}.
 
@@ -41,7 +35,7 @@ Pada FPGA terdahulu tidak terdapat prosesor untuk menjalankan \textit{software} 
 
 Berdasarkan uraian permasalahan di atas, peneliti ingin melakukan penelitian dengan judul "Implementasi Filter Spasial Linear pada Video \textit{Stream} menggunakan FPGA \textit{Hardware Accelerator}" untuk menunjukkan kinerja dari prosesor ARM dan FPGA pada Xilinx PYNQ-Z2 FPGA Development Board.
 
-\pagebreak
+% \pagebreak
 
 \section{Rumusan Masalah}
 Adapun rumusan masalah dalam penelitian ini yaitu:
