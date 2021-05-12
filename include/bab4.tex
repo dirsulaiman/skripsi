@@ -134,6 +134,17 @@ Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat di
     \label{code:arm-laplacian1.csv}
 \end{figure}
 
+\subsubsection{Menghitung Efisiensi Penggunaan Resource FPGA dan ARM Prosesor}
+
+Untuk menghitung efisiensi penggunaan resource yang dimiliki FPGA dibandingkan dengan ARM Prosesor, digunakan persamaan \ref{eq:efisiensi}.
+\begin{equation}
+    \label{eq:efisiensi}
+    \begin{split}
+efisiensi = 100\% - \left( \frac{penggunaan\ resource\ FPGA}{penggunaan\ resource\ ARM Prosesor} \times 100\% \right)
+    \end{split}
+\end{equation}
+
+Rata-rata dari hasil percobaan untuk menghitung waktu komputasi, \textit{frame rate}, penggunaan CPU, penggunaan \textit{memory}, penggunaan \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory} dengan menggunakan FPGA dan prosesor ARM selanjutnya digunakan untuk menghitung masing-masing efisiensinya dengan persamaan \ref{eq:efisiensi}.
 
 % Jelaskan Hasil
 \section{Analisis Kinerja}
@@ -165,12 +176,14 @@ Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat
             \arm & 
             \fpga }
 \end{atable}
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-time50.png}
     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
     \label{fig:chart-time50}
 \end{figure}
+
+\pagebreak
 
 % 200 frame
 Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time200} dan grafik pada gambar \ref{fig:chart-time200}. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 200 frame adalah 29,06 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 200 frame hanya 3,32 detik.
@@ -197,7 +210,7 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
             \fpga }
 \end{atable}
 
-\begin{figure}[H]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-time200.png}
     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
@@ -206,6 +219,19 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
 
 Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter \textit{laplacian} yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter \textit{sharpening} yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
 
+\pagebreak
+
+Untuk menghitung efisiensi waktu komputasi yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+\begin{equation*}
+    % \label{eq:efisiensi}
+    \begin{split}
+efisiensi & = 100\% - \left( \frac{waktu\ komputasi\ FPGA}{waktu\ komputasi\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{3,32}{29,06} \times 100\% \right) \\
+& = 100\% - 11.42\% \\
+& = 88.58\% \\
+    \end{split}
+\end{equation*}
+sehingga diperoleh efisiensi waktu kompuatsi FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.85\%.
 
 \subsection{Frame Rate (FPS)}
 Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapat dihitung menggunakan persamaan \ref{eq:fps}. Data FPS dari masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-fps} dan grafik pada gambar \ref{fig:chart-fps}.
@@ -239,6 +265,17 @@ Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapa
 
 Pada tabel \ref{table:hasil-fps} terlihat dengan menggunakan prosesor ARM diperoleh rata-rata 6.95 frame per detik (FPS), sedangkan ketika menggunakan FPGA diperoleh rata-rata 60.37 frame per detik. Terlihat pada grafik \ref{fig:chart-fps} nilai FPS dengan FPGA jauh lebih tinggi daripada dengan prosesor ARM.
 
+Untuk menghitung efisiensi FPS yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+\begin{equation*}
+    % \label{eq:efisiensi}
+    \begin{split}
+efisiensi & = 100\% - \left( \frac{FPS\ ARM Prosesor}{FPS\ FPGA} \times 100\% \right) \\
+& = 100\% - \left( \frac{6.95}{60.37} \times 100\% \right) \\
+& = 100\% - 11.51\% \\
+& = 88.49\% \\
+    \end{split}
+\end{equation*}
+sehingga diperoleh efisiensi FPS dari FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.49\%.
 
 \subsection{Penggunaan CPU}
 Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-cpu} dan grafik pada gambar \ref{fig:chart-cpu}. Rata-rata penggunaan CPU dengan prosesor ARM adalah 99.58\% sedangkan dengan FPGA diperoleh 84.75\%. Data ini menunjukkan bahwa penggunaan CPU dengan prosesor ARM sedikit lebih besar daripada dengan FPGA.
@@ -273,6 +310,17 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
 
 Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel \textit{average blur} (99,83\%) dan dengan FPGA pada kernel \textit{sobel horizontal} (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel \textit{sharpening} dan \textit{sobel horizontal} (99,47\%) dan dengan FPGA pada kernel \textit{gaussian blur} (83,70\%).
 
+Untuk menghitung efisiensi penggunaan CPU yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan persamaan \ref{eq:efisiensi} sehingga menjadi:
+\begin{equation*}
+    % \label{eq:efisiensi}
+    \begin{split}
+efisiensi & = 100\% - \left( \frac{penggunaan\ CPU\ FPGA}{penggunaan\ CPU\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{84.75}{99.58} \times 100\% \right) \\
+& = 100\% - 85.11\% \\
+& = 14.89\% \\
+    \end{split}
+\end{equation*}
+sehingga diperoleh efisiensi penggunaan CPU FPGA dibandingkan dengan prosesor ARM adalah sebesar 14.89\%.
 
 \subsection{Penggunaan Memory}
 Data penggunaan \textit{memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-mem} dan grafik pada gambar \ref{fig:chart-mem}. Data ini menunjukkan persentase \textit{memory} yang digunakan pada masing-masing kernel. Rata-rata penggunaan \textit{memory} dengan prosesor ARM adalah 25,37\% dan 24,86\% dengan FPGA. 
@@ -304,6 +352,18 @@ Data penggunaan \textit{memory} dengan prosesor ARM dan FPGA dapat dilihat pada 
     \label{fig:chart-mem}
 \end{figure}
 Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan \textit{memory} pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan \textit{memory} FPGA ini hanya 0,51\% lebih rendah dari penggunaan \textit{memory} dengan prosesor ARM.
+
+Efisiensi penggunaan \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan \ref{eq:efisiensi} sehingga menjadi:
+\begin{equation*}
+    % \label{eq:efisiensi-momory}
+    \begin{split}
+efisiensi & = 100\% - \left( \frac{penggunaan\ memory\ FPGA}{penggunaan\ memory\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{24.86}{25.37} \times 100\% \right) \\
+& = 100\% - 97.98\% \\
+& = 2.02\% \\
+    \end{split}
+\end{equation*}
+diperoleh efisiensi penggunaan \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 2.02\%.
 
 
 \subsection{Resident Memory (RES)}
@@ -338,6 +398,17 @@ Data penggunaan \textit{resident memory} atau RES dengan prosesor ARM dan FPGA d
 \end{figure}
 Rata-rata RES yang digunakan pada prosesor ARM adalah 129108,60 KiB dan 126437,20 KiB pada FPGA. Terlihat bahwa penggunaan RES pada prosesor ARM dan FPGA juga tidak jauh berbeda. Penggunaan RES terbesar dengan prosesor ARM yaitu pada kernel \textit{gaussian blur} 131804,40 KiB, sedangkan dengan FPGA yaitu pada kernel \textit{sharpening} 127931,20 KiB.
 
+Efisiensi penggunaan \textit{resident} \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan \ref{eq:efisiensi} sehingga menjadi:
+\begin{equation*}
+    % \label{eq:efisiensi-resident-momory}
+    \begin{split}
+efisiensi & = 100\% - \left( \frac{penggunaan\ resident\ memory\ FPGA}{penggunaan\ resident\ memory\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{126437.20}{129108.60} \times 100\% \right) \\
+& = 100\% - 97.93\% \\
+& = 2.07\% \\
+    \end{split}
+\end{equation*}
+diperoleh efisiensi penggunaan \textit{resident} \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 2.07\%.
 
 \subsection{Shared Memory (SHR)}
 Data penggunaan \textit{shared memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-shr} dan grafik pada gambar \ref{fig:chart-shr}. Data ini menunjukkan banyaknya \textit{shared memory} (dalam satuan \textit{kilobyte}) yang digunakan pada saat penerapan filter spasial pada video \textit{stream} dengan masing-masing kernel.
@@ -370,6 +441,18 @@ Data penggunaan \textit{shared memory} dengan prosesor ARM dan FPGA dapat diliha
 \end{figure}
 Rata-rata penggunaan \textit{shared memory} pada prosesor ARM adalah 56325,57 KiB dan 54030,80 KiB pada FPGA. Terlihat bahwa penggunaan \textit{shared memory} pada prosesor ARM sedikit lebih besar daripada FPGA. Penggunaan \textit{shared memory} terbesar pada prosesor ARM yaitu pada kernel \textit{gaussian blur} 56503,60 KiB dan kernel \textit{laplacian} 55528,80 KiB pada FPGA. Penggunaan \textit{shared memory} terkecil pada prosesor ARM yaitu pada kernel \textit{average blur} 56157,40 KiB dan kernel \textit{laplacian} 42568 KiB pada FPGA.
 
+Efisiensi penggunaan \textit{shared} \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan \ref{eq:efisiensi} sehingga menjadi:
+\begin{equation*}
+    % \label{eq:efisiensi-shared-momory}
+    \begin{split}
+efisiensi & = 100\% - \left( \frac{penggunaan\ shared\ memory\ FPGA}{penggunaan\ shared\ memory\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{54030.80}{56325.57} \times 100\% \right) \\
+& = 100\% - 95.92\% \\
+& = 4.08\% \\
+    \end{split}
+\end{equation*}
+diperoleh efisiensi penggunaan \textit{shared} \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 4.08\%.
+
 \subsection{Virtual Memory (VIRT)}
 Data penggunaan \textit{virtual memory} atau VIRT dapat dilihat pada tabel \ref{table:hasil-virt} dan grafik pada gambar \ref{fig:chart-virt}. Data ini menunjukkan banyaknya \textit{virtual memory} (dalam satuan \textit{kilobyte}) yang digunakan pada saat penerapan filter spasial pada video \textit{stream} dengan masing-masing kernel.
 \begin{atable}
@@ -400,3 +483,15 @@ Data penggunaan \textit{virtual memory} atau VIRT dapat dilihat pada tabel \ref{
     \label{fig:chart-virt}
 \end{figure}
 Rata-rata penggunaan VIRT pada prosesor ARM adalah 395407,64 KiB dan 395501,33 KiB pada FPGA. Rata-rata penggunaan VIRT pada FPGA sedikit lebih tinggi dari pada prosesor ARM. Penggunaan VIRT terbesar dengan prosesor ARM yaitu pada kernel \textit{gaussian blur} 398862,80 KiB dan kernel \textit{laplacian} 395638,40 KiB pada FPGA. Penggunaan VIRT terkecil dengan prosesor ARM yaitu pada kernel \textit{laplacian} 393388,00 KiB dan kernel \textit{sobel vertical} 395385,60 KiB pada FPGA.
+
+% Efisiensi penggunaan \textit{virtual} \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan \ref{eq:efisiensi} sehingga menjadi:
+% \begin{equation*}
+%     % \label{eq:efisiensi-virtual-momory}
+%     \begin{split}
+% efisiensi & = 100\% - \left( \frac{penggunaan\ virtual\ memory\ FPGA}{penggunaan\ virtual\ memory\ ARM Prosesor} \times 100\% \right) \\
+% & = 100\% - \left( \frac{395501.33}{395407.64} \times 100\% \right) \\
+% & = 100\% - 97.93\% \\
+% & = 2.07\% \\
+%     \end{split}
+% \end{equation*}
+% diperoleh efisiensi penggunaan \textit{virtual} \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 2.07\%.
