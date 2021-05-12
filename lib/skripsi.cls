@@ -168,7 +168,7 @@
     xleftmargin=1cm,
     framexleftmargin=1cm,
     columns=flexible,
-    basicstyle={\small\ttfamily},
+    basicstyle={\linespread{0.85}\small\ttfamily},
     breaklines=true,
     breakatwhitespace=true,
     showstringspaces=false,
