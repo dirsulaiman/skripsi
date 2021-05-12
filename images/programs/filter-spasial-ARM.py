@@ -58,7 +58,7 @@ kernel = {
 }
 
 kernel_name = 'sobel hor'
-numberOfIterations=85
+numberOfIterations=200
 
 startSW=time.time()
 for i in range(numberOfIterations):

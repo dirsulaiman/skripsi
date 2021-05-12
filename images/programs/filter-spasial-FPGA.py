@@ -70,7 +70,7 @@ kernel = {
 }
 
 kernel_name = 'sharpen'
-numberOfIterations=300
+numberOfIterations=200
 
 startPL=time.time()
 for i in range(numberOfIterations):
