@@ -152,6 +152,21 @@ h(x) = f(x) * g(x) = \sum_{a=-\infty}^{\infty} f(a)g(x-a)
 
 Pada operasi konvolusi diatas, \textit{g(x)} disebut kernel konvolusi atau filter kernel. Kernel \textit{g(x)} dioperasikan secara bergeser pada sinyal masukan \textit{f(x)}. Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran \textit{h(x)} \cite{book:munir}. 
 
+Konvolusi dengan persamaan \ref{eq:conv2} hanya berlaku untuk input 1 dimensi, sedangkan untuk input 2 dimensi seperti citra dapat digunakan persamaan \ref{eq:conv3}.
+\begin{equation}
+    \label{eq:conv3}
+h(x,y) = (I*K)(x,y) = \sum_{m} \sum_{n} I(m,n)K(x-m, y-n)
+\end{equation}
+
+\noindent Keterangan: 
+\begin{itemize}[noitemsep, topsep=0pt]
+    \item[]{\makebox[1.0cm]{h(x,y)\hfill} = fungsi hasil konvolusi}
+    \item[]{\makebox[1.0cm]{I\hfill} = input}
+    \item[]{\makebox[1.0cm]{K\hfill} = kernel konvolusi}
+    \item[]{\makebox[1.0cm]{x,y\hfill} = piksel input}
+    \item[]{\makebox[1.0cm]{m,n\hfill} = piksel kernel}
+\end{itemize}
+
 Pada gambar (\ref{fig:conv3}) diilustrasikan bagaimana proses konvolusi pada citra digital yang direpresentasikan dalam bentuk matriks. Operasi konvolusi dilakukan pada matriks input berukuran 6x6 dengan filter berukuran 3x3. Hasil konvolusinya ditampilkan pada matriks \textit{result}.
 \begin{afigure}
     \includegraphics[width=0.85\textwidth, center]{images/convolution-operation.png}
@@ -189,7 +204,7 @@ Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan so
 
 
 \subsection{Evaluasi Kinerja}
-Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan {memory}, penggunaan {resident memory} (RES), {shared memory} (SHR), dan {virtual memory} (VIRT) untuk mengukur kinerja pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
+Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan \textit{memory}, penggunaan \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT) untuk mengukur kinerja pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
 
 \subsubsection{Waktu Komputasi}
 Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa \textit{frame} input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada \textit{frame} input.
@@ -226,7 +241,7 @@ Status sebuah proses pada program ini dinyatakan dengan beberapa singkatan, dian
     \item[]{\makebox[0.5cm]{D\hfill} = \textit{uninterruptible sleep}}
     \item[]{\makebox[0.5cm]{T\hfill} = \textit{stopped by job control signal}}
     \item[]{\makebox[0.5cm]{t\hfill} = \textit{stopped by debugger during trace}}
-  \end{itemize}
+\end{itemize}
 
 Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CPUnya berdasarkan core yang digunakan oleh proses tersebut. Jika mode Irix pada program \textit{top} dimatikan, maka program akan berjalan pada mode Solaris di mana penggunaan CPU sebuah proses yang ditampilkan akan dibagi dengan jumlah total core yang ada pada CPU \cite{manual:linux}.
 
