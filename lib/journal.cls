@@ -97,7 +97,7 @@
 % Redefition Terms
 %-----------------------------------------------------------
 \def\partname{BAGIAN}
-\def\chaptername{BAB}
+\def\partname{BAB}
 \def\appendixname{LAMPIRAN}
 \def\refname{DAFTAR PUSTAKA}
 \def\bibname{DAFTAR PUSTAKA}
@@ -212,4 +212,16 @@
 }
 %-----------------------------------------------------------
 % End Code Script, Listing
+%===========================================================
+
+
+%===========================================================
+% Redefine part and sections
+%-----------------------------------------------------------
+\renewcommand \thepart {\@Roman\c@part}
+\renewcommand \thesection {\@arabic\c@section}
+\renewcommand \thesubsection {\@arabic\c@section.\@arabic\c@subsection}
+\renewcommand \thesubsubsection {\@arabic\c@section.\@arabic\c@subsection.\@arabic\c@subsubsection}
+%-----------------------------------------------------------
+% End Redefine part and sections
 %===========================================================
