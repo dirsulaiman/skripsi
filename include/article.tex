@@ -6,11 +6,7 @@ Citra digital merupakan citra yang dihasilkan dari pengolahan secara digital den
 % Pengolahan Citra digital
 Pengolahan citra digital merupakan proses mengolah piksel di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi atau mempartisi gambar menjadi beberapa bagian atau objek, deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek yang terdapat dalam citra digital. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra seperti \textit{pattern recognition}, \textit{template matching}, \textit{image analysis} dan sebagainya \cite{book:gonzalez}.
 
-Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frekuensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan istilah yang sama dan sering digunakan dalam pengolahan citra digital. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut. Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \cite{book:gonzalez}. Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
-
-Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut-turut \cite{thesis:jin}. Berbeda dengan format video lainya, video \textit{stream} ini tidak disimpan pada media penyimpanan sebagai file video melainkan setiap \textit{frame} langsung disalurkan dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA. Dengan menganggap video \textit{stream} adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk filter spasial. 
-
-Frame per second (\textit{fps}) atau \textit{frame rate} adalah banyaknya \textit{frame} yang ditampilkan per detik. Semakin tinggi \textit{fps} sebuah video maka semakin baik pula gerakan yang dapat ditampilkan karena dibentuk dari \textit{frame} yang lebih banyak. Namun dengan jumlah \textit{frame} yang lebih besar tentu dibutuhkan juga \textit{resource} yang lebih besar dalam pengolahan video tersebut \cite{pdf:marcin}. 
+Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frekuensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital.
 
 Untuk meningkatkan kinerja dan efisiensi energi dari sebuah program, berbagai jenis akselerator telah dikembangkan, salah satu diantaranya yaitu FPGA \cite{lb:cong}. \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \cite{XILINX}.
 
@@ -22,9 +18,8 @@ Frekuensi operasional GPU lebih cepat dibandingkan dengan FPGA, namun sedikit le
 
 Pada FPGA terdahulu tidak terdapat prosesor untuk menjalankan \textit{software} apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal. Sebagian besar FPGA sekarang telah dirangkai dengan prosesor dalam satu \textit{board}, sering disebut sebagai FPGA Development Board. Xilinx PYNQ-Z2 dibangun dari prosesor ARM Cortex-A9, sehingga dapat menjalankan beberapa \textit{software} seperti \textit{python} tanpa harus merancang sirkuitnya dari awal. Akan tetapi, kinerja yang dimiliki oleh prosesor ARM pada FPGA Development Board tentu berbeda dengan kinerja fungsi arsitektur FPGA itu sendiri sehingga dapat dikaji lebih dalam mengenai perbandingan kinerja dari keduanya.
 
-Berdasarkan uraian permasalahan di atas, peneliti ingin melakukan penelitian dengan judul "Implementasi Filter Spasial Linear pada Video \textit{Stream} menggunakan FPGA \textit{Hardware Accelerator}" untuk menunjukkan kinerja dari prosesor ARM dan FPGA pada Xilinx PYNQ-Z2 FPGA Development Board.
 
-
+% 2. Fundamental Concepts
 \section{Landasan Teori}
 
 \subsection{Citra Digital}
@@ -39,11 +34,11 @@ Banyaknya warna pada citra \textit{grayscale} tergantung pada jumlah bit yang di
 \subsubsection{Citra Warna} 
 Setiap piksel pada citra warna mewakili warna yang merupakan kombinasi dari tiga warna dasar (RGB = red, green, blue). Pada umumnya setiap warna dasar menggunakan penyimpanan 8 bit, yang berarti setiap warna mempunyai gradasi sebanyak 255 warna. Berarti setiap piksel mempunyai kombinasi warna sebanyak 255 x 255 x 255 =16 juta warna lebih. Contoh citra warna dapat dilihat pada gambar ~\ref{fig:jenis-citra}(c).
 
-\begin{figure*}[ht]
-    \includegraphics[width=0.85\textwidth, center]{images/jenis-jenis-citra.png}
+\begin{figure}
+    \includegraphics[width=0.8\linewidth, center]{images/jenis-jenis-citra.png}
     \caption{(a) Contoh citra biner, (b) contoh citra grayscale, (c) contoh citra warna.}
     \label{fig:jenis-citra}
-\end{figure*}
+\end{figure}
 
 
 \subsection{Pengolahan Citra Digital}
@@ -183,7 +178,6 @@ Pada gambar (\ref{fig:conv3}) diilustrasikan bagaimana proses konvolusi pada cit
 \end{figure*}
 
 Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dijadikan 0, sebaliknya jika hasil konvolusi menghasilkan nilai piksel yang melebihi nilai keabuan maksimum, maka nilai tersebut dijadikan ke nilai keabuan maksimum pada citra tersebut \cite{book:sutoyo}.
-% masalah padding
  
 
 \subsection{Video Stream}
@@ -195,20 +189,14 @@ Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut
 
 Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kode ini selanjutnya diinterpretasikan oleh komputer untuk menjalankan perintah yang diberikan. \textit{Microprocessor} ini membutuhkan intruksi berupa kode secara terus menerus untuk menjalankan fungsinya. Sedangkan pada FPGA hanya dibutuhkan sekali konfigurasi \textit{chip} setiap kali dinyalakan. Membuat atau mengunduh \textit{bitstream} yang menentukan fungsi logika dilakukan oleh \textit{logic elements} (LEs), sebuah sirkuit dapat dibuat dengan mengabungkan beberapa LEs menjadi satu kesatuan. Setelah \textit{bitstream} dipasang, FPGA tidak perlu lagi membaca instruksi berupa 1 dan 0, berbeda dengan \textit{microprocessor} yang selalu membutuhkan instruksi \cite{pdf:cheung}. Secara tradisional, untuk membuat sebuah desain FPGA, aplikasi dideskripsikan menggunakan \textit{Hardware Description Language} (HDL) seperti Verilog atau VHDL sehingga menghasilkan sebuah \textit{bitstream} FPGA. 
 
-\begin{figure*}[ht]
-    \includegraphics[width=12cm, center]{images/fpga-structure.jpeg}
-    \caption{Struktur FPGA.}
-    \label{fig:fpga-structure}
-\end{figure*}
-
 \subsubsection{FPGA Development Board}
 Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \cite{site:biswas}. Dewasa ini telah dikembangkan FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjalankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
 
-\begin{figure*}[ht]
-    \includegraphics[width=10cm, center]{images/pynq-z2.jpeg}
+\begin{figure}[ht]
+    \includegraphics[width=0.8\linewidth, center]{images/pynq-z2.jpeg}
     \caption{FPGA Board Xilinx PYNQ-Z2.}
     \label{fig:pynq-z2}
-\end{figure*}
+\end{figure}
 
 
 \subsection{Evaluasi Kinerja}
@@ -216,7 +204,6 @@ Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (F
 
 \subsubsection{Waktu Komputasi}
 Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa \textit{frame} input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada \textit{frame} input.
-% \cite{pdf:chang}
 \begin{equation}
     \label{eq:time}
     \begin{split}
@@ -268,11 +255,11 @@ Terlepas dari bentuk \textit{memory} mana yang mungkin digunakan, semua dikelola
 byte). Penggunaan \textit{memory} berhubungan dengan \textit{memory} fisik dan \textit{swap} untuk sistem secara keseluruhan. 
 Untuk setiap proses yang berjalan, setiap \textit{memory} page dibatasi ke satu kuadran seperti pada gambar \ref{fig:mem-quad}. Baik \textit{memory} fisik dan \textit{memory} virtual dapat menyertakan salah satu dari empat kuadran, sementara file \textit{swap} hanya mencakup kuadran 1 sampai 3. Memori di kuadran 4, bertindak sebagai file \textit{swap} khusus ketika dimodifikasi \cite{manual:linux}. 
 
-\begin{figure*}[ht]
-    \includegraphics[width=0.8\textwidth, center]{images/programs/memory-quadrant.png}
+\begin{figure}
+    \includegraphics[width=0.8\linewidth, center]{images/programs/memory-quadrant.png}
     \caption{Kuadran pembagian memory pada Linux.}
     \label{fig:mem-quad}
-\end{figure*}
+\end{figure}
 
 \subsubsection{Virtual Memory (VIRT)}
 Virtual \textit{memory} menggunakan disk sebagai perpanjangan dari RAM sehingga ukuran efektif \textit{memory} yang dapat digunakan bertambah secara bersamaan. Kernel akan menulis konten dari blok \textit{memory} yang saat ini tidak digunakan ke hard disk sehingga \textit{memory} dapat digunakan untuk tujuan lain. Ketika konten asli dibutuhkan lagi, mereka dibaca kembali ke dalam \textit{memory}. Ini semua dibuat transparan sepenuhnya bagi pengguna. Program yang berjalan di Linux hanya melihat jumlah \textit{memory} yang tersedia lebih besar dan tidak memperhatikan bahwa sebagian dari program tersebut berada di disk dari waktu ke waktu. Tentu saja, membaca dan menulis hard disk lebih lambat daripada menggunakan \textit{memory} fisik, sehingga program tidak berjalan secepat itu. Bagian dari hard disk yang digunakan sebagai \textit{memory} virtual disebut ruang swap \cite{site:ltdp}.
@@ -288,7 +275,10 @@ Kolom VIRT pada program \textbf{top} menunjukkan jumlah total \textit{memory} vi
 
 \textit{Shared} \textit{memory} adalah bagian dari resident \textit{memory} (RES) yang dapat digunakan oleh proses lain. Termasuk \textit{anonymous pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili \textit{program images} dan \textit{shared libraries} \cite{manual:linux}. 
 
+
+
 %------------------------------------------------
+% 4. Results and Discussions
 
 \section{Implementasi pada FPGA Development Board}
 
@@ -296,11 +286,8 @@ Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan fil
 
 FPGA Development Board dirangkai seperti yang telah disebutkan pada Bab sebelumnya, pada gambar \ref{fig:rancangan-sistem}. HDMI Output pada FPGA dihubungkan ke monitor dan HDMI Input dihubungkan ke \textit{source} dalam hal ini laptop Lenovo Ideapad 320. FPGA Development Board juga dihubungkan ke \textit{router} menggunakan kabel UART agar dapat diakses menggunakan protokol \textit{ssh}. Selanjutnya memasang semua \textit{library} yang dibutuhkan untuk melakukan penerapan filter spasial linear pada video \textit{stream} menggunakan FPGA Development Board.
 
-% \subsection{Representasi Video Stream sebagai Citra Digital}
-% \subsection{Konversi Frame menjadi Grayscale}
 \subsection{Penerapan Filter Spasial}
 Setiap \textit{frame} dari \textit{source} video \textit{stream} dibaca sebagai citra digital yang direpresentasikan sebagai matriks berukuran 1280x720 dengan rentang nilai keabuan pada masing-masing piksel yaitu dari 0 sampai 255. Setiap piksel pada matriks tersebut hanya memiliki satu lapis warna sebab citra yang diterima dari \textit{source} adalah citra \textit{grayscale}, tidak seperti citra warna yang memiliki tiga lapis warna pada setiap pikselnya. 
-% padding?
 
 Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks dengan kernel yang telah ditentukan sebelumnya. Operasi konvolusi ini menghasilkan matrix baru dengan ukuran 1280x720. Matriks hasil tersebut selanjutnya direpresentasikan kembali sebagai citra digital yang selanjutnya disebut sebagai hasil filter. Hasil filter dari setiap \textit{frame} ini ditampilkan ke monitor melalui HDMI Output pada FPGA Development Board secara berkesinambungan sehingga tampak seperti video.
 
@@ -370,7 +357,8 @@ Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Pro
 \subsubsection{Menghitung Waktu Komputasi dan FPS}
 Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 \textit{frame} dan 200 \textit{frame} dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 \textit{frame} dengan masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 \textit{frame} dengan masing-masing kernel.
 
-Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua \textit{frame} selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai, seperti pada persamaan \ref{eq:time}. Dilakukan dengan 50 \textit{frame} dan 200 \textit{frame} pada masing-masing kernel dengan menggunakan prosesor ARM dan FPGA. Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
+Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua \textit{frame} selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai, seperti pada persamaan \ref{eq:time}. Dilakukan dengan 50 \textit{frame} dan 200 \textit{frame} pada masing-masing kernel dengan menggunakan prosesor ARM dan FPGA. 
+Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
 \begin{figure}
     \lstinputlisting[frame=single, style=python]{images/programs/calculate-time.py}
     \caption{Menghitung waktu komputasi dengan library time di Python.}
@@ -380,12 +368,13 @@ Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu 
 Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. Selanjutnya FPS dari masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
 
 \subsubsection{Mencatat Penggunaan Memory dan CPU (Resource)}
-Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan \textit{memory} (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase \textit{memory} yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
-\begin{figure}
-    \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
-    \caption{Tampilan program \textbf{top}.}
-    \label{fig:top-linux}
-\end{figure}
+Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan \textit{memory} (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase \textit{memory} yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
+% Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
+% \begin{figure}
+%     \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
+%     \caption{Tampilan program \textbf{top}.}
+%     \label{fig:top-linux}
+% \end{figure}
 
 Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan \textit{memory} dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan \textit{Jupyter Notebook} yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol \textit{ssh} untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
 
@@ -407,29 +396,29 @@ Pertama peneliti menampilkan ID proses dari \textit{Jupyter Notebook} yang digun
 
 Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan pada file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada \textit{Jupyter Notebook}. Output dari program \textbf{top} setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
 
-\begin{figure}
-    \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.txt}
-    \caption{Potongan isi file arm-laplacian1.txt.}
-    \label{code:arm-laplacian1.txt}
-\end{figure}
+% \begin{figure}
+%     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.txt}
+%     \caption{Potongan isi file arm-laplacian1.txt.}
+%     \label{code:arm-laplacian1.txt}
+% \end{figure}
 
-Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat dilihat pada gambar \ref{code:arm-laplacian1.txt}. Isi dari file hasil ini masih banyak mengandung informasi yang tidak dibutuhkan pada penelitian ini, sehingga perlu dilakukan proses ekstraksi informasi yang dibutuhkan saja. Kemudian file yang telah diekstraksi tersebut dibuat menjadi file CSV agar lebih mudah dalam proses pengolahan selanjutnya, seperti pada gambar \ref{code:arm-laplacian1.csv}. Proses tesebut dilakukan sebanyak 5 kali percobaan pada masing-masing kernel menggunakan prosesor ARM dan FPGA.
+% Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat dilihat pada gambar \ref{code:arm-laplacian1.txt}. Isi dari file hasil ini masih banyak mengandung informasi yang tidak dibutuhkan pada penelitian ini, sehingga perlu dilakukan proses ekstraksi informasi yang dibutuhkan saja. Kemudian file yang telah diekstraksi tersebut dibuat menjadi file CSV agar lebih mudah dalam proses pengolahan selanjutnya, seperti pada gambar \ref{code:arm-laplacian1.csv}. Proses tesebut dilakukan sebanyak 5 kali percobaan pada masing-masing kernel menggunakan prosesor ARM dan FPGA.
 
-\begin{figure}[ht]
-    \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.csv}
-    \caption{Isi file arm-laplacian1.csv.}
-    \label{code:arm-laplacian1.csv}
-\end{figure}
+% \begin{figure}[ht]
+%     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.csv}
+%     \caption{Isi file arm-laplacian1.csv.}
+%     \label{code:arm-laplacian1.csv}
+% \end{figure}
 
 
-% Jelaskan Hasil
+
+%------------------------------------------------
+% 4. Results and Discussions
+
 \section{Analisis Kinerja}
 \subsection{Waktu Komputasi}
-% pengantar
-% Dilakukan 5 kali percobaan dengan 50 frame dan 5 kali percobaan dengan 200 frame pada masing-masing kernel menggunakan ARM prosesor dan FPGA. 
 
-% 50 FRAMe
-Data waktu komputasi dengan menggunakan 50 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time50} dan grafik pada gambar \ref{fig:chart-time50}. Secara umum waktu komputasi dengan menggunakan prosesor ARM lebih lambat daripada waktu komputasi dengan menggunakan FPGA. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 50 frame adalah 7,26 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 50 frame hanya 0,82 detik.
+Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time50} dan grafik pada gambar \ref{fig:chart-time50}. Secara umum waktu komputasi dengan menggunakan prosesor ARM lebih lambat daripada waktu komputasi dengan menggunakan FPGA. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 50 frame adalah 7,26 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 50 frame hanya 0,82 detik.
 \begin{atable}
     \caption{Tabel perbandingan waktu komputasi dengan menggunakan 50 frame.}
     \label{table:hasil-time50}
@@ -458,6 +447,8 @@ Data waktu komputasi dengan menggunakan 50 frame pada maasing-masing kernel dapa
     \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
     \label{fig:chart-time50}
 \end{figure}
+
+%\pagebreak
 
 % 200 frame
 Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time200} dan grafik pada gambar \ref{fig:chart-time200}. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 200 frame adalah 29,06 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 200 frame hanya 3,32 detik.
@@ -493,6 +484,19 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
 
 Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter \textit{laplacian} yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter \textit{sharpening} yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
 
+%\pagebreak
+
+Untuk menghitung efisiensi waktu komputasi yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+\begin{equation*}
+    % \label{eq:efisiensi}
+    \begin{split}
+& = 100\% - \left( \frac{waktu\ komputasi\ FPGA}{waktu\ komputasi\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{3,32}{29,06} \times 100\% \right) \\
+& = 100\% - 11.42\% \\
+& = 88.58\% \\
+    \end{split}
+\end{equation*}
+sehingga diperoleh efisiensi waktu komputasi FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.85\%.
 
 \subsection{Frame Rate (FPS)}
 Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapat dihitung menggunakan persamaan \ref{eq:fps}. Data FPS dari masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-fps} dan grafik pada gambar \ref{fig:chart-fps}.
@@ -518,7 +522,7 @@ Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapa
             \arm & 
             \fpga }
 \end{atable}
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-fps.png}
     \caption{Grafik perbandingan FPS dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-fps}
@@ -526,6 +530,17 @@ Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapa
 
 Pada tabel \ref{table:hasil-fps} terlihat dengan menggunakan prosesor ARM diperoleh rata-rata 6.95 frame per detik (FPS), sedangkan ketika menggunakan FPGA diperoleh rata-rata 60.37 frame per detik. Terlihat pada grafik \ref{fig:chart-fps} nilai FPS dengan FPGA jauh lebih tinggi daripada dengan prosesor ARM.
 
+Untuk menghitung efisiensi FPS yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+\begin{equation*}
+    % \label{eq:efisiensi}
+    \begin{split}
+& = 100\% - \left( \frac{FPS\ ARM Prosesor}{FPS\ FPGA} \times 100\% \right) \\
+& = 100\% - \left( \frac{6.95}{60.37} \times 100\% \right) \\
+& = 100\% - 11.51\% \\
+& = 88.49\% \\
+    \end{split}
+\end{equation*}
+sehingga diperoleh efisiensi FPS dari FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.49\%.
 
 \subsection{Penggunaan CPU}
 Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-cpu} dan grafik pada gambar \ref{fig:chart-cpu}. Rata-rata penggunaan CPU dengan prosesor ARM adalah 99.58\% sedangkan dengan FPGA diperoleh 84.75\%. Data ini menunjukkan bahwa penggunaan CPU dengan prosesor ARM sedikit lebih besar daripada dengan FPGA.
@@ -552,14 +567,27 @@ Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM d
             \arm & 
             \fpga }
 \end{atable}
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-cpu.png}
     \caption{Grafik perbandingan penggunaan CPU dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-cpu}
 \end{figure}
 
+%\pagebreak
+
 Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel \textit{average blur} (99,83\%) dan dengan FPGA pada kernel \textit{sobel horizontal} (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel \textit{sharpening} dan \textit{sobel horizontal} (99,47\%) dan dengan FPGA pada kernel \textit{gaussian blur} (83,70\%).
 
+Untuk menghitung efisiensi penggunaan CPU yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan persamaan berikut:
+\begin{equation*}
+    % \label{eq:efisiensi}
+    \begin{split}
+& = 100\% - \left( \frac{CPU\ FPGA}{CPU\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{84.75}{99.58} \times 100\% \right) \\
+& = 100\% - 85.11\% \\
+& = 14.89\% \\
+    \end{split}
+\end{equation*}
+sehingga diperoleh efisiensi penggunaan CPU FPGA dibandingkan dengan prosesor ARM adalah sebesar 14.89\%.
 
 \subsection{Penggunaan Memory}
 Data penggunaan \textit{memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-mem} dan grafik pada gambar \ref{fig:chart-mem}. Data ini menunjukkan persentase \textit{memory} yang digunakan pada masing-masing kernel. Rata-rata penggunaan \textit{memory} dengan prosesor ARM adalah 25,37\% dan 24,86\% dengan FPGA. 
@@ -585,12 +613,24 @@ Data penggunaan \textit{memory} dengan prosesor ARM dan FPGA dapat dilihat pada 
             \arm & 
             \fpga }
 \end{atable}
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-mem.png}
     \caption{Grafik perbandingan penggunaan memory dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-mem}
 \end{figure}
 Walaupun FPGA lebih baik daripada prosesor ARM pada segi waktu komputasi dan FPS namun penggunaan \textit{memory} pada penerapan filter ini terlihat tidak jauh berbeda. Penggunaan \textit{memory} FPGA ini hanya 0,51\% lebih rendah dari penggunaan \textit{memory} dengan prosesor ARM.
+
+Efisiensi penggunaan \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan berikut:
+\begin{equation*}
+    % \label{eq:efisiensi-momory}
+    \begin{split}
+& = 100\% - \left( \frac{memory\ FPGA}{memory\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{24.86}{25.37} \times 100\% \right) \\
+& = 100\% - 97.98\% \\
+& = 2.02\% \\
+    \end{split}
+\end{equation*}
+diperoleh efisiensi penggunaan \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 2.02\%.
 
 
 \subsection{Resident Memory (RES)}
@@ -618,13 +658,24 @@ Data penggunaan \textit{resident memory} atau RES dengan prosesor ARM dan FPGA d
             \arm & 
             \fpga }
 \end{atable}
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-res.png}
     \caption{Grafik perbandingan penggunaan resident memory (RES) dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-res}
 \end{figure}
 Rata-rata RES yang digunakan pada prosesor ARM adalah 129108,60 KiB dan 126437,20 KiB pada FPGA. Terlihat bahwa penggunaan RES pada prosesor ARM dan FPGA juga tidak jauh berbeda. Penggunaan RES terbesar dengan prosesor ARM yaitu pada kernel \textit{gaussian blur} 131804,40 KiB, sedangkan dengan FPGA yaitu pada kernel \textit{sharpening} 127931,20 KiB.
 
+Efisiensi penggunaan \textit{resident} \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan berikut:
+\begin{equation*}
+    % \label{eq:efisiensi-resident-momory}
+    \begin{split}
+& = 100\% - \left( \frac{resident\ memory\ FPGA}{resident\ memory\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{126437.20}{129108.60} \times 100\% \right) \\
+& = 100\% - 97.93\% \\
+& = 2.07\% \\
+    \end{split}
+\end{equation*}
+diperoleh efisiensi penggunaan \textit{resident} \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 2.07\%.
 
 \subsection{Shared Memory (SHR)}
 Data penggunaan \textit{shared memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-shr} dan grafik pada gambar \ref{fig:chart-shr}. Data ini menunjukkan banyaknya \textit{shared memory} (dalam satuan \textit{kilobyte}) yang digunakan pada saat penerapan filter spasial pada video \textit{stream} dengan masing-masing kernel.
@@ -657,6 +708,18 @@ Data penggunaan \textit{shared memory} dengan prosesor ARM dan FPGA dapat diliha
 \end{figure}
 Rata-rata penggunaan \textit{shared memory} pada prosesor ARM adalah 56325,57 KiB dan 54030,80 KiB pada FPGA. Terlihat bahwa penggunaan \textit{shared memory} pada prosesor ARM sedikit lebih besar daripada FPGA. Penggunaan \textit{shared memory} terbesar pada prosesor ARM yaitu pada kernel \textit{gaussian blur} 56503,60 KiB dan kernel \textit{laplacian} 55528,80 KiB pada FPGA. Penggunaan \textit{shared memory} terkecil pada prosesor ARM yaitu pada kernel \textit{average blur} 56157,40 KiB dan kernel \textit{laplacian} 42568 KiB pada FPGA.
 
+Efisiensi penggunaan \textit{shared} \textit{memory} yang dimiliki FPGA dibandingkan dengan prosesor ARM, dapat dihitung dengan persamaan berikut:
+\begin{equation*}
+    % \label{eq:efisiensi-shared-momory}
+    \begin{split}
+& = 100\% - \left( \frac{shared\ memory\ FPGA}{shared\ memory\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{54030.80}{56325.57} \times 100\% \right) \\
+& = 100\% - 95.92\% \\
+& = 4.08\% \\
+    \end{split}
+\end{equation*}
+diperoleh efisiensi penggunaan \textit{shared} \textit{memory} FPGA dibandingkan dengan prosesor ARM adalah sebesar 4.08\%.
+
 \subsection{Virtual Memory (VIRT)}
 Data penggunaan \textit{virtual memory} atau VIRT dapat dilihat pada tabel \ref{table:hasil-virt} dan grafik pada gambar \ref{fig:chart-virt}. Data ini menunjukkan banyaknya \textit{virtual memory} (dalam satuan \textit{kilobyte}) yang digunakan pada saat penerapan filter spasial pada video \textit{stream} dengan masing-masing kernel.
 \begin{atable}
@@ -681,17 +744,29 @@ Data penggunaan \textit{virtual memory} atau VIRT dapat dilihat pada tabel \ref{
             \arm & 
             \fpga }
 \end{atable}
-\begin{figure}[ht]
+\begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-virt.png}
     \caption{Grafik perbandingan penggunaan virtual memory (VIRT) dengan menggunakan prosesor ARM dan FPGA.}
     \label{fig:chart-virt}
 \end{figure}
 Rata-rata penggunaan VIRT pada prosesor ARM adalah 395407,64 KiB dan 395501,33 KiB pada FPGA. Rata-rata penggunaan VIRT pada FPGA sedikit lebih tinggi dari pada prosesor ARM. Penggunaan VIRT terbesar dengan prosesor ARM yaitu pada kernel \textit{gaussian blur} 398862,80 KiB dan kernel \textit{laplacian} 395638,40 KiB pada FPGA. Penggunaan VIRT terkecil dengan prosesor ARM yaitu pada kernel \textit{laplacian} 393388,00 KiB dan kernel \textit{sobel vertical} 395385,60 KiB pada FPGA.
 
+Efisiensi penggunaan \textit{virtual} \textit{memory} yang dimiliki prosesor ARM dibandingkan dengan FPGA, dapat dihitung dengan persamaan berikut:
+\begin{equation*}
+    % \label{eq:efisiensi-virtual-momory}
+    \begin{split}
+& = 100\% - \left( \frac{virtual\ memory\ ARM Prosessor}{virtual\ memory\ FPGA} \times 100\% \right) \\
+& = 100\% - \left( \frac{395407.64}{395501.33} \times 100\% \right) \\
+& = 100\% - 99.97\% \\
+& = 0.03\% \\
+    \end{split}
+\end{equation*}
+Ini menunjukkan bahwa penggunaan \textit{virtual momory} pada prosesor ARM hanya 0.03\% lebih baik dari penggunaan \textit{virtual momory} pada FPGA.
+
+
 
 %------------------------------------------------
-
-
+% 5. Conclusion
 
 \section{Kesimpulan}
 
