@@ -39,18 +39,9 @@
 \renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
 \renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
 
-\RequirePackage{titlesec} % Allows customization of titles
-\renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
-\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
-\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
-\titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
 
 \RequirePackage{fancyhdr} % Headers and footers
-\pagestyle{fancy} % All pages have headers and footers
-\fancyhead{} % Blank out the default header
-\fancyfoot{} % Blank out the default footer
-% \fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
-\fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 \RequirePackage{titling} % Customizing the title section
 
@@ -92,6 +83,33 @@
 
 % float [H]
 \RequirePackage{float}
+
+
+%===========================================================
+% Setting footer, header and page number
+%-----------------------------------------------------------
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{ %style for chapter page
+    \fancyhf{} % clear all header and footer fields
+    \fancyfoot[R]{\thepage}
+    % \renewcommand{\headrulewidth}{0pt}
+    % \renewcommand{\footrulewidth}{0pt}
+}
+\fancypagestyle{empty}{ %style for cover
+    \fancyhf{}
+    % \renewcommand{\headrulewidth}{0pt}
+    % \renewcommand{\footrulewidth}{0pt}
+}
+\fancypagestyle{theheader}{ %style for header
+    \fancyhead[R]{Universitas Hasanuddin}
+}
+%-----------------------------------------------------------
+% End Setting footer, header and page number
+%===========================================================
 
 %===========================================================
 % Redefition Terms
@@ -218,6 +236,12 @@
 %===========================================================
 % Redefine part and sections
 %-----------------------------------------------------------
+
+\RequirePackage{titlesec} % Allows customization of titles
+\titleformat{\section}[block]{\large\scshape\centering}{\textbf\thesection.}{1em}{\textbf} % Change the look of the section titles
+\titleformat{\subsection}[block]{\large}{\textbf\thesubsection.}{1em}{\textbf} % Change the look of the section titles
+\titleformat{\subsubsection}[block]{}{\textbf\thesubsubsection.}{1em}{\textbf} % Change the look of the section titles
+
 \renewcommand \thepart {\@Roman\c@part}
 \renewcommand \thesection {\@arabic\c@section}
 \renewcommand \thesubsection {\@arabic\c@section.\@arabic\c@subsection}
