@@ -239,7 +239,7 @@
 
 \RequirePackage{titlesec} % Allows customization of titles
 \titleformat{\section}[block]{\large\scshape\centering}{\textbf\thesection.}{1em}{\textbf} % Change the look of the section titles
-\titleformat{\subsection}[block]{\large}{\textbf\thesubsection.}{1em}{\textbf} % Change the look of the section titles
+\titleformat{\subsection}[block]{}{\textbf\thesubsection.}{1em}{\textbf} % Change the look of the section titles
 \titleformat{\subsubsection}[block]{}{\textbf\thesubsubsection.}{1em}{\textbf} % Change the look of the section titles
 
 \renewcommand \thepart {\@Roman\c@part}
