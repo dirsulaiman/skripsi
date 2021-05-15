@@ -1,5 +1,5 @@
-# make run file=proposal
-# make clear file=proposal
+# make run file=article-journal
+# make clear file=article-journal
 
 DOCNAME=$(file)
 
