@@ -1,3 +1,8 @@
+% To Do
+% perbaiki jarak setelah figure dengan subsubsection
+% perbaiki jarak setelah table dengan subsubsection
+% buat header table center tapi isinya rata kiri
+
 %===========================================================
 % Skripsi LaTeX Class Style
 %
@@ -42,7 +47,7 @@
 \RequirePackage[table]{xcolor}
 
 % use CSV to generate table
-\usepackage{csvsimple}
+\RequirePackage{csvsimple}
 
 % to set space of paragraph line
 \RequirePackage{setspace}
@@ -163,7 +168,7 @@
     xleftmargin=1cm,
     framexleftmargin=1cm,
     columns=flexible,
-    basicstyle={\small\ttfamily},
+    basicstyle={\linespread{0.85}\small\ttfamily},
     breaklines=true,
     breakatwhitespace=true,
     showstringspaces=false,
@@ -233,7 +238,8 @@
 \backgroundsetup{
   scale=1,       
   angle=0,       
-  opacity=.2,    
+  opacity=.2,
+  hshift=3mm,
   contents={\includegraphics[width=14cm]{images/logoUH.png}}
 }
 \newcommand\addwatermark{\BgThispage}
@@ -399,7 +405,8 @@
             \MakeUppercase{\normalfont\bfseries\@city}\\
 
             \vspace{0.2cm}
-            \normalfont\bfseries{\MakeUppercase{\@monthsubmit} {\@yearsubmit}}
+            % \normalfont\bfseries{\MakeUppercase{\@monthsubmit} {\@yearsubmit}}
+            \normalfont\bfseries{\MakeUppercase{\@yearsubmit}}
             }\\
         \end{singlespace}
     \end{center}
