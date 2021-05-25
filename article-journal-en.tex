@@ -1,0 +1,42 @@
+\documentclass{lib/journal}
+\usepackage{multicol}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{\Large{Implementation of Linear Spatial Filter in Video Stream Using FPGA Hardware Accelerator}} % Article title
+\author{%
+    \textsc{Sulaeman} \\ % Your name
+    \normalsize {Universitas Hasanuddin} \\ % Your institution
+    \normalsize {sulaeman16h@student.unhas.ac.id} % Your email address
+    % \and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+    % \textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+    % \normalsize University of Utah \\ % Second author's institution
+    % \normalsize {jane@smith.com} % Second author's email address
+}
+\date{} % Leave empty to omit a date
+\renewcommand{\maketitlehookd}{%
+\begin{abstract}
+    Various kinds of accelerators have been developed to improve performance and energy efficiency to handle heavy computations, one of which is FPGA. FPGA is capable of handling such a heavy computational load that it can be used for Digital Signal Processing, Image Processing, Neural Networks, etc. In this study, the authors tried to examine the performance of the ARM processor and the FPGA on the Xilin PYNQ Z2 FPGA Development Board in applying a linear spatial filter to the video stream. Kernel filters used in this study are the average blur, Gaussian blur, Laplacian, sharpen, Sobel horizontal, and Sobel vertical. The parameters used to measure the performance of ARM processors and FPGAs are runtime, frame rate (FPS), CPU usage, memory usage, resident memory (RES), shared memory (SHR), and virtual memory (VIRT). The average computation time required to apply linear spatial filters to 200 frames with an ARM processor is 29.06 seconds, while the average FPGA takes only 3.32 seconds. Compute time with FPGA is 88.85\% better than ARM processor. The filtered video with the ARM processor gets an average of 6.95 fps while the FPGA average is 60.37 fps. FPS with FPGA is 88.49\% better than ARM processor. CPU usage on FPGA is 14.89\% better, memory usage on FPGA is 2.02\% better, usage of resident memory is 2.07\% better, and usage of shared memory is 4.08\% better than ARM processor. While the use of virtual memory on ARM processors is 0.03\% better than FPGA.
+
+    \vspace{0.15cm}
+
+    \textbf{Kata Kunci :}  filter spasial linear, FPGA, ARM prosesor, video \textit{stream}, \textit{video processing}
+\end{abstract}
+}
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+    % Print the title
+    \maketitle
+
+    % Article contents
+    \input{include/article-en.tex}
+
+    % Daftar Pustaka
+    \printbibliography[title={DAFTAR PUSTAKA}]
+\end{document}
