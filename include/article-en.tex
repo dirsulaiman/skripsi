@@ -26,30 +26,28 @@ Most FPGAs are assembled with a single processor board, often referred to as the
 % 2. Fundamental Concepts
 \section{Fundamental Concepts}
 
-\subsection{Pengolahan Citra Digital}
-Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \cite{book:gonzalez}.
+% \subsection{Pengolahan Citra Digital}
+% Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \cite{book:gonzalez}.
+
+\subsection{Digital Image Processing}
+
+Digital image processing is the process of digitally processing the pixels of the image for a specific purpose. Based on the level of confidence, digital image processing is grouped into three categories, low-level, mid-level and high-level. low-level processing is performed with primitive operations such as image preprocessing to reduce noise (noise), improve image contrast and sharpen images (sharpening). The criterion of low-level is the correct output or result in the form of a digital image. Mid-level processing involves tasks such as segmentation (partitioning an image into sections or objects), description of objects to be performed by sequence, and classification of objects in digital images. The criterion of mid-level is the output or result in the form of attributes or features such as contours, edges, or objects contained in the image. High-level processing is an advanced process from the previous two processes, carried out to obtain more information contained in the image \cite{book:gonzalez}.
 
 
-\subsection{Filter Spasial}
-Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frekuensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan istilah yang sama dan sering digunakan dalam pengolahan citra digital \cite{book:gonzalez}. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut.
+% \subsection{Filter Spasial}
+% Konsep filter spasial pada pengolahan citra digital berasal dari penerapan transformasi Fourier untuk pemrosesan sinyal pada domain frekuensi. Istilah filter spasial ini digunakan untuk membedakan proses ini dengan filter pada domain frekuensi. Proses filter dilakukan dengan cara menggeser filter kernel dari titik ke titik dalam citra digital. Istilah \textit{mask}, \textit{kernel}, \textit{template}, dan \textit{window} merupakan istilah yang sama dan sering digunakan dalam pengolahan citra digital \cite{book:gonzalez}. Dalam penelitian ini peneliti menggunakan istilah kernel untuk istilah tersebut.
 
-% Proses filter dalam pengolahan citra digital dilakukan dengan memanipulasi sebuah citra menggunakan kernel untuk menghasilkan citra yang baru, sehingga dengan kernel yang berbeda maka citra hasil yang didapat juga akan berbeda. 
-
-
-% \subsubsection{Operator Linear dan Non-linear}
-% Didefinisikan H sebuah operator dengan \textit{input} dan \textit{output} adalah citra digital. H dikatakan operator linear jika untuk untuk sembarang gambar \textit{f} dan \textit{g}, dan untuk sembarang skalar a dan b berkalu,
-% \begin{equation}
-%     \label{eq:linearity-operator}
-%     H(af + bg) = aH(f) + bH(g)
-% \end{equation}
-
-% Dengan kata lain hasil dari operator linear dengan jumlahan dua buah citra (yang telah dikali dengan konstanta a dan b) identik dengan hasil operator linear pada masing-masing gambar, dikali dengan konstanta yang sama, kemudian hasilnya dijumlahkan. Sebagai contoh, sebuah operator dengan fungsi yang menjumlahkan K citra adalah operator linear. Operator yang menghitung nilai mutlak dari perbedaan dua gambar adalah tidak linear. Operator yang tidak memenuhi persamaan (\ref{eq:linearity-operator}) dikatakan non-linear \cite{book:gonzalez}.
+\subsection{Spatial Filter}
+The concept of spatial filter in digital image processing comes from the application of the Fourier transform of signal processing in the frequency domain. The term spatial filter is used to distinguish this process from filters in the frequency domain. The filter process is done by shifting the kernel filter from point to point in the digital image. The terms mask, kernel, template, and window are the same terms and are often used in digital image processing \cite{book:gonzalez}. The researchers used term kernel for the term.
 
 
-\subsection{Kernel}
+\subsection{Kernels}
 
 \subsubsection{Average Blur}
-\textit{Average blur} atau biasa juga disebut \textit{box filter} adalah salah satu filter yang digunakan untuk menghaluskan citra dan mengurangi derau. Secara sederhana nilai sebuah piksel yang baru adalah nilai rata-rata dari nilai piksel tersebut dengan nilai piksel tetangganya \cite{pdf:marcin}. Berikut kernel \textit{Average blur} yang digunakan dalam penelitian ini:
+% \textit{Average blur} atau biasa juga disebut \textit{box filter} adalah salah satu filter yang digunakan untuk menghaluskan citra dan mengurangi derau. Secara sederhana nilai sebuah piksel yang baru adalah nilai rata-rata dari nilai piksel tersebut dengan nilai piksel tetangganya \cite{pdf:marcin}. Berikut kernel \textit{Average blur} yang digunakan dalam penelitian ini:
+
+Average blur also known as box filter is one of the filters used to smooth the image and reduce noise. In simple terms, the value of a new pixel is the average value of the pixel value with its neighboring pixel value \cite{pdf:marcin}. The following is the Average blur kernel used:
+
 \begin{equation}
     \label{kernel:average}
     \frac{1}{9} \left[
@@ -62,7 +60,10 @@ Konsep filter spasial pada pengolahan citra digital berasal dari penerapan trans
 \end{equation}
 
 \subsubsection{Gaussian Blur}
-Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya mirip seperti \textit{Average blur}, nilai piksel yang baru dibentuk dari nilai piksel tetangganya, tetapi dengan memberikan bobot yang lebih kuat pada nilai pikselnya sendiri diikuti dengan bobot yang lebih rendah pada piksel atas, bawah dan sampingnya \cite{soa:dmitry}. Berikut kernel gaussian blur filter yang digunakan dalam penelitian ini:
+% Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya mirip seperti \textit{Average blur}, nilai piksel yang baru dibentuk dari nilai piksel tetangganya, tetapi dengan memberikan bobot yang lebih kuat pada nilai pikselnya sendiri diikuti dengan bobot yang lebih rendah pada piksel atas, bawah dan sampingnya \cite{soa:dmitry}. Berikut kernel gaussian blur filter yang digunakan dalam penelitian ini:
+
+It is also used to smooth the image and reduce noise. The idea is similar to Average blur, the new pixel value is constructed from the neighboring pixel values, but by giving a stronger weight to the pixel value itself followed by a lower weight on the top, bottom and side pixels \cite{soa:dmitry}. The following is the kernel gaussian blur filter used:
+
 \begin{equation}
     \label{kernel:gaussianblur}
     \frac{1}{16}
@@ -76,7 +77,10 @@ Filter ini juga digunakan untuk menghaluskan citra dan mengurangi derau. Idenya 
 \end{equation}
 
 \subsubsection{Sobel}
-Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteksi tepi pada citra. Sobel memiliki dua kernel untuk deteksi tepi yaitu kernel sobel vertikal untuk mendeteksi tepi secara vertikal dan kernel sobel horizontal yang mendeteksi tepi secara horizontal \cite{pdf:marcin}. Berikut kernel Sobel vertikal dan horizontal yang digunakan dalam penelitian ini:
+% Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteksi tepi pada citra. Sobel memiliki dua kernel untuk deteksi tepi yaitu kernel sobel vertikal untuk mendeteksi tepi secara vertikal dan kernel sobel horizontal yang mendeteksi tepi secara horizontal \cite{pdf:marcin}. Berikut kernel Sobel vertikal dan horizontal yang digunakan dalam penelitian ini:
+
+The Sobel filter is a high-pass filter which is commonly used for edge detection in images. Sobel has two kernels for edge detection namely a vertical sobel kernel for verticaly edge detection and a horizontal sobel kernel for horizontaly edge detection \cite{pdf:marcin}. The following are the vertical and horizontal Sobel kernels used:
+
 \begin{equation}
     \label{kernel:sobel}
     \left[
@@ -97,7 +101,10 @@ Filter Sobel termasuk \textit{high-pass} filter yang umum digunakan untuk deteks
 \end{equation}
 
 \subsubsection{Laplacian}
-Filter ini dapat digunakan untuk deteksi tepi pada citra karena sifatnya yang sensitif dengan perubahan intensitas yang cepat \cite{pdf:jingbo}. Tidak seperti Sobel yang menggunakan dua kernel untuk mendeteksi tepi secara vertikal dan horizontal, disini hanya digunakan sebuah kernel yang dapat digunakan untuk deteksi tepi secara vertikal dan horizontal sekaligus. Berikut kernel Laplacian yang digunakan dalam penelitian ini:
+% Filter ini dapat digunakan untuk deteksi tepi pada citra karena sifatnya yang sensitif dengan perubahan intensitas yang cepat \cite{pdf:jingbo}. Tidak seperti Sobel yang menggunakan dua kernel untuk mendeteksi tepi secara vertikal dan horizontal, disini hanya digunakan sebuah kernel yang dapat digunakan untuk deteksi tepi secara vertikal dan horizontal sekaligus. Berikut kernel Laplacian yang digunakan dalam penelitian ini:
+
+This filter can be used for edge detection in images because of its sensitive with rapid changes in intensity \cite{pdf:jingbo}. Unlike Sobel which uses two kernels to detect edges vertically and horizontally, it is only used a kernel which can be used for both vertical and horizontal edge detection. The following are the Laplacian kernels used:
+
 \begin{equation}
     \label{kernel:laplacian}
     \left[
@@ -110,7 +117,10 @@ Filter ini dapat digunakan untuk deteksi tepi pada citra karena sifatnya yang se
 \end{equation}
 
 \subsubsection{Sharpening}
-Sharpening filter digunakan untuk memperjelas detail halus dalam citra atau untuk meningkatkan detail pada citra yang \textit{blur}, baik karena kesalahan ataupun karena efek dari metode akuisisi citra tertentu \cite{pdf:ching}. Berikut kernel untuk filter \textit{sharpening} yang digunakan dalam penelitian ini:
+% Sharpening filter digunakan untuk memperjelas detail halus dalam citra atau untuk meningkatkan detail pada citra yang \textit{blur}, baik karena kesalahan ataupun karena efek dari metode akuisisi citra tertentu \cite{pdf:ching}. Berikut kernel untuk filter \textit{sharpening} yang digunakan dalam penelitian ini:
+
+Sharpening filters are used to clarify fine details in an image or to enhance details in an image that is blur, either by mistake or due to the effect of certain image acquisition methods \cite{pdf:ching}. The following is the kernel for the sharpening filter used:
+
 \begin{equation}
     \label{kernel:sharpen}
     \left[
@@ -124,14 +134,18 @@ Sharpening filter digunakan untuk memperjelas detail halus dalam citra atau untu
 
 
 \subsection{Konvolusi}
-Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \cite{book:gonzalez}. Konvolusi pada fungsi \textit{f(x)} dan \textit{g(x)} didefinisikan pada persamaan \ref{eq:conv1}.
+
+% Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \cite{book:gonzalez}. Konvolusi pada fungsi \textit{f(x)} dan \textit{g(x)} didefinisikan pada persamaan \ref{eq:conv1}.
+
+The concept of a linear spatial filter is similar to the concept of convolution in the frequency domain, for that reason a linear spatial filter is also called the convolution of a kernel with a digital image \cite{book:gonzalez}. The convolutions of the functions \textit{f (x)} and \textit{g (x)} are defined in the equation \ref{eq:conv1}.
 \begin{equation}
     \label{eq:conv1}
     \begin{split}
 h(x) = f(x) * g(x) = \int_{-\infty}^{\infty} f(a) g(x-a) da
     \end{split}
 \end{equation}
-dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan pada persamaan \ref{eq:conv2}.
+% dimana tanda * menyatakan operator konvolusi, dan peubah a adalah peubah bantu. Untuk fungsi diskrit, konvolusi didefinisikan pada persamaan \ref{eq:conv2}.
+where the * sign represents the convolution operator, and the variable a is the auxiliary variable. For discrete functions, convolution is defined in the equation \ref{eq:conv2}.
 \begin{equation}
     \label{eq:conv2}
     \begin{split}
@@ -139,45 +153,61 @@ h(x) = f(x) * g(x) = \sum_{a=-\infty}^{\infty} f(a)g(x-a)
     \end{split}
 \end{equation}
 
-Pada operasi konvolusi diatas, \textit{g(x)} disebut kernel konvolusi atau filter kernel. Kernel \textit{g(x)} dioperasikan secara bergeser pada sinyal masukan \textit{f(x)}. Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran \textit{h(x)} \cite{book:munir}. 
+% Pada operasi konvolusi diatas, \textit{g(x)} disebut kernel konvolusi atau filter kernel. Kernel \textit{g(x)} dioperasikan secara bergeser pada sinyal masukan \textit{f(x)}. Jumlah perkalian kedua fungsi pada setiap titik merupakan hasil konvolusi yang dinyatakan dengan keluaran \textit{h(x)} \cite{book:munir}. 
 
-Konvolusi dengan persamaan \ref{eq:conv2} hanya berlaku untuk input 1 dimensi, sedangkan untuk input 2 dimensi seperti citra dapat digunakan persamaan \ref{eq:conv3}.
+In the convolution operation, \textit{g (x)} is called a convolutional kernel or kernel filter. Kernel \textit{g (x)} is operated shift in input signal \textit{f (x)}. The sum of the multiplication of the two functions at each point is the result otf a convolution which is represented by the output \textit{h (x)} \cite{book:munir}.
+
+% Konvolusi dengan persamaan \ref{eq:conv2} hanya berlaku untuk input 1 dimensi, sedangkan untuk input 2 dimensi seperti citra dapat digunakan persamaan \ref{eq:conv3}.
+
+Convolution with the \ref{eq:conv2} equation only applies to 1-dimensional input, while for 2-dimensional input such as images, the \ref{eq:conv3} equation can be used.
 \begin{equation}
     \label{eq:conv3}
 h(x,y) = (I*K)(x,y) = \sum_{m} \sum_{n} I(m,n)K(x-m, y-n)
 \end{equation}
 
-\noindent Keterangan: 
+\noindent Information: 
 \begin{itemize}[noitemsep, topsep=0pt]
-    \item[]{\makebox[1.0cm]{h(x,y)\hfill} = fungsi hasil konvolusi}
+    \item[]{\makebox[1.0cm]{h(x,y)\hfill} = function of the convolution}
     \item[]{\makebox[1.0cm]{I\hfill} = input}
-    \item[]{\makebox[1.0cm]{K\hfill} = kernel konvolusi}
-    \item[]{\makebox[1.0cm]{x,y\hfill} = piksel input}
-    \item[]{\makebox[1.0cm]{m,n\hfill} = piksel kernel}
+    \item[]{\makebox[1.0cm]{K\hfill} = convolution kernel}
+    \item[]{\makebox[1.0cm]{x,y\hfill} = pixel input}
+    \item[]{\makebox[1.0cm]{m,n\hfill} = pixel kernel}
 \end{itemize}
 
-Pada gambar (\ref{fig:conv3}) diilustrasikan bagaimana proses konvolusi pada citra digital yang direpresentasikan dalam bentuk matriks. Operasi konvolusi dilakukan pada matriks input berukuran 6x6 dengan filter berukuran 3x3. Hasil konvolusinya ditampilkan pada matriks \textit{result}.
+% Pada gambar (\ref{fig:conv3}) diilustrasikan bagaimana proses konvolusi pada citra digital yang direpresentasikan dalam bentuk matriks. Operasi konvolusi dilakukan pada matriks input berukuran 6x6 dengan filter berukuran 3x3. Hasil konvolusinya ditampilkan pada matriks \textit{result}.
+
+In the figure (\ref{fig:conv3}) it illustrates how the convolution process in a digital image is represented in the form of a matrix. Convolution operations are performed on a 6x6 size input matrix with a 3x3 filter. The result of the convolution is displayed on the result matrix.
 \begin{figure*}[ht]
     \includegraphics[width=0.85\textwidth, center]{images/convolution-operation.png}
-    \caption{Ilustrasi konvolusi pada citra.}
+    \caption{Convolution in digital image.}
     \label{fig:conv3}
 \end{figure*}
 
-Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dijadikan 0, sebaliknya jika hasil konvolusi menghasilkan nilai piksel yang melebihi nilai keabuan maksimum, maka nilai tersebut dijadikan ke nilai keabuan maksimum pada citra tersebut \cite{book:sutoyo}.
+% Jika hasil konvolusi menghasilkan nilai piksel negatif, maka nilai tersebut dijadikan 0, sebaliknya jika hasil konvolusi menghasilkan nilai piksel yang melebihi nilai keabuan maksimum, maka nilai tersebut dijadikan ke nilai keabuan maksimum pada citra tersebut \cite{book:sutoyo}.
+
+If the convolution results in a negative pixel value, then the value is set to 0, on the other hand, if the convolution results in a pixel value that exceeds the maximum gray value, then the value is turned into the maximum gray value of the image \cite{book:sutoyo}.
  
 
 \subsection{Video Stream}
-Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut-turut \cite{thesis:jin}. Berbeda dengan format video lainya, video \textit{stream} ini tidak disimpan pada media penyimpanan sebagai file dengan format video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video \textit{stream} adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
+% Video \textit{stream} dapat dipandang sebagai serangkaian citra digital berturut-turut \cite{thesis:jin}. Berbeda dengan format video lainya, video \textit{stream} ini tidak disimpan pada media penyimpanan sebagai file dengan format video melainkan langsung disalurkan setiap framenya dari sumber (\textit{source}) ke penerima, dalam hal ini FPGA.  Dengan menganggap Video \textit{stream} adalah kumpulan citra digital (\textit{frame}) maka dapat dilakukan metode pengolahan seperti pada citra digital, termasuk penerapan filter spasial. 
+
+Video stream can be viewed as a series of consecutive digital images \cite{thesis:jin}. Unlike other video formats, this stream video is not stored on the storage media as a video file format but is directly transmitted each frame from the source to the receiver, in this case the FPGA. By assuming Video stream is a collection of digital images (frame), processing methods such as digital images can be carried out, including the application of spatial filters.
 
 
 \subsection{FPGA}
-\textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang ke aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \cite{XILINX}.
+% \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang ke aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \cite{XILINX}.
 
-Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kode ini selanjutnya diinterpretasikan oleh komputer untuk menjalankan perintah yang diberikan. \textit{Microprocessor} ini membutuhkan intruksi berupa kode secara terus menerus untuk menjalankan fungsinya. Sedangkan pada FPGA hanya dibutuhkan sekali konfigurasi \textit{chip} setiap kali dinyalakan. Membuat atau mengunduh \textit{bitstream} yang menentukan fungsi logika dilakukan oleh \textit{logic elements} (LEs), sebuah sirkuit dapat dibuat dengan mengabungkan beberapa LEs menjadi satu kesatuan. Setelah \textit{bitstream} dipasang, FPGA tidak perlu lagi membaca instruksi berupa 1 dan 0, berbeda dengan \textit{microprocessor} yang selalu membutuhkan instruksi \cite{pdf:cheung}. Secara tradisional, untuk membuat sebuah desain FPGA, aplikasi dideskripsikan menggunakan \textit{Hardware Description Language} (HDL) seperti Verilog atau VHDL sehingga menghasilkan sebuah \textit{bitstream} FPGA. 
+Field Programmable Gate Arrays or FPGAs are semiconductor devices based on matrix configurable logic blocks (CLBs) connected via programmable interconnects. The FPGA can be reprogrammed to the desired application or function after the manufacturing. This feature is what differentiates FPGAs from the Application Specific Integrated Circuits (ASICs), which are specially made for a specific task \cite{XILINX}.
+
+% Sebuah \textit{microprocessor} menerima instruksi berupa kode 1 atau 0, kode-kode ini selanjutnya diinterpretasikan oleh komputer untuk menjalankan perintah yang diberikan. \textit{Microprocessor} ini membutuhkan intruksi berupa kode secara terus menerus untuk menjalankan fungsinya. Sedangkan pada FPGA hanya dibutuhkan sekali konfigurasi \textit{chip} setiap kali dinyalakan. Membuat atau mengunduh \textit{bitstream} yang menentukan fungsi logika dilakukan oleh \textit{logic elements} (LEs), sebuah sirkuit dapat dibuat dengan mengabungkan beberapa LEs menjadi satu kesatuan. Setelah \textit{bitstream} dipasang, FPGA tidak perlu lagi membaca instruksi berupa 1 dan 0, berbeda dengan \textit{microprocessor} yang selalu membutuhkan instruksi \cite{pdf:cheung}. Secara tradisional, untuk membuat sebuah desain FPGA, aplikasi dideskripsikan menggunakan \textit{Hardware Description Language} (HDL) seperti Verilog atau VHDL sehingga menghasilkan sebuah \textit{bitstream} FPGA.
+
+A microprocessor receives instructions in the form of 1 or 0 code, these codes are then interpreted by the computer to execute the given command. The Microprocessor requires instructions in the form of code continuously to carry out its function. Whereas in FPGA, it only takes to configuration once every time it is powered on. Creating or downloading bitstream which defines logical functions is performed by logic elements (LEs), a circuit can be created by combining multiple LEs into a single unit. After bitstream is installed, the FPGA no longer needs to read instructions in the form of 1 and 0, in contrast to microprocessor which always requires the instruction \cite{pdf:cheung}. Traditionally, to create an FPGA design, applications are described using a Hardware Description Language (HDL) such as Verilog or VHDL so as to produce a bitstream FPGA.
 
 \subsubsection{FPGA Development Board}
-% Pada FPGA terdahulu tidak terdapat \textit{processor} (CPU) untuk menjalankan software apapun, sehingga ketika ingin mengimplementasikan aplikasi haruslah merancang sirkuit dari awal, seperti mengonfigurasi FPGA sesederhana gerbang logika OR atau serumit \textit{multi-core processor} \cite{site:biswas}. Dewasa ini telah dikembangkan 
-FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjalankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
+
+% FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjalankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
+
+FPGA Development Board or commonly known as FPGA Board, namely FPGA technology that is assembled in a board and is equipped with microprocessor and several interface IO for carry out certain tasks. Generally, FPGA Board is equipped with an interface for accessing and implementing the circuit design. Xilinx, Altera and Intel are well-known FPGA Board manufacturers. The FPGA Board used is the Xilinx PYNQ-Z2 with Jupyter Notebook as the interface to access and run the program in this study. Form of FPGA Board Xilinx PYNQ-Z2 can be seen in figure (\ref{fig:pynq-z2})
 
 \begin{figure}[ht]
     \includegraphics[width=0.8\linewidth, center]{images/pynq-z2.jpeg}
