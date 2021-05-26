@@ -1,20 +1,30 @@
-\section{Pendahuluan}
+\section{Introduction}
 
-Untuk meningkatkan kinerja dan efisiensi energi dari sebuah program, berbagai jenis akselerator telah dikembangkan, salah satu diantaranya yaitu FPGA \cite{lb:cong}. \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \cite{XILINX}.
+% Untuk meningkatkan kinerja dan efisiensi energi dari sebuah program, berbagai jenis akselerator telah dikembangkan, salah satu diantaranya yaitu FPGA \cite{lb:cong}. \textit{Field Programmable Gate Arrays} atau FPGA adalah perangkat semikonduktor yang berbasis \textit{matriks configurable logic block} (CLBs) yang terhubung melalui interkoneksi yang dapat diprogram. FPGA dapat diprogram ulang dengan aplikasi atau fungsi yang diinginkan setelah \textit{manufacturing}. Fitur ini yang membedakan FPGA dengan \textit{Application Specific Integrated Circuits} (ASICs), yang dibuat khusus untuk tugas tertentu saja \cite{XILINX}.
 
-FPGA telah menunjukkan kinerja yang sangat tinggi di dalam banyak aplikasi dalam pemrosesan citra. Namun CPU dan CPU terbaru memiliki potensi kinerja tinggi untuk masalah-masalah tersebut. CPU terbaru mendukung \textit{multi-core}, dimana masing-masing \textit{core} mendukung SIMD (\textit{Single Instruction, Multiple Data}) yang telah dikembangkan dan dijalankan hingga 16 operasi pada 128 bit data dalam satu \textit{clock cycle}. GPU terbaru mendukung sejumlah besar \textit{core} yang berjalan secara paralel, dan kinerja puncaknya mampu mengungguli CPU \cite{lb:asano}.
+To improve the performance and energy efficiency of a program, various types of accelerators have been developed, one of which is FPGA \cite{lb:cong}. \textit{Field Programmable Gate Arrays} or FPGA is a semiconductor device based on matrix configurable logic block (CLBs) that connected via programmable interconnects. FPGAs can be reprogrammed with the desired application or function after manufacturing. This feature distinguishes FPGAs from Application Specific Integrated Circuits (ASICs), which are specially made for a specific task \cite{XILINX}.
 
-% \pagebreak
 
-Paralelisme dalam SIMD pada CPU terbatas, tetapi frekuensi operasional CPU sangatlah tinggi, dan CPU diharapkan dapat menunjukkan kinerja yang tinggi dalam aplikasi yang dimana \textit{cache memory} berjalan dengan baik. Ukuran \textit{cache memory} cukup besar untuk menyimpan seluruh citra di banyak aplikasi pemrosesan citra, dan CPU dapat menjalankan algoritma yang sama dengan FPGA meskipun \textit{bandwith memory} yang dibutuhkan tinggi \cite{lb:asano}.
+% FPGA telah menunjukkan kinerja yang sangat tinggi di dalam banyak aplikasi dalam pemrosesan citra. Namun CPU dan CPU terbaru memiliki potensi kinerja tinggi untuk masalah-masalah tersebut. CPU terbaru mendukung \textit{multi-core}, dimana masing-masing \textit{core} mendukung SIMD (\textit{Single Instruction, Multiple Data}) yang telah dikembangkan dan dijalankan hingga 16 operasi pada 128 bit data dalam satu \textit{clock cycle}. GPU terbaru mendukung sejumlah besar \textit{core} yang berjalan secara paralel, dan kinerja puncaknya mampu mengungguli CPU \cite{lb:asano}.
 
-Frekuensi operasional GPU lebih cepat dibandingkan dengan FPGA, namun sedikit lebih lambat dibandingkan dengan CPU. Akan tetapi, GPU mendukung banyak \textit{core} yang berjalan secara paralel sehingga kinerja puncaknya mengungguli CPU. Namun \textit{core}-nya dikelompokkan, dan transfer data antara kelompok sangatlah lambat. Selain itu, ukuran \textit{local memory} yang disediakan masing-masing kelompok sangat kecil. Karena keterbatasan ini, GPU tidak dapat menjalankan algoritma yang sama seperti FPGA dalam beberapa masalah aplikasi \cite{lb:asano}.
+FPGAs have demonstrated very high performance in many applications in image processing. However the latest CPUs and CPUs have high performance potential for these issues. The latest CPUs support multi-cores, where each core supports SIMD (Single Instruction, Multiple Data) which has been developed and runs up to 16 operations on 128 bits of data in one clock cycle. The latest GPUs support a large number of cores running in parallel, and their peak performance outperforms the CPU \cite{lb:asano}.
 
-Sebagian besar FPGA sekarang telah dirangkai dengan prosesor dalam satu \textit{board}, sering disebut sebagai FPGA Development Board. Xilinx PYNQ-Z2 dibangun dari prosesor ARM Cortex-A9, sehingga dapat menjalankan beberapa \textit{software} seperti \textit{python} tanpa harus merancang sirkuitnya dari awal. Akan tetapi, kinerja yang dimiliki oleh prosesor ARM pada FPGA Development Board tentu berbeda dengan kinerja fungsi arsitektur FPGA itu sendiri sehingga dapat dikaji lebih dalam mengenai perbandingan kinerja dari keduanya.
+
+% Paralelisme dalam SIMD pada CPU terbatas, tetapi frekuensi operasional CPU sangatlah tinggi, dan CPU diharapkan dapat menunjukkan kinerja yang tinggi dalam aplikasi yang dimana \textit{cache memory} berjalan dengan baik. Ukuran \textit{cache memory} cukup besar untuk menyimpan seluruh citra di banyak aplikasi pemrosesan citra, dan CPU dapat menjalankan algoritma yang sama dengan FPGA meskipun \textit{bandwith memory} yang dibutuhkan tinggi \cite{lb:asano}.
+
+The parallelism in SIMD on the CPU is limited, but the operating frequency of the CPU is very high, and the CPU is expected to show high performance in applications where cache memory is running well. The cache memory size is large enough to store entire images in many image processing applications, and the CPU can run the same algorithms as the FPGA even though the required high memory bandwidth \cite{lb:asano}.
+
+% Frekuensi operasional GPU lebih cepat dibandingkan dengan FPGA, namun sedikit lebih lambat dibandingkan dengan CPU. Akan tetapi, GPU mendukung banyak \textit{core} yang berjalan secara paralel sehingga kinerja puncaknya mengungguli CPU. Namun \textit{core}-nya dikelompokkan, dan transfer data antara kelompok sangatlah lambat. Selain itu, ukuran \textit{local memory} yang disediakan masing-masing kelompok sangat kecil. Karena keterbatasan ini, GPU tidak dapat menjalankan algoritma yang sama seperti FPGA dalam beberapa masalah aplikasi \cite{lb:asano}.
+
+GPU operating frequency is faster than FPGA, but slightly slower than CPU. However, the GPU supports multiple cores running in parallel so that its peak performance outperforms the CPU. However the cores are grouped, and data transfer between groups is extremely slow. In addition, the size of the local memory provided by each group is very small. Due to this limitation, the GPU cannot run the same algorithms as the FPGA in some application issues \cite{lb:asano}.
+
+% Sebagian besar FPGA sekarang telah dirangkai dengan prosesor dalam satu \textit{board}, sering disebut sebagai FPGA Development Board. Xilinx PYNQ-Z2 dibangun dari prosesor ARM Cortex-A9, sehingga dapat menjalankan beberapa \textit{software} seperti \textit{python} tanpa harus merancang sirkuitnya dari awal. Akan tetapi, kinerja yang dimiliki oleh prosesor ARM pada FPGA Development Board tentu berbeda dengan kinerja fungsi arsitektur FPGA itu sendiri sehingga dapat dikaji lebih dalam mengenai perbandingan kinerja dari keduanya.
+
+Most FPGAs are assembled with a single processor board, often referred to as the FPGA Development Board. Xilinx PYNQ-Z2 is built from ARM Cortex-A9 processor, so it can run some software like python without having to design the circuit from scratch. However, the performance of the ARM processor on the FPGA Development Board is certainly different from the performance of the FPGA architecture function itself so that it can be studied more deeply regarding to the performance comparison.
 
 
 % 2. Fundamental Concepts
-\section{Landasan Teori}
+\section{Fundamental Concepts}
 
 \subsection{Pengolahan Citra Digital}
 Pengolahan citra digital merupakan proses mengolah piksel-piksel di dalam citra secara digital untuk tujuan tertentu. Berdasarkan tingkat pemrosesannya pengolahan citra digital dikelompokkan menjadi tiga kategori, yaitu: \textit{low-level}, \textit{mid-level} dan pemrosesan \textit{high-level}. Pemrosesan \textit{low-level} dilakukan dengan operasi primitif seperti \textit{image preprocessing} untuk mengurangi derau (\textit{noise}), memperbaiki kontras citra dan mempertajam citra (\textit{sharpening}). Karakteristik dari pemrosesan \textit{low-level} yaitu keluaran atau hasil dari pemrosesannya berupa citra digital. Pemrosesan \textit{mid-level} melibatkan tugas-tugas seperti segmentasi (mempartisi gambar menjadi beberapa bagian atau objek), deskripsi objek untuk dilakukan pemrosesan lanjutan, dan klasifikasi objek dalam citra digital. Karakteristik dari pemrosesan \textit{mid-level} yaitu keluaran atau hasilnya berupa atribut atau fitur seperti, kontur, tepi, atau objek yang terdapat dalam citra tersebut. Pemrosesan \textit{high-level} merupakan proses tingkat lanjut dari dua proses sebelumnya, dilakukan untuk mendapat informasi lebih yang terkandung dalam citra \cite{book:gonzalez}.
@@ -257,7 +267,7 @@ Virtual \textit{memory} menggunakan disk sebagai perpanjangan dari RAM sehingga 
 %------------------------------------------------
 % 3. Tools and Methods
 
-\section{Metode Penelitian}
+\section{Tools and Methods}
 
 \subsection{Rancangan Sistem}
 \begin{figure}[ht]
@@ -364,74 +374,13 @@ Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobe
     \label{fig:output-sobelver}
 \end{figure}
 
-% \subsection{Penerapan Filter Spasial dengan Prosesor ARM dan FPGA}
-% Penerapan filter spasial pada prosesor ARM dilakukan dengan menggunakan \textit{library} OpenCV dengan bahasa pemrograman Python yang dijalankan pada FPGA Development Board. Sedangkan untuk penerapan filter spasial pada FPGA dilakukan dengan menggunakan \textit{library} xfOpenCV dari Xilinx. \textit{Library} xfOpenCV ini adalah \textit{library} khusus yang dimodifikasi dari OpenCV sehingga proses komputasinya dapat dilakukan dengan FPGA, bukan dengan prosesor ARM yang pada FPGA Development Board ini. 
-
-% \subsection{Proses Evaluasi Kinerja}
-% Pada penelitian ini proses dalam evaluasi kinerja dilakukan dalam dua tahap. Proses pertama untuk menghitung waktu komputasi dan FPS dari masing-masing kernel dengan prosesor ARM dan FPGA. Kemudian proses kedua untuk mencatat persentase penggunaan CPU dan penggunaan \textit{memory} termasuk \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
-
-% \subsubsection{Menghitung Waktu Komputasi dan FPS}
-% Pada proses ini peneliti melakukan percobaan dengan menggunakan 50 \textit{frame} dan 200 \textit{frame} dari \textit{source} untuk dihitung FPS dan waktu komputasinya. Percobaan dilakukan sebanyak 5 kali menggunakan 50 \textit{frame} dengan masing-masing kernel pada prosesor ARM dan FPGA, dan 5 kali percobaan menggunakan 200 \textit{frame} dengan masing-masing kernel.
-
-% Menghitung waktu komputasi dilakukan dengan cara mencatat waktu mulai dan waktu semua \textit{frame} selesai difilter pada setiap percobaan. Waktu komputasi diperoleh dari selisih antara waktu selesai dengan waktu mulai, seperti pada persamaan \ref{eq:time}. Dilakukan dengan 50 \textit{frame} dan 200 \textit{frame} pada masing-masing kernel dengan menggunakan prosesor ARM dan FPGA. 
-% Proses ini dilakukan dengan menggunakan \textit{library time} pada bahasa pemrograman Python, dapat dilihat pada gambar \ref{code:calculate-time}.
-% \begin{figure}
-%     \lstinputlisting[frame=single, style=python]{images/programs/calculate-time.py}
-%     \caption{Menghitung waktu komputasi dengan library time di Python.}
-%     \label{code:calculate-time}
-% \end{figure}
-
-% Hasil waktu komputasi ini dicatat dan kemudian digunakan untuk menghitung FPS dari masing-masing percobaan. Selanjutnya FPS dari masing-masing percobaan ini dihitung dengan menggunakan persamaan \ref{eq:fps}.
-
-% \subsubsection{Mencatat Penggunaan Memory dan CPU (Resource)}
-% Pada proses ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk membantu mencatat penggunaan CPU dan \textit{memory} (\textit{resource}) pada saat proses penerapan filter spasial. Program ini menampilkan data tentang proses yang berjalan seperti ID sebuah proses, persentase \textit{memory} yang digunakan oleh sebuah proses, persentase CPU yang digunakan, berapa lama sebuah proses berjalan, \textit{resident memory}, \textit{shared memory} dan \textit{virtual memory}. 
-% % Contoh output program tersebut dapat dilihat pada gambar \ref{fig:top-linux}.
-% % \begin{figure}
-% %     \includegraphics[width=0.8\linewidth, center]{images/programs/top-linux.png}
-% %     \caption{Tampilan program \textbf{top}.}
-% %     \label{fig:top-linux}
-% % \end{figure}
-
-% Peneliti melakukan 5 kali percobaan untuk mencatat penggunaan \textit{memory} dan CPU dari masing-masing kernel dengan prosesor ARM dan FPGA. Percobaan ini dilakukan dengan menggunakan \textit{Jupyter Notebook} yang berjalan pada FPGA Development Board yang dapat diakses menggunakan \textit{web browser} dari perangkat lain. Serta digunakan protokol \textit{ssh} untuk mengakses FPGA Development Board dan menjalankan program untuk menampilkan penggunaan \textit{resource} dari proses yang sedang berjalan.
-
-% \begin{figure}
-%     \lstinputlisting[frame=single, style=python]{images/programs/pid.py}
-%     \caption{Menampilkan PID sebuah proses dengan bahasa pemrograman Python.}
-%     \label{code:pid}
-% \end{figure}
-
-% Pertama peneliti menampilkan ID proses dari \textit{Jupyter Notebook} yang digunakan untuk mencatat penggunaan \textit{memory} dan CPU dari penerapan filter menggunakan prosesor ARM dan FPGA. Cara menampilkan ID proses (PID) menggunakan bahasa pemrograman Python dapat dilihat pada gambar \ref{code:pid}. ID proses tersebut kemudian digunakan pada program \textbf{top} untuk menampilkan \textit{resource} yang digunakan oleh proses tersebut. 
-
-% \begin{figure}
-%     \begin{lstlisting}[frame=single, style=shell] 
-%     $ top -d 0.1 -p 4382 -b >> arm-laplacian1.txt    
-%     \end{lstlisting}
-%     \caption{Menjalankan program \textbf{top} kemudian menyimpan hasilnya pada file arm-laplacian1.txt.}
-%     \label{code:top}
-% \end{figure}
-
-% Pada gambar \ref{code:top} ditunjukan cara menggunakan program \textbf{top} untuk mencatat penggunaan \textit{resource} dari proses dengan ID 4382 kemudian \textit{output}nya disimpan pada file \textit{arm-laplacian1.txt}. Program \textbf{top} tersebut dijalankan sesaat sebelum proses penerapan filter dijalankan pada \textit{Jupyter Notebook}. Output dari program \textbf{top} setiap 0.1 detik disimpan pada file text yang telah ditentukan. Setelah seluruh frame selesai difilter maka program \textbf{top} juga dihentikan.
-
-% % \begin{figure}
-% %     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.txt}
-% %     \caption{Potongan isi file arm-laplacian1.txt.}
-% %     \label{code:arm-laplacian1.txt}
-% % \end{figure}
-
-% % Isi file \textit{arm-laplacian1.txt} setelah program selesai dijalankan dapat dilihat pada gambar \ref{code:arm-laplacian1.txt}. Isi dari file hasil ini masih banyak mengandung informasi yang tidak dibutuhkan pada penelitian ini, sehingga perlu dilakukan proses ekstraksi informasi yang dibutuhkan saja. Kemudian file yang telah diekstraksi tersebut dibuat menjadi file CSV agar lebih mudah dalam proses pengolahan selanjutnya, seperti pada gambar \ref{code:arm-laplacian1.csv}. Proses tesebut dilakukan sebanyak 5 kali percobaan pada masing-masing kernel menggunakan prosesor ARM dan FPGA.
-
-% % \begin{figure}[ht]
-% %     \lstinputlisting[frame=single, style=plain]{images/programs/arm-laplacian1.csv}
-% %     \caption{Isi file arm-laplacian1.csv.}
-% %     \label{code:arm-laplacian1.csv}
-% % \end{figure}
-
 
 
 %------------------------------------------------
 % 4. Results and Discussions
 
-\section{Hasil dan Pembahasan}
+\section{Results and Discussions}
+
 \subsection{Waktu Komputasi}
 
 Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time50} dan grafik pada gambar \ref{fig:chart-time50}. Secara umum waktu komputasi dengan menggunakan prosesor ARM lebih lambat daripada waktu komputasi dengan menggunakan FPGA. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 50 frame adalah 7,26 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 50 frame hanya 0,82 detik.
@@ -782,7 +731,7 @@ Ini menunjukkan bahwa penggunaan \textit{virtual momory} pada prosesor ARM hanya
 
 %------------------------------------------------
 % 5. Conclusion
-\section{Kesimpulan}
+\section{Conclusion}
 
 Berdasarkan hasil penerapan filter spasial linear pada FPGA Development Board dengan menggunakan 6 kernel, peneliti dapat menarik beberapa kesimpulan sebagai berikut:
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
