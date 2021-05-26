@@ -111,23 +111,6 @@
 % End Setting footer, header and page number
 %===========================================================
 
-%===========================================================
-% Redefition Terms
-%-----------------------------------------------------------
-\def\partname{BAGIAN}
-\def\partname{BAB}
-\def\appendixname{LAMPIRAN}
-\def\refname{DAFTAR PUSTAKA}
-\def\bibname{DAFTAR PUSTAKA}
-\def\indexname{Indek}
-\def\figurename{Gambar}
-\def\tablename{Tabel}
-\def\pagename{Halaman}
-%-----------------------------------------------------------
-% End Redefinition Terms
-%===========================================================
-
-
 
 %===========================================================
 % Package Daftar Pustaka, bentuk citasi
