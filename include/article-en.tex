@@ -203,7 +203,8 @@ Field Programmable Gate Arrays or FPGAs are semiconductor devices based on matri
 
 A microprocessor receives instructions in the form of 1 or 0 code, these codes are then interpreted by the computer to execute the given command. The Microprocessor requires instructions in the form of code continuously to carry out its function. Whereas in FPGA, it only takes to configuration once every time it is powered on. Creating or downloading bitstream which defines logical functions is performed by logic elements (LEs), a circuit can be created by combining multiple LEs into a single unit. After bitstream is installed, the FPGA no longer needs to read instructions in the form of 1 and 0, in contrast to microprocessor which always requires the instruction \cite{pdf:cheung}. Traditionally, to create an FPGA design, applications are described using a Hardware Description Language (HDL) such as Verilog or VHDL so as to produce a bitstream FPGA.
 
-\subsubsection{FPGA Development Board}
+
+\subsection{FPGA Development Board}
 
 % FPGA \textit{Development Board} atau biasa disebut juga FPGA \textit{Board} yaitu teknologi FPGA yang dirangkai dalam sebuah \textit{board} dan dilengkapi dengan \textit{microprocessor} dan beberapa \textit{interface} \textit{IO} untuk menjalankan tugas tertenu. Umumnya FPGA \textit{Board} telah dilengkapi dengan interface untuk mengakses dan menerapkan desain sirkuitnya. Xilinx, Altera dan Intel adalah produsen FPGA \textit{Board} yang terkenal. FPGA \textit{Board} yang digunakan dalam penelitian ini yaitu Xilinx PYNQ-Z2 dengan Jupyter Notebook sebagai \textit{interface} untuk mengakses dan menjalankan program pada penelitian ini. Bentuk FPGA \textit{Board} Xilinx PYNQ-Z2 dapat dilihat pada gambar (\ref{fig:pynq-z2})
 
@@ -216,82 +217,69 @@ FPGA Development Board or commonly known as FPGA Board, namely FPGA technology t
 \end{figure}
 
 
-\subsection{Evaluasi Kinerja}
-Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan {memory}, penggunaan {resident memory} (RES), {shared memory} (SHR), dan {virtual memory} (VIRT) untuk mengukur kinerja pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
+\subsection{Performance Evaluatinon}
+% Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan {memory}, penggunaan {resident memory} (RES), {shared memory} (SHR), dan {virtual memory} (VIRT) untuk mengukur kinerja pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
 
-\subsubsection{Waktu Komputasi}
-Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa \textit{frame} input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada \textit{frame} input.
+The researchers used computation time, frame rate (FPS), CPU usage, memory usage, resident memory (RES), shared memory (SHR), and virtual memory usage (VIRT) to measure the performance of applying linear spatial filters with ARM and FPGA processors.
+
+\subsubsection{Computation Time}
+% Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa \textit{frame} input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada \textit{frame} input.
+
+The computation time is the duration it takes for a kernel to perform a linear spatial filter on multiple frame inputs. This computation time is obtained by calculating the difference between the finishing time and the starting time of applying linear spatial filters to the input frame.
+
 \begin{equation}
     \label{eq:time}
     \begin{split}
-waktu\ kompuatsi = waktu\ selesai - waktu\ mulai
+computation\ time = finishing\ time - starting\ time
     \end{split}
 \end{equation}
 
 \subsubsection{Frame Rate (FPS)}
-\textit{Frame rate} atau \textit{frame per second} (fps) adalah banyaknya \textit{frame} yang ditampilkan per detik pada video ataupun video \textit{straem}. Semakin tinggi fps sebuah video maka semakin halus pula gerakan yang dihasilkan. Sebaliknya video dengan fps rendah akan menghasilkan gerakan yang kurang baik. \textit{Frame rate} atau fps dapat dihitung dengan cara membagi jumlah \textit{frame} dengan waktu komputasinya seperti pada persamaan \ref{eq:fps} \cite{pdf:pavan}.
+% \textit{Frame rate} atau \textit{frame per second} (fps) adalah banyaknya \textit{frame} yang ditampilkan per detik pada video ataupun video \textit{straem}. Semakin tinggi fps sebuah video maka semakin halus pula gerakan yang dihasilkan. Sebaliknya video dengan fps rendah akan menghasilkan gerakan yang kurang baik. \textit{Frame rate} atau fps dapat dihitung dengan cara membagi jumlah \textit{frame} dengan waktu komputasinya seperti pada persamaan \ref{eq:fps} \cite{pdf:pavan}.
+
+Frame rate or frames per second (fps) is the number of frames displayed per second on a video or video straem. The higher the fps of a video, the smoother the result. On the other hand, videos with low fps will result in poor motion. Frame rate or fps can be calculated by dividing the number of frames by the computation time as in the equation \ref{eq:fps} \cite{pdf:pavan}.
+
 \begin{equation}
     \label{eq:fps}
     \begin{split}
-fps = \frac{jumlah\ frame}{waktu\ komputasi}
+fps = \frac{number\ of\ frame}{computation\ time}
     \end{split}
 \end{equation}
 
-\subsubsection{Penggunaan CPU}
-Pada penelitian ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk melihat persentase penggunaan CPU pada proses penerapan filter spasial linear. Program ini menampilkan informasi tentang proses-proses yang berjalan pada sistem operasi seperti ID sebuah proses, user yang menjalankan proses tersebut, \textit{memory} yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
-% \begin{figure*}[ht]
-%     \includegraphics[width=0.9\textwidth, center]{images/programs/top.png}
-%     \caption{Tampilan program top pada Linux.}
-%     \label{fig:top}
-% \end{figure*}
-% Status sebuah proses pada program ini dinyatakan dengan beberapa singkatan, diantaranya yaitu:
-% \begin{itemize}[noitemsep, topsep=0pt]
-%     \item[]{\makebox[0.5cm]{I\hfill} = \textit{idle}}
-%     \item[]{\makebox[0.5cm]{R\hfill} = \textit{running}}
-%     \item[]{\makebox[0.5cm]{S\hfill} = \textit{sleeping}}
-%     \item[]{\makebox[0.5cm]{Z\hfill} = \textit{zombie}}
-%     \item[]{\makebox[0.5cm]{D\hfill} = \textit{uninterruptible sleep}}
-%     \item[]{\makebox[0.5cm]{T\hfill} = \textit{stopped by job control signal}}
-%     \item[]{\makebox[0.5cm]{t\hfill} = \textit{stopped by debugger during trace}}
-%   \end{itemize}
+\subsubsection{CPU Usage}
+% Pada penelitian ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk melihat persentase penggunaan CPU pada proses penerapan filter spasial linear. Program ini menampilkan informasi tentang proses-proses yang berjalan pada sistem operasi seperti ID sebuah proses, user yang menjalankan proses tersebut, \textit{memory} yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
 
-% Pada CPU yang multi-core sebuah proses akan ditampilkan persentase penggunaan CPUnya berdasarkan core yang digunakan oleh proses tersebut. Jika mode Irix pada program \textit{top} dimatikan, maka program akan berjalan pada mode Solaris di mana penggunaan CPU sebuah proses yang ditampilkan akan dibagi dengan jumlah total core yang ada pada CPU \cite{manual:linux}.
+The researchers used the features available on the Linux operating system running on the FPGA Development Board to see the percentage of CPU usage in the process of applying linear spatial filters. This program displays information about processes running on the operating system such as the ID of a process, the user running the process, the memory used, the status of a process, the percentage of CPU used and others.
 
-\subsubsection{Penggunaan Memory}
+\subsubsection{Memory Usage}
 
-Pada sistem operasi linux \textit{memory} dibagi menjadi tiga jenis \cite{manual:linux}. Pertama yaitu \textit{memory} fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah \textit{memory} \textit{swap}, yaitu  \textit{memory} yang berguna untuk membantu kerja \textit{memory} fisik, data dari \textit{memory} fisik akan disimpan pada \textit{swap} dan kemudian diambil kembali jika terlalu banyak permintaan pada \textit{memory} fisik. Ketiga yaitu virtual \textit{memory}, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut \cite{book:os}:
+% Pada sistem operasi linux \textit{memory} dibagi menjadi tiga jenis \cite{manual:linux}. Pertama yaitu \textit{memory} fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah \textit{memory} \textit{swap}, yaitu  \textit{memory} yang berguna untuk membantu kerja \textit{memory} fisik, data dari \textit{memory} fisik akan disimpan pada \textit{swap} dan kemudian diambil kembali jika terlalu banyak permintaan pada \textit{memory} fisik. Ketiga yaitu virtual \textit{memory}, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut \cite{book:os}:
+
+On the linux operating system memory is divided into three types \cite{manual:linux}. The first is the physical memory, a finite resource that code and data must reside in when executed or referenced. Next is memory swap, which is memory that useful for helping physical memory work, data from physical memory will be stored in swap and then retrieved return if too many requests to physical memory. The third is virtual memory, an almost unlimited resource used for the following purposes \cite{book:os}:
 
 \begin{itemize} [noitemsep, topsep=0pt]
-    \item \textit{abstraction}, bebas dari alamat / batas \textit{memory} fisik 
-    \item \textit{isolation}, setiap proses dalam ruang alamat terpisah 
-    \item \textit{sharing}, pemetaan tunggal dapat memenuhi banyak kebutuhan 
-    \item \textit{flexibility}, menetapkan alamat virtual ke data 
+    \item \textit{abstraction}, free of physical memory addresses / boundaries
+    \item \textit{isolation}, each process in a separate address space 
+    \item \textit{sharing}, a single map can meet many needs 
+    \item \textit{flexibility}, assign virtual addresses to data
 \end{itemize}
 
-% Terlepas dari bentuk \textit{memory} mana yang mungkin digunakan, semua dikelola sebagai \textit{pages} (biasanya 4096
-% byte). Penggunaan \textit{memory} berhubungan dengan \textit{memory} fisik dan \textit{swap} untuk sistem secara keseluruhan. 
-% Untuk setiap proses yang berjalan, setiap \textit{memory} page dibatasi ke satu kuadran seperti pada gambar \ref{fig:mem-quad}. Baik \textit{memory} fisik dan \textit{memory} virtual dapat menyertakan salah satu dari empat kuadran, sementara file \textit{swap} hanya mencakup kuadran 1 sampai 3. Memori di kuadran 4, bertindak sebagai file \textit{swap} khusus ketika dimodifikasi \cite{manual:linux}. 
-
-% \begin{figure}
-%     \includegraphics[width=0.8\linewidth, center]{images/programs/memory-quadrant.png}
-%     \caption{Kuadran pembagian memory pada Linux.}
-%     \label{fig:mem-quad}
-% \end{figure}
-
 \subsubsection{Virtual Memory (VIRT)}
-Virtual \textit{memory} menggunakan disk sebagai perpanjangan dari RAM sehingga ukuran efektif \textit{memory} yang dapat digunakan bertambah secara bersamaan. Kernel akan menulis konten dari blok \textit{memory} yang saat ini tidak digunakan ke hard disk sehingga \textit{memory} dapat digunakan untuk tujuan lain. Ketika konten asli dibutuhkan lagi, mereka dibaca kembali ke dalam \textit{memory}. Ini semua dibuat transparan sepenuhnya bagi pengguna. Program yang berjalan di Linux hanya melihat jumlah \textit{memory} yang tersedia lebih besar dan tidak memperhatikan bahwa sebagian dari program tersebut berada di disk dari waktu ke waktu. Tentu saja, membaca dan menulis hard disk lebih lambat daripada menggunakan \textit{memory} fisik, sehingga program tidak berjalan secepat itu. Bagian dari hard disk yang digunakan sebagai \textit{memory} virtual disebut ruang swap \cite{site:ltdp}.
+% Virtual \textit{memory} menggunakan disk sebagai perpanjangan dari RAM sehingga ukuran efektif \textit{memory} yang dapat digunakan bertambah secara bersamaan. Kernel akan menulis konten dari blok \textit{memory} yang saat ini tidak digunakan ke hard disk sehingga \textit{memory} dapat digunakan untuk tujuan lain. Ketika konten asli dibutuhkan lagi, mereka dibaca kembali ke dalam \textit{memory}. Ini semua dibuat transparan sepenuhnya bagi pengguna. Program yang berjalan di Linux hanya melihat jumlah \textit{memory} yang tersedia lebih besar dan tidak memperhatikan bahwa sebagian dari program tersebut berada di disk dari waktu ke waktu. Tentu saja, membaca dan menulis hard disk lebih lambat daripada menggunakan \textit{memory} fisik, sehingga program tidak berjalan secepat itu. Bagian dari hard disk yang digunakan sebagai \textit{memory} virtual disebut ruang swap \cite{site:ltdp}.
 
-% Kolom VIRT pada program \textbf{top} menunjukkan jumlah total \textit{memory} virtual yang digunakan oleh proses. Ini mencakup semua kode, data dan \textit{shared  libraries} ditambah dengan \textit{pages} yang telah ditukar dan \textit{pages} yang telah dipetakan tetapi tidak digunakan \cite{manual:linux}. 
+Virtual memory uses disk as an extension of RAM so that the effective size of the usable memory increases simultaneously. The kernel will write the contents of the currently unused memory block to the hard disk so that memory can be used for other purposes. When the original content is needed again, they are read back into memory. These are all made completely transparent to the user. Programs running on Linux only see the larger amount of memory available and do not notice that some of them are on disk over time. Of course, reading and writing a hard disk is slower than using physical memory, so programs don't run that fast. The part of the hard disk that is used as virtual memory is called swap space \cite{site:ltdp}.
 
 \subsubsection{Resident Memory (RES)}
 
-\textit{Resident} \textit{memory} adalah bagian dari ruang alamat virtual (VIRT) yang mewakili \textit{memory} fisik yang tidak ditukar yang sedang digunakan tugas. Resident \textit{memory} ini juga merupakan penjumlahan dari RSan, RSfd dan Bidang RSsh. Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk
-\textit{program images} dan \textit{shared libraries}) ditambah shared anonymous \textit{pages}. Semua \textit{memory} tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah pada SWAP. Resident \textit{memory} ini juga dapat menyertakan \textit{pages} yang didukung \textit{shared file-backed} yang apabila dimodifikasi, maka akan bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \cite{manual:linux}.
+% \textit{Resident} \textit{memory} adalah bagian dari ruang alamat virtual (VIRT) yang mewakili \textit{memory} fisik yang tidak ditukar yang sedang digunakan tugas. Resident \textit{memory} ini juga merupakan penjumlahan dari RSan, RSfd dan Bidang RSsh. Ini dapat mencakup private anonymous \textit{pages}, halaman pribadi yang dipetakan ke file (termasuk \textit{program images} dan \textit{shared libraries}) ditambah shared anonymous \textit{pages}. Semua \textit{memory} tersebut didukung oleh file \textit{swap} yang direpresentasikan secara terpisah pada SWAP. Resident \textit{memory} ini juga dapat menyertakan \textit{pages} yang didukung \textit{shared file-backed} yang apabila dimodifikasi, maka akan bertindak sebagai file \textit{swap} khusus dan karenanya tidak akan pernah memengaruhi SWAP \cite{manual:linux}.
+
+Resident memory is the portion of the virtual address space (VIRT) that represents the unchanged physical memory that the task is currently running. Resident memory is also the sum of the RSan, RSfd and RSsh fields. This can include private anonymous pages, private pages mapped to files (including program images and shared libraries) plus shared anonymous pages. All such memory is supported by a swap file which is represented separately on SWAP. This resident memory can also include a supported pages shared file-backed which, when modified, acts as a custom swap file and therefore never affects SWAP \cite{manual:linux}.
 
 \subsubsection{Shared Memory (SHR)}
 
-\textit{Shared} \textit{memory} adalah bagian dari resident \textit{memory} (RES) yang dapat digunakan oleh proses lain. Termasuk \textit{anonymous pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili \textit{program images} dan \textit{shared libraries} \cite{manual:linux}. 
+% \textit{Shared} \textit{memory} adalah bagian dari resident \textit{memory} (RES) yang dapat digunakan oleh proses lain. Termasuk \textit{anonymous pages} dan shared file-backed \textit{pages}. Ini juga termasuk private \textit{pages} dipetakan ke file yang mewakili \textit{program images} dan \textit{shared libraries} \cite{manual:linux}. 
 
+Shared memory is a part of resident memory (RES) that can be used by other processes. Includes anonymous pages and shared file-backed pages. This also includes private pages mapped to files representing program images and shared libraries \cite{manual:linux}.
 
 
 %------------------------------------------------
@@ -337,13 +325,8 @@ Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pa
     \end{itemize}
 \end{enumerate}
 
-% Pada penelitian ini digunakan 6 kernel berbeda berukuran 3x3 untuk penerapan filter spasial linear pada video \textit{stream} 720p 60 FPS. Penerapan ini dilakukan pada FPGA Development Board dengan menggunakan prosesor ARM dan FPGA. Kemudian dilakukan analisis kinerja dari keduanya untuk menunjukkan masing-masing waktu komputasi, FPS, persentase penggunaan CPU, penggunaan \textit{memory}, \textit{resident memory} (RES), \textit{shared memory} (SHR), dan \textit{virtual memory} (VIRT) pada masing-masing kernel.
-
-% % FPGA Development Board dirangkai seperti yang telah disebutkan pada Bab sebelumnya, pada gambar \ref{fig:rancangan-sistem}. 
-% HDMI Output pada FPGA dihubungkan ke monitor dan HDMI Input dihubungkan ke \textit{source} dalam hal ini laptop Lenovo Ideapad 320. FPGA Development Board juga dihubungkan ke \textit{router} menggunakan kabel UART agar dapat diakses menggunakan protokol \textit{ssh}. Selanjutnya memasang semua \textit{library} yang dibutuhkan untuk melakukan penerapan filter spasial linear pada video \textit{stream} menggunakan FPGA Development Board.
 
 \subsection{Penerapan Filter Spasial}
-% Setiap \textit{frame} dari \textit{source} video \textit{stream} dibaca sebagai citra digital yang direpresentasikan sebagai matriks berukuran 1280x720 dengan rentang nilai keabuan pada masing-masing piksel yaitu dari 0 sampai 255. Setiap piksel pada matriks tersebut hanya memiliki satu lapis warna sebab citra yang diterima dari \textit{source} adalah citra \textit{grayscale}, tidak seperti citra warna yang memiliki tiga lapis warna pada setiap pikselnya. 
 
 Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks dengan kernel yang telah ditentukan sebelumnya. Operasi konvolusi ini menghasilkan matrix baru dengan ukuran 1280x720. Matriks hasil tersebut selanjutnya direpresentasikan kembali sebagai citra digital yang selanjutnya disebut sebagai hasil filter. Hasil filter dari setiap \textit{frame} ini ditampilkan ke monitor melalui HDMI Output pada FPGA Development Board secara berkesinambungan sehingga tampak seperti video.
 
@@ -353,7 +336,6 @@ Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks den
     \label{fig:input-grayscale}
 \end{figure}
 
-% Salah satu contoh \textit{frame} dari \textit{source} dapat dilihat pada gambar \ref{fig:input-grayscale}. Selanjutnya dilakukan filter spasial menggunakan 6 kernel yang telah ditentukan sebelumnya.
 
 \subsubsection{Average Blur}
 Penerapan filter spasial pada \textit{frame} \textit{grayscale} yang berukuran 1280x720 pixel dengan kernel \textit{average blur} (\ref{kernel:average}) yang berukuran 3x3 menghasilkan citra 
@@ -443,7 +425,6 @@ Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat
     \label{fig:chart-time50}
 \end{figure}
 
-%\pagebreak
 
 % 200 frame
 Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time200} dan grafik pada gambar \ref{fig:chart-time200}. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 200 frame adalah 29,06 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 200 frame hanya 3,32 detik.
@@ -478,8 +459,6 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
 \end{figure}
 
 Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter \textit{laplacian} yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter \textit{sharpening} yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
-
-%\pagebreak
 
 Untuk menghitung efisiensi waktu komputasi yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
 \begin{equation*}
@@ -763,8 +742,15 @@ Ini menunjukkan bahwa penggunaan \textit{virtual momory} pada prosesor ARM hanya
 % 5. Conclusion
 \section{Conclusion}
 
-Berdasarkan hasil penerapan filter spasial linear pada FPGA Development Board dengan menggunakan 6 kernel, peneliti dapat menarik beberapa kesimpulan sebagai berikut:
+% Berdasarkan hasil penerapan filter spasial linear pada FPGA Development Board dengan menggunakan 6 kernel, peneliti dapat menarik beberapa kesimpulan sebagai berikut:
+
+Based on the results of implementation linear spatial filters on the FPGA Development Board using 6 kernels, researchers get the following conclusions:
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
-    \item Proses implementasi filter spasial linear pada video \textit{stream} dengan FPGA Development Board dilakukan dengan \textit{library} OpenCV \textit{python} dan \textit{library} xfOpenCV Xilinx. Setiap \textit{frame} dari \textit{source} video \textit{stream} direpresentasikan sebagai citra digital kemudian dilakukan filter spasial linear, selanjutnya hasil filter ini ditampilkan secara berkesinambungan sehingga tampak seperti video.
-    \item Waktu komputasi dengan FPGA 88.85\% lebih baik dibandingkan dengan ARM prosesor. Video hasil filter dengan ARM prosesor memperoleh rata-rata 6.95 fps sedangkan dengan FPGA rata-rata 60.37 fps. FPS dengan FPGA 88.49\% lebih baik lebih baik dibandingkan dengan ARM prosesor. Penggunaan CPU pada FPGA 14.89\% lebih baik, penggunaan \textit{memory} pada FPGA 2.02\% lebih baik, penggunaan \textit{resident memory} 2.07\% lebih baik, dan penggunaan \textit{shared memory} 4.08\% lebih baik dibandingkan dengan ARM prosesor. Sedangkan penggunaan \textit{virtual memory} pada ARM prosesor 0.03\% lebih baik dibandingkan FPGA.
+    % \item Proses implementasi filter spasial linear pada video \textit{stream} dengan FPGA Development Board dilakukan dengan \textit{library} OpenCV \textit{python} dan \textit{library} xfOpenCV Xilinx. Setiap \textit{frame} dari \textit{source} video \textit{stream} direpresentasikan sebagai citra digital kemudian dilakukan filter spasial linear, selanjutnya hasil filter ini ditampilkan secara berkesinambungan sehingga tampak seperti video.
+
+    \item The process of implementing a linear spatial filter on video stream with the FPGA Development Board is carried out with python's library OpenCV and Xilinx's library xfOpenCV. Each frame of video stream source is represented as a digital image then a linear spatial filter is applied, then the results of this filter are displayed continuously so that it looks like a video.
+
+    % \item Waktu komputasi dengan FPGA 88.85\% lebih baik dibandingkan dengan ARM prosesor. Video hasil filter dengan ARM prosesor memperoleh rata-rata 6.95 fps sedangkan dengan FPGA rata-rata 60.37 fps. FPS dengan FPGA 88.49\% lebih baik lebih baik dibandingkan dengan ARM prosesor. Penggunaan CPU pada FPGA 14.89\% lebih baik, penggunaan \textit{memory} pada FPGA 2.02\% lebih baik, penggunaan \textit{resident memory} 2.07\% lebih baik, dan penggunaan \textit{shared memory} 4.08\% lebih baik dibandingkan dengan ARM prosesor. Sedangkan penggunaan \textit{virtual memory} pada ARM prosesor 0.03\% lebih baik dibandingkan FPGA.
+
+    \item Compute time with FPGA 88.85\% better than ARM processor. The filtered video with the ARM processor gets an average of 6.95 fps while the FPGA average is 60.37 fps. FPS with FPGA is 88.49\% better than ARM processor. CPU usage on FPGA is 14.89\% better, usage of memory on FPGA is 2.02\% better, usage of resident memory is 2.07\% better, and usage of shared memory is 4.08\% better compared to ARM processors. Meanwhile, the use of virtual memory on ARM processors is 0.03\% better than FPGA.
 \end{enumerate}
