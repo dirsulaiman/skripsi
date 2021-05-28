@@ -287,33 +287,35 @@ Shared memory is a part of resident memory (RES) that can be used by other proce
 
 \section{Tools and Methods}
 
-\subsection{Rancangan Sistem}
+\subsection{Sistem Design}
 \begin{figure}[ht]
     \includegraphics[width=1\linewidth, center]{images/rancangan-sistem2.png}
-    \caption{Rancangan sistem.}
+    \caption{Sistem Design.}
     \label{fig:rancangan-sistem}
 \end{figure}
 
-Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pada FPGA Development Board, kemudian video \textit{stream} tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap \textit{frame} yang telah diterapkan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA Development Board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan \textit{Jupyter Notebook} melalui \textit{web browser}.
+% Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pada FPGA Development Board, kemudian video \textit{stream} tersebut akan diolah dengan menerapkan filter spasial linear pada setiap framenya. Setiap \textit{frame} yang telah diterapkan filter spasial akan dialirkan ke monitor untuk kemudian ditampilkan. Selanjutnya dilakukan analisis kinerja pada FPGA. FPGA Development Board yang digunakan dalam penelitian ini dapat diakses dengan \textit{ssh} pada port 22 atau dengan \textit{Jupyter Notebook} melalui \textit{web browser}.
 
-\subsection{Instrumen Penelitian}
+Video stream from the source is channeled through the HDMI Input port on the FPGA Development Board, then the video stream will be processed by applying a linear spatial filter to each frame. Each frame that has been applied the spatial filter will be streamed to the monitor to display. Furthermore, the FPGA performance analysis is carried out. The FPGA Development Board used can be accessed with ssh protocol on port 22 or by Jupyter Notebook via web browser.
+
+\subsection{Tools}
 \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
-    \item Kebutuhan perangkat lunak:
+    \item Software requirements:
     \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label={\alph*.}]
-        \item Linux Ubuntu 18, sebagai OS pada FPGA Development Board.
-        \item Python 3.6, dengan library OpenCV, Numpy, Pynq 5.2, dan Xilinx xfOpenCV.
-        \item Jupyter Notebook pada FPGA Development Board. 
-        \item Web Browser untuk mengakses Jupyter Notebook pada FPGA Development Board.
+        \item Linux Ubuntu 18, Operation sistem on FPGA Development Board.
+        \item Python 3.6, library OpenCV, Numpy, Pynq 5.2, and Xilinx xfOpenCV.
+        \item Jupyter Notebook on FPGA Development Board. 
+        \item Web Browser.
     \end{enumerate}
-    \item Kebutuhan perangkat keras:
+    \item Hardware requirements:
     \begin{enumerate}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt, label={\alph*.}]
         \item FPGA Development Board.
-        \item Micro SD Card 16 GB, sebagai media penyimpanan OS pada FPGA Development Board.
-        \item Monitor Eksternal, untuk menampilkan hasil penerapan filter spasial pada FPGA Development Board.
-        \item Laptop Lenovo Ideapad 320 (sebagai \textit{source} video \textit{stream}).
+        \item Micro SD Card 16 GB.
+        \item Eksternal Monitor, to display the results of applying spatial filters on the FPGA Development Board.
+        \item Lenovo Ideapad 320 as \textit{source} of video stream).
     \end{enumerate}
 
-    Spesifikasi FPGA Development Board yang digunakan:
+    FPGA Development Board specification:
     \begin{itemize}[topsep=0pt,itemsep=0pt,partopsep=0pt, parsep=0pt]
         \item Model : Xilinx PYNQ-Z2.
         \item Processor : Dual-Core ARM Cortex A9, 650 MHz
@@ -326,63 +328,82 @@ Video \textit{stream} dari \textit{source} disalurkan melalui port HDMI Input pa
 \end{enumerate}
 
 
-\subsection{Penerapan Filter Spasial}
+\subsection{Methods}
 
-Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks dengan kernel yang telah ditentukan sebelumnya. Operasi konvolusi ini menghasilkan matrix baru dengan ukuran 1280x720. Matriks hasil tersebut selanjutnya direpresentasikan kembali sebagai citra digital yang selanjutnya disebut sebagai hasil filter. Hasil filter dari setiap \textit{frame} ini ditampilkan ke monitor melalui HDMI Output pada FPGA Development Board secara berkesinambungan sehingga tampak seperti video.
+% Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks dengan kernel yang telah ditentukan sebelumnya. Operasi konvolusi ini menghasilkan matrix baru dengan ukuran 1280x720. Matriks hasil tersebut selanjutnya direpresentasikan kembali sebagai citra digital yang selanjutnya disebut sebagai hasil filter. Hasil filter dari setiap \textit{frame} ini ditampilkan ke monitor melalui HDMI Output pada FPGA Development Board secara berkesinambungan sehingga tampak seperti video.
+
+The spatial filter process is carried out by convolution operations on each matrix with a predetermined kernel. This convolutional operation produces a new matrix with a size of 1280x720. The resulting matrix is then represented as a digital image, hereinafter referred to as the filter result. The filter result of each frame is displayed to the monitor via HDMI Output on the FPGA Development Board continuously.
 
 \begin{figure}[H]
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-grayscale.png}
-    \caption{Contoh Frame Grayscale.}
+    \caption{Grayscale Frame.}
     \label{fig:input-grayscale}
 \end{figure}
 
 
 \subsubsection{Average Blur}
-Penerapan filter spasial pada \textit{frame} \textit{grayscale} yang berukuran 1280x720 pixel dengan kernel \textit{average blur} (\ref{kernel:average}) yang berukuran 3x3 menghasilkan citra 
-\textit{blur} yang berukuran 1280x720. Hasil filter \textit{average blur} dapat dilihat pada gambar \ref{fig:output-averageblur}. Filter seperti ini dapat digunakan untuk mengurangi derau pada citra.
+% Penerapan filter spasial pada \textit{frame} \textit{grayscale} yang berukuran 1280x720 pixel dengan kernel \textit{average blur} (\ref{kernel:average}) yang berukuran 3x3 menghasilkan citra \textit{blur} yang berukuran 1280x720. Hasil filter \textit{average blur} dapat dilihat pada gambar \ref{fig:output-averageblur}. Filter seperti ini dapat digunakan untuk mengurangi derau pada citra.
+
+Applying a spatial filter to grayscale frame which is 1280x720 pixels using a kernel average blur  (\ref{kernel:average}) measuring 3x3 produces a blur image that is 1280x720 too. The results of the average blur filter can be seen in the \ref{fig:output-averageblur} image. Filters like this can be used to reduce noise in the image.
+
 \begin{figure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-averageblur.png}
-    \caption{Hasil filter Average Blur.}
+    \caption{Result of Average Blur filter.}
     \label{fig:output-averageblur}
 \end{figure}
 
 \subsubsection{Gaussian Blur}
-Penerapan filter spasial dengan kernel \textit{gaussian blur} (\ref{kernel:gaussianblur}) yang berukuran 3x3 menghasilkan citra \textit{blur} yang secara kasat mata mirip dengan filter \textit{average blur}. Namun apabila diperhatikan nilai masing-masing pixel pada gambar \ref{fig:output-gaussianblur} akan terlihat berbeda dengan nilai masing-masing pixel pada gambar \ref{fig:output-averageblur}. Hal ini disebabkan oleh nilai bobot pada kernel \textit{gaussian blur} yang berbeda dengan kernel \textit{average blur} sehingga hasil konvolusinya juga berbeda. 
+% Penerapan filter spasial dengan kernel \textit{gaussian blur} (\ref{kernel:gaussianblur}) yang berukuran 3x3 menghasilkan citra \textit{blur} yang secara kasat mata mirip dengan filter \textit{average blur}. Namun apabila diperhatikan nilai masing-masing pixel pada gambar \ref{fig:output-gaussianblur} akan terlihat berbeda dengan nilai masing-masing pixel pada gambar \ref{fig:output-averageblur}. Hal ini disebabkan oleh nilai bobot pada kernel \textit{gaussian blur} yang berbeda dengan kernel \textit{average blur} sehingga hasil konvolusinya juga berbeda. 
+
+The application of a spatial filter with a 3x3 kernel gaussian blur (\ref{kernel:gaussianblur}) produces a blur image which is visually similar to the average blur filter. However, if you pay attention to the value of each pixel in the figure \ref{fig:output-gaussianblur} it will look different from the value of each pixel in the figure \ref{fig:output-averageblur}. This is because the weight value in the gaussian blur kernel is different from the average blur kernel, so the result of the convolution is also different.
+
 \begin{figure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-gaussianblur.png}
-    \caption{Hasil filter Gaussian Blur.}
+    \caption{Result of Gaussian Blur filter.}
     \label{fig:output-gaussianblur}
 \end{figure}
 
 \subsubsection{Laplacian}
-Penerapan filter spasial dengan kernel \textit{laplacian} (\ref{kernel:laplacian}) menghasilkan citra \textit{biner} yang hanya direpresentasikan dengan warna hitam dan putih saja, dapat dilihat pada gambar \ref{fig:output-laplacian}. Filter seperti ini dapat digunakan pada metode deteksi tepi dalam proses pengolahan citra digital.
+% Penerapan filter spasial dengan kernel \textit{laplacian} (\ref{kernel:laplacian}) menghasilkan citra \textit{biner} yang hanya direpresentasikan dengan warna hitam dan putih saja, dapat dilihat pada gambar \ref{fig:output-laplacian}. Filter seperti ini dapat digunakan pada metode deteksi tepi dalam proses pengolahan citra digital.
+
+Application of spatial filter with kernel laplacian (\ref{kernel:laplacian}) produces binary image which is represented only in black and white, can be seen in figure \ref{fig:output-laplacian}. Filters like this can be used in edge detection methods in digital image processing.
+
 \begin{figure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-laplacian.png}
-    \caption{Hasil filter Laplacian.}
+    \caption{Result of Laplacian filter.}
     \label{fig:output-laplacian}
 \end{figure}
 
 \subsubsection{Sharpening}
-Penerapan filter spasial dengan kernel \textit{sharpening} (\ref{kernel:sharpen}) dapat meningkatkan detail (seperti garis) pada citra, namun dapat juga dapat menimbulkan derau pada citra apabila bobot kernelnya tidak sesuai. Filter seperti ini lebih tepat digunakan untuk memperbaiki kualitas citra (dengan nilai kernel yang sesuai). Hasil filter \textit{sharpening} ini dapat dilihat pada gambar \ref{fig:output-sharpen}.
+% Penerapan filter spasial dengan kernel \textit{sharpening} (\ref{kernel:sharpen}) dapat meningkatkan detail (seperti garis) pada citra, namun dapat juga dapat menimbulkan derau pada citra apabila bobot kernelnya tidak sesuai. Filter seperti ini lebih tepat digunakan untuk memperbaiki kualitas citra (dengan nilai kernel yang sesuai). Hasil filter \textit{sharpening} ini dapat dilihat pada gambar \ref{fig:output-sharpen}.
+
+Applying a spatial filter with kernel sharpening (\ref{kernel:sharpen}) can increase detail (such as lines) in the image, but can also cause noise in the image if the kernel weight is not appropriate. Filters like this are more appropriate to improve image quality (with the appropriate kernel values). The results of the sharpening filter can be seen in the \ref{fig:output-sharpen} image.
+
 \begin{figure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-sharpen.png}
-    \caption{Hasil filter Sharpening.}
+    \caption{Result of Sharpening filter.}
     \label{fig:output-sharpen}
 \end{figure}
 
 \subsubsection{Sobel Horizontal}
-Penerapan filter spasial dengan kernel \textit{sobel horizontal} (\ref{kernel:sobel}) menghasilkan citra \textit{biner}, dapat dilihat pada gambar \ref{fig:output-sobelhor}. Filter seperti lebih tepat digunakan pada metode deteksi tepi dengan citra yang banyak mengandung garis horizontal.
+% Penerapan filter spasial dengan kernel \textit{sobel horizontal} (\ref{kernel:sobel}) menghasilkan citra \textit{biner}, dapat dilihat pada gambar \ref{fig:output-sobelhor}. Filter seperti lebih tepat digunakan pada metode deteksi tepi dengan citra yang banyak mengandung garis horizontal.
+
+Application of a spatial filter with kernel sobel horizontal (\ref{kernel:sobel}) produces a binary image, seen in figure \ref{fig:output-sobelhor}. Such filters are more appropriate for edge detection methods with images that contain lots of horizontal lines.
+
 \begin{figure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-sobelhor.png}
-    \caption{Hasil filter Sobel Horizontal.}
+    \caption{Result of Sobel Horizontal filter.}
     \label{fig:output-sobelhor}
 \end{figure}
 
 \subsubsection{Sobel Vertical}
-Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobel}) menghasilkan citra \textit{biner}, dapat dilihat pada gambar \ref{fig:output-sobelver}. Sama halnya dengan filter \textit{sobel horizontal}, filter \textit{sobel vertical} juga dapat digunakan untuk metode deteksi tepi, terutama pada citra yang banyak mengandung garis vertikal.
+% Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobel}) menghasilkan citra \textit{biner}, dapat dilihat pada gambar \ref{fig:output-sobelver}. Sama halnya dengan filter \textit{sobel horizontal}, filter \textit{sobel vertical} juga dapat digunakan untuk metode deteksi tepi, terutama pada citra yang banyak mengandung garis vertikal.
+
+Application of a spatial filter with kernel sobel vertical (\ref{kernel:sobel}) produces a binary image, seen in figure \ref{fig:output-sobelver}. Similar to the sobel horizontal filter, the sobel vertical filter can also be used for edge detection methods, especially on images that contain lots of vertical lines.
+
 \begin{figure}
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-sobelver.png}
-    \caption{Hasil filter Sobel Vertical.}
+    \caption{Result of Sobel Vertical filter.}
     \label{fig:output-sobelver}
 \end{figure}
 
@@ -393,11 +414,14 @@ Penerapan filter spasial dengan kernel \textit{sobel vertical} (\ref{kernel:sobe
 
 \section{Results and Discussions}
 
-\subsection{Waktu Komputasi}
+\subsection{Computation Time}
 
-Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time50} dan grafik pada gambar \ref{fig:chart-time50}. Secara umum waktu komputasi dengan menggunakan prosesor ARM lebih lambat daripada waktu komputasi dengan menggunakan FPGA. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 50 frame adalah 7,26 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 50 frame hanya 0,82 detik.
+% Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time50} dan grafik pada gambar \ref{fig:chart-time50}. Secara umum waktu komputasi dengan menggunakan prosesor ARM lebih lambat daripada waktu komputasi dengan menggunakan FPGA. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 50 frame adalah 7,26 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 50 frame hanya 0,82 detik.
+
+The computation time using 50 frames in each kernel can be seen in the \ref{table:result-time50} table and the chart in figure \ref{fig:chart-time50}. In general, the computation time using an ARM processor is slower than FPGA. The average computation time with an ARM processor using 50 frames was 7.26 seconds, while the average computation time with an FPGA using 50 frames was only 0.82 seconds.
+
 \begin{atable}
-    \caption{Tabel perbandingan waktu komputasi dengan menggunakan 50 frame.}
+    \caption{Comparison table of Computing time using 50 frames.}
     \label{table:hasil-time50}
     \csvreader[
         head to column names,
@@ -421,15 +445,18 @@ Data waktu komputasi dengan menggunakan 50 frame pada masing-masing kernel dapat
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-time50.png}
-    \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
+    \caption{Comparison chart of Computing time using 50 frames}
     \label{fig:chart-time50}
 \end{figure}
 
 
 % 200 frame
-Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time200} dan grafik pada gambar \ref{fig:chart-time200}. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 200 frame adalah 29,06 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 200 frame hanya 3,32 detik.
+% Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time200} dan grafik pada gambar \ref{fig:chart-time200}. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 200 frame adalah 29,06 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 200 frame hanya 3,32 detik.
+
+The computation time data using 200 frames in each kernel can be seen in the table \ref{table: result-time200} and the chart in figure \ref{fig:chart-time200}. The average computation time with an ARM processor using 200 frames was 29.06 seconds, while the average computation time with an FPGA using 200 frames was only 3.32 seconds.
+
 \begin{atable}
-    \caption{Tabel perbandingan waktu komputasi dengan menggunakan 200 frame.}
+    \caption{Comparison table of Computing time using 200 frames.}
     \label{table:hasil-time200}
     \csvreader[
         head to column names,
@@ -454,28 +481,36 @@ Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dili
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-time200.png}
-    \caption{Grafik perbandingan waktu komputasi dengan 50 frame dan 200 frame}
+    \caption{Comparison chart of Computing time using 200 frames.}
     \label{fig:chart-time200}
 \end{figure}
 
-Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter \textit{laplacian} yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter \textit{sharpening} yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
+% Waktu komputasi tercepat dengan menggunakan prosesor ARM terdapat pada filter \textit{laplacian} yaitu 6,21 detik dengan 50 frame dan 24.85 detik dengan 200 frame. Sedangkan waktu komputasi paling lambat ketika menggunakan prosesor ARM terdapat pada filter \textit{sharpening} yaitu 8,04 detik dengan 50 frame dan 32,24 detik dengan 200 frame. 
 
-Untuk menghitung efisiensi waktu komputasi yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+The fastest computation time using an ARM processor is the laplacian filter, namely 6.21 seconds with 50 frames and 24.85 seconds with 200 frames. Meanwhile, the slowest computation time when using an ARM processor is the sharpening filter, namely 8.04 seconds with 50 frames and 32.24 seconds with 200 frames.
+
+% Untuk menghitung efisiensi waktu komputasi yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+
+To calculate the computation time efficiency of an FPGA compared to an ARM processor, the formula is used:
 \begin{equation*}
     % \label{eq:efisiensi}
     \begin{split}
-& = 100\% - \left( \frac{waktu\ komputasi\ FPGA}{waktu\ komputasi\ ARM Prosesor} \times 100\% \right) \\
+& = 100\% - \left( \frac{computation\ time\ FPGA}{computation\ time\ ARM Prosesor} \times 100\% \right) \\
 & = 100\% - \left( \frac{3,32}{29,06} \times 100\% \right) \\
 & = 100\% - 11.42\% \\
 & = 88.58\% \\
     \end{split}
 \end{equation*}
-sehingga diperoleh efisiensi waktu komputasi FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.85\%.
+% sehingga diperoleh efisiensi waktu komputasi FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.85\%.
+
+the efficiency of FPGA computation time compared to ARM processors is 88.85\%.
 
 \subsection{Frame Rate (FPS)}
-Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapat dihitung menggunakan persamaan \ref{eq:fps}. Data FPS dari masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-fps} dan grafik pada gambar \ref{fig:chart-fps}.
+% Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapat dihitung menggunakan persamaan \ref{eq:fps}. Data FPS dari masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-fps} dan grafik pada gambar \ref{fig:chart-fps}.
+
+By the computation time and the number of frames, the frame rate or FPS can be calculated using the \ref{eq:fps} equation. FPS data for each kernel with ARM and FPGA processors can be seen in the \ref{table:fps-result} table and the chart in the figure \ref{fig:chart-fps}.
 \begin{atable}
-    \caption{Tabel perbandingan FPS dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Comparison table of FPS using ARM prosesor and FPGA.}
     \label{table:hasil-fps}
     \csvreader[
         head to column names,
@@ -498,13 +533,17 @@ Dengan mengetahui waktu komputasi dan jumlah frame maka frame rate atau FPS dapa
 \end{atable}
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-fps.png}
-    \caption{Grafik perbandingan FPS dengan menggunakan prosesor ARM dan FPGA.}
+    \caption{Comparison chart of FPS using ARM prosesor and FPGA.}
     \label{fig:chart-fps}
 \end{figure}
 
-Pada tabel \ref{table:hasil-fps} terlihat dengan menggunakan prosesor ARM diperoleh rata-rata 6.95 frame per detik (FPS), sedangkan ketika menggunakan FPGA diperoleh rata-rata 60.37 frame per detik. Terlihat pada grafik \ref{fig:chart-fps} nilai FPS dengan FPGA jauh lebih tinggi daripada dengan prosesor ARM.
+% Pada tabel \ref{table:hasil-fps} terlihat dengan menggunakan prosesor ARM diperoleh rata-rata 6.95 frame per detik (FPS), sedangkan ketika menggunakan FPGA diperoleh rata-rata 60.37 frame per detik. Terlihat pada grafik \ref{fig:chart-fps} nilai FPS dengan FPGA jauh lebih tinggi daripada dengan prosesor ARM.
 
-Untuk menghitung efisiensi FPS yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+In the table \ref{table:results-fps}, it can be seen that using an ARM processor the average is 6.95 frames per second (FPS) was obtained, while using an FPGA the average is 60.37 frames per second was obtained. As seen in the chart \ref{fig:chart-fps} the FPS value with FPGA is much higher than with an ARM processor.
+
+% Untuk menghitung efisiensi FPS yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan rumus:
+
+To calculate the FPS efficiency that the FPGA has compared to an ARM processor, the formula is used:
 \begin{equation*}
     % \label{eq:efisiensi}
     \begin{split}
@@ -514,7 +553,10 @@ Untuk menghitung efisiensi FPS yang dimiliki FPGA dibandingkan dengan prosesor A
 & = 88.49\% \\
     \end{split}
 \end{equation*}
-sehingga diperoleh efisiensi FPS dari FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.49\%.
+
+% sehingga diperoleh efisiensi FPS dari FPGA dibandingkan dengan prosesor ARM adalah sebesar 88.49\%.
+
+the FPS efficiency of the FPGA compared to the ARM processor is 88.49\%.
 
 \subsection{Penggunaan CPU}
 Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-cpu} dan grafik pada gambar \ref{fig:chart-cpu}. Rata-rata penggunaan CPU dengan prosesor ARM adalah 99.58\% sedangkan dengan FPGA diperoleh 84.75\%. Data ini menunjukkan bahwa penggunaan CPU dengan prosesor ARM sedikit lebih besar daripada dengan FPGA.
