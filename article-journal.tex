@@ -1,12 +1,31 @@
 \documentclass{lib/journal}
 \usepackage{multicol}
 
+%===========================================================
+% Redefition Terms
+%-----------------------------------------------------------
+\def\partname{BAGIAN}
+\def\partname{BAB}
+\def\appendixname{LAMPIRAN}
+\def\refname{DAFTAR PUSTAKA}
+\def\bibname{DAFTAR PUSTAKA}
+\def\indexname{Indek}
+\def\figurename{Gambar}
+\def\tablename{Tabel}
+\def\pagename{Halaman}
+%-----------------------------------------------------------
+% End Redefinition Terms
+%===========================================================
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
 \setlength{\droptitle}{-4\baselineskip} % Move the title up
+
 \pretitle{\begin{center}\Huge\bfseries} % Article title formatting
 \posttitle{\end{center}} % Article title closing formatting
-
 \title{\Large{IMPLEMENTASI FILTER SPASIAL LINEAR PADA VIDEO \textit{STREAM} MENGGUNAKAN \textit{FPGA HARDWARE ACCELERATOR}}} % Article title
-
 \author{%
     \textsc{Sulaeman} \\ % Your name
     \normalsize {Universitas Hasanuddin} \\ % Your institution
@@ -17,7 +36,6 @@
     % \normalsize {jane@smith.com} % Second author's email address
 }
 \date{} % Leave empty to omit a date
-
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
     Berbagai macam akselerator telah dikembangkan dalam meningkatkan kinerja dan efisiensi energi untuk menangani komputasi berat, salah satu diantaranya yaitu FPGA. FPGA mampu menangani beban komputasi yang begitu berat sehingga dapat digunakan untuk \textit{Digital Signal Processing}, \textit{Image Processing}, \textit{Neural Network}, dan sebagainya.
@@ -27,13 +45,15 @@
     Rata-rata waktu komputasi yang dibutuhkan untuk menerapkan filter spasial linear pada 200 frame dengan ARM prosesor adalah 29.06 detik sedangkan dengan FPGA rata-rata hanya dibutuhkan 3.32 detik. Waktu komputasi dengan FPGA 88.85\% lebih baik dibandingkan dengan ARM prosesor. Video hasil filter dengan ARM prosesor memperoleh rata-rata 6.95 fps sedangkan dengan FPGA rata-rata 60.37 fps. FPS dengan FPGA 88.49\% lebih baik lebih baik dibandingkan ARM prosesor. Penggunaan CPU pada FPGA 14.89\% lebih baik, penggunaan \textit{memory} pada FPGA 2.02\% lebih baik, penggunaan \textit{resident memory} 2.07\% lebih baik, dan penggunaan \textit{shared memory} 4.08\% lebih baik dibandingkan dengan ARM prosesor. Sedangkan penggunaan \textit{virtual memory} pada ARM prosesor 0.03\% lebih baik dibandingkan FPGA.
 
     \vspace{0.15cm}
+
     \textbf{Kata Kunci :}  filter spasial linear, FPGA, ARM prosesor, video \textit{stream}, \textit{video processing}
 \end{abstract}
 }
 
+%----------------------------------------------------------------------------------------
 
 \begin{document}
-    % Print the title and Abstract
+    % Print the title
     \maketitle
 
     % Article contents
@@ -42,3 +62,11 @@
     % Daftar Pustaka
     \printbibliography[title={DAFTAR PUSTAKA}]
 \end{document}
+
+% Judul
+% Abstract
+% 1. Introduction
+% 2. Fundamental Concepts
+% 3. Tools and Methods
+% 4. Results and Discussions
+% 5. Conclusion
