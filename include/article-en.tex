@@ -332,7 +332,7 @@ Video stream from the source is channeled through the HDMI Input port on the FPG
 
 % Proses filter spasial dilakukan dengan operasi konvolusi pada setiap matriks dengan kernel yang telah ditentukan sebelumnya. Operasi konvolusi ini menghasilkan matrix baru dengan ukuran 1280x720. Matriks hasil tersebut selanjutnya direpresentasikan kembali sebagai citra digital yang selanjutnya disebut sebagai hasil filter. Hasil filter dari setiap \textit{frame} ini ditampilkan ke monitor melalui HDMI Output pada FPGA Development Board secara berkesinambungan sehingga tampak seperti video.
 
-The spatial filter process is carried out by convolution operations on each matrix with a predetermined kernel. This convolutional operation produces a new matrix with a size of 1280x720. The resulting matrix is then represented as a digital image, hereinafter referred to as the filter result. The filter result of each frame is displayed to the monitor via HDMI Output on the FPGA Development Board continuously.
+The spatial filter process is carried out by convolution operations on each matrix with a predetermined kernel. This convolutional operation produces a new matrix 1280x720. The resulting matrix is then represented as a digital image, hereinafter referred to as the filter result. The filter result of each frame is displayed to the monitor via HDMI Output on the FPGA Development Board continuously.
 
 \begin{figure}[H]
     \includegraphics[width=0.8\linewidth, center]{images/output-image/input1-grayscale.png}
@@ -408,7 +408,6 @@ Application of a spatial filter with kernel sobel vertical (\ref{kernel:sobel}) 
 \end{figure}
 
 
-
 %------------------------------------------------
 % 4. Results and Discussions
 
@@ -449,8 +448,6 @@ The computation time using 50 frames in each kernel can be seen in the \ref{tabl
     \label{fig:chart-time50}
 \end{figure}
 
-
-% 200 frame
 % Data waktu komputasi menggunakan 200 frame pada maasing-masing kernel dapat dilihat pada tabel \ref{table:hasil-time200} dan grafik pada gambar \ref{fig:chart-time200}. Rata-rata waktu komputasi dengan prosesor ARM menggunakan 200 frame adalah 29,06 detik, sedangkan rata-rata waktu komputasi dengan FPGA menggunakan 200 frame hanya 3,32 detik.
 
 The computation time data using 200 frames in each kernel can be seen in the table \ref{table: result-time200} and the chart in figure \ref{fig:chart-time200}. The average computation time with an ARM processor using 200 frames was 29.06 seconds, while the average computation time with an FPGA using 200 frames was only 3.32 seconds.
