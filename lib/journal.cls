@@ -39,6 +39,8 @@
 \renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
 \renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
 
+
+
 \RequirePackage{fancyhdr} % Headers and footers
 
 \RequirePackage{titling} % Customizing the title section
@@ -111,23 +113,6 @@
 
 
 %===========================================================
-% Redefition Terms
-%-----------------------------------------------------------
-\def\partname{BAGIAN}
-\def\partname{BAB}
-\def\appendixname{LAMPIRAN}
-\def\refname{DAFTAR PUSTAKA}
-\def\bibname{DAFTAR PUSTAKA}
-\def\indexname{Indek}
-\def\figurename{Gambar}
-\def\tablename{Tabel}
-\def\pagename{Halaman}
-%-----------------------------------------------------------
-% End Redefinition Terms
-%===========================================================
-
-
-%===========================================================
 % Package Daftar Pustaka, bentuk citasi
 % Config
 % - style, citestyle = {authoryear, numeric, apa, mla}
@@ -158,7 +143,6 @@
 % End Biblatex Config
 %===========================================================
 
-
 %===========================================================
 % Set Table, Figure Environment
 %-----------------------------------------------------------
@@ -170,13 +154,12 @@
 % End Set Table, Figure Environment
 %===========================================================
 
-
-%===========================================================
-% Code Script, Listing
-%-----------------------------------------------------------
 % use listings for code script
 \RequirePackage{listings}
 \RequirePackage{color}
+%===========================================================
+% Code Script, Listing
+%-----------------------------------------------------------
 \definecolor{light-gray}{gray}{0.95}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -236,6 +219,7 @@
 %===========================================================
 % Redefine part and sections
 %-----------------------------------------------------------
+
 \RequirePackage{titlesec} % Allows customization of titles
 \titleformat{\section}[block]{\large\scshape\centering}{\textbf\thesection.}{1em}{\textbf} % Change the look of the section titles
 \titleformat{\subsection}[block]{}{\textbf\thesubsection.}{1em}{\textbf} % Change the look of the section titles
