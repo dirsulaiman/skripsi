@@ -133,7 +133,7 @@ Sharpening filters are used to clarify fine details in an image or to enhance de
 \end{equation}
 
 
-\subsection{Konvolusi}
+\subsection{Convolution}
 
 % Konsep filter spasial linear mirip seperti konsep konvolusi pada domain frekuensi, dengan alasan tersebut filter spasial linear biasa disebut juga konvolusi sebuah kernel dengan citra digital \cite{book:gonzalez}. Konvolusi pada fungsi \textit{f(x)} dan \textit{g(x)} didefinisikan pada persamaan \ref{eq:conv1}.
 
@@ -220,7 +220,7 @@ FPGA Development Board or commonly known as FPGA Board, namely FPGA technology t
 \subsection{Performance Evaluatinon}
 % Pada penelitian ini peneliti menggunakan waktu komputasi, \textit{frame rate} (FPS), penggunaan CPU, penggunaan {memory}, penggunaan {resident memory} (RES), {shared memory} (SHR), dan {virtual memory} (VIRT) untuk mengukur kinerja pada penerapan filter spasial linear dengan prosesor ARM dan FPGA.
 
-The researchers used computation time, frame rate (FPS), CPU usage, memory usage, resident memory (RES), shared memory (SHR), and virtual memory usage (VIRT) to measure the performance of applying linear spatial filters with ARM and FPGA processors.
+The researchers used computation time, frame rate (FPS), CPU loads, memory usage, resident memory (RES), shared memory (SHR), and virtual memory usage (VIRT) to measure the performance of applying linear spatial filters with ARM and FPGA processors.
 
 \subsubsection{Computation Time}
 % Waktu komputasi yang dimaksud oleh peneliti adalah durasi yang dibutuhkan sebuah kernel untuk melakukan filter spasial linear terhadap beberapa \textit{frame} input. Waktu komputasi ini diperoleh dengan cara menghitung selisih waktu selesai dengan waktu dimulai penerapan filter spasial linear pada \textit{frame} input.
@@ -246,12 +246,12 @@ fps = \frac{number\ of\ frame}{computation\ time}
     \end{split}
 \end{equation}
 
-\subsubsection{CPU Usage}
+\subsubsection{CPU Loads}
 % Pada penelitian ini peneliti menggunakan fitur yang tersedia pada sistem operasi Linux yang berjalan di FPGA Development Board untuk melihat persentase penggunaan CPU pada proses penerapan filter spasial linear. Program ini menampilkan informasi tentang proses-proses yang berjalan pada sistem operasi seperti ID sebuah proses, user yang menjalankan proses tersebut, \textit{memory} yang digunakan, status sebuah proses, persentase CPU yang digunakan dan lainnya.
 
-The researchers used the features available on the Linux operating system running on the FPGA Development Board to see the percentage of CPU usage in the process of applying linear spatial filters. This program displays information about processes running on the operating system such as the ID of a process, the user running the process, the memory used, the status of a process, the percentage of CPU used and others.
+The researchers used the features available on the Linux operating system running on the FPGA Development Board to see the percentage of CPU loads in the process of applying linear spatial filters. This program displays information about processes running on the operating system such as the ID of a process, the user running the process, the memory used, the status of a process, the percentage of CPU used and others.
 
-\subsubsection{Memory Usage}
+\subsubsection{Memory Utilize}
 
 % Pada sistem operasi linux \textit{memory} dibagi menjadi tiga jenis \cite{manual:linux}. Pertama yaitu \textit{memory} fisik, sumber daya terbatas di mana kode dan data harus berada saat dijalankan atau direferensikan. Berikutnya adalah \textit{memory} \textit{swap}, yaitu  \textit{memory} yang berguna untuk membantu kerja \textit{memory} fisik, data dari \textit{memory} fisik akan disimpan pada \textit{swap} dan kemudian diambil kembali jika terlalu banyak permintaan pada \textit{memory} fisik. Ketiga yaitu virtual \textit{memory}, sumber daya yang hampir tidak terbatas yang digunakan untuk tujuan berikut \cite{book:os}:
 
@@ -287,10 +287,10 @@ Shared memory is a part of resident memory (RES) that can be used by other proce
 
 \section{Tools and Methods}
 
-\subsection{Sistem Design}
+\subsection{System Design}
 \begin{figure}[ht]
     \includegraphics[width=1\linewidth, center]{images/rancangan-sistem2.png}
-    \caption{Sistem Design.}
+    \caption{System Design.}
     \label{fig:rancangan-sistem}
 \end{figure}
 
@@ -555,14 +555,14 @@ To calculate the FPS efficiency that the FPGA has compared to an ARM processor, 
 
 the FPS efficiency of the FPGA compared to the ARM processor is 88.49\%.
 
-\subsection{CPU usage}
+\subsection{CPU Loads}
 
 % Data perbandingan penggunaan CPU pada masing-masing kernel dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-cpu} dan grafik pada gambar \ref{fig:chart-cpu}. Rata-rata penggunaan CPU dengan prosesor ARM adalah 99.58\% sedangkan dengan FPGA diperoleh 84.75\%. Data ini menunjukkan bahwa penggunaan CPU dengan prosesor ARM sedikit lebih besar daripada dengan FPGA.
 
-Comparative data on CPU usage on each kernel with ARM and FPGA processors can be seen in the \ref{table:cpu-result} table and the chart in the \ref{fig:chart-cpu} table. The average CPU usage with ARM processors is 99.58\% while with FPGA it is 84.75\%. This data shows that CPU usage with ARM processors is slightly greater than with FPGAs.
+Comparative data on CPU loads on each kernel with ARM and FPGA processors can be seen in the \ref{table:cpu-result} table and the chart in the \ref{fig:chart-cpu} table. The average CPU loads with ARM processors is 99.58\% while with FPGA it is 84.75\%. This data shows that CPU loads with ARM processors is slightly greater than with FPGAs.
 
 \begin{atable}
-    \caption{Comparison table of CPU Usage using ARM prosesor and FPGA.}
+    \caption{Comparison table of cpu usage using ARM prosesor and FPGA.}
     \label{table:hasil-cpu}
     \csvreader[
         head to column names,
@@ -585,17 +585,17 @@ Comparative data on CPU usage on each kernel with ARM and FPGA processors can be
 \end{atable}
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-cpu.png}
-    \caption{Comparison chart of CPU usage using ARM prosesor and FPGA.}
+    \caption{Comparison chart of CPU loads using ARM prosesor and FPGA.}
     \label{fig:chart-cpu}
 \end{figure}
 
 % Penggunaan CPU terbesar dengan prosesor ARM yaitu pada kernel \textit{average blur} (99,83\%) dan dengan FPGA pada kernel \textit{sobel horizontal} (86,22\%). Penggunaan CPU terkecil dengan prosesor ARM yaitu pada kernel \textit{sharpening} dan \textit{sobel horizontal} (99,47\%) dan dengan FPGA pada kernel \textit{gaussian blur} (83,70\%).
 
-The biggest CPU usage with ARM processors is the average blur kernel (99.83\%) and the FPGA on the sobel horizontal kernel (86.22\%). The CPU usage with ARM processors is the sharpening and sobel horizontal kernel (99.47\%) and with the FPGA on the gaussian blur kernel (83.70\%).
+The biggest CPU loads with ARM processors is the average blur kernel (99.83\%) and the FPGA on the sobel horizontal kernel (86.22\%). The CPU loads with ARM processors is the sharpening and sobel horizontal kernel (99.47\%) and with the FPGA on the gaussian blur kernel (83.70\%).
 
 % Untuk menghitung efisiensi penggunaan CPU yang dimiliki FPGA dibandingkan dengan prosesor ARM, digunakan persamaan berikut:
 
-To calculate the CPU usage efficiency of an FPGA compared to an ARM processor, the following equation is used:
+To calculate the CPU loads efficiency of an FPGA compared to an ARM processor, the following equation is used:
 \begin{equation*}
     % \label{eq:efisiensi}
     \begin{split}
@@ -607,17 +607,17 @@ To calculate the CPU usage efficiency of an FPGA compared to an ARM processor, t
 \end{equation*}
 % sehingga diperoleh efisiensi penggunaan CPU FPGA dibandingkan dengan prosesor ARM adalah sebesar 14.89\%.
 
-the efficiency of FPGA CPU usage compared to ARM processors is 14.89\%.
+the efficiency of FPGA CPU loads compared to ARM processors is 14.89\%.
 
 
-\subsection{Memory Usage}
+\subsection{Memory Utilize}
 
 % Data penggunaan \textit{memory} dengan prosesor ARM dan FPGA dapat dilihat pada tabel \ref{table:hasil-mem} dan grafik pada gambar \ref{fig:chart-mem}. Data ini menunjukkan persentase \textit{memory} yang digunakan pada masing-masing kernel. Rata-rata penggunaan \textit{memory} dengan prosesor ARM adalah 25,37\% dan 24,86\% dengan FPGA. 
 
-Memory usage with ARM processors and FPGA can be seen in the \ ref{table:mem-results} table and the chart in the \ref{fig:chart-mem} image. This data shows the percentage memory used in each kernel. The average usage of memory with an ARM processor is 25.37\% and 24.86\% with an FPGA.
+Memory utilize with ARM processors and FPGA can be seen in the \ ref{table:mem-results} table and the chart in the \ref{fig:chart-mem} image. This data shows the percentage memory used in each kernel. The average usage of memory with an ARM processor is 25.37\% and 24.86\% with an FPGA.
 
 \begin{atable}
-    \caption{Comparison table of Memory Usage using ARM prosesor and FPGA.}
+    \caption{Comparison table of Memory Utilize using ARM prosesor and FPGA.}
     \label{table:hasil-mem}
     \csvreader[
         head to column names,
@@ -641,7 +641,7 @@ Memory usage with ARM processors and FPGA can be seen in the \ ref{table:mem-res
 
 \begin{figure}[H]
     \includegraphics[width=0.81\linewidth, center]{images/chart/chart-mem.png}
-    \caption{Comparison chart of Memory Usage using ARM prosesor and FPGA.}
+    \caption{Comparison chart of Memory Utilize using ARM prosesor and FPGA.}
     \label{fig:chart-mem}
 \end{figure}
 
@@ -842,5 +842,5 @@ Based on the results of implementation linear spatial filters on the FPGA Develo
 
     % \item Waktu komputasi dengan FPGA 88.85\% lebih baik dibandingkan dengan ARM prosesor. Video hasil filter dengan ARM prosesor memperoleh rata-rata 6.95 fps sedangkan dengan FPGA rata-rata 60.37 fps. FPS dengan FPGA 88.49\% lebih baik lebih baik dibandingkan dengan ARM prosesor. Penggunaan CPU pada FPGA 14.89\% lebih baik, penggunaan \textit{memory} pada FPGA 2.02\% lebih baik, penggunaan \textit{resident memory} 2.07\% lebih baik, dan penggunaan \textit{shared memory} 4.08\% lebih baik dibandingkan dengan ARM prosesor. Sedangkan penggunaan \textit{virtual memory} pada ARM prosesor 0.03\% lebih baik dibandingkan FPGA.
 
-    \item Compute time with FPGA 88.85\% better than ARM processor. The filtered video with the ARM processor gets an average of 6.95 fps while the FPGA average is 60.37 fps. FPS with FPGA is 88.49\% better than ARM processor. CPU usage on FPGA is 14.89\% better, usage of memory on FPGA is 2.02\% better, usage of resident memory is 2.07\% better, and usage of shared memory is 4.08\% better compared to ARM processors. Meanwhile, the use of virtual memory on ARM processors is 0.03\% better than FPGA.
+    \item Compute time with FPGA 88.85\% better than ARM processor. The filtered video with the ARM processor gets an average of 6.95 fps while the FPGA average is 60.37 fps. FPS with FPGA is 88.49\% better than ARM processor. CPU loads on FPGA is 14.89\% better, usage of memory on FPGA is 2.02\% better, usage of resident memory is 2.07\% better, and usage of shared memory is 4.08\% better compared to ARM processors. Meanwhile, the use of virtual memory on ARM processors is 0.03\% better than FPGA.
 \end{enumerate}
