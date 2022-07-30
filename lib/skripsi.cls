@@ -448,7 +448,7 @@
                 \MakeUppercase{\normalfont\bfseries\@university}\\
                 \MakeUppercase{\normalfont\bfseries\@city}\\
                 \vspace{0.2cm}
-                {\normalfont\bfseries{APRIL {\@yearsubmit}}}
+                {\normalfont\bfseries{{\@monthsubmit} {\@yearsubmit}}}
                 \vspace{2cm}
             }\\
         \end{singlespace}
